@@ -1,4 +1,7 @@
-I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\obj\Debug\netcoreapp3.0\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csprojAssemblyReference.cache
+I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\bin\Debug\netcoreapp3.0\Trinity.dll
+I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\bin\Debug\netcoreapp3.0\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.deps.json
+I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\bin\Debug\netcoreapp3.0\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.dll
+I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\bin\Debug\netcoreapp3.0\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.pdb
 I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\obj\Debug\netcoreapp3.0\GeneratedCode\Cells\RDFTriple.cs
 I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\obj\Debug\netcoreapp3.0\GeneratedCode\Lib\BufferAllocator.cs
 I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\obj\Debug\netcoreapp3.0\GeneratedCode\Lib\byteListAccessor.cs
@@ -44,9 +47,5 @@ I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.Trip
 I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\obj\Debug\netcoreapp3.0\GeneratedCode\Structs\TripleStatement.cs
 I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\obj\Debug\netcoreapp3.0\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.AssemblyInfoInputs.cache
 I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\obj\Debug\netcoreapp3.0\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.AssemblyInfo.cs
-I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\bin\Debug\netcoreapp3.0\Trinity.dll
-I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\bin\Debug\netcoreapp3.0\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.deps.json
-I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\bin\Debug\netcoreapp3.0\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.dll
-I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\bin\Debug\netcoreapp3.0\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.pdb
 I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\obj\Debug\netcoreapp3.0\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.dll
 I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\obj\Debug\netcoreapp3.0\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.pdb

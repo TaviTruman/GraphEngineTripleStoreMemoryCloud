@@ -15,7 +15,6 @@
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgNewtonsoft_Json Condition=" '$(PkgNewtonsoft_Json)' == '' ">C:\Users\Tavi\.nuget\packages\newtonsoft.json\9.0.1</PkgNewtonsoft_Json>
     <PkgMicrosoft_DependencyValidation_Analyzers Condition=" '$(PkgMicrosoft_DependencyValidation_Analyzers)' == '' ">C:\Users\Tavi\.nuget\packages\microsoft.dependencyvalidation.analyzers\0.10.0</PkgMicrosoft_DependencyValidation_Analyzers>
-    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\Tavi\.nuget\packages\microsoft.codeanalysis.analyzers\1.1.0</PkgMicrosoft_CodeAnalysis_Analyzers>
-    <PkgGraphEngine_Core Condition=" '$(PkgGraphEngine_Core)' == '' ">C:\Users\Tavi\.nuget\packages\graphengine.core\2.0.10057</PkgGraphEngine_Core>
+    <PkgGraphEngine_Core Condition=" '$(PkgGraphEngine_Core)' == '' ">C:\Users\Tavi\.nuget\packages\graphengine.core\2.0.10059</PkgGraphEngine_Core>
   </PropertyGroup>
 </Project>

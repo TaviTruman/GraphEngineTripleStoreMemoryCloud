@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -10,7 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GraphEngine.ServiceFabric.Infrastructure" Version="2.0.10057" />
+    <PackageReference Include="GraphEngine.DynamicCluster" Version="2.0.10059" />
+    <PackageReference Include="GraphEngine.ServiceFabric.Infrastructure" Version="2.0.10059" />
     <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.4.664" />
   </ItemGroup>
 

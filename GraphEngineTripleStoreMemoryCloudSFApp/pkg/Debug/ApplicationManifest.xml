@@ -2,9 +2,9 @@
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="GraphEngineTripleStoreMemoryCloudSFAppType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" ManifestId="25c75989-6971-4a63-99f2-6e63bfda98d5">
   <Parameters>
     <Parameter Name="IKW.GraphEngine.TripleStoreRemotingClientService_InstanceCount" DefaultValue="-1" />
-    <Parameter Name="IKW.GraphEngine.TripleStore.MemoryCloudService_MinReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="IKW.GraphEngine.TripleStore.MemoryCloudService_MinReplicaSetSize" DefaultValue="2" />
     <Parameter Name="IKW.GraphEngine.TripleStore.MemoryCloudService_PartitionCount" DefaultValue="1" />
-    <Parameter Name="IKW.GraphEngine.TripleStore.MemoryCloudService_TargetReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="IKW.GraphEngine.TripleStore.MemoryCloudService_TargetReplicaSetSize" DefaultValue="2" />
   </Parameters>
   <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
        should match the Name and Version attributes of the ServiceManifest element defined in the 

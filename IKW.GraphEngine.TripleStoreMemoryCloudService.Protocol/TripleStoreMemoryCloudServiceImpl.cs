@@ -1,6 +1,8 @@
 ﻿using System;
 using InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL;
+using Trinity;
 using Trinity.Diagnostics;
+using Trinity.DynamicCluster.Storage;
 
 namespace IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol
 {
@@ -10,7 +12,9 @@ namespace IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol
 
         public override void StoreTripleHandler(StoreTripleRequestReader request, StoreTripleResponseWriter response)
         {
-            Log.WriteLine("Hello world from GE-SF integration!");
+            var memoryCloud = Global.CloudStorage as DynamicMemoryCloud;
+
+            Log.WriteLine("Write Triple to MemoryCloud - Testing Only");
         }
     }
 }

@@ -1,9 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Threading;
-using System.Threading.Tasks;
 using IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol;
-using Microsoft.ServiceFabric.Services.Runtime;
 using Trinity;
 using Trinity.Diagnostics;
 using Trinity.DynamicCluster.Storage;

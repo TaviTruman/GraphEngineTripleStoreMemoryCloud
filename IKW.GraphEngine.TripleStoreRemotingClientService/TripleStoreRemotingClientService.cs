@@ -65,7 +65,7 @@ namespace IKW.GraphEngine.TripleStoreRemotingClientService
 
                 var tripleResponse = m_trinity.StoreTriple(storeTripleRequest);
 
-                await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
+                await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken).ConfigureAwait(false);
             }
         }
     }

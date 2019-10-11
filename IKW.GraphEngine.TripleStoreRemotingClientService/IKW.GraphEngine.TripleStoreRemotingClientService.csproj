@@ -10,7 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GraphEngine.ServiceFabric.Remoting" Version="2.0.10057" />
+    <PackageReference Include="GraphEngine.Client" Version="2.0.10059" />
+    <PackageReference Include="GraphEngine.Core" Version="2.0.10059" />
+    <PackageReference Include="GraphEngine.ServiceFabric.Remoting" Version="2.0.10059" />
     <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.4.664" />
   </ItemGroup>
 

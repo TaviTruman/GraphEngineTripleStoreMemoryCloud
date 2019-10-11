@@ -29,7 +29,7 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
-          "I:\\Trinity-GraphEngine\\GraphEngine\\build": {},
+          "I:\\Trinity-GraphEngine\\build": {},
           "Q:\\RUB Nuget Package Share": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://rocketurbizdev.pkgs.visualstudio.com/_packaging/RUB-SemanticEnhancement-NugetFeed/nuget/v3/index.json": {}
@@ -52,9 +52,13 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
+            "GraphEngine.DynamicCluster": {
+              "target": "Package",
+              "version": "[2.0.10059, )"
+            },
             "GraphEngine.ServiceFabric.Infrastructure": {
               "target": "Package",
-              "version": "[2.0.10057, )"
+              "version": "[2.0.10059, )"
             },
             "Microsoft.ServiceFabric.Services": {
               "target": "Package",
@@ -124,7 +128,7 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
-          "I:\\Trinity-GraphEngine\\GraphEngine\\build": {},
+          "I:\\Trinity-GraphEngine\\build": {},
           "Q:\\RUB Nuget Package Share": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://rocketurbizdev.pkgs.visualstudio.com/_packaging/RUB-SemanticEnhancement-NugetFeed/nuget/v3/index.json": {}
@@ -145,15 +149,11 @@
           "dependencies": {
             "GraphEngine.Core": {
               "target": "Package",
-              "version": "[2.0.10057, )"
+              "version": "[2.0.10059, )"
             },
             "GraphEngine.DynamicCluster": {
               "target": "Package",
-              "version": "[2.0.10057, )"
-            },
-            "GraphEngine.LIKQ": {
-              "target": "Package",
-              "version": "[2.0.10057, )"
+              "version": "[2.0.10059, )"
             },
             "Microsoft.DependencyValidation.Analyzers": {
               "target": "Package",
