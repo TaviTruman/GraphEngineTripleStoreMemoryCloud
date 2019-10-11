@@ -10,7 +10,7 @@ namespace IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol
 
         public override void StoreTripleHandler(StoreTripleRequestReader request, StoreTripleResponseWriter response)
         {
-            throw new NotImplementedException();
+            Log.WriteLine("Hello world from GE-SF integration!");
         }
     }
 }
