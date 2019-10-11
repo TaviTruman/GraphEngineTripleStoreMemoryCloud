@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\IKW.GraphEngine.TripleStoreMemoryCloudService",
+    "\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol",
+    "\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\obj\\Release",
+    "\\IKW.GraphEngine.TripleStoreMemoryCloudService\\obj",
+    "\\IKW.GraphEngine.TripleStoreMemoryCloudService\\PackageRoot",
+    "\\IKW.GraphEngineService.TripleStoreMemoryCloud",
+    "\\IKW.GraphEngineService.TripleStoreMemoryCloud\\obj",
+    "\\IKW.GraphEngineService.TripleStoreMemoryCloud\\PackageRoot"
+  ],
+  "SelectedNode": "\\IKW.GraphEngineService.TripleStoreMemoryCloud\\obj\\IKW.GraphEngineService.TripleStoreMemoryCloud.csproj.nuget.dgspec.json",
+  "PreviewInSolutionExplorer": false
+}

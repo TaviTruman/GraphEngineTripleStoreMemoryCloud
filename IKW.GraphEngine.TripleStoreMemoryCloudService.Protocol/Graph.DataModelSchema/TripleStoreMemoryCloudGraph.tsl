@@ -1,0 +1,43 @@
+﻿struct BlankNode
+{
+	Guid RefId;
+	string Value;
+}
+
+struct BooleanNode
+{
+	bool boolValue;	
+}
+
+struct ByteNode
+{
+	byte ByteValue;	
+}
+
+struct DateTimeNode
+{
+	DateTime DateTimeValue;	
+}
+
+struct DecimalNode
+{
+	decimal DecimalValue;	
+}
+
+struct StringNode
+{
+	string StringValue;	
+}
+
+struct Node
+{
+	StringNode _node; 	
+}
+
+cell struct RDFTriple
+{
+	Guid RefId;
+	Node Subject;
+	Node Predicate;
+	Node Object;
+}

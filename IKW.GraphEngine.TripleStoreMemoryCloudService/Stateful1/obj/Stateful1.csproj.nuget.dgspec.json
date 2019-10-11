@@ -1,0 +1,95 @@
+{
+  "format": 1,
+  "restore": {
+    "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService\\Stateful1\\Stateful1.csproj": {}
+  },
+  "projects": {
+    "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService\\Stateful1\\Stateful1.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService\\Stateful1\\Stateful1.csproj",
+        "projectName": "Stateful1",
+        "projectPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService\\Stateful1\\Stateful1.csproj",
+        "packagesPath": "C:\\Users\\Tavi\\.nuget\\packages\\",
+        "outputPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService\\Stateful1\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "E:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Tavi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
+          "I:\\Trinity-GraphEngine\\GraphEngine\\build": {},
+          "Q:\\RUB Nuget Package Share": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://rocketurbizdev.pkgs.visualstudio.com/_packaging/RUB-SemanticEnhancement-NugetFeed/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "dependencies": {
+            "Microsoft.ServiceFabric.Services": {
+              "target": "Package",
+              "version": "[3.4.664, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Runtime.win-x64",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
+              "version": "[3.0.0, 3.0.0]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win7-x64": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

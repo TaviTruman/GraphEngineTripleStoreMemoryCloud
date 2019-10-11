@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <IsServiceFabricServiceProject>True</IsServiceFabricServiceProject>
+    <ServerGarbageCollection>True</ServerGarbageCollection>
+    <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
+    <TargetLatestRuntimePatch>False</TargetLatestRuntimePatch>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GraphEngine.ServiceFabric.Remoting" Version="2.0.10057" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.4.664" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj" />
+  </ItemGroup>
+
+</Project>

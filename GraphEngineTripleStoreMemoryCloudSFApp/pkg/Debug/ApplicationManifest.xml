@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="GraphEngineTripleStoreMemoryCloudSFAppType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" ManifestId="25c75989-6971-4a63-99f2-6e63bfda98d5">
+  <Parameters>
+    <Parameter Name="IKW.GraphEngine.TripleStoreRemotingClientService_InstanceCount" DefaultValue="-1" />
+    <Parameter Name="IKW.GraphEngine.TripleStore.MemoryCloudService_MinReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="IKW.GraphEngine.TripleStore.MemoryCloudService_PartitionCount" DefaultValue="1" />
+    <Parameter Name="IKW.GraphEngine.TripleStore.MemoryCloudService_TargetReplicaSetSize" DefaultValue="3" />
+  </Parameters>
+  <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
+       should match the Name and Version attributes of the ServiceManifest element defined in the 
+       ServiceManifest.xml file. -->
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="IKW.GraphEngine.TripleStoreRemotingClientServicePkg" ServiceManifestVersion="1.0.0" />
+    <ConfigOverrides />
+  </ServiceManifestImport>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="IKW.GraphEngine.TripleStore.MemoryCloudServicePkg" ServiceManifestVersion="1.0.0" />
+    <ConfigOverrides />
+  </ServiceManifestImport>
+  <DefaultServices>
+    <!-- The section below creates instances of service types, when an instance of this 
+         application type is created. You can also create one or more instances of service type using the 
+         ServiceFabric PowerShell module.
+         
+         The attribute ServiceTypeName below must match the name defined in the imported ServiceManifest.xml file. -->
+    <Service Name="IKW.GraphEngine.TripleStoreRemotingClientService" ServicePackageActivationMode="ExclusiveProcess">
+      <StatelessService ServiceTypeName="IKW.GraphEngine.TripleStoreRemotingClientServiceType" InstanceCount="[IKW.GraphEngine.TripleStoreRemotingClientService_InstanceCount]">
+        <SingletonPartition />
+      </StatelessService>
+    </Service>
+    <Service Name="IKW.GraphEngine.TripleStore.MemoryCloudService" ServicePackageActivationMode="ExclusiveProcess">
+      <StatefulService ServiceTypeName="IKW.GraphEngine.TripleStore.MemoryCloudServiceType" TargetReplicaSetSize="[IKW.GraphEngine.TripleStore.MemoryCloudService_TargetReplicaSetSize]" MinReplicaSetSize="[IKW.GraphEngine.TripleStore.MemoryCloudService_MinReplicaSetSize]">
+        <UniformInt64Partition PartitionCount="[IKW.GraphEngine.TripleStore.MemoryCloudService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+      </StatefulService>
+    </Service>
+  </DefaultServices>
+</ApplicationManifest>

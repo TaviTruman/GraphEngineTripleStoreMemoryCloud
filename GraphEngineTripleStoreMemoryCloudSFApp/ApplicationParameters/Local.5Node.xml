@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="fabric:/GraphEngineTripleStoreMemoryCloudSFApp" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="IKW.GraphEngine.TripleStoreRemotingClientService_InstanceCount" Value="1" />
+    <Parameter Name="IKW.GraphEngine.TripleStore.MemoryCloudService_PartitionCount" Value="1" />
+    <Parameter Name="IKW.GraphEngine.TripleStore.MemoryCloudService_MinReplicaSetSize" Value="3" />
+    <Parameter Name="IKW.GraphEngine.TripleStore.MemoryCloudService_TargetReplicaSetSize" Value="3" />
+  </Parameters>
+</Application>

@@ -1,0 +1,35 @@
+﻿TrinitySettings 
+{
+	RootNamespace: InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL;
+}
+
+struct TripleStatement
+{
+	Guid RefId;
+	string Subject;
+	string Predicate;
+	string Object;
+}
+
+struct StoreTripleRequest
+{
+	TripleStatement RDFTriple;
+}
+
+struct StoreTripleResponse
+{
+	TripleStatement RDDFTriple;
+}
+
+// API - MakeTriple
+protocol StoreTriple
+{
+	Type: Syn;
+	Request: StoreTripleRequest;
+	Response: StoreTripleResponse;
+}
+
+module TripleStoreMemoryCloudServiceModule
+{
+	protocol StoreTriple;
+}
