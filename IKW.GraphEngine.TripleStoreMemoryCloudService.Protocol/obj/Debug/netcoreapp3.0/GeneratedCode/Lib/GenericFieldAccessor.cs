@@ -15,54 +15,35 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
     {
         #region FieldID lookup table
         
-        static Dictionary<string, uint> FieldLookupTable_BlankNode = new Dictionary<string, uint>()
+        static Dictionary<string, uint> FieldLookupTable_INode = new Dictionary<string, uint>()
         {
             
-            {"RefId" , 0}
+            {"TypeOfNode" , 0}
             ,
-            {"Value" , 1}
+            {"GraphParent" , 1}
+            ,
+            {"GraphUri" , 2}
+            ,
+            {"HashCode" , 3}
             
         };
         
-        static Dictionary<string, uint> FieldLookupTable_BooleanNode = new Dictionary<string, uint>()
+        static Dictionary<string, uint> FieldLookupTable_Triple = new Dictionary<string, uint>()
         {
             
-            {"boolValue" , 0}
-            
-        };
-        
-        static Dictionary<string, uint> FieldLookupTable_ByteNode = new Dictionary<string, uint>()
-        {
-            
-            {"ByteValue" , 0}
-            
-        };
-        
-        static Dictionary<string, uint> FieldLookupTable_DateTimeNode = new Dictionary<string, uint>()
-        {
-            
-            {"DateTimeValue" , 0}
-            
-        };
-        
-        static Dictionary<string, uint> FieldLookupTable_DecimalNode = new Dictionary<string, uint>()
-        {
-            
-            {"DecimalValue" , 0}
-            
-        };
-        
-        static Dictionary<string, uint> FieldLookupTable_StringNode = new Dictionary<string, uint>()
-        {
-            
-            {"StringValue" , 0}
-            
-        };
-        
-        static Dictionary<string, uint> FieldLookupTable_Node = new Dictionary<string, uint>()
-        {
-            
-            {"_node" , 0}
+            {"SubjectNode" , 0}
+            ,
+            {"PredicateNode" , 1}
+            ,
+            {"ObjectNode" , 2}
+            ,
+            {"Url" , 3}
+            ,
+            {"GraphInstance" , 4}
+            ,
+            {"HashCode" , 5}
+            ,
+            {"Nodes" , 6}
             
         };
         
@@ -95,14 +76,14 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         
         #endregion
         
-        internal static void SetField<T>(BlankNode_Accessor accessor, string fieldName, int field_name_idx, T value)
+        internal static void SetField<T>(INode_Accessor accessor, string fieldName, int field_name_idx, T value)
         {
             uint member_id;
             int field_divider_idx = fieldName.IndexOf('.', field_name_idx);
             if (-1 != field_divider_idx)
             {
                 string member_name_string = fieldName.Substring(field_name_idx, field_divider_idx - field_name_idx);
-                if (!FieldLookupTable_BlankNode.TryGetValue(member_name_string, out member_id))
+                if (!FieldLookupTable_INode.TryGetValue(member_name_string, out member_id))
                     Throw.undefined_field();
                 switch (member_id)
                 {
@@ -114,17 +95,17 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 return;
             }
             fieldName = fieldName.Substring(field_name_idx);
-            if (!FieldLookupTable_BlankNode.TryGetValue(fieldName, out member_id))
+            if (!FieldLookupTable_INode.TryGetValue(fieldName, out member_id))
                 Throw.undefined_field();
             switch (member_id)
             {
                 
                 case 0:
                     {
-                        Guid conversion_result = TypeConverter<T>.ConvertTo_Guid(value);
+                        NodeType conversion_result = TypeConverter<T>.ConvertTo_NodeType(value);
                         
             {
-                accessor.RefId = conversion_result;
+                accessor.TypeOfNode = conversion_result;
             }
             
                         break;
@@ -132,10 +113,32 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 
                 case 1:
                     {
+                        long conversion_result = TypeConverter<T>.ConvertTo_long(value);
+                        
+            {
+                accessor.GraphParent = conversion_result;
+            }
+            
+                        break;
+                    }
+                
+                case 2:
+                    {
                         string conversion_result = TypeConverter<T>.ConvertTo_string(value);
                         
             {
-                accessor.Value = conversion_result;
+                accessor.GraphUri = conversion_result;
+            }
+            
+                        break;
+                    }
+                
+                case 3:
+                    {
+                        long conversion_result = TypeConverter<T>.ConvertTo_long(value);
+                        
+            {
+                accessor.HashCode = conversion_result;
             }
             
                         break;
@@ -143,14 +146,14 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 
             }
         }
-        internal static T GetField<T>(BlankNode_Accessor accessor, string fieldName, int field_name_idx)
+        internal static T GetField<T>(INode_Accessor accessor, string fieldName, int field_name_idx)
         {
             uint member_id;
             int field_divider_idx = fieldName.IndexOf('.', field_name_idx);
             if (-1 != field_divider_idx)
             {
                 string member_name_string = fieldName.Substring(field_name_idx, field_divider_idx - field_name_idx);
-                if (!FieldLookupTable_BlankNode.TryGetValue(member_name_string, out member_id))
+                if (!FieldLookupTable_INode.TryGetValue(member_name_string, out member_id))
                     Throw.undefined_field();
                 switch (member_id)
                 {
@@ -161,17 +164,25 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 }
             }
             fieldName = fieldName.Substring(field_name_idx);
-            if (!FieldLookupTable_BlankNode.TryGetValue(fieldName, out member_id))
+            if (!FieldLookupTable_INode.TryGetValue(fieldName, out member_id))
                 Throw.undefined_field();
             switch (member_id)
             {
                 
                 case 0:
-                    return TypeConverter<T>.ConvertFrom_Guid(accessor.RefId);
+                    return TypeConverter<T>.ConvertFrom_NodeType(accessor.TypeOfNode);
                     break;
                 
                 case 1:
-                    return TypeConverter<T>.ConvertFrom_string(accessor.Value);
+                    return TypeConverter<T>.ConvertFrom_long(accessor.GraphParent);
+                    break;
+                
+                case 2:
+                    return TypeConverter<T>.ConvertFrom_string(accessor.GraphUri);
+                    break;
+                
+                case 3:
+                    return TypeConverter<T>.ConvertFrom_long(accessor.HashCode);
                     break;
                 
             }
@@ -179,17 +190,29 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             throw new Exception("Internal error T5008");
         }
         
-        internal static void SetField<T>(BooleanNode_Accessor accessor, string fieldName, int field_name_idx, T value)
+        internal static void SetField<T>(Triple_Accessor accessor, string fieldName, int field_name_idx, T value)
         {
             uint member_id;
             int field_divider_idx = fieldName.IndexOf('.', field_name_idx);
             if (-1 != field_divider_idx)
             {
                 string member_name_string = fieldName.Substring(field_name_idx, field_divider_idx - field_name_idx);
-                if (!FieldLookupTable_BooleanNode.TryGetValue(member_name_string, out member_id))
+                if (!FieldLookupTable_Triple.TryGetValue(member_name_string, out member_id))
                     Throw.undefined_field();
                 switch (member_id)
                 {
+                    
+                    case 0:
+                        GenericFieldAccessor.SetField(accessor.SubjectNode, fieldName, field_divider_idx + 1, value);
+                        break;
+                    
+                    case 1:
+                        GenericFieldAccessor.SetField(accessor.PredicateNode, fieldName, field_divider_idx + 1, value);
+                        break;
+                    
+                    case 2:
+                        GenericFieldAccessor.SetField(accessor.ObjectNode, fieldName, field_divider_idx + 1, value);
+                        break;
                     
                     default:
                         Throw.member_access_on_non_struct__field(member_name_string);
@@ -198,366 +221,83 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 return;
             }
             fieldName = fieldName.Substring(field_name_idx);
-            if (!FieldLookupTable_BooleanNode.TryGetValue(fieldName, out member_id))
+            if (!FieldLookupTable_Triple.TryGetValue(fieldName, out member_id))
                 Throw.undefined_field();
             switch (member_id)
             {
                 
                 case 0:
                     {
-                        bool conversion_result = TypeConverter<T>.ConvertTo_bool(value);
+                        INode conversion_result = TypeConverter<T>.ConvertTo_INode(value);
                         
             {
-                accessor.boolValue = conversion_result;
+                accessor.SubjectNode = conversion_result;
             }
             
                         break;
                     }
                 
-            }
-        }
-        internal static T GetField<T>(BooleanNode_Accessor accessor, string fieldName, int field_name_idx)
-        {
-            uint member_id;
-            int field_divider_idx = fieldName.IndexOf('.', field_name_idx);
-            if (-1 != field_divider_idx)
-            {
-                string member_name_string = fieldName.Substring(field_name_idx, field_divider_idx - field_name_idx);
-                if (!FieldLookupTable_BooleanNode.TryGetValue(member_name_string, out member_id))
-                    Throw.undefined_field();
-                switch (member_id)
-                {
-                    
-                    default:
-                        Throw.member_access_on_non_struct__field(member_name_string);
-                        break;
-                }
-            }
-            fieldName = fieldName.Substring(field_name_idx);
-            if (!FieldLookupTable_BooleanNode.TryGetValue(fieldName, out member_id))
-                Throw.undefined_field();
-            switch (member_id)
-            {
-                
-                case 0:
-                    return TypeConverter<T>.ConvertFrom_bool(accessor.boolValue);
-                    break;
-                
-            }
-            /* Should not reach here */
-            throw new Exception("Internal error T5008");
-        }
-        
-        internal static void SetField<T>(ByteNode_Accessor accessor, string fieldName, int field_name_idx, T value)
-        {
-            uint member_id;
-            int field_divider_idx = fieldName.IndexOf('.', field_name_idx);
-            if (-1 != field_divider_idx)
-            {
-                string member_name_string = fieldName.Substring(field_name_idx, field_divider_idx - field_name_idx);
-                if (!FieldLookupTable_ByteNode.TryGetValue(member_name_string, out member_id))
-                    Throw.undefined_field();
-                switch (member_id)
-                {
-                    
-                    default:
-                        Throw.member_access_on_non_struct__field(member_name_string);
-                        break;
-                }
-                return;
-            }
-            fieldName = fieldName.Substring(field_name_idx);
-            if (!FieldLookupTable_ByteNode.TryGetValue(fieldName, out member_id))
-                Throw.undefined_field();
-            switch (member_id)
-            {
-                
-                case 0:
+                case 1:
                     {
-                        byte conversion_result = TypeConverter<T>.ConvertTo_byte(value);
+                        INode conversion_result = TypeConverter<T>.ConvertTo_INode(value);
                         
             {
-                accessor.ByteValue = conversion_result;
+                accessor.PredicateNode = conversion_result;
             }
             
                         break;
                     }
                 
-            }
-        }
-        internal static T GetField<T>(ByteNode_Accessor accessor, string fieldName, int field_name_idx)
-        {
-            uint member_id;
-            int field_divider_idx = fieldName.IndexOf('.', field_name_idx);
-            if (-1 != field_divider_idx)
-            {
-                string member_name_string = fieldName.Substring(field_name_idx, field_divider_idx - field_name_idx);
-                if (!FieldLookupTable_ByteNode.TryGetValue(member_name_string, out member_id))
-                    Throw.undefined_field();
-                switch (member_id)
-                {
-                    
-                    default:
-                        Throw.member_access_on_non_struct__field(member_name_string);
-                        break;
-                }
-            }
-            fieldName = fieldName.Substring(field_name_idx);
-            if (!FieldLookupTable_ByteNode.TryGetValue(fieldName, out member_id))
-                Throw.undefined_field();
-            switch (member_id)
-            {
-                
-                case 0:
-                    return TypeConverter<T>.ConvertFrom_byte(accessor.ByteValue);
-                    break;
-                
-            }
-            /* Should not reach here */
-            throw new Exception("Internal error T5008");
-        }
-        
-        internal static void SetField<T>(DateTimeNode_Accessor accessor, string fieldName, int field_name_idx, T value)
-        {
-            uint member_id;
-            int field_divider_idx = fieldName.IndexOf('.', field_name_idx);
-            if (-1 != field_divider_idx)
-            {
-                string member_name_string = fieldName.Substring(field_name_idx, field_divider_idx - field_name_idx);
-                if (!FieldLookupTable_DateTimeNode.TryGetValue(member_name_string, out member_id))
-                    Throw.undefined_field();
-                switch (member_id)
-                {
-                    
-                    default:
-                        Throw.member_access_on_non_struct__field(member_name_string);
-                        break;
-                }
-                return;
-            }
-            fieldName = fieldName.Substring(field_name_idx);
-            if (!FieldLookupTable_DateTimeNode.TryGetValue(fieldName, out member_id))
-                Throw.undefined_field();
-            switch (member_id)
-            {
-                
-                case 0:
+                case 2:
                     {
-                        DateTime conversion_result = TypeConverter<T>.ConvertTo_DateTime(value);
+                        INode conversion_result = TypeConverter<T>.ConvertTo_INode(value);
                         
             {
-                accessor.DateTimeValue = conversion_result;
+                accessor.ObjectNode = conversion_result;
             }
             
                         break;
                     }
                 
-            }
-        }
-        internal static T GetField<T>(DateTimeNode_Accessor accessor, string fieldName, int field_name_idx)
-        {
-            uint member_id;
-            int field_divider_idx = fieldName.IndexOf('.', field_name_idx);
-            if (-1 != field_divider_idx)
-            {
-                string member_name_string = fieldName.Substring(field_name_idx, field_divider_idx - field_name_idx);
-                if (!FieldLookupTable_DateTimeNode.TryGetValue(member_name_string, out member_id))
-                    Throw.undefined_field();
-                switch (member_id)
-                {
-                    
-                    default:
-                        Throw.member_access_on_non_struct__field(member_name_string);
-                        break;
-                }
-            }
-            fieldName = fieldName.Substring(field_name_idx);
-            if (!FieldLookupTable_DateTimeNode.TryGetValue(fieldName, out member_id))
-                Throw.undefined_field();
-            switch (member_id)
-            {
-                
-                case 0:
-                    return TypeConverter<T>.ConvertFrom_DateTime(accessor.DateTimeValue);
-                    break;
-                
-            }
-            /* Should not reach here */
-            throw new Exception("Internal error T5008");
-        }
-        
-        internal static void SetField<T>(DecimalNode_Accessor accessor, string fieldName, int field_name_idx, T value)
-        {
-            uint member_id;
-            int field_divider_idx = fieldName.IndexOf('.', field_name_idx);
-            if (-1 != field_divider_idx)
-            {
-                string member_name_string = fieldName.Substring(field_name_idx, field_divider_idx - field_name_idx);
-                if (!FieldLookupTable_DecimalNode.TryGetValue(member_name_string, out member_id))
-                    Throw.undefined_field();
-                switch (member_id)
-                {
-                    
-                    default:
-                        Throw.member_access_on_non_struct__field(member_name_string);
-                        break;
-                }
-                return;
-            }
-            fieldName = fieldName.Substring(field_name_idx);
-            if (!FieldLookupTable_DecimalNode.TryGetValue(fieldName, out member_id))
-                Throw.undefined_field();
-            switch (member_id)
-            {
-                
-                case 0:
-                    {
-                        decimal conversion_result = TypeConverter<T>.ConvertTo_decimal(value);
-                        
-            {
-                accessor.DecimalValue = conversion_result;
-            }
-            
-                        break;
-                    }
-                
-            }
-        }
-        internal static T GetField<T>(DecimalNode_Accessor accessor, string fieldName, int field_name_idx)
-        {
-            uint member_id;
-            int field_divider_idx = fieldName.IndexOf('.', field_name_idx);
-            if (-1 != field_divider_idx)
-            {
-                string member_name_string = fieldName.Substring(field_name_idx, field_divider_idx - field_name_idx);
-                if (!FieldLookupTable_DecimalNode.TryGetValue(member_name_string, out member_id))
-                    Throw.undefined_field();
-                switch (member_id)
-                {
-                    
-                    default:
-                        Throw.member_access_on_non_struct__field(member_name_string);
-                        break;
-                }
-            }
-            fieldName = fieldName.Substring(field_name_idx);
-            if (!FieldLookupTable_DecimalNode.TryGetValue(fieldName, out member_id))
-                Throw.undefined_field();
-            switch (member_id)
-            {
-                
-                case 0:
-                    return TypeConverter<T>.ConvertFrom_decimal(accessor.DecimalValue);
-                    break;
-                
-            }
-            /* Should not reach here */
-            throw new Exception("Internal error T5008");
-        }
-        
-        internal static void SetField<T>(StringNode_Accessor accessor, string fieldName, int field_name_idx, T value)
-        {
-            uint member_id;
-            int field_divider_idx = fieldName.IndexOf('.', field_name_idx);
-            if (-1 != field_divider_idx)
-            {
-                string member_name_string = fieldName.Substring(field_name_idx, field_divider_idx - field_name_idx);
-                if (!FieldLookupTable_StringNode.TryGetValue(member_name_string, out member_id))
-                    Throw.undefined_field();
-                switch (member_id)
-                {
-                    
-                    default:
-                        Throw.member_access_on_non_struct__field(member_name_string);
-                        break;
-                }
-                return;
-            }
-            fieldName = fieldName.Substring(field_name_idx);
-            if (!FieldLookupTable_StringNode.TryGetValue(fieldName, out member_id))
-                Throw.undefined_field();
-            switch (member_id)
-            {
-                
-                case 0:
+                case 3:
                     {
                         string conversion_result = TypeConverter<T>.ConvertTo_string(value);
                         
             {
-                accessor.StringValue = conversion_result;
+                accessor.Url = conversion_result;
             }
             
                         break;
                     }
                 
-            }
-        }
-        internal static T GetField<T>(StringNode_Accessor accessor, string fieldName, int field_name_idx)
-        {
-            uint member_id;
-            int field_divider_idx = fieldName.IndexOf('.', field_name_idx);
-            if (-1 != field_divider_idx)
-            {
-                string member_name_string = fieldName.Substring(field_name_idx, field_divider_idx - field_name_idx);
-                if (!FieldLookupTable_StringNode.TryGetValue(member_name_string, out member_id))
-                    Throw.undefined_field();
-                switch (member_id)
-                {
-                    
-                    default:
-                        Throw.member_access_on_non_struct__field(member_name_string);
-                        break;
-                }
-            }
-            fieldName = fieldName.Substring(field_name_idx);
-            if (!FieldLookupTable_StringNode.TryGetValue(fieldName, out member_id))
-                Throw.undefined_field();
-            switch (member_id)
-            {
-                
-                case 0:
-                    return TypeConverter<T>.ConvertFrom_string(accessor.StringValue);
-                    break;
-                
-            }
-            /* Should not reach here */
-            throw new Exception("Internal error T5008");
-        }
-        
-        internal static void SetField<T>(Node_Accessor accessor, string fieldName, int field_name_idx, T value)
-        {
-            uint member_id;
-            int field_divider_idx = fieldName.IndexOf('.', field_name_idx);
-            if (-1 != field_divider_idx)
-            {
-                string member_name_string = fieldName.Substring(field_name_idx, field_divider_idx - field_name_idx);
-                if (!FieldLookupTable_Node.TryGetValue(member_name_string, out member_id))
-                    Throw.undefined_field();
-                switch (member_id)
-                {
-                    
-                    case 0:
-                        GenericFieldAccessor.SetField(accessor._node, fieldName, field_divider_idx + 1, value);
-                        break;
-                    
-                    default:
-                        Throw.member_access_on_non_struct__field(member_name_string);
-                        break;
-                }
-                return;
-            }
-            fieldName = fieldName.Substring(field_name_idx);
-            if (!FieldLookupTable_Node.TryGetValue(fieldName, out member_id))
-                Throw.undefined_field();
-            switch (member_id)
-            {
-                
-                case 0:
+                case 4:
                     {
-                        StringNode conversion_result = TypeConverter<T>.ConvertTo_StringNode(value);
+                        long conversion_result = TypeConverter<T>.ConvertTo_long(value);
                         
             {
-                accessor._node = conversion_result;
+                accessor.GraphInstance = conversion_result;
+            }
+            
+                        break;
+                    }
+                
+                case 5:
+                    {
+                        long conversion_result = TypeConverter<T>.ConvertTo_long(value);
+                        
+            {
+                accessor.HashCode = conversion_result;
+            }
+            
+                        break;
+                    }
+                
+                case 6:
+                    {
+                        List<INode> conversion_result = TypeConverter<T>.ConvertTo_List_INode(value);
+                        
+            {
+                accessor.Nodes = conversion_result;
             }
             
                         break;
@@ -565,20 +305,26 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 
             }
         }
-        internal static T GetField<T>(Node_Accessor accessor, string fieldName, int field_name_idx)
+        internal static T GetField<T>(Triple_Accessor accessor, string fieldName, int field_name_idx)
         {
             uint member_id;
             int field_divider_idx = fieldName.IndexOf('.', field_name_idx);
             if (-1 != field_divider_idx)
             {
                 string member_name_string = fieldName.Substring(field_name_idx, field_divider_idx - field_name_idx);
-                if (!FieldLookupTable_Node.TryGetValue(member_name_string, out member_id))
+                if (!FieldLookupTable_Triple.TryGetValue(member_name_string, out member_id))
                     Throw.undefined_field();
                 switch (member_id)
                 {
                     
                     case 0:
-                        return GenericFieldAccessor.GetField<T>(accessor._node, fieldName, field_divider_idx + 1);
+                        return GenericFieldAccessor.GetField<T>(accessor.SubjectNode, fieldName, field_divider_idx + 1);
+                    
+                    case 1:
+                        return GenericFieldAccessor.GetField<T>(accessor.PredicateNode, fieldName, field_divider_idx + 1);
+                    
+                    case 2:
+                        return GenericFieldAccessor.GetField<T>(accessor.ObjectNode, fieldName, field_divider_idx + 1);
                     
                     default:
                         Throw.member_access_on_non_struct__field(member_name_string);
@@ -586,13 +332,37 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 }
             }
             fieldName = fieldName.Substring(field_name_idx);
-            if (!FieldLookupTable_Node.TryGetValue(fieldName, out member_id))
+            if (!FieldLookupTable_Triple.TryGetValue(fieldName, out member_id))
                 Throw.undefined_field();
             switch (member_id)
             {
                 
                 case 0:
-                    return TypeConverter<T>.ConvertFrom_StringNode(accessor._node);
+                    return TypeConverter<T>.ConvertFrom_INode(accessor.SubjectNode);
+                    break;
+                
+                case 1:
+                    return TypeConverter<T>.ConvertFrom_INode(accessor.PredicateNode);
+                    break;
+                
+                case 2:
+                    return TypeConverter<T>.ConvertFrom_INode(accessor.ObjectNode);
+                    break;
+                
+                case 3:
+                    return TypeConverter<T>.ConvertFrom_string(accessor.Url);
+                    break;
+                
+                case 4:
+                    return TypeConverter<T>.ConvertFrom_long(accessor.GraphInstance);
+                    break;
+                
+                case 5:
+                    return TypeConverter<T>.ConvertFrom_long(accessor.HashCode);
+                    break;
+                
+                case 6:
+                    return TypeConverter<T>.ConvertFrom_List_INode(accessor.Nodes);
                     break;
                 
             }

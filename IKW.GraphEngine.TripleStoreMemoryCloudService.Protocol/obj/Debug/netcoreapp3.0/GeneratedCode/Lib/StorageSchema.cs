@@ -17,14 +17,14 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         internal static Dictionary<string, CellType> cellTypeLookupTable = new Dictionary<string, CellType>()
         {
             
-            {"RDFTriple", global::InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL.CellType.RDFTriple}
+            {"Graph", global::InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL.CellType.Graph}
             
         };
         #endregion
         
-        internal static readonly Type   s_cellType_RDFTriple       = typeof(global::InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL.RDFTriple);
-        internal static readonly string s_cellTypeName_RDFTriple   = "RDFTriple";
-        internal class RDFTriple_descriptor : ICellDescriptor
+        internal static readonly Type   s_cellType_Graph       = typeof(global::InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL.Graph);
+        internal static readonly string s_cellTypeName_Graph   = "Graph";
+        internal class Graph_descriptor : ICellDescriptor
         {
             private static IReadOnlyDictionary<string, string> s_attributes = new Dictionary<string, string>
             {
@@ -40,17 +40,17 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                     return attributes.Attributes.ContainsKey(attributeKey) && attributes.Attributes[attributeKey] == attributeValue;
             }
             
-            internal class RefId_descriptor : IFieldDescriptor
+            internal class BaseUri_descriptor : IFieldDescriptor
             {
                 private static IReadOnlyDictionary<string, string> s_attributes = new Dictionary<string, string>
                 {
                     
                 };
-                private static string s_typename = "Guid";
-                private static Type   s_type     = typeof(Guid);
+                private static string s_typename = "string";
+                private static Type   s_type     = typeof(string);
                 public string Name
                 {
-                    get { return "RefId"; }
+                    get { return "BaseUri"; }
                 }
                 public bool Optional
                 {
@@ -90,19 +90,19 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                     return ret;
                 }
             }
-            internal static RefId_descriptor RefId = new RefId_descriptor();
+            internal static BaseUri_descriptor BaseUri = new BaseUri_descriptor();
             
-            internal class Subject_descriptor : IFieldDescriptor
+            internal class TripleCollection_descriptor : IFieldDescriptor
             {
                 private static IReadOnlyDictionary<string, string> s_attributes = new Dictionary<string, string>
                 {
                     
                 };
-                private static string s_typename = "Node";
-                private static Type   s_type     = typeof(Node);
+                private static string s_typename = "List<Triple>";
+                private static Type   s_type     = typeof(List<Triple>);
                 public string Name
                 {
-                    get { return "Subject"; }
+                    get { return "TripleCollection"; }
                 }
                 public bool Optional
                 {
@@ -120,7 +120,7 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 public bool IsList()
                 {
                     
-                    return false;
+                    return true;
                     
                 }
                 public string TypeName
@@ -142,144 +142,30 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                     return ret;
                 }
             }
-            internal static Subject_descriptor Subject = new Subject_descriptor();
-            
-            internal class Predicate_descriptor : IFieldDescriptor
-            {
-                private static IReadOnlyDictionary<string, string> s_attributes = new Dictionary<string, string>
-                {
-                    
-                };
-                private static string s_typename = "Node";
-                private static Type   s_type     = typeof(Node);
-                public string Name
-                {
-                    get { return "Predicate"; }
-                }
-                public bool Optional
-                {
-                    get
-                    {
-                        
-                        return false;
-                        
-                    }
-                }
-                public bool IsOfType<T>()
-                {
-                    return typeof(T) == Type;
-                }
-                public bool IsList()
-                {
-                    
-                    return false;
-                    
-                }
-                public string TypeName
-                {
-                    get { return s_typename; }
-                }
-                public Type Type
-                {
-                    get { return s_type; }
-                }
-                public IReadOnlyDictionary<string, string> Attributes
-                {
-                    get { return s_attributes; }
-                }
-                public string GetAttributeValue(string attributeKey)
-                {
-                    string ret = null;
-                    s_attributes.TryGetValue(attributeKey, out ret);
-                    return ret;
-                }
-            }
-            internal static Predicate_descriptor Predicate = new Predicate_descriptor();
-            
-            internal class Object_descriptor : IFieldDescriptor
-            {
-                private static IReadOnlyDictionary<string, string> s_attributes = new Dictionary<string, string>
-                {
-                    
-                };
-                private static string s_typename = "Node";
-                private static Type   s_type     = typeof(Node);
-                public string Name
-                {
-                    get { return "Object"; }
-                }
-                public bool Optional
-                {
-                    get
-                    {
-                        
-                        return false;
-                        
-                    }
-                }
-                public bool IsOfType<T>()
-                {
-                    return typeof(T) == Type;
-                }
-                public bool IsList()
-                {
-                    
-                    return false;
-                    
-                }
-                public string TypeName
-                {
-                    get { return s_typename; }
-                }
-                public Type Type
-                {
-                    get { return s_type; }
-                }
-                public IReadOnlyDictionary<string, string> Attributes
-                {
-                    get { return s_attributes; }
-                }
-                public string GetAttributeValue(string attributeKey)
-                {
-                    string ret = null;
-                    s_attributes.TryGetValue(attributeKey, out ret);
-                    return ret;
-                }
-            }
-            internal static Object_descriptor Object = new Object_descriptor();
+            internal static TripleCollection_descriptor TripleCollection = new TripleCollection_descriptor();
             
             #region ICellDescriptor
             public IEnumerable<string> GetFieldNames()
             {
                 
-                yield return "RefId";
+                yield return "BaseUri";
                 
-                yield return "Subject";
-                
-                yield return "Predicate";
-                
-                yield return "Object";
+                yield return "TripleCollection";
                 
             }
             public IAttributeCollection GetFieldAttributes(string fieldName)
             {
-                int field_id = global::InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL.RDFTriple.FieldLookupTable.Lookup(fieldName);
+                int field_id = global::InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL.Graph.FieldLookupTable.Lookup(fieldName);
                 if (field_id == -1)
                     Throw.undefined_field();
                 switch (field_id)
                 {
                     
                     case 0:
-                        return RefId;
+                        return BaseUri;
                     
                     case 1:
-                        return Subject;
-                    
-                    case 2:
-                        return Predicate;
-                    
-                    case 3:
-                        return Object;
+                        return TripleCollection;
                     
                 }
                 /* Should not reach here */
@@ -288,32 +174,28 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             public IEnumerable<IFieldDescriptor> GetFieldDescriptors()
             {
                 
-                yield return RefId;
+                yield return BaseUri;
                 
-                yield return Subject;
-                
-                yield return Predicate;
-                
-                yield return Object;
+                yield return TripleCollection;
                 
             }
             ushort ICellDescriptor.CellType
             {
-                get { return (ushort)CellType.RDFTriple; }
+                get { return (ushort)CellType.Graph; }
             }
             #endregion
             #region ITypeDescriptor
             public string TypeName
             {
-                get { return s_cellTypeName_RDFTriple; }
+                get { return s_cellTypeName_Graph; }
             }
             public Type Type
             {
-                get { return s_cellType_RDFTriple; }
+                get { return s_cellType_Graph; }
             }
             public bool IsOfType<T>()
             {
-                return typeof(T) == s_cellType_RDFTriple;
+                return typeof(T) == s_cellType_Graph;
             }
             public bool IsList()
             {
@@ -333,11 +215,11 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             }
             #endregion
         }
-        internal static readonly RDFTriple_descriptor s_cellDescriptor_RDFTriple = new RDFTriple_descriptor();
+        internal static readonly Graph_descriptor s_cellDescriptor_Graph = new Graph_descriptor();
         /// <summary>
-        /// Get the cell descriptor for RDFTriple.
+        /// Get the cell descriptor for Graph.
         /// </summary>
-        public static ICellDescriptor RDFTriple { get { return s_cellDescriptor_RDFTriple; } }
+        public static ICellDescriptor Graph { get { return s_cellDescriptor_Graph; } }
         
         /// <summary>
         /// Enumerates descriptors for all cells defined in the TSL.
@@ -347,7 +229,7 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             get
             {
                 
-                yield return RDFTriple;
+                yield return Graph;
                 
                 yield break;
             }
@@ -378,7 +260,7 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             get
             {
                 
-                yield return "{Guid|{{string}}|{{string}}|{{string}}}";
+                yield return "{string|List<{{NodeType|long|string|long}|{NodeType|long|string|long}|{NodeType|long|string|long}|string|long|long|List<{NodeType|long|string|long}>}>}";
                 
                 yield break;
             }

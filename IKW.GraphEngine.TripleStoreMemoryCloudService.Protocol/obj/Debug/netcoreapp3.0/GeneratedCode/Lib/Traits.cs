@@ -16,25 +16,25 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         private static Dictionary<Type, uint> TypeIDLookupTable = new Dictionary<Type, uint>()
         {
             
-            { typeof(byte), 0 }
+            { typeof(long), 0 }
             ,
-            { typeof(bool), 1 }
+            { typeof(Guid), 1 }
             ,
-            { typeof(decimal), 2 }
+            { typeof(string), 2 }
             ,
-            { typeof(DateTime), 3 }
+            { typeof(List<string>), 3 }
             ,
-            { typeof(Guid), 4 }
+            { typeof(List<INode>), 4 }
             ,
-            { typeof(string), 5 }
+            { typeof(List<Triple>), 5 }
             ,
-            { typeof(List<string>), 6 }
+            { typeof(INode), 6 }
             ,
-            { typeof(Node), 7 }
+            { typeof(Triple), 7 }
             ,
-            { typeof(StringNode), 8 }
+            { typeof(TripleStatement), 8 }
             ,
-            { typeof(TripleStatement), 9 }
+            { typeof(NodeType), 9 }
             ,
         };
         #endregion
@@ -42,7 +42,7 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         private static Dictionary<Type, uint> CellTypeIDLookupTable = new Dictionary<Type, uint>()
         {
             
-            { typeof(RDFTriple), 0 }
+            { typeof(Graph), 0 }
             
         };
         #endregion
@@ -76,25 +76,10 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
     internal interface ITypeConverter<T>
     {
         
-        T ConvertFrom_byte(byte value);
-        byte ConvertTo_byte(T value);
-        TypeConversionAction GetConversionActionTo_byte();
-        IEnumerable<byte> Enumerate_byte(T value);
-        
-        T ConvertFrom_bool(bool value);
-        bool ConvertTo_bool(T value);
-        TypeConversionAction GetConversionActionTo_bool();
-        IEnumerable<bool> Enumerate_bool(T value);
-        
-        T ConvertFrom_decimal(decimal value);
-        decimal ConvertTo_decimal(T value);
-        TypeConversionAction GetConversionActionTo_decimal();
-        IEnumerable<decimal> Enumerate_decimal(T value);
-        
-        T ConvertFrom_DateTime(DateTime value);
-        DateTime ConvertTo_DateTime(T value);
-        TypeConversionAction GetConversionActionTo_DateTime();
-        IEnumerable<DateTime> Enumerate_DateTime(T value);
+        T ConvertFrom_long(long value);
+        long ConvertTo_long(T value);
+        TypeConversionAction GetConversionActionTo_long();
+        IEnumerable<long> Enumerate_long(T value);
         
         T ConvertFrom_Guid(Guid value);
         Guid ConvertTo_Guid(T value);
@@ -111,33 +96,42 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         TypeConversionAction GetConversionActionTo_List_string();
         IEnumerable<List<string>> Enumerate_List_string(T value);
         
-        T ConvertFrom_Node(Node value);
-        Node ConvertTo_Node(T value);
-        TypeConversionAction GetConversionActionTo_Node();
-        IEnumerable<Node> Enumerate_Node(T value);
+        T ConvertFrom_List_INode(List<INode> value);
+        List<INode> ConvertTo_List_INode(T value);
+        TypeConversionAction GetConversionActionTo_List_INode();
+        IEnumerable<List<INode>> Enumerate_List_INode(T value);
         
-        T ConvertFrom_StringNode(StringNode value);
-        StringNode ConvertTo_StringNode(T value);
-        TypeConversionAction GetConversionActionTo_StringNode();
-        IEnumerable<StringNode> Enumerate_StringNode(T value);
+        T ConvertFrom_List_Triple(List<Triple> value);
+        List<Triple> ConvertTo_List_Triple(T value);
+        TypeConversionAction GetConversionActionTo_List_Triple();
+        IEnumerable<List<Triple>> Enumerate_List_Triple(T value);
+        
+        T ConvertFrom_INode(INode value);
+        INode ConvertTo_INode(T value);
+        TypeConversionAction GetConversionActionTo_INode();
+        IEnumerable<INode> Enumerate_INode(T value);
+        
+        T ConvertFrom_Triple(Triple value);
+        Triple ConvertTo_Triple(T value);
+        TypeConversionAction GetConversionActionTo_Triple();
+        IEnumerable<Triple> Enumerate_Triple(T value);
         
         T ConvertFrom_TripleStatement(TripleStatement value);
         TripleStatement ConvertTo_TripleStatement(T value);
         TypeConversionAction GetConversionActionTo_TripleStatement();
         IEnumerable<TripleStatement> Enumerate_TripleStatement(T value);
         
+        T ConvertFrom_NodeType(NodeType value);
+        NodeType ConvertTo_NodeType(T value);
+        TypeConversionAction GetConversionActionTo_NodeType();
+        IEnumerable<NodeType> Enumerate_NodeType(T value);
+        
     }
     internal class TypeConverter<T> : ITypeConverter<T>
     {
         internal class _TypeConverterImpl : ITypeConverter<object>
             
-            , ITypeConverter<byte>
-        
-            , ITypeConverter<bool>
-        
-            , ITypeConverter<decimal>
-        
-            , ITypeConverter<DateTime>
+            , ITypeConverter<long>
         
             , ITypeConverter<Guid>
         
@@ -145,72 +139,30 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         
             , ITypeConverter<List<string>>
         
-            , ITypeConverter<Node>
+            , ITypeConverter<List<INode>>
         
-            , ITypeConverter<StringNode>
+            , ITypeConverter<List<Triple>>
+        
+            , ITypeConverter<INode>
+        
+            , ITypeConverter<Triple>
         
             , ITypeConverter<TripleStatement>
         
+            , ITypeConverter<NodeType>
+        
         {
-            byte ITypeConverter<byte>.ConvertFrom_byte(byte value)
+            long ITypeConverter<long>.ConvertFrom_long(long value)
             {
                 
-                return (byte)value;
+                return (long)value;
                 
             }
-            byte ITypeConverter<byte>.ConvertTo_byte(byte value)
+            long ITypeConverter<long>.ConvertTo_long(long value)
             {
-                return TypeConverter<byte>.ConvertFrom_byte(value);
+                return TypeConverter<long>.ConvertFrom_long(value);
             }
-            TypeConversionAction ITypeConverter<byte>.GetConversionActionTo_byte()
-            {
-                
-                return TypeConversionAction.TC_ASSIGN;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<byte> ITypeConverter<byte>.Enumerate_byte(byte value)
-            {
-                
-                yield break;
-            }
-            byte ITypeConverter<byte>.ConvertFrom_bool(bool value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'bool' to 'byte'.");
-                
-            }
-            bool ITypeConverter<byte>.ConvertTo_bool(byte value)
-            {
-                return TypeConverter<bool>.ConvertFrom_byte(value);
-            }
-            TypeConversionAction ITypeConverter<byte>.GetConversionActionTo_bool()
-            {
-                
-                return TypeConversionAction.TC_TOBOOL;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<bool> ITypeConverter<byte>.Enumerate_bool(byte value)
-            {
-                
-                yield break;
-            }
-            byte ITypeConverter<byte>.ConvertFrom_decimal(decimal value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'decimal' to 'byte'.");
-                
-            }
-            decimal ITypeConverter<byte>.ConvertTo_decimal(byte value)
-            {
-                return TypeConverter<decimal>.ConvertFrom_byte(value);
-            }
-            TypeConversionAction ITypeConverter<byte>.GetConversionActionTo_decimal()
+            TypeConversionAction ITypeConverter<long>.GetConversionActionTo_long()
             {
                 
                 return TypeConversionAction.TC_ASSIGN;
@@ -219,22 +171,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<decimal> ITypeConverter<byte>.Enumerate_decimal(byte value)
+            IEnumerable<long> ITypeConverter<long>.Enumerate_long(long value)
             {
                 
                 yield break;
             }
-            byte ITypeConverter<byte>.ConvertFrom_DateTime(DateTime value)
+            long ITypeConverter<long>.ConvertFrom_Guid(Guid value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'DateTime' to 'byte'.");
+                throw new InvalidCastException("Invalid cast from 'Guid' to 'long'.");
                 
             }
-            DateTime ITypeConverter<byte>.ConvertTo_DateTime(byte value)
+            Guid ITypeConverter<long>.ConvertTo_Guid(long value)
             {
-                return TypeConverter<DateTime>.ConvertFrom_byte(value);
+                return TypeConverter<Guid>.ConvertFrom_long(value);
             }
-            TypeConversionAction ITypeConverter<byte>.GetConversionActionTo_DateTime()
+            TypeConversionAction ITypeConverter<long>.GetConversionActionTo_Guid()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -243,51 +195,27 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<DateTime> ITypeConverter<byte>.Enumerate_DateTime(byte value)
+            IEnumerable<Guid> ITypeConverter<long>.Enumerate_Guid(long value)
             {
                 
                 yield break;
             }
-            byte ITypeConverter<byte>.ConvertFrom_Guid(Guid value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'Guid' to 'byte'.");
-                
-            }
-            Guid ITypeConverter<byte>.ConvertTo_Guid(byte value)
-            {
-                return TypeConverter<Guid>.ConvertFrom_byte(value);
-            }
-            TypeConversionAction ITypeConverter<byte>.GetConversionActionTo_Guid()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<Guid> ITypeConverter<byte>.Enumerate_Guid(byte value)
-            {
-                
-                yield break;
-            }
-            byte ITypeConverter<byte>.ConvertFrom_string(string value)
+            long ITypeConverter<long>.ConvertFrom_string(string value)
             {
                 
                 {
                     #region String parse
-                    byte intermediate_result;
+                    long intermediate_result;
                     bool conversion_success;
                     
                     {
-                        conversion_success = byte.TryParse(value, out intermediate_result);
+                        conversion_success = long.TryParse(value, out intermediate_result);
                     }
                     
                     if (!conversion_success)
                     {
                         
-                        Throw.cannot_parse(value, "byte");
+                        Throw.cannot_parse(value, "long");
                         
                     }
                     return intermediate_result;
@@ -295,11 +223,11 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 }
                 
             }
-            string ITypeConverter<byte>.ConvertTo_string(byte value)
+            string ITypeConverter<long>.ConvertTo_string(long value)
             {
-                return TypeConverter<string>.ConvertFrom_byte(value);
+                return TypeConverter<string>.ConvertFrom_long(value);
             }
-            TypeConversionAction ITypeConverter<byte>.GetConversionActionTo_string()
+            TypeConversionAction ITypeConverter<long>.GetConversionActionTo_string()
             {
                 
                 return TypeConversionAction.TC_TOSTRING;
@@ -308,22 +236,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<string> ITypeConverter<byte>.Enumerate_string(byte value)
+            IEnumerable<string> ITypeConverter<long>.Enumerate_string(long value)
             {
                 
                 yield break;
             }
-            byte ITypeConverter<byte>.ConvertFrom_List_string(List<string> value)
+            long ITypeConverter<long>.ConvertFrom_List_string(List<string> value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'List<string>' to 'byte'.");
+                throw new InvalidCastException("Invalid cast from 'List<string>' to 'long'.");
                 
             }
-            List<string> ITypeConverter<byte>.ConvertTo_List_string(byte value)
+            List<string> ITypeConverter<long>.ConvertTo_List_string(long value)
             {
-                return TypeConverter<List<string>>.ConvertFrom_byte(value);
+                return TypeConverter<List<string>>.ConvertFrom_long(value);
             }
-            TypeConversionAction ITypeConverter<byte>.GetConversionActionTo_List_string()
+            TypeConversionAction ITypeConverter<long>.GetConversionActionTo_List_string()
             {
                 
                 return TypeConversionAction.TC_WRAPINLIST;
@@ -332,22 +260,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<List<string>> ITypeConverter<byte>.Enumerate_List_string(byte value)
+            IEnumerable<List<string>> ITypeConverter<long>.Enumerate_List_string(long value)
             {
                 
                 yield break;
             }
-            byte ITypeConverter<byte>.ConvertFrom_Node(Node value)
+            long ITypeConverter<long>.ConvertFrom_List_INode(List<INode> value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'Node' to 'byte'.");
+                throw new InvalidCastException("Invalid cast from 'List<INode>' to 'long'.");
                 
             }
-            Node ITypeConverter<byte>.ConvertTo_Node(byte value)
+            List<INode> ITypeConverter<long>.ConvertTo_List_INode(long value)
             {
-                return TypeConverter<Node>.ConvertFrom_byte(value);
+                return TypeConverter<List<INode>>.ConvertFrom_long(value);
             }
-            TypeConversionAction ITypeConverter<byte>.GetConversionActionTo_Node()
+            TypeConversionAction ITypeConverter<long>.GetConversionActionTo_List_INode()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -356,22 +284,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<Node> ITypeConverter<byte>.Enumerate_Node(byte value)
+            IEnumerable<List<INode>> ITypeConverter<long>.Enumerate_List_INode(long value)
             {
                 
                 yield break;
             }
-            byte ITypeConverter<byte>.ConvertFrom_StringNode(StringNode value)
+            long ITypeConverter<long>.ConvertFrom_List_Triple(List<Triple> value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'StringNode' to 'byte'.");
+                throw new InvalidCastException("Invalid cast from 'List<Triple>' to 'long'.");
                 
             }
-            StringNode ITypeConverter<byte>.ConvertTo_StringNode(byte value)
+            List<Triple> ITypeConverter<long>.ConvertTo_List_Triple(long value)
             {
-                return TypeConverter<StringNode>.ConvertFrom_byte(value);
+                return TypeConverter<List<Triple>>.ConvertFrom_long(value);
             }
-            TypeConversionAction ITypeConverter<byte>.GetConversionActionTo_StringNode()
+            TypeConversionAction ITypeConverter<long>.GetConversionActionTo_List_Triple()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -380,22 +308,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<StringNode> ITypeConverter<byte>.Enumerate_StringNode(byte value)
+            IEnumerable<List<Triple>> ITypeConverter<long>.Enumerate_List_Triple(long value)
             {
                 
                 yield break;
             }
-            byte ITypeConverter<byte>.ConvertFrom_TripleStatement(TripleStatement value)
+            long ITypeConverter<long>.ConvertFrom_INode(INode value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'TripleStatement' to 'byte'.");
+                throw new InvalidCastException("Invalid cast from 'INode' to 'long'.");
                 
             }
-            TripleStatement ITypeConverter<byte>.ConvertTo_TripleStatement(byte value)
+            INode ITypeConverter<long>.ConvertTo_INode(long value)
             {
-                return TypeConverter<TripleStatement>.ConvertFrom_byte(value);
+                return TypeConverter<INode>.ConvertFrom_long(value);
             }
-            TypeConversionAction ITypeConverter<byte>.GetConversionActionTo_TripleStatement()
+            TypeConversionAction ITypeConverter<long>.GetConversionActionTo_INode()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -404,22 +332,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<TripleStatement> ITypeConverter<byte>.Enumerate_TripleStatement(byte value)
+            IEnumerable<INode> ITypeConverter<long>.Enumerate_INode(long value)
             {
                 
                 yield break;
             }
-            bool ITypeConverter<bool>.ConvertFrom_byte(byte value)
+            long ITypeConverter<long>.ConvertFrom_Triple(Triple value)
             {
                 
-                return (value != 0);
+                throw new InvalidCastException("Invalid cast from 'Triple' to 'long'.");
                 
             }
-            byte ITypeConverter<bool>.ConvertTo_byte(bool value)
+            Triple ITypeConverter<long>.ConvertTo_Triple(long value)
             {
-                return TypeConverter<byte>.ConvertFrom_bool(value);
+                return TypeConverter<Triple>.ConvertFrom_long(value);
             }
-            TypeConversionAction ITypeConverter<bool>.GetConversionActionTo_byte()
+            TypeConversionAction ITypeConverter<long>.GetConversionActionTo_Triple()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -428,46 +356,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<byte> ITypeConverter<bool>.Enumerate_byte(bool value)
+            IEnumerable<Triple> ITypeConverter<long>.Enumerate_Triple(long value)
             {
                 
                 yield break;
             }
-            bool ITypeConverter<bool>.ConvertFrom_bool(bool value)
+            long ITypeConverter<long>.ConvertFrom_TripleStatement(TripleStatement value)
             {
                 
-                return (bool)value;
+                throw new InvalidCastException("Invalid cast from 'TripleStatement' to 'long'.");
                 
             }
-            bool ITypeConverter<bool>.ConvertTo_bool(bool value)
+            TripleStatement ITypeConverter<long>.ConvertTo_TripleStatement(long value)
             {
-                return TypeConverter<bool>.ConvertFrom_bool(value);
+                return TypeConverter<TripleStatement>.ConvertFrom_long(value);
             }
-            TypeConversionAction ITypeConverter<bool>.GetConversionActionTo_bool()
-            {
-                
-                return TypeConversionAction.TC_ASSIGN;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<bool> ITypeConverter<bool>.Enumerate_bool(bool value)
-            {
-                
-                yield break;
-            }
-            bool ITypeConverter<bool>.ConvertFrom_decimal(decimal value)
-            {
-                
-                return (value != 0);
-                
-            }
-            decimal ITypeConverter<bool>.ConvertTo_decimal(bool value)
-            {
-                return TypeConverter<decimal>.ConvertFrom_bool(value);
-            }
-            TypeConversionAction ITypeConverter<bool>.GetConversionActionTo_decimal()
+            TypeConversionAction ITypeConverter<long>.GetConversionActionTo_TripleStatement()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -476,22 +380,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<decimal> ITypeConverter<bool>.Enumerate_decimal(bool value)
+            IEnumerable<TripleStatement> ITypeConverter<long>.Enumerate_TripleStatement(long value)
             {
                 
                 yield break;
             }
-            bool ITypeConverter<bool>.ConvertFrom_DateTime(DateTime value)
+            long ITypeConverter<long>.ConvertFrom_NodeType(NodeType value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'DateTime' to 'bool'.");
+                throw new InvalidCastException("Invalid cast from 'NodeType' to 'long'.");
                 
             }
-            DateTime ITypeConverter<bool>.ConvertTo_DateTime(bool value)
+            NodeType ITypeConverter<long>.ConvertTo_NodeType(long value)
             {
-                return TypeConverter<DateTime>.ConvertFrom_bool(value);
+                return TypeConverter<NodeType>.ConvertFrom_long(value);
             }
-            TypeConversionAction ITypeConverter<bool>.GetConversionActionTo_DateTime()
+            TypeConversionAction ITypeConverter<long>.GetConversionActionTo_NodeType()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -500,22 +404,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<DateTime> ITypeConverter<bool>.Enumerate_DateTime(bool value)
+            IEnumerable<NodeType> ITypeConverter<long>.Enumerate_NodeType(long value)
             {
                 
                 yield break;
             }
-            bool ITypeConverter<bool>.ConvertFrom_Guid(Guid value)
+            Guid ITypeConverter<Guid>.ConvertFrom_long(long value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'Guid' to 'bool'.");
+                throw new InvalidCastException("Invalid cast from 'long' to 'Guid'.");
                 
             }
-            Guid ITypeConverter<bool>.ConvertTo_Guid(bool value)
+            long ITypeConverter<Guid>.ConvertTo_long(Guid value)
             {
-                return TypeConverter<Guid>.ConvertFrom_bool(value);
+                return TypeConverter<long>.ConvertFrom_Guid(value);
             }
-            TypeConversionAction ITypeConverter<bool>.GetConversionActionTo_Guid()
+            TypeConversionAction ITypeConverter<Guid>.GetConversionActionTo_long()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -524,754 +428,7 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<Guid> ITypeConverter<bool>.Enumerate_Guid(bool value)
-            {
-                
-                yield break;
-            }
-            bool ITypeConverter<bool>.ConvertFrom_string(string value)
-            {
-                
-                {
-                    #region String parse
-                    bool intermediate_result;
-                    bool conversion_success;
-                    
-                    {
-                        conversion_success = ExternalParser.TryParse_bool(value, out intermediate_result);
-                    }
-                    
-                    if (!conversion_success)
-                    {
-                        
-                        Throw.cannot_parse(value, "bool");
-                        
-                    }
-                    return intermediate_result;
-                    #endregion
-                }
-                
-            }
-            string ITypeConverter<bool>.ConvertTo_string(bool value)
-            {
-                return TypeConverter<string>.ConvertFrom_bool(value);
-            }
-            TypeConversionAction ITypeConverter<bool>.GetConversionActionTo_string()
-            {
-                
-                return TypeConversionAction.TC_TOSTRING;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<string> ITypeConverter<bool>.Enumerate_string(bool value)
-            {
-                
-                yield break;
-            }
-            bool ITypeConverter<bool>.ConvertFrom_List_string(List<string> value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'List<string>' to 'bool'.");
-                
-            }
-            List<string> ITypeConverter<bool>.ConvertTo_List_string(bool value)
-            {
-                return TypeConverter<List<string>>.ConvertFrom_bool(value);
-            }
-            TypeConversionAction ITypeConverter<bool>.GetConversionActionTo_List_string()
-            {
-                
-                return TypeConversionAction.TC_WRAPINLIST;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<List<string>> ITypeConverter<bool>.Enumerate_List_string(bool value)
-            {
-                
-                yield break;
-            }
-            bool ITypeConverter<bool>.ConvertFrom_Node(Node value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'Node' to 'bool'.");
-                
-            }
-            Node ITypeConverter<bool>.ConvertTo_Node(bool value)
-            {
-                return TypeConverter<Node>.ConvertFrom_bool(value);
-            }
-            TypeConversionAction ITypeConverter<bool>.GetConversionActionTo_Node()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<Node> ITypeConverter<bool>.Enumerate_Node(bool value)
-            {
-                
-                yield break;
-            }
-            bool ITypeConverter<bool>.ConvertFrom_StringNode(StringNode value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'StringNode' to 'bool'.");
-                
-            }
-            StringNode ITypeConverter<bool>.ConvertTo_StringNode(bool value)
-            {
-                return TypeConverter<StringNode>.ConvertFrom_bool(value);
-            }
-            TypeConversionAction ITypeConverter<bool>.GetConversionActionTo_StringNode()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<StringNode> ITypeConverter<bool>.Enumerate_StringNode(bool value)
-            {
-                
-                yield break;
-            }
-            bool ITypeConverter<bool>.ConvertFrom_TripleStatement(TripleStatement value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'TripleStatement' to 'bool'.");
-                
-            }
-            TripleStatement ITypeConverter<bool>.ConvertTo_TripleStatement(bool value)
-            {
-                return TypeConverter<TripleStatement>.ConvertFrom_bool(value);
-            }
-            TypeConversionAction ITypeConverter<bool>.GetConversionActionTo_TripleStatement()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<TripleStatement> ITypeConverter<bool>.Enumerate_TripleStatement(bool value)
-            {
-                
-                yield break;
-            }
-            decimal ITypeConverter<decimal>.ConvertFrom_byte(byte value)
-            {
-                
-                return (decimal)value;
-                
-            }
-            byte ITypeConverter<decimal>.ConvertTo_byte(decimal value)
-            {
-                return TypeConverter<byte>.ConvertFrom_decimal(value);
-            }
-            TypeConversionAction ITypeConverter<decimal>.GetConversionActionTo_byte()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<byte> ITypeConverter<decimal>.Enumerate_byte(decimal value)
-            {
-                
-                yield break;
-            }
-            decimal ITypeConverter<decimal>.ConvertFrom_bool(bool value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'bool' to 'decimal'.");
-                
-            }
-            bool ITypeConverter<decimal>.ConvertTo_bool(decimal value)
-            {
-                return TypeConverter<bool>.ConvertFrom_decimal(value);
-            }
-            TypeConversionAction ITypeConverter<decimal>.GetConversionActionTo_bool()
-            {
-                
-                return TypeConversionAction.TC_TOBOOL;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<bool> ITypeConverter<decimal>.Enumerate_bool(decimal value)
-            {
-                
-                yield break;
-            }
-            decimal ITypeConverter<decimal>.ConvertFrom_decimal(decimal value)
-            {
-                
-                return (decimal)value;
-                
-            }
-            decimal ITypeConverter<decimal>.ConvertTo_decimal(decimal value)
-            {
-                return TypeConverter<decimal>.ConvertFrom_decimal(value);
-            }
-            TypeConversionAction ITypeConverter<decimal>.GetConversionActionTo_decimal()
-            {
-                
-                return TypeConversionAction.TC_ASSIGN;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<decimal> ITypeConverter<decimal>.Enumerate_decimal(decimal value)
-            {
-                
-                yield break;
-            }
-            decimal ITypeConverter<decimal>.ConvertFrom_DateTime(DateTime value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'DateTime' to 'decimal'.");
-                
-            }
-            DateTime ITypeConverter<decimal>.ConvertTo_DateTime(decimal value)
-            {
-                return TypeConverter<DateTime>.ConvertFrom_decimal(value);
-            }
-            TypeConversionAction ITypeConverter<decimal>.GetConversionActionTo_DateTime()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<DateTime> ITypeConverter<decimal>.Enumerate_DateTime(decimal value)
-            {
-                
-                yield break;
-            }
-            decimal ITypeConverter<decimal>.ConvertFrom_Guid(Guid value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'Guid' to 'decimal'.");
-                
-            }
-            Guid ITypeConverter<decimal>.ConvertTo_Guid(decimal value)
-            {
-                return TypeConverter<Guid>.ConvertFrom_decimal(value);
-            }
-            TypeConversionAction ITypeConverter<decimal>.GetConversionActionTo_Guid()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<Guid> ITypeConverter<decimal>.Enumerate_Guid(decimal value)
-            {
-                
-                yield break;
-            }
-            decimal ITypeConverter<decimal>.ConvertFrom_string(string value)
-            {
-                
-                {
-                    #region String parse
-                    decimal intermediate_result;
-                    bool conversion_success;
-                    
-                    {
-                        conversion_success = decimal.TryParse(value, out intermediate_result);
-                    }
-                    
-                    if (!conversion_success)
-                    {
-                        
-                        Throw.cannot_parse(value, "decimal");
-                        
-                    }
-                    return intermediate_result;
-                    #endregion
-                }
-                
-            }
-            string ITypeConverter<decimal>.ConvertTo_string(decimal value)
-            {
-                return TypeConverter<string>.ConvertFrom_decimal(value);
-            }
-            TypeConversionAction ITypeConverter<decimal>.GetConversionActionTo_string()
-            {
-                
-                return TypeConversionAction.TC_TOSTRING;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<string> ITypeConverter<decimal>.Enumerate_string(decimal value)
-            {
-                
-                yield break;
-            }
-            decimal ITypeConverter<decimal>.ConvertFrom_List_string(List<string> value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'List<string>' to 'decimal'.");
-                
-            }
-            List<string> ITypeConverter<decimal>.ConvertTo_List_string(decimal value)
-            {
-                return TypeConverter<List<string>>.ConvertFrom_decimal(value);
-            }
-            TypeConversionAction ITypeConverter<decimal>.GetConversionActionTo_List_string()
-            {
-                
-                return TypeConversionAction.TC_WRAPINLIST;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<List<string>> ITypeConverter<decimal>.Enumerate_List_string(decimal value)
-            {
-                
-                yield break;
-            }
-            decimal ITypeConverter<decimal>.ConvertFrom_Node(Node value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'Node' to 'decimal'.");
-                
-            }
-            Node ITypeConverter<decimal>.ConvertTo_Node(decimal value)
-            {
-                return TypeConverter<Node>.ConvertFrom_decimal(value);
-            }
-            TypeConversionAction ITypeConverter<decimal>.GetConversionActionTo_Node()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<Node> ITypeConverter<decimal>.Enumerate_Node(decimal value)
-            {
-                
-                yield break;
-            }
-            decimal ITypeConverter<decimal>.ConvertFrom_StringNode(StringNode value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'StringNode' to 'decimal'.");
-                
-            }
-            StringNode ITypeConverter<decimal>.ConvertTo_StringNode(decimal value)
-            {
-                return TypeConverter<StringNode>.ConvertFrom_decimal(value);
-            }
-            TypeConversionAction ITypeConverter<decimal>.GetConversionActionTo_StringNode()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<StringNode> ITypeConverter<decimal>.Enumerate_StringNode(decimal value)
-            {
-                
-                yield break;
-            }
-            decimal ITypeConverter<decimal>.ConvertFrom_TripleStatement(TripleStatement value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'TripleStatement' to 'decimal'.");
-                
-            }
-            TripleStatement ITypeConverter<decimal>.ConvertTo_TripleStatement(decimal value)
-            {
-                return TypeConverter<TripleStatement>.ConvertFrom_decimal(value);
-            }
-            TypeConversionAction ITypeConverter<decimal>.GetConversionActionTo_TripleStatement()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<TripleStatement> ITypeConverter<decimal>.Enumerate_TripleStatement(decimal value)
-            {
-                
-                yield break;
-            }
-            DateTime ITypeConverter<DateTime>.ConvertFrom_byte(byte value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'byte' to 'DateTime'.");
-                
-            }
-            byte ITypeConverter<DateTime>.ConvertTo_byte(DateTime value)
-            {
-                return TypeConverter<byte>.ConvertFrom_DateTime(value);
-            }
-            TypeConversionAction ITypeConverter<DateTime>.GetConversionActionTo_byte()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<byte> ITypeConverter<DateTime>.Enumerate_byte(DateTime value)
-            {
-                
-                yield break;
-            }
-            DateTime ITypeConverter<DateTime>.ConvertFrom_bool(bool value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'bool' to 'DateTime'.");
-                
-            }
-            bool ITypeConverter<DateTime>.ConvertTo_bool(DateTime value)
-            {
-                return TypeConverter<bool>.ConvertFrom_DateTime(value);
-            }
-            TypeConversionAction ITypeConverter<DateTime>.GetConversionActionTo_bool()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<bool> ITypeConverter<DateTime>.Enumerate_bool(DateTime value)
-            {
-                
-                yield break;
-            }
-            DateTime ITypeConverter<DateTime>.ConvertFrom_decimal(decimal value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'decimal' to 'DateTime'.");
-                
-            }
-            decimal ITypeConverter<DateTime>.ConvertTo_decimal(DateTime value)
-            {
-                return TypeConverter<decimal>.ConvertFrom_DateTime(value);
-            }
-            TypeConversionAction ITypeConverter<DateTime>.GetConversionActionTo_decimal()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<decimal> ITypeConverter<DateTime>.Enumerate_decimal(DateTime value)
-            {
-                
-                yield break;
-            }
-            DateTime ITypeConverter<DateTime>.ConvertFrom_DateTime(DateTime value)
-            {
-                
-                return (DateTime)value;
-                
-            }
-            DateTime ITypeConverter<DateTime>.ConvertTo_DateTime(DateTime value)
-            {
-                return TypeConverter<DateTime>.ConvertFrom_DateTime(value);
-            }
-            TypeConversionAction ITypeConverter<DateTime>.GetConversionActionTo_DateTime()
-            {
-                
-                return TypeConversionAction.TC_ASSIGN;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<DateTime> ITypeConverter<DateTime>.Enumerate_DateTime(DateTime value)
-            {
-                
-                yield break;
-            }
-            DateTime ITypeConverter<DateTime>.ConvertFrom_Guid(Guid value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'Guid' to 'DateTime'.");
-                
-            }
-            Guid ITypeConverter<DateTime>.ConvertTo_Guid(DateTime value)
-            {
-                return TypeConverter<Guid>.ConvertFrom_DateTime(value);
-            }
-            TypeConversionAction ITypeConverter<DateTime>.GetConversionActionTo_Guid()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<Guid> ITypeConverter<DateTime>.Enumerate_Guid(DateTime value)
-            {
-                
-                yield break;
-            }
-            DateTime ITypeConverter<DateTime>.ConvertFrom_string(string value)
-            {
-                
-                {
-                    #region String parse
-                    DateTime intermediate_result;
-                    bool conversion_success;
-                    
-                    {
-                        conversion_success = ExternalParser.TryParse_DateTime(value, out intermediate_result);
-                    }
-                    
-                    if (!conversion_success)
-                    {
-                        
-                        Throw.cannot_parse(value, "DateTime");
-                        
-                    }
-                    return intermediate_result;
-                    #endregion
-                }
-                
-            }
-            string ITypeConverter<DateTime>.ConvertTo_string(DateTime value)
-            {
-                return TypeConverter<string>.ConvertFrom_DateTime(value);
-            }
-            TypeConversionAction ITypeConverter<DateTime>.GetConversionActionTo_string()
-            {
-                
-                return TypeConversionAction.TC_TOSTRING;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<string> ITypeConverter<DateTime>.Enumerate_string(DateTime value)
-            {
-                
-                yield break;
-            }
-            DateTime ITypeConverter<DateTime>.ConvertFrom_List_string(List<string> value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'List<string>' to 'DateTime'.");
-                
-            }
-            List<string> ITypeConverter<DateTime>.ConvertTo_List_string(DateTime value)
-            {
-                return TypeConverter<List<string>>.ConvertFrom_DateTime(value);
-            }
-            TypeConversionAction ITypeConverter<DateTime>.GetConversionActionTo_List_string()
-            {
-                
-                return TypeConversionAction.TC_WRAPINLIST;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<List<string>> ITypeConverter<DateTime>.Enumerate_List_string(DateTime value)
-            {
-                
-                yield break;
-            }
-            DateTime ITypeConverter<DateTime>.ConvertFrom_Node(Node value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'Node' to 'DateTime'.");
-                
-            }
-            Node ITypeConverter<DateTime>.ConvertTo_Node(DateTime value)
-            {
-                return TypeConverter<Node>.ConvertFrom_DateTime(value);
-            }
-            TypeConversionAction ITypeConverter<DateTime>.GetConversionActionTo_Node()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<Node> ITypeConverter<DateTime>.Enumerate_Node(DateTime value)
-            {
-                
-                yield break;
-            }
-            DateTime ITypeConverter<DateTime>.ConvertFrom_StringNode(StringNode value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'StringNode' to 'DateTime'.");
-                
-            }
-            StringNode ITypeConverter<DateTime>.ConvertTo_StringNode(DateTime value)
-            {
-                return TypeConverter<StringNode>.ConvertFrom_DateTime(value);
-            }
-            TypeConversionAction ITypeConverter<DateTime>.GetConversionActionTo_StringNode()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<StringNode> ITypeConverter<DateTime>.Enumerate_StringNode(DateTime value)
-            {
-                
-                yield break;
-            }
-            DateTime ITypeConverter<DateTime>.ConvertFrom_TripleStatement(TripleStatement value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'TripleStatement' to 'DateTime'.");
-                
-            }
-            TripleStatement ITypeConverter<DateTime>.ConvertTo_TripleStatement(DateTime value)
-            {
-                return TypeConverter<TripleStatement>.ConvertFrom_DateTime(value);
-            }
-            TypeConversionAction ITypeConverter<DateTime>.GetConversionActionTo_TripleStatement()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<TripleStatement> ITypeConverter<DateTime>.Enumerate_TripleStatement(DateTime value)
-            {
-                
-                yield break;
-            }
-            Guid ITypeConverter<Guid>.ConvertFrom_byte(byte value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'byte' to 'Guid'.");
-                
-            }
-            byte ITypeConverter<Guid>.ConvertTo_byte(Guid value)
-            {
-                return TypeConverter<byte>.ConvertFrom_Guid(value);
-            }
-            TypeConversionAction ITypeConverter<Guid>.GetConversionActionTo_byte()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<byte> ITypeConverter<Guid>.Enumerate_byte(Guid value)
-            {
-                
-                yield break;
-            }
-            Guid ITypeConverter<Guid>.ConvertFrom_bool(bool value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'bool' to 'Guid'.");
-                
-            }
-            bool ITypeConverter<Guid>.ConvertTo_bool(Guid value)
-            {
-                return TypeConverter<bool>.ConvertFrom_Guid(value);
-            }
-            TypeConversionAction ITypeConverter<Guid>.GetConversionActionTo_bool()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<bool> ITypeConverter<Guid>.Enumerate_bool(Guid value)
-            {
-                
-                yield break;
-            }
-            Guid ITypeConverter<Guid>.ConvertFrom_decimal(decimal value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'decimal' to 'Guid'.");
-                
-            }
-            decimal ITypeConverter<Guid>.ConvertTo_decimal(Guid value)
-            {
-                return TypeConverter<decimal>.ConvertFrom_Guid(value);
-            }
-            TypeConversionAction ITypeConverter<Guid>.GetConversionActionTo_decimal()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<decimal> ITypeConverter<Guid>.Enumerate_decimal(Guid value)
-            {
-                
-                yield break;
-            }
-            Guid ITypeConverter<Guid>.ConvertFrom_DateTime(DateTime value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'DateTime' to 'Guid'.");
-                
-            }
-            DateTime ITypeConverter<Guid>.ConvertTo_DateTime(Guid value)
-            {
-                return TypeConverter<DateTime>.ConvertFrom_Guid(value);
-            }
-            TypeConversionAction ITypeConverter<Guid>.GetConversionActionTo_DateTime()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<DateTime> ITypeConverter<Guid>.Enumerate_DateTime(Guid value)
+            IEnumerable<long> ITypeConverter<Guid>.Enumerate_long(Guid value)
             {
                 
                 yield break;
@@ -1365,17 +522,17 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 
                 yield break;
             }
-            Guid ITypeConverter<Guid>.ConvertFrom_Node(Node value)
+            Guid ITypeConverter<Guid>.ConvertFrom_List_INode(List<INode> value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'Node' to 'Guid'.");
+                throw new InvalidCastException("Invalid cast from 'List<INode>' to 'Guid'.");
                 
             }
-            Node ITypeConverter<Guid>.ConvertTo_Node(Guid value)
+            List<INode> ITypeConverter<Guid>.ConvertTo_List_INode(Guid value)
             {
-                return TypeConverter<Node>.ConvertFrom_Guid(value);
+                return TypeConverter<List<INode>>.ConvertFrom_Guid(value);
             }
-            TypeConversionAction ITypeConverter<Guid>.GetConversionActionTo_Node()
+            TypeConversionAction ITypeConverter<Guid>.GetConversionActionTo_List_INode()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -1384,22 +541,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<Node> ITypeConverter<Guid>.Enumerate_Node(Guid value)
+            IEnumerable<List<INode>> ITypeConverter<Guid>.Enumerate_List_INode(Guid value)
             {
                 
                 yield break;
             }
-            Guid ITypeConverter<Guid>.ConvertFrom_StringNode(StringNode value)
+            Guid ITypeConverter<Guid>.ConvertFrom_List_Triple(List<Triple> value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'StringNode' to 'Guid'.");
+                throw new InvalidCastException("Invalid cast from 'List<Triple>' to 'Guid'.");
                 
             }
-            StringNode ITypeConverter<Guid>.ConvertTo_StringNode(Guid value)
+            List<Triple> ITypeConverter<Guid>.ConvertTo_List_Triple(Guid value)
             {
-                return TypeConverter<StringNode>.ConvertFrom_Guid(value);
+                return TypeConverter<List<Triple>>.ConvertFrom_Guid(value);
             }
-            TypeConversionAction ITypeConverter<Guid>.GetConversionActionTo_StringNode()
+            TypeConversionAction ITypeConverter<Guid>.GetConversionActionTo_List_Triple()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -1408,7 +565,55 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<StringNode> ITypeConverter<Guid>.Enumerate_StringNode(Guid value)
+            IEnumerable<List<Triple>> ITypeConverter<Guid>.Enumerate_List_Triple(Guid value)
+            {
+                
+                yield break;
+            }
+            Guid ITypeConverter<Guid>.ConvertFrom_INode(INode value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'INode' to 'Guid'.");
+                
+            }
+            INode ITypeConverter<Guid>.ConvertTo_INode(Guid value)
+            {
+                return TypeConverter<INode>.ConvertFrom_Guid(value);
+            }
+            TypeConversionAction ITypeConverter<Guid>.GetConversionActionTo_INode()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<INode> ITypeConverter<Guid>.Enumerate_INode(Guid value)
+            {
+                
+                yield break;
+            }
+            Guid ITypeConverter<Guid>.ConvertFrom_Triple(Triple value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'Triple' to 'Guid'.");
+                
+            }
+            Triple ITypeConverter<Guid>.ConvertTo_Triple(Guid value)
+            {
+                return TypeConverter<Triple>.ConvertFrom_Guid(value);
+            }
+            TypeConversionAction ITypeConverter<Guid>.GetConversionActionTo_Triple()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<Triple> ITypeConverter<Guid>.Enumerate_Triple(Guid value)
             {
                 
                 yield break;
@@ -1437,41 +642,41 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 
                 yield break;
             }
-            string ITypeConverter<string>.ConvertFrom_byte(byte value)
+            Guid ITypeConverter<Guid>.ConvertFrom_NodeType(NodeType value)
             {
                 
-                return Serializer.ToString(value);
+                throw new InvalidCastException("Invalid cast from 'NodeType' to 'Guid'.");
                 
             }
-            byte ITypeConverter<string>.ConvertTo_byte(string value)
+            NodeType ITypeConverter<Guid>.ConvertTo_NodeType(Guid value)
             {
-                return TypeConverter<byte>.ConvertFrom_string(value);
+                return TypeConverter<NodeType>.ConvertFrom_Guid(value);
             }
-            TypeConversionAction ITypeConverter<string>.GetConversionActionTo_byte()
+            TypeConversionAction ITypeConverter<Guid>.GetConversionActionTo_NodeType()
             {
                 
-                return TypeConversionAction.TC_PARSESTRING;
+                return TypeConversionAction.TC_NONCONVERTIBLE;
                 
             }
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<byte> ITypeConverter<string>.Enumerate_byte(string value)
+            IEnumerable<NodeType> ITypeConverter<Guid>.Enumerate_NodeType(Guid value)
             {
                 
                 yield break;
             }
-            string ITypeConverter<string>.ConvertFrom_bool(bool value)
+            string ITypeConverter<string>.ConvertFrom_long(long value)
             {
                 
                 return Serializer.ToString(value);
                 
             }
-            bool ITypeConverter<string>.ConvertTo_bool(string value)
+            long ITypeConverter<string>.ConvertTo_long(string value)
             {
-                return TypeConverter<bool>.ConvertFrom_string(value);
+                return TypeConverter<long>.ConvertFrom_string(value);
             }
-            TypeConversionAction ITypeConverter<string>.GetConversionActionTo_bool()
+            TypeConversionAction ITypeConverter<string>.GetConversionActionTo_long()
             {
                 
                 return TypeConversionAction.TC_PARSESTRING;
@@ -1480,55 +685,7 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<bool> ITypeConverter<string>.Enumerate_bool(string value)
-            {
-                
-                yield break;
-            }
-            string ITypeConverter<string>.ConvertFrom_decimal(decimal value)
-            {
-                
-                return Serializer.ToString(value);
-                
-            }
-            decimal ITypeConverter<string>.ConvertTo_decimal(string value)
-            {
-                return TypeConverter<decimal>.ConvertFrom_string(value);
-            }
-            TypeConversionAction ITypeConverter<string>.GetConversionActionTo_decimal()
-            {
-                
-                return TypeConversionAction.TC_PARSESTRING;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<decimal> ITypeConverter<string>.Enumerate_decimal(string value)
-            {
-                
-                yield break;
-            }
-            string ITypeConverter<string>.ConvertFrom_DateTime(DateTime value)
-            {
-                
-                return Serializer.ToString(value);
-                
-            }
-            DateTime ITypeConverter<string>.ConvertTo_DateTime(string value)
-            {
-                return TypeConverter<DateTime>.ConvertFrom_string(value);
-            }
-            TypeConversionAction ITypeConverter<string>.GetConversionActionTo_DateTime()
-            {
-                
-                return TypeConversionAction.TC_PARSESTRING;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<DateTime> ITypeConverter<string>.Enumerate_DateTime(string value)
+            IEnumerable<long> ITypeConverter<string>.Enumerate_long(string value)
             {
                 
                 yield break;
@@ -1605,17 +762,17 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 
                 yield break;
             }
-            string ITypeConverter<string>.ConvertFrom_Node(Node value)
+            string ITypeConverter<string>.ConvertFrom_List_INode(List<INode> value)
             {
                 
                 return Serializer.ToString(value);
                 
             }
-            Node ITypeConverter<string>.ConvertTo_Node(string value)
+            List<INode> ITypeConverter<string>.ConvertTo_List_INode(string value)
             {
-                return TypeConverter<Node>.ConvertFrom_string(value);
+                return TypeConverter<List<INode>>.ConvertFrom_string(value);
             }
-            TypeConversionAction ITypeConverter<string>.GetConversionActionTo_Node()
+            TypeConversionAction ITypeConverter<string>.GetConversionActionTo_List_INode()
             {
                 
                 return TypeConversionAction.TC_PARSESTRING;
@@ -1624,22 +781,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<Node> ITypeConverter<string>.Enumerate_Node(string value)
+            IEnumerable<List<INode>> ITypeConverter<string>.Enumerate_List_INode(string value)
             {
                 
                 yield break;
             }
-            string ITypeConverter<string>.ConvertFrom_StringNode(StringNode value)
+            string ITypeConverter<string>.ConvertFrom_List_Triple(List<Triple> value)
             {
                 
                 return Serializer.ToString(value);
                 
             }
-            StringNode ITypeConverter<string>.ConvertTo_StringNode(string value)
+            List<Triple> ITypeConverter<string>.ConvertTo_List_Triple(string value)
             {
-                return TypeConverter<StringNode>.ConvertFrom_string(value);
+                return TypeConverter<List<Triple>>.ConvertFrom_string(value);
             }
-            TypeConversionAction ITypeConverter<string>.GetConversionActionTo_StringNode()
+            TypeConversionAction ITypeConverter<string>.GetConversionActionTo_List_Triple()
             {
                 
                 return TypeConversionAction.TC_PARSESTRING;
@@ -1648,7 +805,55 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<StringNode> ITypeConverter<string>.Enumerate_StringNode(string value)
+            IEnumerable<List<Triple>> ITypeConverter<string>.Enumerate_List_Triple(string value)
+            {
+                
+                yield break;
+            }
+            string ITypeConverter<string>.ConvertFrom_INode(INode value)
+            {
+                
+                return Serializer.ToString(value);
+                
+            }
+            INode ITypeConverter<string>.ConvertTo_INode(string value)
+            {
+                return TypeConverter<INode>.ConvertFrom_string(value);
+            }
+            TypeConversionAction ITypeConverter<string>.GetConversionActionTo_INode()
+            {
+                
+                return TypeConversionAction.TC_PARSESTRING;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<INode> ITypeConverter<string>.Enumerate_INode(string value)
+            {
+                
+                yield break;
+            }
+            string ITypeConverter<string>.ConvertFrom_Triple(Triple value)
+            {
+                
+                return Serializer.ToString(value);
+                
+            }
+            Triple ITypeConverter<string>.ConvertTo_Triple(string value)
+            {
+                return TypeConverter<Triple>.ConvertFrom_string(value);
+            }
+            TypeConversionAction ITypeConverter<string>.GetConversionActionTo_Triple()
+            {
+                
+                return TypeConversionAction.TC_PARSESTRING;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<Triple> ITypeConverter<string>.Enumerate_Triple(string value)
             {
                 
                 yield break;
@@ -1677,52 +882,45 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 
                 yield break;
             }
-            List<string> ITypeConverter<List<string>>.ConvertFrom_byte(byte value)
+            string ITypeConverter<string>.ConvertFrom_NodeType(NodeType value)
             {
                 
-                {
-                    List<string> intermediate_result = new List<string>();
-                    intermediate_result.Add(TypeConverter<string>.ConvertFrom_byte(value));
-                    return intermediate_result;
-                }
+                return Serializer.ToString(value);
                 
             }
-            byte ITypeConverter<List<string>>.ConvertTo_byte(List<string> value)
+            NodeType ITypeConverter<string>.ConvertTo_NodeType(string value)
             {
-                return TypeConverter<byte>.ConvertFrom_List_string(value);
+                return TypeConverter<NodeType>.ConvertFrom_string(value);
             }
-            TypeConversionAction ITypeConverter<List<string>>.GetConversionActionTo_byte()
+            TypeConversionAction ITypeConverter<string>.GetConversionActionTo_NodeType()
             {
                 
-                return TypeConversionAction.TC_NONCONVERTIBLE;
+                return TypeConversionAction.TC_PARSESTRING;
                 
             }
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<byte> ITypeConverter<List<string>>.Enumerate_byte(List<string> value)
+            IEnumerable<NodeType> ITypeConverter<string>.Enumerate_NodeType(string value)
             {
-                
-                foreach (var element in value)
-                    yield return TypeConverter<byte>.ConvertFrom_string(element);
                 
                 yield break;
             }
-            List<string> ITypeConverter<List<string>>.ConvertFrom_bool(bool value)
+            List<string> ITypeConverter<List<string>>.ConvertFrom_long(long value)
             {
                 
                 {
                     List<string> intermediate_result = new List<string>();
-                    intermediate_result.Add(TypeConverter<string>.ConvertFrom_bool(value));
+                    intermediate_result.Add(TypeConverter<string>.ConvertFrom_long(value));
                     return intermediate_result;
                 }
                 
             }
-            bool ITypeConverter<List<string>>.ConvertTo_bool(List<string> value)
+            long ITypeConverter<List<string>>.ConvertTo_long(List<string> value)
             {
-                return TypeConverter<bool>.ConvertFrom_List_string(value);
+                return TypeConverter<long>.ConvertFrom_List_string(value);
             }
-            TypeConversionAction ITypeConverter<List<string>>.GetConversionActionTo_bool()
+            TypeConversionAction ITypeConverter<List<string>>.GetConversionActionTo_long()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -1731,73 +929,11 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<bool> ITypeConverter<List<string>>.Enumerate_bool(List<string> value)
+            IEnumerable<long> ITypeConverter<List<string>>.Enumerate_long(List<string> value)
             {
                 
                 foreach (var element in value)
-                    yield return TypeConverter<bool>.ConvertFrom_string(element);
-                
-                yield break;
-            }
-            List<string> ITypeConverter<List<string>>.ConvertFrom_decimal(decimal value)
-            {
-                
-                {
-                    List<string> intermediate_result = new List<string>();
-                    intermediate_result.Add(TypeConverter<string>.ConvertFrom_decimal(value));
-                    return intermediate_result;
-                }
-                
-            }
-            decimal ITypeConverter<List<string>>.ConvertTo_decimal(List<string> value)
-            {
-                return TypeConverter<decimal>.ConvertFrom_List_string(value);
-            }
-            TypeConversionAction ITypeConverter<List<string>>.GetConversionActionTo_decimal()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<decimal> ITypeConverter<List<string>>.Enumerate_decimal(List<string> value)
-            {
-                
-                foreach (var element in value)
-                    yield return TypeConverter<decimal>.ConvertFrom_string(element);
-                
-                yield break;
-            }
-            List<string> ITypeConverter<List<string>>.ConvertFrom_DateTime(DateTime value)
-            {
-                
-                {
-                    List<string> intermediate_result = new List<string>();
-                    intermediate_result.Add(TypeConverter<string>.ConvertFrom_DateTime(value));
-                    return intermediate_result;
-                }
-                
-            }
-            DateTime ITypeConverter<List<string>>.ConvertTo_DateTime(List<string> value)
-            {
-                return TypeConverter<DateTime>.ConvertFrom_List_string(value);
-            }
-            TypeConversionAction ITypeConverter<List<string>>.GetConversionActionTo_DateTime()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<DateTime> ITypeConverter<List<string>>.Enumerate_DateTime(List<string> value)
-            {
-                
-                foreach (var element in value)
-                    yield return TypeConverter<DateTime>.ConvertFrom_string(element);
+                    yield return TypeConverter<long>.ConvertFrom_string(element);
                 
                 yield break;
             }
@@ -1912,52 +1048,89 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 
                 yield break;
             }
-            List<string> ITypeConverter<List<string>>.ConvertFrom_Node(Node value)
+            List<string> ITypeConverter<List<string>>.ConvertFrom_List_INode(List<INode> value)
             {
                 
                 {
                     List<string> intermediate_result = new List<string>();
-                    intermediate_result.Add(TypeConverter<string>.ConvertFrom_Node(value));
+                    foreach (var element in value)
+                    {
+                        intermediate_result.Add(TypeConverter<string>.ConvertFrom_INode(element));
+                    }
                     return intermediate_result;
                 }
                 
             }
-            Node ITypeConverter<List<string>>.ConvertTo_Node(List<string> value)
+            List<INode> ITypeConverter<List<string>>.ConvertTo_List_INode(List<string> value)
             {
-                return TypeConverter<Node>.ConvertFrom_List_string(value);
+                return TypeConverter<List<INode>>.ConvertFrom_List_string(value);
             }
-            TypeConversionAction ITypeConverter<List<string>>.GetConversionActionTo_Node()
+            TypeConversionAction ITypeConverter<List<string>>.GetConversionActionTo_List_INode()
             {
                 
-                return TypeConversionAction.TC_NONCONVERTIBLE;
+                return TypeConversionAction.TC_CONVERTLIST;
                 
             }
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<Node> ITypeConverter<List<string>>.Enumerate_Node(List<string> value)
+            IEnumerable<List<INode>> ITypeConverter<List<string>>.Enumerate_List_INode(List<string> value)
             {
                 
                 foreach (var element in value)
-                    yield return TypeConverter<Node>.ConvertFrom_string(element);
+                    yield return TypeConverter<List<INode>>.ConvertFrom_string(element);
                 
                 yield break;
             }
-            List<string> ITypeConverter<List<string>>.ConvertFrom_StringNode(StringNode value)
+            List<string> ITypeConverter<List<string>>.ConvertFrom_List_Triple(List<Triple> value)
             {
                 
                 {
                     List<string> intermediate_result = new List<string>();
-                    intermediate_result.Add(TypeConverter<string>.ConvertFrom_StringNode(value));
+                    foreach (var element in value)
+                    {
+                        intermediate_result.Add(TypeConverter<string>.ConvertFrom_Triple(element));
+                    }
                     return intermediate_result;
                 }
                 
             }
-            StringNode ITypeConverter<List<string>>.ConvertTo_StringNode(List<string> value)
+            List<Triple> ITypeConverter<List<string>>.ConvertTo_List_Triple(List<string> value)
             {
-                return TypeConverter<StringNode>.ConvertFrom_List_string(value);
+                return TypeConverter<List<Triple>>.ConvertFrom_List_string(value);
             }
-            TypeConversionAction ITypeConverter<List<string>>.GetConversionActionTo_StringNode()
+            TypeConversionAction ITypeConverter<List<string>>.GetConversionActionTo_List_Triple()
+            {
+                
+                return TypeConversionAction.TC_CONVERTLIST;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<List<Triple>> ITypeConverter<List<string>>.Enumerate_List_Triple(List<string> value)
+            {
+                
+                foreach (var element in value)
+                    yield return TypeConverter<List<Triple>>.ConvertFrom_string(element);
+                
+                yield break;
+            }
+            List<string> ITypeConverter<List<string>>.ConvertFrom_INode(INode value)
+            {
+                
+                {
+                    List<string> intermediate_result = new List<string>();
+                    intermediate_result.Add(TypeConverter<string>.ConvertFrom_INode(value));
+                    return intermediate_result;
+                }
+                
+            }
+            INode ITypeConverter<List<string>>.ConvertTo_INode(List<string> value)
+            {
+                return TypeConverter<INode>.ConvertFrom_List_string(value);
+            }
+            TypeConversionAction ITypeConverter<List<string>>.GetConversionActionTo_INode()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -1966,11 +1139,42 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<StringNode> ITypeConverter<List<string>>.Enumerate_StringNode(List<string> value)
+            IEnumerable<INode> ITypeConverter<List<string>>.Enumerate_INode(List<string> value)
             {
                 
                 foreach (var element in value)
-                    yield return TypeConverter<StringNode>.ConvertFrom_string(element);
+                    yield return TypeConverter<INode>.ConvertFrom_string(element);
+                
+                yield break;
+            }
+            List<string> ITypeConverter<List<string>>.ConvertFrom_Triple(Triple value)
+            {
+                
+                {
+                    List<string> intermediate_result = new List<string>();
+                    intermediate_result.Add(TypeConverter<string>.ConvertFrom_Triple(value));
+                    return intermediate_result;
+                }
+                
+            }
+            Triple ITypeConverter<List<string>>.ConvertTo_Triple(List<string> value)
+            {
+                return TypeConverter<Triple>.ConvertFrom_List_string(value);
+            }
+            TypeConversionAction ITypeConverter<List<string>>.GetConversionActionTo_Triple()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<Triple> ITypeConverter<List<string>>.Enumerate_Triple(List<string> value)
+            {
+                
+                foreach (var element in value)
+                    yield return TypeConverter<Triple>.ConvertFrom_string(element);
                 
                 yield break;
             }
@@ -2005,41 +1209,21 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 
                 yield break;
             }
-            Node ITypeConverter<Node>.ConvertFrom_byte(byte value)
+            List<string> ITypeConverter<List<string>>.ConvertFrom_NodeType(NodeType value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'byte' to 'Node'.");
+                {
+                    List<string> intermediate_result = new List<string>();
+                    intermediate_result.Add(TypeConverter<string>.ConvertFrom_NodeType(value));
+                    return intermediate_result;
+                }
                 
             }
-            byte ITypeConverter<Node>.ConvertTo_byte(Node value)
+            NodeType ITypeConverter<List<string>>.ConvertTo_NodeType(List<string> value)
             {
-                return TypeConverter<byte>.ConvertFrom_Node(value);
+                return TypeConverter<NodeType>.ConvertFrom_List_string(value);
             }
-            TypeConversionAction ITypeConverter<Node>.GetConversionActionTo_byte()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<byte> ITypeConverter<Node>.Enumerate_byte(Node value)
-            {
-                
-                yield break;
-            }
-            Node ITypeConverter<Node>.ConvertFrom_bool(bool value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'bool' to 'Node'.");
-                
-            }
-            bool ITypeConverter<Node>.ConvertTo_bool(Node value)
-            {
-                return TypeConverter<bool>.ConvertFrom_Node(value);
-            }
-            TypeConversionAction ITypeConverter<Node>.GetConversionActionTo_bool()
+            TypeConversionAction ITypeConverter<List<string>>.GetConversionActionTo_NodeType()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -2048,22 +1232,25 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<bool> ITypeConverter<Node>.Enumerate_bool(Node value)
+            IEnumerable<NodeType> ITypeConverter<List<string>>.Enumerate_NodeType(List<string> value)
             {
+                
+                foreach (var element in value)
+                    yield return TypeConverter<NodeType>.ConvertFrom_string(element);
                 
                 yield break;
             }
-            Node ITypeConverter<Node>.ConvertFrom_decimal(decimal value)
+            List<INode> ITypeConverter<List<INode>>.ConvertFrom_long(long value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'decimal' to 'Node'.");
+                throw new InvalidCastException("Invalid cast from 'long' to 'List<INode>'.");
                 
             }
-            decimal ITypeConverter<Node>.ConvertTo_decimal(Node value)
+            long ITypeConverter<List<INode>>.ConvertTo_long(List<INode> value)
             {
-                return TypeConverter<decimal>.ConvertFrom_Node(value);
+                return TypeConverter<long>.ConvertFrom_List_INode(value);
             }
-            TypeConversionAction ITypeConverter<Node>.GetConversionActionTo_decimal()
+            TypeConversionAction ITypeConverter<List<INode>>.GetConversionActionTo_long()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -2072,22 +1259,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<decimal> ITypeConverter<Node>.Enumerate_decimal(Node value)
+            IEnumerable<long> ITypeConverter<List<INode>>.Enumerate_long(List<INode> value)
             {
                 
                 yield break;
             }
-            Node ITypeConverter<Node>.ConvertFrom_DateTime(DateTime value)
+            List<INode> ITypeConverter<List<INode>>.ConvertFrom_Guid(Guid value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'DateTime' to 'Node'.");
+                throw new InvalidCastException("Invalid cast from 'Guid' to 'List<INode>'.");
                 
             }
-            DateTime ITypeConverter<Node>.ConvertTo_DateTime(Node value)
+            Guid ITypeConverter<List<INode>>.ConvertTo_Guid(List<INode> value)
             {
-                return TypeConverter<DateTime>.ConvertFrom_Node(value);
+                return TypeConverter<Guid>.ConvertFrom_List_INode(value);
             }
-            TypeConversionAction ITypeConverter<Node>.GetConversionActionTo_DateTime()
+            TypeConversionAction ITypeConverter<List<INode>>.GetConversionActionTo_Guid()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -2096,51 +1283,36 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<DateTime> ITypeConverter<Node>.Enumerate_DateTime(Node value)
+            IEnumerable<Guid> ITypeConverter<List<INode>>.Enumerate_Guid(List<INode> value)
             {
                 
                 yield break;
             }
-            Node ITypeConverter<Node>.ConvertFrom_Guid(Guid value)
-            {
-                
-                throw new InvalidCastException("Invalid cast from 'Guid' to 'Node'.");
-                
-            }
-            Guid ITypeConverter<Node>.ConvertTo_Guid(Node value)
-            {
-                return TypeConverter<Guid>.ConvertFrom_Node(value);
-            }
-            TypeConversionAction ITypeConverter<Node>.GetConversionActionTo_Guid()
-            {
-                
-                return TypeConversionAction.TC_NONCONVERTIBLE;
-                
-            }
-            /// <summary>
-            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
-            /// </summary>
-            IEnumerable<Guid> ITypeConverter<Node>.Enumerate_Guid(Node value)
-            {
-                
-                yield break;
-            }
-            Node ITypeConverter<Node>.ConvertFrom_string(string value)
+            List<INode> ITypeConverter<List<INode>>.ConvertFrom_string(string value)
             {
                 
                 {
                     #region String parse
-                    Node intermediate_result;
+                    List<INode> intermediate_result;
                     bool conversion_success;
                     
                     {
-                        conversion_success = Node.TryParse(value, out intermediate_result);
+                        conversion_success = ExternalParser.TryParse_List_INode(value, out intermediate_result);
                     }
                     
                     if (!conversion_success)
                     {
                         
-                        Throw.cannot_parse(value, "Node");
+                        try
+                        {
+                            INode element = TypeConverter<INode>.ConvertFrom_string(value);
+                            intermediate_result = new List<INode>();
+                            intermediate_result.Add(element);
+                        }
+                        catch
+                        {
+                            throw new ArgumentException("Cannot parse \"" + value + "\" into either 'List<INode>' or 'INode'.");
+                        }
                         
                     }
                     return intermediate_result;
@@ -2148,11 +1320,11 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 }
                 
             }
-            string ITypeConverter<Node>.ConvertTo_string(Node value)
+            string ITypeConverter<List<INode>>.ConvertTo_string(List<INode> value)
             {
-                return TypeConverter<string>.ConvertFrom_Node(value);
+                return TypeConverter<string>.ConvertFrom_List_INode(value);
             }
-            TypeConversionAction ITypeConverter<Node>.GetConversionActionTo_string()
+            TypeConversionAction ITypeConverter<List<INode>>.GetConversionActionTo_string()
             {
                 
                 return TypeConversionAction.TC_TOSTRING;
@@ -2161,46 +1333,59 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<string> ITypeConverter<Node>.Enumerate_string(Node value)
+            IEnumerable<string> ITypeConverter<List<INode>>.Enumerate_string(List<INode> value)
             {
+                
+                foreach (var element in value)
+                    yield return TypeConverter<string>.ConvertFrom_INode(element);
                 
                 yield break;
             }
-            Node ITypeConverter<Node>.ConvertFrom_List_string(List<string> value)
+            List<INode> ITypeConverter<List<INode>>.ConvertFrom_List_string(List<string> value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'List<string>' to 'Node'.");
+                {
+                    List<INode> intermediate_result = new List<INode>();
+                    foreach (var element in value)
+                    {
+                        intermediate_result.Add(TypeConverter<INode>.ConvertFrom_string(element));
+                    }
+                    return intermediate_result;
+                }
                 
             }
-            List<string> ITypeConverter<Node>.ConvertTo_List_string(Node value)
+            List<string> ITypeConverter<List<INode>>.ConvertTo_List_string(List<INode> value)
             {
-                return TypeConverter<List<string>>.ConvertFrom_Node(value);
+                return TypeConverter<List<string>>.ConvertFrom_List_INode(value);
             }
-            TypeConversionAction ITypeConverter<Node>.GetConversionActionTo_List_string()
+            TypeConversionAction ITypeConverter<List<INode>>.GetConversionActionTo_List_string()
             {
                 
-                return TypeConversionAction.TC_WRAPINLIST;
+                return TypeConversionAction.TC_CONVERTLIST;
                 
             }
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<List<string>> ITypeConverter<Node>.Enumerate_List_string(Node value)
+            IEnumerable<List<string>> ITypeConverter<List<INode>>.Enumerate_List_string(List<INode> value)
             {
+                
+                foreach (var element in value)
+                    yield return TypeConverter<List<string>>.ConvertFrom_INode(element);
                 
                 yield break;
             }
-            Node ITypeConverter<Node>.ConvertFrom_Node(Node value)
+            List<INode> ITypeConverter<List<INode>>.ConvertFrom_List_INode(List<INode> value)
             {
                 
-                return (Node)value;
+                return (List<INode>)value;
                 
             }
-            Node ITypeConverter<Node>.ConvertTo_Node(Node value)
+            List<INode> ITypeConverter<List<INode>>.ConvertTo_List_INode(List<INode> value)
             {
-                return TypeConverter<Node>.ConvertFrom_Node(value);
+                return TypeConverter<List<INode>>.ConvertFrom_List_INode(value);
             }
-            TypeConversionAction ITypeConverter<Node>.GetConversionActionTo_Node()
+            TypeConversionAction ITypeConverter<List<INode>>.GetConversionActionTo_List_INode()
             {
                 
                 return TypeConversionAction.TC_ASSIGN;
@@ -2209,22 +1394,25 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<Node> ITypeConverter<Node>.Enumerate_Node(Node value)
+            IEnumerable<List<INode>> ITypeConverter<List<INode>>.Enumerate_List_INode(List<INode> value)
             {
+                
+                foreach (var element in value)
+                    yield return TypeConverter<List<INode>>.ConvertFrom_INode(element);
                 
                 yield break;
             }
-            Node ITypeConverter<Node>.ConvertFrom_StringNode(StringNode value)
+            List<INode> ITypeConverter<List<INode>>.ConvertFrom_List_Triple(List<Triple> value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'StringNode' to 'Node'.");
+                throw new InvalidCastException("Invalid cast from 'List<Triple>' to 'List<INode>'.");
                 
             }
-            StringNode ITypeConverter<Node>.ConvertTo_StringNode(Node value)
+            List<Triple> ITypeConverter<List<INode>>.ConvertTo_List_Triple(List<INode> value)
             {
-                return TypeConverter<StringNode>.ConvertFrom_Node(value);
+                return TypeConverter<List<Triple>>.ConvertFrom_List_INode(value);
             }
-            TypeConversionAction ITypeConverter<Node>.GetConversionActionTo_StringNode()
+            TypeConversionAction ITypeConverter<List<INode>>.GetConversionActionTo_List_Triple()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -2233,22 +1421,26 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<StringNode> ITypeConverter<Node>.Enumerate_StringNode(Node value)
+            IEnumerable<List<Triple>> ITypeConverter<List<INode>>.Enumerate_List_Triple(List<INode> value)
             {
                 
                 yield break;
             }
-            Node ITypeConverter<Node>.ConvertFrom_TripleStatement(TripleStatement value)
+            List<INode> ITypeConverter<List<INode>>.ConvertFrom_INode(INode value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'TripleStatement' to 'Node'.");
+                {
+                    List<INode> intermediate_result = new List<INode>();
+                    intermediate_result.Add(TypeConverter<INode>.ConvertFrom_INode(value));
+                    return intermediate_result;
+                }
                 
             }
-            TripleStatement ITypeConverter<Node>.ConvertTo_TripleStatement(Node value)
+            INode ITypeConverter<List<INode>>.ConvertTo_INode(List<INode> value)
             {
-                return TypeConverter<TripleStatement>.ConvertFrom_Node(value);
+                return TypeConverter<INode>.ConvertFrom_List_INode(value);
             }
-            TypeConversionAction ITypeConverter<Node>.GetConversionActionTo_TripleStatement()
+            TypeConversionAction ITypeConverter<List<INode>>.GetConversionActionTo_INode()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -2257,22 +1449,25 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<TripleStatement> ITypeConverter<Node>.Enumerate_TripleStatement(Node value)
+            IEnumerable<INode> ITypeConverter<List<INode>>.Enumerate_INode(List<INode> value)
             {
+                
+                foreach (var element in value)
+                    yield return TypeConverter<INode>.ConvertFrom_INode(element);
                 
                 yield break;
             }
-            StringNode ITypeConverter<StringNode>.ConvertFrom_byte(byte value)
+            List<INode> ITypeConverter<List<INode>>.ConvertFrom_Triple(Triple value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'byte' to 'StringNode'.");
+                throw new InvalidCastException("Invalid cast from 'Triple' to 'List<INode>'.");
                 
             }
-            byte ITypeConverter<StringNode>.ConvertTo_byte(StringNode value)
+            Triple ITypeConverter<List<INode>>.ConvertTo_Triple(List<INode> value)
             {
-                return TypeConverter<byte>.ConvertFrom_StringNode(value);
+                return TypeConverter<Triple>.ConvertFrom_List_INode(value);
             }
-            TypeConversionAction ITypeConverter<StringNode>.GetConversionActionTo_byte()
+            TypeConversionAction ITypeConverter<List<INode>>.GetConversionActionTo_Triple()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -2281,22 +1476,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<byte> ITypeConverter<StringNode>.Enumerate_byte(StringNode value)
+            IEnumerable<Triple> ITypeConverter<List<INode>>.Enumerate_Triple(List<INode> value)
             {
                 
                 yield break;
             }
-            StringNode ITypeConverter<StringNode>.ConvertFrom_bool(bool value)
+            List<INode> ITypeConverter<List<INode>>.ConvertFrom_TripleStatement(TripleStatement value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'bool' to 'StringNode'.");
+                throw new InvalidCastException("Invalid cast from 'TripleStatement' to 'List<INode>'.");
                 
             }
-            bool ITypeConverter<StringNode>.ConvertTo_bool(StringNode value)
+            TripleStatement ITypeConverter<List<INode>>.ConvertTo_TripleStatement(List<INode> value)
             {
-                return TypeConverter<bool>.ConvertFrom_StringNode(value);
+                return TypeConverter<TripleStatement>.ConvertFrom_List_INode(value);
             }
-            TypeConversionAction ITypeConverter<StringNode>.GetConversionActionTo_bool()
+            TypeConversionAction ITypeConverter<List<INode>>.GetConversionActionTo_TripleStatement()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -2305,22 +1500,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<bool> ITypeConverter<StringNode>.Enumerate_bool(StringNode value)
+            IEnumerable<TripleStatement> ITypeConverter<List<INode>>.Enumerate_TripleStatement(List<INode> value)
             {
                 
                 yield break;
             }
-            StringNode ITypeConverter<StringNode>.ConvertFrom_decimal(decimal value)
+            List<INode> ITypeConverter<List<INode>>.ConvertFrom_NodeType(NodeType value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'decimal' to 'StringNode'.");
+                throw new InvalidCastException("Invalid cast from 'NodeType' to 'List<INode>'.");
                 
             }
-            decimal ITypeConverter<StringNode>.ConvertTo_decimal(StringNode value)
+            NodeType ITypeConverter<List<INode>>.ConvertTo_NodeType(List<INode> value)
             {
-                return TypeConverter<decimal>.ConvertFrom_StringNode(value);
+                return TypeConverter<NodeType>.ConvertFrom_List_INode(value);
             }
-            TypeConversionAction ITypeConverter<StringNode>.GetConversionActionTo_decimal()
+            TypeConversionAction ITypeConverter<List<INode>>.GetConversionActionTo_NodeType()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -2329,22 +1524,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<decimal> ITypeConverter<StringNode>.Enumerate_decimal(StringNode value)
+            IEnumerable<NodeType> ITypeConverter<List<INode>>.Enumerate_NodeType(List<INode> value)
             {
                 
                 yield break;
             }
-            StringNode ITypeConverter<StringNode>.ConvertFrom_DateTime(DateTime value)
+            List<Triple> ITypeConverter<List<Triple>>.ConvertFrom_long(long value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'DateTime' to 'StringNode'.");
+                throw new InvalidCastException("Invalid cast from 'long' to 'List<Triple>'.");
                 
             }
-            DateTime ITypeConverter<StringNode>.ConvertTo_DateTime(StringNode value)
+            long ITypeConverter<List<Triple>>.ConvertTo_long(List<Triple> value)
             {
-                return TypeConverter<DateTime>.ConvertFrom_StringNode(value);
+                return TypeConverter<long>.ConvertFrom_List_Triple(value);
             }
-            TypeConversionAction ITypeConverter<StringNode>.GetConversionActionTo_DateTime()
+            TypeConversionAction ITypeConverter<List<Triple>>.GetConversionActionTo_long()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -2353,22 +1548,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<DateTime> ITypeConverter<StringNode>.Enumerate_DateTime(StringNode value)
+            IEnumerable<long> ITypeConverter<List<Triple>>.Enumerate_long(List<Triple> value)
             {
                 
                 yield break;
             }
-            StringNode ITypeConverter<StringNode>.ConvertFrom_Guid(Guid value)
+            List<Triple> ITypeConverter<List<Triple>>.ConvertFrom_Guid(Guid value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'Guid' to 'StringNode'.");
+                throw new InvalidCastException("Invalid cast from 'Guid' to 'List<Triple>'.");
                 
             }
-            Guid ITypeConverter<StringNode>.ConvertTo_Guid(StringNode value)
+            Guid ITypeConverter<List<Triple>>.ConvertTo_Guid(List<Triple> value)
             {
-                return TypeConverter<Guid>.ConvertFrom_StringNode(value);
+                return TypeConverter<Guid>.ConvertFrom_List_Triple(value);
             }
-            TypeConversionAction ITypeConverter<StringNode>.GetConversionActionTo_Guid()
+            TypeConversionAction ITypeConverter<List<Triple>>.GetConversionActionTo_Guid()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -2377,27 +1572,36 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<Guid> ITypeConverter<StringNode>.Enumerate_Guid(StringNode value)
+            IEnumerable<Guid> ITypeConverter<List<Triple>>.Enumerate_Guid(List<Triple> value)
             {
                 
                 yield break;
             }
-            StringNode ITypeConverter<StringNode>.ConvertFrom_string(string value)
+            List<Triple> ITypeConverter<List<Triple>>.ConvertFrom_string(string value)
             {
                 
                 {
                     #region String parse
-                    StringNode intermediate_result;
+                    List<Triple> intermediate_result;
                     bool conversion_success;
                     
                     {
-                        conversion_success = StringNode.TryParse(value, out intermediate_result);
+                        conversion_success = ExternalParser.TryParse_List_Triple(value, out intermediate_result);
                     }
                     
                     if (!conversion_success)
                     {
                         
-                        Throw.cannot_parse(value, "StringNode");
+                        try
+                        {
+                            Triple element = TypeConverter<Triple>.ConvertFrom_string(value);
+                            intermediate_result = new List<Triple>();
+                            intermediate_result.Add(element);
+                        }
+                        catch
+                        {
+                            throw new ArgumentException("Cannot parse \"" + value + "\" into either 'List<Triple>' or 'Triple'.");
+                        }
                         
                     }
                     return intermediate_result;
@@ -2405,11 +1609,11 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 }
                 
             }
-            string ITypeConverter<StringNode>.ConvertTo_string(StringNode value)
+            string ITypeConverter<List<Triple>>.ConvertTo_string(List<Triple> value)
             {
-                return TypeConverter<string>.ConvertFrom_StringNode(value);
+                return TypeConverter<string>.ConvertFrom_List_Triple(value);
             }
-            TypeConversionAction ITypeConverter<StringNode>.GetConversionActionTo_string()
+            TypeConversionAction ITypeConverter<List<Triple>>.GetConversionActionTo_string()
             {
                 
                 return TypeConversionAction.TC_TOSTRING;
@@ -2418,46 +1622,59 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<string> ITypeConverter<StringNode>.Enumerate_string(StringNode value)
+            IEnumerable<string> ITypeConverter<List<Triple>>.Enumerate_string(List<Triple> value)
             {
+                
+                foreach (var element in value)
+                    yield return TypeConverter<string>.ConvertFrom_Triple(element);
                 
                 yield break;
             }
-            StringNode ITypeConverter<StringNode>.ConvertFrom_List_string(List<string> value)
+            List<Triple> ITypeConverter<List<Triple>>.ConvertFrom_List_string(List<string> value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'List<string>' to 'StringNode'.");
+                {
+                    List<Triple> intermediate_result = new List<Triple>();
+                    foreach (var element in value)
+                    {
+                        intermediate_result.Add(TypeConverter<Triple>.ConvertFrom_string(element));
+                    }
+                    return intermediate_result;
+                }
                 
             }
-            List<string> ITypeConverter<StringNode>.ConvertTo_List_string(StringNode value)
+            List<string> ITypeConverter<List<Triple>>.ConvertTo_List_string(List<Triple> value)
             {
-                return TypeConverter<List<string>>.ConvertFrom_StringNode(value);
+                return TypeConverter<List<string>>.ConvertFrom_List_Triple(value);
             }
-            TypeConversionAction ITypeConverter<StringNode>.GetConversionActionTo_List_string()
+            TypeConversionAction ITypeConverter<List<Triple>>.GetConversionActionTo_List_string()
             {
                 
-                return TypeConversionAction.TC_WRAPINLIST;
+                return TypeConversionAction.TC_CONVERTLIST;
                 
             }
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<List<string>> ITypeConverter<StringNode>.Enumerate_List_string(StringNode value)
+            IEnumerable<List<string>> ITypeConverter<List<Triple>>.Enumerate_List_string(List<Triple> value)
             {
+                
+                foreach (var element in value)
+                    yield return TypeConverter<List<string>>.ConvertFrom_Triple(element);
                 
                 yield break;
             }
-            StringNode ITypeConverter<StringNode>.ConvertFrom_Node(Node value)
+            List<Triple> ITypeConverter<List<Triple>>.ConvertFrom_List_INode(List<INode> value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'Node' to 'StringNode'.");
+                throw new InvalidCastException("Invalid cast from 'List<INode>' to 'List<Triple>'.");
                 
             }
-            Node ITypeConverter<StringNode>.ConvertTo_Node(StringNode value)
+            List<INode> ITypeConverter<List<Triple>>.ConvertTo_List_INode(List<Triple> value)
             {
-                return TypeConverter<Node>.ConvertFrom_StringNode(value);
+                return TypeConverter<List<INode>>.ConvertFrom_List_Triple(value);
             }
-            TypeConversionAction ITypeConverter<StringNode>.GetConversionActionTo_Node()
+            TypeConversionAction ITypeConverter<List<Triple>>.GetConversionActionTo_List_INode()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -2466,22 +1683,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<Node> ITypeConverter<StringNode>.Enumerate_Node(StringNode value)
+            IEnumerable<List<INode>> ITypeConverter<List<Triple>>.Enumerate_List_INode(List<Triple> value)
             {
                 
                 yield break;
             }
-            StringNode ITypeConverter<StringNode>.ConvertFrom_StringNode(StringNode value)
+            List<Triple> ITypeConverter<List<Triple>>.ConvertFrom_List_Triple(List<Triple> value)
             {
                 
-                return (StringNode)value;
+                return (List<Triple>)value;
                 
             }
-            StringNode ITypeConverter<StringNode>.ConvertTo_StringNode(StringNode value)
+            List<Triple> ITypeConverter<List<Triple>>.ConvertTo_List_Triple(List<Triple> value)
             {
-                return TypeConverter<StringNode>.ConvertFrom_StringNode(value);
+                return TypeConverter<List<Triple>>.ConvertFrom_List_Triple(value);
             }
-            TypeConversionAction ITypeConverter<StringNode>.GetConversionActionTo_StringNode()
+            TypeConversionAction ITypeConverter<List<Triple>>.GetConversionActionTo_List_Triple()
             {
                 
                 return TypeConversionAction.TC_ASSIGN;
@@ -2490,22 +1707,25 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<StringNode> ITypeConverter<StringNode>.Enumerate_StringNode(StringNode value)
+            IEnumerable<List<Triple>> ITypeConverter<List<Triple>>.Enumerate_List_Triple(List<Triple> value)
             {
+                
+                foreach (var element in value)
+                    yield return TypeConverter<List<Triple>>.ConvertFrom_Triple(element);
                 
                 yield break;
             }
-            StringNode ITypeConverter<StringNode>.ConvertFrom_TripleStatement(TripleStatement value)
+            List<Triple> ITypeConverter<List<Triple>>.ConvertFrom_INode(INode value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'TripleStatement' to 'StringNode'.");
+                throw new InvalidCastException("Invalid cast from 'INode' to 'List<Triple>'.");
                 
             }
-            TripleStatement ITypeConverter<StringNode>.ConvertTo_TripleStatement(StringNode value)
+            INode ITypeConverter<List<Triple>>.ConvertTo_INode(List<Triple> value)
             {
-                return TypeConverter<TripleStatement>.ConvertFrom_StringNode(value);
+                return TypeConverter<INode>.ConvertFrom_List_Triple(value);
             }
-            TypeConversionAction ITypeConverter<StringNode>.GetConversionActionTo_TripleStatement()
+            TypeConversionAction ITypeConverter<List<Triple>>.GetConversionActionTo_INode()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -2514,22 +1734,26 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<TripleStatement> ITypeConverter<StringNode>.Enumerate_TripleStatement(StringNode value)
+            IEnumerable<INode> ITypeConverter<List<Triple>>.Enumerate_INode(List<Triple> value)
             {
                 
                 yield break;
             }
-            TripleStatement ITypeConverter<TripleStatement>.ConvertFrom_byte(byte value)
+            List<Triple> ITypeConverter<List<Triple>>.ConvertFrom_Triple(Triple value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'byte' to 'TripleStatement'.");
+                {
+                    List<Triple> intermediate_result = new List<Triple>();
+                    intermediate_result.Add(TypeConverter<Triple>.ConvertFrom_Triple(value));
+                    return intermediate_result;
+                }
                 
             }
-            byte ITypeConverter<TripleStatement>.ConvertTo_byte(TripleStatement value)
+            Triple ITypeConverter<List<Triple>>.ConvertTo_Triple(List<Triple> value)
             {
-                return TypeConverter<byte>.ConvertFrom_TripleStatement(value);
+                return TypeConverter<Triple>.ConvertFrom_List_Triple(value);
             }
-            TypeConversionAction ITypeConverter<TripleStatement>.GetConversionActionTo_byte()
+            TypeConversionAction ITypeConverter<List<Triple>>.GetConversionActionTo_Triple()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -2538,22 +1762,25 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<byte> ITypeConverter<TripleStatement>.Enumerate_byte(TripleStatement value)
+            IEnumerable<Triple> ITypeConverter<List<Triple>>.Enumerate_Triple(List<Triple> value)
             {
+                
+                foreach (var element in value)
+                    yield return TypeConverter<Triple>.ConvertFrom_Triple(element);
                 
                 yield break;
             }
-            TripleStatement ITypeConverter<TripleStatement>.ConvertFrom_bool(bool value)
+            List<Triple> ITypeConverter<List<Triple>>.ConvertFrom_TripleStatement(TripleStatement value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'bool' to 'TripleStatement'.");
+                throw new InvalidCastException("Invalid cast from 'TripleStatement' to 'List<Triple>'.");
                 
             }
-            bool ITypeConverter<TripleStatement>.ConvertTo_bool(TripleStatement value)
+            TripleStatement ITypeConverter<List<Triple>>.ConvertTo_TripleStatement(List<Triple> value)
             {
-                return TypeConverter<bool>.ConvertFrom_TripleStatement(value);
+                return TypeConverter<TripleStatement>.ConvertFrom_List_Triple(value);
             }
-            TypeConversionAction ITypeConverter<TripleStatement>.GetConversionActionTo_bool()
+            TypeConversionAction ITypeConverter<List<Triple>>.GetConversionActionTo_TripleStatement()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -2562,22 +1789,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<bool> ITypeConverter<TripleStatement>.Enumerate_bool(TripleStatement value)
+            IEnumerable<TripleStatement> ITypeConverter<List<Triple>>.Enumerate_TripleStatement(List<Triple> value)
             {
                 
                 yield break;
             }
-            TripleStatement ITypeConverter<TripleStatement>.ConvertFrom_decimal(decimal value)
+            List<Triple> ITypeConverter<List<Triple>>.ConvertFrom_NodeType(NodeType value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'decimal' to 'TripleStatement'.");
+                throw new InvalidCastException("Invalid cast from 'NodeType' to 'List<Triple>'.");
                 
             }
-            decimal ITypeConverter<TripleStatement>.ConvertTo_decimal(TripleStatement value)
+            NodeType ITypeConverter<List<Triple>>.ConvertTo_NodeType(List<Triple> value)
             {
-                return TypeConverter<decimal>.ConvertFrom_TripleStatement(value);
+                return TypeConverter<NodeType>.ConvertFrom_List_Triple(value);
             }
-            TypeConversionAction ITypeConverter<TripleStatement>.GetConversionActionTo_decimal()
+            TypeConversionAction ITypeConverter<List<Triple>>.GetConversionActionTo_NodeType()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -2586,22 +1813,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<decimal> ITypeConverter<TripleStatement>.Enumerate_decimal(TripleStatement value)
+            IEnumerable<NodeType> ITypeConverter<List<Triple>>.Enumerate_NodeType(List<Triple> value)
             {
                 
                 yield break;
             }
-            TripleStatement ITypeConverter<TripleStatement>.ConvertFrom_DateTime(DateTime value)
+            INode ITypeConverter<INode>.ConvertFrom_long(long value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'DateTime' to 'TripleStatement'.");
+                throw new InvalidCastException("Invalid cast from 'long' to 'INode'.");
                 
             }
-            DateTime ITypeConverter<TripleStatement>.ConvertTo_DateTime(TripleStatement value)
+            long ITypeConverter<INode>.ConvertTo_long(INode value)
             {
-                return TypeConverter<DateTime>.ConvertFrom_TripleStatement(value);
+                return TypeConverter<long>.ConvertFrom_INode(value);
             }
-            TypeConversionAction ITypeConverter<TripleStatement>.GetConversionActionTo_DateTime()
+            TypeConversionAction ITypeConverter<INode>.GetConversionActionTo_long()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -2610,7 +1837,521 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<DateTime> ITypeConverter<TripleStatement>.Enumerate_DateTime(TripleStatement value)
+            IEnumerable<long> ITypeConverter<INode>.Enumerate_long(INode value)
+            {
+                
+                yield break;
+            }
+            INode ITypeConverter<INode>.ConvertFrom_Guid(Guid value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'Guid' to 'INode'.");
+                
+            }
+            Guid ITypeConverter<INode>.ConvertTo_Guid(INode value)
+            {
+                return TypeConverter<Guid>.ConvertFrom_INode(value);
+            }
+            TypeConversionAction ITypeConverter<INode>.GetConversionActionTo_Guid()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<Guid> ITypeConverter<INode>.Enumerate_Guid(INode value)
+            {
+                
+                yield break;
+            }
+            INode ITypeConverter<INode>.ConvertFrom_string(string value)
+            {
+                
+                {
+                    #region String parse
+                    INode intermediate_result;
+                    bool conversion_success;
+                    
+                    {
+                        conversion_success = INode.TryParse(value, out intermediate_result);
+                    }
+                    
+                    if (!conversion_success)
+                    {
+                        
+                        Throw.cannot_parse(value, "INode");
+                        
+                    }
+                    return intermediate_result;
+                    #endregion
+                }
+                
+            }
+            string ITypeConverter<INode>.ConvertTo_string(INode value)
+            {
+                return TypeConverter<string>.ConvertFrom_INode(value);
+            }
+            TypeConversionAction ITypeConverter<INode>.GetConversionActionTo_string()
+            {
+                
+                return TypeConversionAction.TC_TOSTRING;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<string> ITypeConverter<INode>.Enumerate_string(INode value)
+            {
+                
+                yield break;
+            }
+            INode ITypeConverter<INode>.ConvertFrom_List_string(List<string> value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'List<string>' to 'INode'.");
+                
+            }
+            List<string> ITypeConverter<INode>.ConvertTo_List_string(INode value)
+            {
+                return TypeConverter<List<string>>.ConvertFrom_INode(value);
+            }
+            TypeConversionAction ITypeConverter<INode>.GetConversionActionTo_List_string()
+            {
+                
+                return TypeConversionAction.TC_WRAPINLIST;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<List<string>> ITypeConverter<INode>.Enumerate_List_string(INode value)
+            {
+                
+                yield break;
+            }
+            INode ITypeConverter<INode>.ConvertFrom_List_INode(List<INode> value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'List<INode>' to 'INode'.");
+                
+            }
+            List<INode> ITypeConverter<INode>.ConvertTo_List_INode(INode value)
+            {
+                return TypeConverter<List<INode>>.ConvertFrom_INode(value);
+            }
+            TypeConversionAction ITypeConverter<INode>.GetConversionActionTo_List_INode()
+            {
+                
+                return TypeConversionAction.TC_WRAPINLIST;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<List<INode>> ITypeConverter<INode>.Enumerate_List_INode(INode value)
+            {
+                
+                yield break;
+            }
+            INode ITypeConverter<INode>.ConvertFrom_List_Triple(List<Triple> value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'List<Triple>' to 'INode'.");
+                
+            }
+            List<Triple> ITypeConverter<INode>.ConvertTo_List_Triple(INode value)
+            {
+                return TypeConverter<List<Triple>>.ConvertFrom_INode(value);
+            }
+            TypeConversionAction ITypeConverter<INode>.GetConversionActionTo_List_Triple()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<List<Triple>> ITypeConverter<INode>.Enumerate_List_Triple(INode value)
+            {
+                
+                yield break;
+            }
+            INode ITypeConverter<INode>.ConvertFrom_INode(INode value)
+            {
+                
+                return (INode)value;
+                
+            }
+            INode ITypeConverter<INode>.ConvertTo_INode(INode value)
+            {
+                return TypeConverter<INode>.ConvertFrom_INode(value);
+            }
+            TypeConversionAction ITypeConverter<INode>.GetConversionActionTo_INode()
+            {
+                
+                return TypeConversionAction.TC_ASSIGN;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<INode> ITypeConverter<INode>.Enumerate_INode(INode value)
+            {
+                
+                yield break;
+            }
+            INode ITypeConverter<INode>.ConvertFrom_Triple(Triple value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'Triple' to 'INode'.");
+                
+            }
+            Triple ITypeConverter<INode>.ConvertTo_Triple(INode value)
+            {
+                return TypeConverter<Triple>.ConvertFrom_INode(value);
+            }
+            TypeConversionAction ITypeConverter<INode>.GetConversionActionTo_Triple()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<Triple> ITypeConverter<INode>.Enumerate_Triple(INode value)
+            {
+                
+                yield break;
+            }
+            INode ITypeConverter<INode>.ConvertFrom_TripleStatement(TripleStatement value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'TripleStatement' to 'INode'.");
+                
+            }
+            TripleStatement ITypeConverter<INode>.ConvertTo_TripleStatement(INode value)
+            {
+                return TypeConverter<TripleStatement>.ConvertFrom_INode(value);
+            }
+            TypeConversionAction ITypeConverter<INode>.GetConversionActionTo_TripleStatement()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<TripleStatement> ITypeConverter<INode>.Enumerate_TripleStatement(INode value)
+            {
+                
+                yield break;
+            }
+            INode ITypeConverter<INode>.ConvertFrom_NodeType(NodeType value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'NodeType' to 'INode'.");
+                
+            }
+            NodeType ITypeConverter<INode>.ConvertTo_NodeType(INode value)
+            {
+                return TypeConverter<NodeType>.ConvertFrom_INode(value);
+            }
+            TypeConversionAction ITypeConverter<INode>.GetConversionActionTo_NodeType()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<NodeType> ITypeConverter<INode>.Enumerate_NodeType(INode value)
+            {
+                
+                yield break;
+            }
+            Triple ITypeConverter<Triple>.ConvertFrom_long(long value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'long' to 'Triple'.");
+                
+            }
+            long ITypeConverter<Triple>.ConvertTo_long(Triple value)
+            {
+                return TypeConverter<long>.ConvertFrom_Triple(value);
+            }
+            TypeConversionAction ITypeConverter<Triple>.GetConversionActionTo_long()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<long> ITypeConverter<Triple>.Enumerate_long(Triple value)
+            {
+                
+                yield break;
+            }
+            Triple ITypeConverter<Triple>.ConvertFrom_Guid(Guid value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'Guid' to 'Triple'.");
+                
+            }
+            Guid ITypeConverter<Triple>.ConvertTo_Guid(Triple value)
+            {
+                return TypeConverter<Guid>.ConvertFrom_Triple(value);
+            }
+            TypeConversionAction ITypeConverter<Triple>.GetConversionActionTo_Guid()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<Guid> ITypeConverter<Triple>.Enumerate_Guid(Triple value)
+            {
+                
+                yield break;
+            }
+            Triple ITypeConverter<Triple>.ConvertFrom_string(string value)
+            {
+                
+                {
+                    #region String parse
+                    Triple intermediate_result;
+                    bool conversion_success;
+                    
+                    {
+                        conversion_success = Triple.TryParse(value, out intermediate_result);
+                    }
+                    
+                    if (!conversion_success)
+                    {
+                        
+                        Throw.cannot_parse(value, "Triple");
+                        
+                    }
+                    return intermediate_result;
+                    #endregion
+                }
+                
+            }
+            string ITypeConverter<Triple>.ConvertTo_string(Triple value)
+            {
+                return TypeConverter<string>.ConvertFrom_Triple(value);
+            }
+            TypeConversionAction ITypeConverter<Triple>.GetConversionActionTo_string()
+            {
+                
+                return TypeConversionAction.TC_TOSTRING;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<string> ITypeConverter<Triple>.Enumerate_string(Triple value)
+            {
+                
+                yield break;
+            }
+            Triple ITypeConverter<Triple>.ConvertFrom_List_string(List<string> value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'List<string>' to 'Triple'.");
+                
+            }
+            List<string> ITypeConverter<Triple>.ConvertTo_List_string(Triple value)
+            {
+                return TypeConverter<List<string>>.ConvertFrom_Triple(value);
+            }
+            TypeConversionAction ITypeConverter<Triple>.GetConversionActionTo_List_string()
+            {
+                
+                return TypeConversionAction.TC_WRAPINLIST;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<List<string>> ITypeConverter<Triple>.Enumerate_List_string(Triple value)
+            {
+                
+                yield break;
+            }
+            Triple ITypeConverter<Triple>.ConvertFrom_List_INode(List<INode> value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'List<INode>' to 'Triple'.");
+                
+            }
+            List<INode> ITypeConverter<Triple>.ConvertTo_List_INode(Triple value)
+            {
+                return TypeConverter<List<INode>>.ConvertFrom_Triple(value);
+            }
+            TypeConversionAction ITypeConverter<Triple>.GetConversionActionTo_List_INode()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<List<INode>> ITypeConverter<Triple>.Enumerate_List_INode(Triple value)
+            {
+                
+                yield break;
+            }
+            Triple ITypeConverter<Triple>.ConvertFrom_List_Triple(List<Triple> value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'List<Triple>' to 'Triple'.");
+                
+            }
+            List<Triple> ITypeConverter<Triple>.ConvertTo_List_Triple(Triple value)
+            {
+                return TypeConverter<List<Triple>>.ConvertFrom_Triple(value);
+            }
+            TypeConversionAction ITypeConverter<Triple>.GetConversionActionTo_List_Triple()
+            {
+                
+                return TypeConversionAction.TC_WRAPINLIST;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<List<Triple>> ITypeConverter<Triple>.Enumerate_List_Triple(Triple value)
+            {
+                
+                yield break;
+            }
+            Triple ITypeConverter<Triple>.ConvertFrom_INode(INode value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'INode' to 'Triple'.");
+                
+            }
+            INode ITypeConverter<Triple>.ConvertTo_INode(Triple value)
+            {
+                return TypeConverter<INode>.ConvertFrom_Triple(value);
+            }
+            TypeConversionAction ITypeConverter<Triple>.GetConversionActionTo_INode()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<INode> ITypeConverter<Triple>.Enumerate_INode(Triple value)
+            {
+                
+                yield break;
+            }
+            Triple ITypeConverter<Triple>.ConvertFrom_Triple(Triple value)
+            {
+                
+                return (Triple)value;
+                
+            }
+            Triple ITypeConverter<Triple>.ConvertTo_Triple(Triple value)
+            {
+                return TypeConverter<Triple>.ConvertFrom_Triple(value);
+            }
+            TypeConversionAction ITypeConverter<Triple>.GetConversionActionTo_Triple()
+            {
+                
+                return TypeConversionAction.TC_ASSIGN;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<Triple> ITypeConverter<Triple>.Enumerate_Triple(Triple value)
+            {
+                
+                yield break;
+            }
+            Triple ITypeConverter<Triple>.ConvertFrom_TripleStatement(TripleStatement value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'TripleStatement' to 'Triple'.");
+                
+            }
+            TripleStatement ITypeConverter<Triple>.ConvertTo_TripleStatement(Triple value)
+            {
+                return TypeConverter<TripleStatement>.ConvertFrom_Triple(value);
+            }
+            TypeConversionAction ITypeConverter<Triple>.GetConversionActionTo_TripleStatement()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<TripleStatement> ITypeConverter<Triple>.Enumerate_TripleStatement(Triple value)
+            {
+                
+                yield break;
+            }
+            Triple ITypeConverter<Triple>.ConvertFrom_NodeType(NodeType value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'NodeType' to 'Triple'.");
+                
+            }
+            NodeType ITypeConverter<Triple>.ConvertTo_NodeType(Triple value)
+            {
+                return TypeConverter<NodeType>.ConvertFrom_Triple(value);
+            }
+            TypeConversionAction ITypeConverter<Triple>.GetConversionActionTo_NodeType()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<NodeType> ITypeConverter<Triple>.Enumerate_NodeType(Triple value)
+            {
+                
+                yield break;
+            }
+            TripleStatement ITypeConverter<TripleStatement>.ConvertFrom_long(long value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'long' to 'TripleStatement'.");
+                
+            }
+            long ITypeConverter<TripleStatement>.ConvertTo_long(TripleStatement value)
+            {
+                return TypeConverter<long>.ConvertFrom_TripleStatement(value);
+            }
+            TypeConversionAction ITypeConverter<TripleStatement>.GetConversionActionTo_long()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<long> ITypeConverter<TripleStatement>.Enumerate_long(TripleStatement value)
             {
                 
                 yield break;
@@ -2704,17 +2445,17 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 
                 yield break;
             }
-            TripleStatement ITypeConverter<TripleStatement>.ConvertFrom_Node(Node value)
+            TripleStatement ITypeConverter<TripleStatement>.ConvertFrom_List_INode(List<INode> value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'Node' to 'TripleStatement'.");
+                throw new InvalidCastException("Invalid cast from 'List<INode>' to 'TripleStatement'.");
                 
             }
-            Node ITypeConverter<TripleStatement>.ConvertTo_Node(TripleStatement value)
+            List<INode> ITypeConverter<TripleStatement>.ConvertTo_List_INode(TripleStatement value)
             {
-                return TypeConverter<Node>.ConvertFrom_TripleStatement(value);
+                return TypeConverter<List<INode>>.ConvertFrom_TripleStatement(value);
             }
-            TypeConversionAction ITypeConverter<TripleStatement>.GetConversionActionTo_Node()
+            TypeConversionAction ITypeConverter<TripleStatement>.GetConversionActionTo_List_INode()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -2723,22 +2464,22 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<Node> ITypeConverter<TripleStatement>.Enumerate_Node(TripleStatement value)
+            IEnumerable<List<INode>> ITypeConverter<TripleStatement>.Enumerate_List_INode(TripleStatement value)
             {
                 
                 yield break;
             }
-            TripleStatement ITypeConverter<TripleStatement>.ConvertFrom_StringNode(StringNode value)
+            TripleStatement ITypeConverter<TripleStatement>.ConvertFrom_List_Triple(List<Triple> value)
             {
                 
-                throw new InvalidCastException("Invalid cast from 'StringNode' to 'TripleStatement'.");
+                throw new InvalidCastException("Invalid cast from 'List<Triple>' to 'TripleStatement'.");
                 
             }
-            StringNode ITypeConverter<TripleStatement>.ConvertTo_StringNode(TripleStatement value)
+            List<Triple> ITypeConverter<TripleStatement>.ConvertTo_List_Triple(TripleStatement value)
             {
-                return TypeConverter<StringNode>.ConvertFrom_TripleStatement(value);
+                return TypeConverter<List<Triple>>.ConvertFrom_TripleStatement(value);
             }
-            TypeConversionAction ITypeConverter<TripleStatement>.GetConversionActionTo_StringNode()
+            TypeConversionAction ITypeConverter<TripleStatement>.GetConversionActionTo_List_Triple()
             {
                 
                 return TypeConversionAction.TC_NONCONVERTIBLE;
@@ -2747,7 +2488,55 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             /// <summary>
             /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
             /// </summary>
-            IEnumerable<StringNode> ITypeConverter<TripleStatement>.Enumerate_StringNode(TripleStatement value)
+            IEnumerable<List<Triple>> ITypeConverter<TripleStatement>.Enumerate_List_Triple(TripleStatement value)
+            {
+                
+                yield break;
+            }
+            TripleStatement ITypeConverter<TripleStatement>.ConvertFrom_INode(INode value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'INode' to 'TripleStatement'.");
+                
+            }
+            INode ITypeConverter<TripleStatement>.ConvertTo_INode(TripleStatement value)
+            {
+                return TypeConverter<INode>.ConvertFrom_TripleStatement(value);
+            }
+            TypeConversionAction ITypeConverter<TripleStatement>.GetConversionActionTo_INode()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<INode> ITypeConverter<TripleStatement>.Enumerate_INode(TripleStatement value)
+            {
+                
+                yield break;
+            }
+            TripleStatement ITypeConverter<TripleStatement>.ConvertFrom_Triple(Triple value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'Triple' to 'TripleStatement'.");
+                
+            }
+            Triple ITypeConverter<TripleStatement>.ConvertTo_Triple(TripleStatement value)
+            {
+                return TypeConverter<Triple>.ConvertFrom_TripleStatement(value);
+            }
+            TypeConversionAction ITypeConverter<TripleStatement>.GetConversionActionTo_Triple()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<Triple> ITypeConverter<TripleStatement>.Enumerate_Triple(TripleStatement value)
             {
                 
                 yield break;
@@ -2776,71 +2565,301 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 
                 yield break;
             }
+            TripleStatement ITypeConverter<TripleStatement>.ConvertFrom_NodeType(NodeType value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'NodeType' to 'TripleStatement'.");
+                
+            }
+            NodeType ITypeConverter<TripleStatement>.ConvertTo_NodeType(TripleStatement value)
+            {
+                return TypeConverter<NodeType>.ConvertFrom_TripleStatement(value);
+            }
+            TypeConversionAction ITypeConverter<TripleStatement>.GetConversionActionTo_NodeType()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<NodeType> ITypeConverter<TripleStatement>.Enumerate_NodeType(TripleStatement value)
+            {
+                
+                yield break;
+            }
+            NodeType ITypeConverter<NodeType>.ConvertFrom_long(long value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'long' to 'NodeType'.");
+                
+            }
+            long ITypeConverter<NodeType>.ConvertTo_long(NodeType value)
+            {
+                return TypeConverter<long>.ConvertFrom_NodeType(value);
+            }
+            TypeConversionAction ITypeConverter<NodeType>.GetConversionActionTo_long()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<long> ITypeConverter<NodeType>.Enumerate_long(NodeType value)
+            {
+                
+                yield break;
+            }
+            NodeType ITypeConverter<NodeType>.ConvertFrom_Guid(Guid value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'Guid' to 'NodeType'.");
+                
+            }
+            Guid ITypeConverter<NodeType>.ConvertTo_Guid(NodeType value)
+            {
+                return TypeConverter<Guid>.ConvertFrom_NodeType(value);
+            }
+            TypeConversionAction ITypeConverter<NodeType>.GetConversionActionTo_Guid()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<Guid> ITypeConverter<NodeType>.Enumerate_Guid(NodeType value)
+            {
+                
+                yield break;
+            }
+            NodeType ITypeConverter<NodeType>.ConvertFrom_string(string value)
+            {
+                
+                {
+                    #region String parse
+                    NodeType intermediate_result;
+                    bool conversion_success;
+                    
+                    {
+                        conversion_success = NodeType.TryParse(value, out intermediate_result);
+                    }
+                    
+                    if (!conversion_success)
+                    {
+                        
+                        Throw.cannot_parse(value, "NodeType");
+                        
+                    }
+                    return intermediate_result;
+                    #endregion
+                }
+                
+            }
+            string ITypeConverter<NodeType>.ConvertTo_string(NodeType value)
+            {
+                return TypeConverter<string>.ConvertFrom_NodeType(value);
+            }
+            TypeConversionAction ITypeConverter<NodeType>.GetConversionActionTo_string()
+            {
+                
+                return TypeConversionAction.TC_TOSTRING;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<string> ITypeConverter<NodeType>.Enumerate_string(NodeType value)
+            {
+                
+                yield break;
+            }
+            NodeType ITypeConverter<NodeType>.ConvertFrom_List_string(List<string> value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'List<string>' to 'NodeType'.");
+                
+            }
+            List<string> ITypeConverter<NodeType>.ConvertTo_List_string(NodeType value)
+            {
+                return TypeConverter<List<string>>.ConvertFrom_NodeType(value);
+            }
+            TypeConversionAction ITypeConverter<NodeType>.GetConversionActionTo_List_string()
+            {
+                
+                return TypeConversionAction.TC_WRAPINLIST;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<List<string>> ITypeConverter<NodeType>.Enumerate_List_string(NodeType value)
+            {
+                
+                yield break;
+            }
+            NodeType ITypeConverter<NodeType>.ConvertFrom_List_INode(List<INode> value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'List<INode>' to 'NodeType'.");
+                
+            }
+            List<INode> ITypeConverter<NodeType>.ConvertTo_List_INode(NodeType value)
+            {
+                return TypeConverter<List<INode>>.ConvertFrom_NodeType(value);
+            }
+            TypeConversionAction ITypeConverter<NodeType>.GetConversionActionTo_List_INode()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<List<INode>> ITypeConverter<NodeType>.Enumerate_List_INode(NodeType value)
+            {
+                
+                yield break;
+            }
+            NodeType ITypeConverter<NodeType>.ConvertFrom_List_Triple(List<Triple> value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'List<Triple>' to 'NodeType'.");
+                
+            }
+            List<Triple> ITypeConverter<NodeType>.ConvertTo_List_Triple(NodeType value)
+            {
+                return TypeConverter<List<Triple>>.ConvertFrom_NodeType(value);
+            }
+            TypeConversionAction ITypeConverter<NodeType>.GetConversionActionTo_List_Triple()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<List<Triple>> ITypeConverter<NodeType>.Enumerate_List_Triple(NodeType value)
+            {
+                
+                yield break;
+            }
+            NodeType ITypeConverter<NodeType>.ConvertFrom_INode(INode value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'INode' to 'NodeType'.");
+                
+            }
+            INode ITypeConverter<NodeType>.ConvertTo_INode(NodeType value)
+            {
+                return TypeConverter<INode>.ConvertFrom_NodeType(value);
+            }
+            TypeConversionAction ITypeConverter<NodeType>.GetConversionActionTo_INode()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<INode> ITypeConverter<NodeType>.Enumerate_INode(NodeType value)
+            {
+                
+                yield break;
+            }
+            NodeType ITypeConverter<NodeType>.ConvertFrom_Triple(Triple value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'Triple' to 'NodeType'.");
+                
+            }
+            Triple ITypeConverter<NodeType>.ConvertTo_Triple(NodeType value)
+            {
+                return TypeConverter<Triple>.ConvertFrom_NodeType(value);
+            }
+            TypeConversionAction ITypeConverter<NodeType>.GetConversionActionTo_Triple()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<Triple> ITypeConverter<NodeType>.Enumerate_Triple(NodeType value)
+            {
+                
+                yield break;
+            }
+            NodeType ITypeConverter<NodeType>.ConvertFrom_TripleStatement(TripleStatement value)
+            {
+                
+                throw new InvalidCastException("Invalid cast from 'TripleStatement' to 'NodeType'.");
+                
+            }
+            TripleStatement ITypeConverter<NodeType>.ConvertTo_TripleStatement(NodeType value)
+            {
+                return TypeConverter<TripleStatement>.ConvertFrom_NodeType(value);
+            }
+            TypeConversionAction ITypeConverter<NodeType>.GetConversionActionTo_TripleStatement()
+            {
+                
+                return TypeConversionAction.TC_NONCONVERTIBLE;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<TripleStatement> ITypeConverter<NodeType>.Enumerate_TripleStatement(NodeType value)
+            {
+                
+                yield break;
+            }
+            NodeType ITypeConverter<NodeType>.ConvertFrom_NodeType(NodeType value)
+            {
+                
+                return (NodeType)value;
+                
+            }
+            NodeType ITypeConverter<NodeType>.ConvertTo_NodeType(NodeType value)
+            {
+                return TypeConverter<NodeType>.ConvertFrom_NodeType(value);
+            }
+            TypeConversionAction ITypeConverter<NodeType>.GetConversionActionTo_NodeType()
+            {
+                
+                return TypeConversionAction.TC_ASSIGN;
+                
+            }
+            /// <summary>
+            /// ONLY VALID FOR TC_CONVERTLIST AND TC_ARRAYTOLIST.
+            /// </summary>
+            IEnumerable<NodeType> ITypeConverter<NodeType>.Enumerate_NodeType(NodeType value)
+            {
+                
+                yield break;
+            }
             
-            object ITypeConverter<object>.ConvertFrom_byte(byte value)
+            object ITypeConverter<object>.ConvertFrom_long(long value)
             {
                 return value;
             }
-            byte ITypeConverter<object>.ConvertTo_byte(object value)
+            long ITypeConverter<object>.ConvertTo_long(object value)
             {
                 throw new NotImplementedException();
             }
-            TypeConversionAction ITypeConverter<object>.GetConversionActionTo_byte()
+            TypeConversionAction ITypeConverter<object>.GetConversionActionTo_long()
             {
                 throw new NotImplementedException();
             }
-            IEnumerable<byte> ITypeConverter<object>.Enumerate_byte(object value)
-            {
-                throw new NotImplementedException();
-            }
-            
-            object ITypeConverter<object>.ConvertFrom_bool(bool value)
-            {
-                return value;
-            }
-            bool ITypeConverter<object>.ConvertTo_bool(object value)
-            {
-                throw new NotImplementedException();
-            }
-            TypeConversionAction ITypeConverter<object>.GetConversionActionTo_bool()
-            {
-                throw new NotImplementedException();
-            }
-            IEnumerable<bool> ITypeConverter<object>.Enumerate_bool(object value)
-            {
-                throw new NotImplementedException();
-            }
-            
-            object ITypeConverter<object>.ConvertFrom_decimal(decimal value)
-            {
-                return value;
-            }
-            decimal ITypeConverter<object>.ConvertTo_decimal(object value)
-            {
-                throw new NotImplementedException();
-            }
-            TypeConversionAction ITypeConverter<object>.GetConversionActionTo_decimal()
-            {
-                throw new NotImplementedException();
-            }
-            IEnumerable<decimal> ITypeConverter<object>.Enumerate_decimal(object value)
-            {
-                throw new NotImplementedException();
-            }
-            
-            object ITypeConverter<object>.ConvertFrom_DateTime(DateTime value)
-            {
-                return value;
-            }
-            DateTime ITypeConverter<object>.ConvertTo_DateTime(object value)
-            {
-                throw new NotImplementedException();
-            }
-            TypeConversionAction ITypeConverter<object>.GetConversionActionTo_DateTime()
-            {
-                throw new NotImplementedException();
-            }
-            IEnumerable<DateTime> ITypeConverter<object>.Enumerate_DateTime(object value)
+            IEnumerable<long> ITypeConverter<object>.Enumerate_long(object value)
             {
                 throw new NotImplementedException();
             }
@@ -2896,36 +2915,70 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 throw new NotImplementedException();
             }
             
-            object ITypeConverter<object>.ConvertFrom_Node(Node value)
+            object ITypeConverter<object>.ConvertFrom_List_INode(List<INode> value)
             {
                 return value;
             }
-            Node ITypeConverter<object>.ConvertTo_Node(object value)
+            List<INode> ITypeConverter<object>.ConvertTo_List_INode(object value)
             {
                 throw new NotImplementedException();
             }
-            TypeConversionAction ITypeConverter<object>.GetConversionActionTo_Node()
+            TypeConversionAction ITypeConverter<object>.GetConversionActionTo_List_INode()
             {
                 throw new NotImplementedException();
             }
-            IEnumerable<Node> ITypeConverter<object>.Enumerate_Node(object value)
+            IEnumerable<List<INode>> ITypeConverter<object>.Enumerate_List_INode(object value)
             {
                 throw new NotImplementedException();
             }
             
-            object ITypeConverter<object>.ConvertFrom_StringNode(StringNode value)
+            object ITypeConverter<object>.ConvertFrom_List_Triple(List<Triple> value)
             {
                 return value;
             }
-            StringNode ITypeConverter<object>.ConvertTo_StringNode(object value)
+            List<Triple> ITypeConverter<object>.ConvertTo_List_Triple(object value)
             {
                 throw new NotImplementedException();
             }
-            TypeConversionAction ITypeConverter<object>.GetConversionActionTo_StringNode()
+            TypeConversionAction ITypeConverter<object>.GetConversionActionTo_List_Triple()
             {
                 throw new NotImplementedException();
             }
-            IEnumerable<StringNode> ITypeConverter<object>.Enumerate_StringNode(object value)
+            IEnumerable<List<Triple>> ITypeConverter<object>.Enumerate_List_Triple(object value)
+            {
+                throw new NotImplementedException();
+            }
+            
+            object ITypeConverter<object>.ConvertFrom_INode(INode value)
+            {
+                return value;
+            }
+            INode ITypeConverter<object>.ConvertTo_INode(object value)
+            {
+                throw new NotImplementedException();
+            }
+            TypeConversionAction ITypeConverter<object>.GetConversionActionTo_INode()
+            {
+                throw new NotImplementedException();
+            }
+            IEnumerable<INode> ITypeConverter<object>.Enumerate_INode(object value)
+            {
+                throw new NotImplementedException();
+            }
+            
+            object ITypeConverter<object>.ConvertFrom_Triple(Triple value)
+            {
+                return value;
+            }
+            Triple ITypeConverter<object>.ConvertTo_Triple(object value)
+            {
+                throw new NotImplementedException();
+            }
+            TypeConversionAction ITypeConverter<object>.GetConversionActionTo_Triple()
+            {
+                throw new NotImplementedException();
+            }
+            IEnumerable<Triple> ITypeConverter<object>.Enumerate_Triple(object value)
             {
                 throw new NotImplementedException();
             }
@@ -2947,74 +3000,40 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 throw new NotImplementedException();
             }
             
+            object ITypeConverter<object>.ConvertFrom_NodeType(NodeType value)
+            {
+                return value;
+            }
+            NodeType ITypeConverter<object>.ConvertTo_NodeType(object value)
+            {
+                throw new NotImplementedException();
+            }
+            TypeConversionAction ITypeConverter<object>.GetConversionActionTo_NodeType()
+            {
+                throw new NotImplementedException();
+            }
+            IEnumerable<NodeType> ITypeConverter<object>.Enumerate_NodeType(object value)
+            {
+                throw new NotImplementedException();
+            }
+            
         }
         internal static readonly ITypeConverter<T> s_type_converter = new _TypeConverterImpl() as ITypeConverter<T> ?? new TypeConverter<T>();
         #region Default implementation
         
-        T ITypeConverter<T>.ConvertFrom_byte(byte value)
+        T ITypeConverter<T>.ConvertFrom_long(long value)
         {
             throw new NotImplementedException("Internal error T5013.");
         }
-        byte ITypeConverter<T>.ConvertTo_byte(T value)
+        long ITypeConverter<T>.ConvertTo_long(T value)
         {
             throw new NotImplementedException("Internal error T5013.");
         }
-        TypeConversionAction ITypeConverter<T>.GetConversionActionTo_byte()
+        TypeConversionAction ITypeConverter<T>.GetConversionActionTo_long()
         {
             throw new NotImplementedException("Internal error T5013.");
         }
-        IEnumerable<byte> ITypeConverter<T>.Enumerate_byte(T value)
-        {
-            throw new NotImplementedException("Internal error T5013.");
-        }
-        
-        T ITypeConverter<T>.ConvertFrom_bool(bool value)
-        {
-            throw new NotImplementedException("Internal error T5013.");
-        }
-        bool ITypeConverter<T>.ConvertTo_bool(T value)
-        {
-            throw new NotImplementedException("Internal error T5013.");
-        }
-        TypeConversionAction ITypeConverter<T>.GetConversionActionTo_bool()
-        {
-            throw new NotImplementedException("Internal error T5013.");
-        }
-        IEnumerable<bool> ITypeConverter<T>.Enumerate_bool(T value)
-        {
-            throw new NotImplementedException("Internal error T5013.");
-        }
-        
-        T ITypeConverter<T>.ConvertFrom_decimal(decimal value)
-        {
-            throw new NotImplementedException("Internal error T5013.");
-        }
-        decimal ITypeConverter<T>.ConvertTo_decimal(T value)
-        {
-            throw new NotImplementedException("Internal error T5013.");
-        }
-        TypeConversionAction ITypeConverter<T>.GetConversionActionTo_decimal()
-        {
-            throw new NotImplementedException("Internal error T5013.");
-        }
-        IEnumerable<decimal> ITypeConverter<T>.Enumerate_decimal(T value)
-        {
-            throw new NotImplementedException("Internal error T5013.");
-        }
-        
-        T ITypeConverter<T>.ConvertFrom_DateTime(DateTime value)
-        {
-            throw new NotImplementedException("Internal error T5013.");
-        }
-        DateTime ITypeConverter<T>.ConvertTo_DateTime(T value)
-        {
-            throw new NotImplementedException("Internal error T5013.");
-        }
-        TypeConversionAction ITypeConverter<T>.GetConversionActionTo_DateTime()
-        {
-            throw new NotImplementedException("Internal error T5013.");
-        }
-        IEnumerable<DateTime> ITypeConverter<T>.Enumerate_DateTime(T value)
+        IEnumerable<long> ITypeConverter<T>.Enumerate_long(T value)
         {
             throw new NotImplementedException("Internal error T5013.");
         }
@@ -3070,36 +3089,70 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             throw new NotImplementedException("Internal error T5013.");
         }
         
-        T ITypeConverter<T>.ConvertFrom_Node(Node value)
+        T ITypeConverter<T>.ConvertFrom_List_INode(List<INode> value)
         {
             throw new NotImplementedException("Internal error T5013.");
         }
-        Node ITypeConverter<T>.ConvertTo_Node(T value)
+        List<INode> ITypeConverter<T>.ConvertTo_List_INode(T value)
         {
             throw new NotImplementedException("Internal error T5013.");
         }
-        TypeConversionAction ITypeConverter<T>.GetConversionActionTo_Node()
+        TypeConversionAction ITypeConverter<T>.GetConversionActionTo_List_INode()
         {
             throw new NotImplementedException("Internal error T5013.");
         }
-        IEnumerable<Node> ITypeConverter<T>.Enumerate_Node(T value)
+        IEnumerable<List<INode>> ITypeConverter<T>.Enumerate_List_INode(T value)
         {
             throw new NotImplementedException("Internal error T5013.");
         }
         
-        T ITypeConverter<T>.ConvertFrom_StringNode(StringNode value)
+        T ITypeConverter<T>.ConvertFrom_List_Triple(List<Triple> value)
         {
             throw new NotImplementedException("Internal error T5013.");
         }
-        StringNode ITypeConverter<T>.ConvertTo_StringNode(T value)
+        List<Triple> ITypeConverter<T>.ConvertTo_List_Triple(T value)
         {
             throw new NotImplementedException("Internal error T5013.");
         }
-        TypeConversionAction ITypeConverter<T>.GetConversionActionTo_StringNode()
+        TypeConversionAction ITypeConverter<T>.GetConversionActionTo_List_Triple()
         {
             throw new NotImplementedException("Internal error T5013.");
         }
-        IEnumerable<StringNode> ITypeConverter<T>.Enumerate_StringNode(T value)
+        IEnumerable<List<Triple>> ITypeConverter<T>.Enumerate_List_Triple(T value)
+        {
+            throw new NotImplementedException("Internal error T5013.");
+        }
+        
+        T ITypeConverter<T>.ConvertFrom_INode(INode value)
+        {
+            throw new NotImplementedException("Internal error T5013.");
+        }
+        INode ITypeConverter<T>.ConvertTo_INode(T value)
+        {
+            throw new NotImplementedException("Internal error T5013.");
+        }
+        TypeConversionAction ITypeConverter<T>.GetConversionActionTo_INode()
+        {
+            throw new NotImplementedException("Internal error T5013.");
+        }
+        IEnumerable<INode> ITypeConverter<T>.Enumerate_INode(T value)
+        {
+            throw new NotImplementedException("Internal error T5013.");
+        }
+        
+        T ITypeConverter<T>.ConvertFrom_Triple(Triple value)
+        {
+            throw new NotImplementedException("Internal error T5013.");
+        }
+        Triple ITypeConverter<T>.ConvertTo_Triple(T value)
+        {
+            throw new NotImplementedException("Internal error T5013.");
+        }
+        TypeConversionAction ITypeConverter<T>.GetConversionActionTo_Triple()
+        {
+            throw new NotImplementedException("Internal error T5013.");
+        }
+        IEnumerable<Triple> ITypeConverter<T>.Enumerate_Triple(T value)
         {
             throw new NotImplementedException("Internal error T5013.");
         }
@@ -3121,75 +3174,41 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             throw new NotImplementedException("Internal error T5013.");
         }
         
+        T ITypeConverter<T>.ConvertFrom_NodeType(NodeType value)
+        {
+            throw new NotImplementedException("Internal error T5013.");
+        }
+        NodeType ITypeConverter<T>.ConvertTo_NodeType(T value)
+        {
+            throw new NotImplementedException("Internal error T5013.");
+        }
+        TypeConversionAction ITypeConverter<T>.GetConversionActionTo_NodeType()
+        {
+            throw new NotImplementedException("Internal error T5013.");
+        }
+        IEnumerable<NodeType> ITypeConverter<T>.Enumerate_NodeType(T value)
+        {
+            throw new NotImplementedException("Internal error T5013.");
+        }
+        
         #endregion
         internal static readonly uint type_id = TypeSystem.GetTypeID(typeof(T));
         
-        internal static T ConvertFrom_byte(byte value)
+        internal static T ConvertFrom_long(long value)
         {
-            return s_type_converter.ConvertFrom_byte(value);
+            return s_type_converter.ConvertFrom_long(value);
         }
-        internal static byte ConvertTo_byte(T value)
+        internal static long ConvertTo_long(T value)
         {
-            return s_type_converter.ConvertTo_byte(value);
+            return s_type_converter.ConvertTo_long(value);
         }
-        internal static TypeConversionAction GetConversionActionTo_byte()
+        internal static TypeConversionAction GetConversionActionTo_long()
         {
-            return s_type_converter.GetConversionActionTo_byte();
+            return s_type_converter.GetConversionActionTo_long();
         }
-        internal static IEnumerable<byte> Enumerate_byte(T value)
+        internal static IEnumerable<long> Enumerate_long(T value)
         {
-            return s_type_converter.Enumerate_byte(value);
-        }
-        
-        internal static T ConvertFrom_bool(bool value)
-        {
-            return s_type_converter.ConvertFrom_bool(value);
-        }
-        internal static bool ConvertTo_bool(T value)
-        {
-            return s_type_converter.ConvertTo_bool(value);
-        }
-        internal static TypeConversionAction GetConversionActionTo_bool()
-        {
-            return s_type_converter.GetConversionActionTo_bool();
-        }
-        internal static IEnumerable<bool> Enumerate_bool(T value)
-        {
-            return s_type_converter.Enumerate_bool(value);
-        }
-        
-        internal static T ConvertFrom_decimal(decimal value)
-        {
-            return s_type_converter.ConvertFrom_decimal(value);
-        }
-        internal static decimal ConvertTo_decimal(T value)
-        {
-            return s_type_converter.ConvertTo_decimal(value);
-        }
-        internal static TypeConversionAction GetConversionActionTo_decimal()
-        {
-            return s_type_converter.GetConversionActionTo_decimal();
-        }
-        internal static IEnumerable<decimal> Enumerate_decimal(T value)
-        {
-            return s_type_converter.Enumerate_decimal(value);
-        }
-        
-        internal static T ConvertFrom_DateTime(DateTime value)
-        {
-            return s_type_converter.ConvertFrom_DateTime(value);
-        }
-        internal static DateTime ConvertTo_DateTime(T value)
-        {
-            return s_type_converter.ConvertTo_DateTime(value);
-        }
-        internal static TypeConversionAction GetConversionActionTo_DateTime()
-        {
-            return s_type_converter.GetConversionActionTo_DateTime();
-        }
-        internal static IEnumerable<DateTime> Enumerate_DateTime(T value)
-        {
-            return s_type_converter.Enumerate_DateTime(value);
+            return s_type_converter.Enumerate_long(value);
         }
         
         internal static T ConvertFrom_Guid(Guid value)
@@ -3243,38 +3262,72 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             return s_type_converter.Enumerate_List_string(value);
         }
         
-        internal static T ConvertFrom_Node(Node value)
+        internal static T ConvertFrom_List_INode(List<INode> value)
         {
-            return s_type_converter.ConvertFrom_Node(value);
+            return s_type_converter.ConvertFrom_List_INode(value);
         }
-        internal static Node ConvertTo_Node(T value)
+        internal static List<INode> ConvertTo_List_INode(T value)
         {
-            return s_type_converter.ConvertTo_Node(value);
+            return s_type_converter.ConvertTo_List_INode(value);
         }
-        internal static TypeConversionAction GetConversionActionTo_Node()
+        internal static TypeConversionAction GetConversionActionTo_List_INode()
         {
-            return s_type_converter.GetConversionActionTo_Node();
+            return s_type_converter.GetConversionActionTo_List_INode();
         }
-        internal static IEnumerable<Node> Enumerate_Node(T value)
+        internal static IEnumerable<List<INode>> Enumerate_List_INode(T value)
         {
-            return s_type_converter.Enumerate_Node(value);
+            return s_type_converter.Enumerate_List_INode(value);
         }
         
-        internal static T ConvertFrom_StringNode(StringNode value)
+        internal static T ConvertFrom_List_Triple(List<Triple> value)
         {
-            return s_type_converter.ConvertFrom_StringNode(value);
+            return s_type_converter.ConvertFrom_List_Triple(value);
         }
-        internal static StringNode ConvertTo_StringNode(T value)
+        internal static List<Triple> ConvertTo_List_Triple(T value)
         {
-            return s_type_converter.ConvertTo_StringNode(value);
+            return s_type_converter.ConvertTo_List_Triple(value);
         }
-        internal static TypeConversionAction GetConversionActionTo_StringNode()
+        internal static TypeConversionAction GetConversionActionTo_List_Triple()
         {
-            return s_type_converter.GetConversionActionTo_StringNode();
+            return s_type_converter.GetConversionActionTo_List_Triple();
         }
-        internal static IEnumerable<StringNode> Enumerate_StringNode(T value)
+        internal static IEnumerable<List<Triple>> Enumerate_List_Triple(T value)
         {
-            return s_type_converter.Enumerate_StringNode(value);
+            return s_type_converter.Enumerate_List_Triple(value);
+        }
+        
+        internal static T ConvertFrom_INode(INode value)
+        {
+            return s_type_converter.ConvertFrom_INode(value);
+        }
+        internal static INode ConvertTo_INode(T value)
+        {
+            return s_type_converter.ConvertTo_INode(value);
+        }
+        internal static TypeConversionAction GetConversionActionTo_INode()
+        {
+            return s_type_converter.GetConversionActionTo_INode();
+        }
+        internal static IEnumerable<INode> Enumerate_INode(T value)
+        {
+            return s_type_converter.Enumerate_INode(value);
+        }
+        
+        internal static T ConvertFrom_Triple(Triple value)
+        {
+            return s_type_converter.ConvertFrom_Triple(value);
+        }
+        internal static Triple ConvertTo_Triple(T value)
+        {
+            return s_type_converter.ConvertTo_Triple(value);
+        }
+        internal static TypeConversionAction GetConversionActionTo_Triple()
+        {
+            return s_type_converter.GetConversionActionTo_Triple();
+        }
+        internal static IEnumerable<Triple> Enumerate_Triple(T value)
+        {
+            return s_type_converter.Enumerate_Triple(value);
         }
         
         internal static T ConvertFrom_TripleStatement(TripleStatement value)
@@ -3292,6 +3345,23 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         internal static IEnumerable<TripleStatement> Enumerate_TripleStatement(T value)
         {
             return s_type_converter.Enumerate_TripleStatement(value);
+        }
+        
+        internal static T ConvertFrom_NodeType(NodeType value)
+        {
+            return s_type_converter.ConvertFrom_NodeType(value);
+        }
+        internal static NodeType ConvertTo_NodeType(T value)
+        {
+            return s_type_converter.ConvertTo_NodeType(value);
+        }
+        internal static TypeConversionAction GetConversionActionTo_NodeType()
+        {
+            return s_type_converter.GetConversionActionTo_NodeType();
+        }
+        internal static IEnumerable<NodeType> Enumerate_NodeType(T value)
+        {
+            return s_type_converter.Enumerate_NodeType(value);
         }
         
     }

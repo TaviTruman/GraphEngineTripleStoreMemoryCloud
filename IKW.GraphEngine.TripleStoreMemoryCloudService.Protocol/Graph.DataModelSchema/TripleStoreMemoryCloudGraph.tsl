@@ -1,43 +1,52 @@
-﻿struct BlankNode
+﻿// InKnowoWorks, Corp
+
+enum NodeType
 {
-	Guid RefId;
-	string Value;
+	Blank,
+	Uri,
+	Literal,
+	GraphLiteral,
+	Variable
 }
 
-struct BooleanNode
+// Define Constant Values for the Parts of an RDF Triple
+
+enum TripleSegmentPart
 {
-	bool boolValue;	
+	Subject,
+	Predicate,
+	Object
 }
 
-struct ByteNode
+// Define the Node Interface 
+
+// TSL does support Type Inheritance so a node is a generic in that just need a CellId and a TSL Attribute
+
+struct INode
 {
-	byte ByteValue;	
+	NodeType TypeOfNode;
+	CellId   GraphParent;
+	string   GraphUri;	
+    long     HashCode;
 }
 
-struct DateTimeNode
+// Define W3C Semantic Triple
+
+struct Triple
 {
-	DateTime DateTimeValue;	
+	INode SubjectNode;
+	INode PredicateNode;
+	INode ObjectNode;
+	string Url;
+	CellId GraphInstance;
+	long   HashCode;
+	List<INode> Nodes;
 }
 
-struct DecimalNode
-{
-	decimal DecimalValue;	
-}
+// Define a Grpah
 
-struct StringNode
+cell struct Graph
 {
-	string StringValue;	
-}
-
-struct Node
-{
-	StringNode _node; 	
-}
-
-cell struct RDFTriple
-{
-	Guid RefId;
-	Node Subject;
-	Node Predicate;
-	Node Object;
+	string BaseUri;
+	List<Triple> TripleCollection;	
 }

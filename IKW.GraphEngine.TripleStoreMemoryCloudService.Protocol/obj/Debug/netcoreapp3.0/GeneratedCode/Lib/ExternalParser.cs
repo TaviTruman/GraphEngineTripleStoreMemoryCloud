@@ -16,56 +16,6 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
     internal class ExternalParser
     {
         
-        internal static unsafe bool TryParse_bool(string s, out bool value)
-        {
-            bool value_type_value;
-            JArray jarray;
-            
-            {
-                
-                double double_val;
-                if (bool.TryParse(s, out value_type_value))
-                {
-                    value = value_type_value;
-                    return true;
-                }
-                else if (double.TryParse(s, out double_val))
-                {
-                    value = (double_val != 0);
-                    return true;
-                }
-                else
-                {
-                    value = default(bool);
-                    return false;
-                }
-            }
-            
-        }
-        
-        internal static unsafe bool TryParse_DateTime(string s, out DateTime value)
-        {
-            DateTime value_type_value;
-            JArray jarray;
-            
-            {
-                
-                if (DateTime.TryParse(s, null, System.Globalization.DateTimeStyles.RoundtripKind, out value_type_value))
-                {
-                    value = value_type_value;
-                    return true;
-                }
-                if (s.EndsWith(" UTC", StringComparison.Ordinal) && DateTime.TryParse(s.Substring(0, s.Length - 4) + 'Z', null, System.Globalization.DateTimeStyles.RoundtripKind, out value_type_value))
-                {
-                    value = value_type_value;
-                    return true;
-                }
-                value  = default(DateTime);
-                return false;
-            }
-            
-        }
-        
         internal static unsafe bool TryParse_List_string(string s, out List<string> value)
         {
             List<string> value_type_value;
@@ -87,6 +37,66 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             catch
             {
                 value = default(List<string>);
+                return false;
+            }
+            
+        }
+        
+        internal static unsafe bool TryParse_List_INode(string s, out List<INode> value)
+        {
+            List<INode> value_type_value;
+            JArray jarray;
+            
+            try
+            {
+                value = new List<INode>();
+                jarray = JArray.Parse(s);
+                foreach (var jarray_element in jarray)
+                {
+                    INode element;
+                    
+                    if (!INode.TryParse((string)jarray_element, out element))
+                    {
+                        continue;
+                    }
+                    value.Add(element);
+                    
+                }
+                return true;
+            }
+            catch
+            {
+                value = default(List<INode>);
+                return false;
+            }
+            
+        }
+        
+        internal static unsafe bool TryParse_List_Triple(string s, out List<Triple> value)
+        {
+            List<Triple> value_type_value;
+            JArray jarray;
+            
+            try
+            {
+                value = new List<Triple>();
+                jarray = JArray.Parse(s);
+                foreach (var jarray_element in jarray)
+                {
+                    Triple element;
+                    
+                    if (!Triple.TryParse((string)jarray_element, out element))
+                    {
+                        continue;
+                    }
+                    value.Add(element);
+                    
+                }
+                return true;
+            }
+            catch
+            {
+                value = default(List<Triple>);
                 return false;
             }
             

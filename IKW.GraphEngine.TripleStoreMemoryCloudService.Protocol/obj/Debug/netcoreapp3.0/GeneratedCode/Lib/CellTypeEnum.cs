@@ -5,7 +5,7 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
     public enum CellType: ushort
     {
         Undefined = 0,
-        RDFTriple = 1,
+        Graph = 1,
         
     }
 }

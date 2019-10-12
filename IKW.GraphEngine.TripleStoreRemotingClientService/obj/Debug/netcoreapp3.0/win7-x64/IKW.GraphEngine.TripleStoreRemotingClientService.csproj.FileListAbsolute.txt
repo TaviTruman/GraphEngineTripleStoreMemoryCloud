@@ -266,6 +266,9 @@ I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.Trip
 I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Trinity.ServiceFabric.Remoting.dll
 I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\obj\Debug\netcoreapp3.0\win7-x64\IKW.GraphEngine.TripleStoreRemotingClientService.dll
 I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\obj\Debug\netcoreapp3.0\win7-x64\IKW.GraphEngine.TripleStoreRemotingClientService.pdb
+I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\obj\Debug\netcoreapp3.0\win7-x64\IKW.GraphEngine.TripleStoreRemotingClientService.csprojAssemblyReference.cache
+I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\obj\Debug\netcoreapp3.0\win7-x64\IKW.GraphEngine.TripleStoreRemotingClientService.AssemblyInfoInputs.cache
+I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\obj\Debug\netcoreapp3.0\win7-x64\IKW.GraphEngine.TripleStoreRemotingClientService.AssemblyInfo.cs
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Trinity.dll
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\IKW.GraphEngine.TripleStoreRemotingClientService.exe
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\IKW.GraphEngine.TripleStoreRemotingClientService.deps.json
@@ -276,18 +279,8 @@ I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientSe
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Trinity.Client.dll
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Trinity.Core.dll
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Trinity.DynamicCluster.dll
-I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\GraphEngine.LIKQ.dll
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Trinity.ServiceFabric.Remoting.dll
-I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Microsoft.CodeAnalysis.dll
-I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Microsoft.CodeAnalysis.CSharp.dll
-I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Microsoft.CodeAnalysis.Scripting.dll
-I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Microsoft.Extensions.Caching.Abstractions.dll
-I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Microsoft.Extensions.Caching.Memory.dll
-I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Microsoft.Extensions.ObjectPool.dll
-I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Microsoft.Extensions.Options.dll
-I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Microsoft.Extensions.Primitives.dll
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Microsoft.ServiceFabric.Internal.Strings.dll
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Microsoft.ServiceFabric.Internal.dll
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Microsoft.ServiceFabric.Preview.dll
@@ -305,7 +298,6 @@ I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientSe
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Nito.AsyncEx.Tasks.dll
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Nito.Collections.Deque.dll
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Nito.Disposables.dll
-I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Serialize.Linq.dll
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Microsoft.CSharp.dll
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Microsoft.VisualBasic.Core.dll
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\Microsoft.VisualBasic.dll
@@ -528,9 +520,6 @@ I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientSe
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\ucrtbase.dll
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.dll
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\bin\Debug\netcoreapp3.0\win7-x64\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.pdb
-I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\obj\Debug\netcoreapp3.0\win7-x64\IKW.GraphEngine.TripleStoreRemotingClientService.csprojAssemblyReference.cache
-I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\obj\Debug\netcoreapp3.0\win7-x64\IKW.GraphEngine.TripleStoreRemotingClientService.AssemblyInfoInputs.cache
-I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\obj\Debug\netcoreapp3.0\win7-x64\IKW.GraphEngine.TripleStoreRemotingClientService.AssemblyInfo.cs
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\obj\Debug\netcoreapp3.0\win7-x64\IKW.GraphEngine.TripleStoreRemotingClientService.csproj.CopyComplete
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\obj\Debug\netcoreapp3.0\win7-x64\IKW.GraphEngine.TripleStoreRemotingClientService.dll
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\obj\Debug\netcoreapp3.0\win7-x64\IKW.GraphEngine.TripleStoreRemotingClientService.pdb

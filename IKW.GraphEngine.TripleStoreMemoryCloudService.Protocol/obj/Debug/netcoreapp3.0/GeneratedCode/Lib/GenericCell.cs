@@ -22,8 +22,8 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             switch ((CellType)cell.CellType)
             {
                 
-                case CellType.RDFTriple:
-                storage.SaveRDFTriple(writeAheadLogOptions, (RDFTriple)cell);
+                case CellType.Graph:
+                storage.SaveGraph(writeAheadLogOptions, (Graph)cell);
                 break;
                 
             }
@@ -34,8 +34,8 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             switch ((CellType)cell.CellType)
             {
                 
-                case CellType.RDFTriple:
-                storage.SaveRDFTriple(writeAheadLogOptions, cellId, (RDFTriple)cell);
+                case CellType.Graph:
+                storage.SaveGraph(writeAheadLogOptions, cellId, (Graph)cell);
                 break;
                 
             }
@@ -77,8 +77,8 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             switch (type)
             {
                 
-                case global::InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL.CellType.RDFTriple:
-                return new RDFTriple();
+                case global::InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL.CellType.Graph:
+                return new Graph();
                 break;
                 
             }
@@ -93,8 +93,8 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             switch (type)
             {
                 
-                case global::InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL.CellType.RDFTriple:
-                return new RDFTriple(cell_id: cellId);
+                case global::InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL.CellType.Graph:
+                return new Graph(cell_id: cellId);
                 
             }
             /* Should not reach here */
@@ -109,8 +109,8 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             switch (type)
             {
                 
-                case global::InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL.CellType.RDFTriple:
-                return RDFTriple.Parse(content);
+                case global::InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL.CellType.Graph:
+                return Graph.Parse(content);
                 
             }
             /* Should not reach here */
@@ -133,8 +133,8 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             switch ((CellType)type)
             {
                 
-                case CellType.RDFTriple:
-                return RDFTriple_Accessor._get()._Setup(cellId, cellPtr, entryIndex, CellAccessOptions.ThrowExceptionOnCellNotFound);
+                case CellType.Graph:
+                return Graph_Accessor._get()._Setup(cellId, cellPtr, entryIndex, CellAccessOptions.ThrowExceptionOnCellNotFound);
                 
                 default:
                 storage.ReleaseCellLock(cellId, entryIndex);
@@ -193,7 +193,7 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             switch (cellType)
             {
                 
-                case "RDFTriple": return RDFTriple_Accessor._get()._Lock(cellId, options);
+                case "Graph": return Graph_Accessor._get()._Lock(cellId, options);
                 
                 default:
                 Throw.invalid_cell_type();
@@ -210,12 +210,12 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 switch ((CellType)cellInfo.CellType)
                 {
                     
-                    case CellType.RDFTriple:
+                    case CellType.Graph:
                         {
-                            var RDFTriple_accessor = RDFTriple_Accessor.AllocIterativeAccessor(cellInfo, null);
-                            var RDFTriple_cell     = (RDFTriple)RDFTriple_accessor;
-                            RDFTriple_accessor.Dispose();
-                            yield return RDFTriple_cell;
+                            var Graph_accessor = Graph_Accessor.AllocIterativeAccessor(cellInfo, null);
+                            var Graph_cell     = (Graph)Graph_accessor;
+                            Graph_accessor.Dispose();
+                            yield return Graph_cell;
                             break;
                         }
                     
@@ -233,11 +233,11 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 switch ((CellType)cellInfo.CellType)
                 {
                     
-                    case CellType.RDFTriple:
+                    case CellType.Graph:
                         {
-                            var RDFTriple_accessor = RDFTriple_Accessor.AllocIterativeAccessor(cellInfo, null);
-                            yield return RDFTriple_accessor;
-                            RDFTriple_accessor.Dispose();
+                            var Graph_accessor = Graph_Accessor.AllocIterativeAccessor(cellInfo, null);
+                            yield return Graph_accessor;
+                            Graph_accessor.Dispose();
                             break;
                         }
                     
@@ -255,8 +255,8 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             switch ((CellType)cell.CellType)
             {
                 
-                case CellType.RDFTriple:
-                storage.SaveRDFTriple((RDFTriple)cell);
+                case CellType.Graph:
+                storage.SaveGraph((Graph)cell);
                 break;
                 
             }
@@ -267,8 +267,8 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             switch ((CellType)cell.CellType)
             {
                 
-                case CellType.RDFTriple:
-                storage.SaveRDFTriple(cellId, (RDFTriple)cell);
+                case CellType.Graph:
+                storage.SaveGraph(cellId, (Graph)cell);
                 break;
                 
             }
@@ -308,8 +308,8 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             switch ((CellType)cellType)
             {
                 
-                case CellType.RDFTriple:
-                return RDFTriple_Accessor._get()._Setup(cellId, cellBuffer, entryIndex, options);
+                case CellType.Graph:
+                return Graph_Accessor._get()._Setup(cellId, cellBuffer, entryIndex, options);
                 
                 default:
                 throw new CellTypeNotMatchException("Cannot determine cell type.");

@@ -19,14 +19,14 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
     #region Internal
     /**
      * <summary>
-     * Accepts transformation from RDFTriple_Accessor to T.
+     * Accepts transformation from Graph_Accessor to T.
      * </summary>
      */
-    internal class RDFTriple_Accessor_local_projector<T> : IQueryable<T>
+    internal class Graph_Accessor_local_projector<T> : IQueryable<T>
     {
         private         Expression                                   query_expression;
-        private         RDFTriple_Accessor_local_query_provider    query_provider;
-        internal RDFTriple_Accessor_local_projector(RDFTriple_Accessor_local_query_provider provider, Expression expression)
+        private         Graph_Accessor_local_query_provider    query_provider;
+        internal Graph_Accessor_local_projector(Graph_Accessor_local_query_provider provider, Expression expression)
         {
             this.query_expression              = expression;
             this.query_provider                = provider;
@@ -53,13 +53,13 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         }
     }
     /**
-     * Accepts transformation from RDFTriple to T.
+     * Accepts transformation from Graph to T.
      */
-    internal class RDFTriple_local_projector<T> : IQueryable<T>
+    internal class Graph_local_projector<T> : IQueryable<T>
     {
         private         Expression                                   query_expression;
-        private         RDFTriple_local_query_provider             query_provider;
-        internal RDFTriple_local_projector(RDFTriple_local_query_provider provider, Expression expression)
+        private         Graph_local_query_provider             query_provider;
+        internal Graph_local_projector(Graph_local_query_provider provider, Expression expression)
         {
             this.query_expression              = expression;
             this.query_provider                = provider;
@@ -85,14 +85,14 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             get { return query_provider; }
         }
     }
-    internal class RDFTriple_AccessorEnumerable : IEnumerable<RDFTriple_Accessor>
+    internal class Graph_AccessorEnumerable : IEnumerable<Graph_Accessor>
     {
         private     LocalMemoryStorage              m_storage;
         private     LocalTransactionContext         m_tx;
         private     HashSet<long>                   m_filter_set;
         private     bool                            m_is_positive_filtering;
-        private     Func<RDFTriple_Accessor,bool> m_filter_predicate;
-        internal RDFTriple_AccessorEnumerable(LocalMemoryStorage storage, LocalTransactionContext tx)
+        private     Func<Graph_Accessor,bool> m_filter_predicate;
+        internal Graph_AccessorEnumerable(LocalMemoryStorage storage, LocalTransactionContext tx)
         {
             this.m_storage     = storage;
             m_filter_set       = null;
@@ -109,16 +109,16 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             this.m_filter_set       = set;
             m_is_positive_filtering = false;
         }
-        public IEnumerator<RDFTriple_Accessor> GetEnumerator()
+        public IEnumerator<Graph_Accessor> GetEnumerator()
         {
             if (m_filter_set == null)
             {
                 if (m_filter_predicate == null)
                     foreach (var cellInfo in m_storage)
                     {
-                        if (cellInfo.CellType == (ushort)CellType.RDFTriple)
+                        if (cellInfo.CellType == (ushort)CellType.Graph)
                         {
-                            var accessor = RDFTriple_Accessor.AllocIterativeAccessor(cellInfo, m_tx);
+                            var accessor = Graph_Accessor.AllocIterativeAccessor(cellInfo, m_tx);
                             yield return accessor;
                             accessor.Dispose();
                         }
@@ -126,9 +126,9 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 else
                     foreach (var cellInfo in m_storage)
                     {
-                        if (cellInfo.CellType == (ushort)CellType.RDFTriple)
+                        if (cellInfo.CellType == (ushort)CellType.Graph)
                         {
-                            var accessor = RDFTriple_Accessor.AllocIterativeAccessor(cellInfo, m_tx);
+                            var accessor = Graph_Accessor.AllocIterativeAccessor(cellInfo, m_tx);
                             if (m_filter_predicate(accessor))
                                 yield return accessor;
                             accessor.Dispose();
@@ -140,7 +140,7 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 if (m_filter_predicate == null)
                     foreach (var cellID in m_filter_set)
                     {
-                        using (var accessor = m_storage.UseRDFTriple(cellID))
+                        using (var accessor = m_storage.UseGraph(cellID))
                         {
                             yield return accessor;
                         }
@@ -148,7 +148,7 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 else
                     foreach (var cellID in m_filter_set)
                     {
-                        using (var accessor = m_storage.UseRDFTriple(cellID))
+                        using (var accessor = m_storage.UseGraph(cellID))
                         {
                             if (m_filter_predicate(accessor))
                                 yield return accessor;
@@ -166,21 +166,21 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         }
         internal void SetPredicate(Expression aggregated_where_clause, ParameterExpression parameter)
         {
-            m_filter_predicate = Expression.Lambda<Func<RDFTriple_Accessor, bool>>(
+            m_filter_predicate = Expression.Lambda<Func<Graph_Accessor, bool>>(
                 aggregated_where_clause,
                 parameter
                 ).Compile();
         }
     }
-    internal class RDFTriple_Enumerable : IEnumerable<RDFTriple>
+    internal class Graph_Enumerable : IEnumerable<Graph>
     {
         private LocalMemoryStorage      m_storage;
         private HashSet<long>           m_filter_set;
         private bool                    m_is_positive_filtering;
-        private Func<RDFTriple,bool>  m_filter_predicate;
-        private static Type             m_cell_type = typeof(RDFTriple);
+        private Func<Graph,bool>  m_filter_predicate;
+        private static Type             m_cell_type = typeof(Graph);
         private LocalTransactionContext m_tx;
-        internal RDFTriple_Enumerable(LocalMemoryStorage storage, LocalTransactionContext tx)
+        internal Graph_Enumerable(LocalMemoryStorage storage, LocalTransactionContext tx)
         {
             m_storage          = storage;
             m_filter_set       = null;
@@ -197,16 +197,16 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             this.m_filter_set       = set;
             m_is_positive_filtering = false;
         }
-        public IEnumerator<RDFTriple> GetEnumerator()
+        public IEnumerator<Graph> GetEnumerator()
         {
             if (m_filter_set == null)
             {
                 if (m_filter_predicate == null)
                     foreach (var cellInfo in m_storage)
                     {
-                        if (cellInfo.CellType == (ushort)CellType.RDFTriple)
+                        if (cellInfo.CellType == (ushort)CellType.Graph)
                         {
-                            var accessor = RDFTriple_Accessor.AllocIterativeAccessor(cellInfo, m_tx);
+                            var accessor = Graph_Accessor.AllocIterativeAccessor(cellInfo, m_tx);
                             yield return accessor;
                             accessor.Dispose();
                         }
@@ -214,9 +214,9 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 else
                     foreach (var cellInfo in m_storage)
                     {
-                        if (cellInfo.CellType == (ushort)CellType.RDFTriple)
+                        if (cellInfo.CellType == (ushort)CellType.Graph)
                         {
-                            var accessor = RDFTriple_Accessor.AllocIterativeAccessor(cellInfo, m_tx);
+                            var accessor = Graph_Accessor.AllocIterativeAccessor(cellInfo, m_tx);
                             if (m_filter_predicate(accessor))
                                 yield return accessor;
                             accessor.Dispose();
@@ -228,7 +228,7 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 if (m_filter_predicate == null)
                     foreach (var cellID in m_filter_set)
                     {
-                        using (var accessor = m_storage.UseRDFTriple(cellID))
+                        using (var accessor = m_storage.UseGraph(cellID))
                         {
                             yield return accessor;
                         }
@@ -236,7 +236,7 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 else
                     foreach (var cellID in m_filter_set)
                     {
-                        using (var accessor = m_storage.UseRDFTriple(cellID))
+                        using (var accessor = m_storage.UseGraph(cellID))
                         {
                             if (m_filter_predicate(accessor))
                                 yield return accessor;
@@ -254,49 +254,49 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         }
         internal void SetPredicate(Expression aggregated_where_clause, ParameterExpression parameter)
         {
-            m_filter_predicate = Expression.Lambda<Func<RDFTriple, bool>>(
+            m_filter_predicate = Expression.Lambda<Func<Graph, bool>>(
                 aggregated_where_clause,
                 parameter
                 ).Compile();
         }
     }
-    internal class RDFTriple_Accessor_local_query_provider : IQueryProvider
+    internal class Graph_Accessor_local_query_provider : IQueryProvider
     {
-        private static  Type                             s_accessor_type    = typeof(RDFTriple_Accessor);
-        private static  Type                             s_cell_type        = typeof(RDFTriple);
+        private static  Type                             s_accessor_type    = typeof(Graph_Accessor);
+        private static  Type                             s_cell_type        = typeof(Graph);
         private static  Type                             s_ienumerable_type = typeof(IEnumerable<>);
-        private         RDFTriple_AccessorEnumerable   m_accessor_enumerable;
-        internal RDFTriple_Accessor_local_query_provider(LocalMemoryStorage storage, LocalTransactionContext tx)
+        private         Graph_AccessorEnumerable   m_accessor_enumerable;
+        internal Graph_Accessor_local_query_provider(LocalMemoryStorage storage, LocalTransactionContext tx)
         {
-            m_accessor_enumerable = new RDFTriple_AccessorEnumerable(storage, tx);
+            m_accessor_enumerable = new Graph_AccessorEnumerable(storage, tx);
         }
         public IQueryable<TElement> CreateQuery<TElement>(Expression expression)
         {
             if (typeof(TElement) == s_accessor_type)
             {
-                return (IQueryable<TElement>)new RDFTriple_Accessor_local_selector(this, expression);
+                return (IQueryable<TElement>)new Graph_Accessor_local_selector(this, expression);
             }
             else
             {
-                return new RDFTriple_Accessor_local_projector<TElement>(this, expression);
+                return new Graph_Accessor_local_projector<TElement>(this, expression);
             }
         }
         public TResult Execute<TResult>(Expression expression)
         {
-            var  visitor              = new RewritableWhereCaluseVisitor<RDFTriple_Accessor>(expression);
+            var  visitor              = new RewritableWhereCaluseVisitor<Graph_Accessor>(expression);
             var  where_clauses        = visitor.RewritableWhereClauses;
-            var  queryable            = m_accessor_enumerable.AsQueryable<RDFTriple_Accessor>();
-            var  trimmed_expression   = visitor.InjectEnumerator(expression, queryable, typeof(RDFTriple_Accessor_local_selector));
+            var  queryable            = m_accessor_enumerable.AsQueryable<Graph_Accessor>();
+            var  trimmed_expression   = visitor.InjectEnumerator(expression, queryable, typeof(Graph_Accessor_local_selector));
             if (where_clauses.Count != 0)
             {
-                var subject_rewriter           = new PredicateSubjectRewriter<RDFTriple_Accessor>();
+                var subject_rewriter           = new PredicateSubjectRewriter<Graph_Accessor>();
                 Expression aggregated_predicate = subject_rewriter.Visit(where_clauses.First().Body);
                 foreach (var where_clause in where_clauses.Skip(1))
                 {
                     Expression predicate = where_clause.Body;
                     aggregated_predicate = Expression.AndAlso(aggregated_predicate, subject_rewriter.Visit(predicate));
                 }
-                IndexQueryTreeGenerator<RDFTriple_Accessor> query_tree_gen       = new IndexQueryTreeGenerator<RDFTriple_Accessor>("RDFTriple", Index.s_AccessorSubstringIndexAccessMethod, is_cell: false);
+                IndexQueryTreeGenerator<Graph_Accessor> query_tree_gen       = new IndexQueryTreeGenerator<Graph_Accessor>("Graph", Index.s_AccessorSubstringIndexAccessMethod, is_cell: false);
                 aggregated_predicate                                               = query_tree_gen.Visit(aggregated_predicate);
                 var query_tree                                                     = query_tree_gen.QueryTree;
                 if (query_tree != null)
@@ -342,42 +342,42 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         }
         #endregion
     }
-    internal class RDFTriple_local_query_provider : IQueryProvider
+    internal class Graph_local_query_provider : IQueryProvider
     {
-        private static  Type                             s_cell_type        = typeof(RDFTriple);
+        private static  Type                             s_cell_type        = typeof(Graph);
         private static  Type                             s_ienumerable_type = typeof(IEnumerable<>);
-        private         RDFTriple_Enumerable           s_cell_enumerable;
-        internal RDFTriple_local_query_provider(LocalMemoryStorage storage, LocalTransactionContext tx)
+        private         Graph_Enumerable           s_cell_enumerable;
+        internal Graph_local_query_provider(LocalMemoryStorage storage, LocalTransactionContext tx)
         {
-            s_cell_enumerable = new RDFTriple_Enumerable(storage, tx);
+            s_cell_enumerable = new Graph_Enumerable(storage, tx);
         }
         public IQueryable<TElement> CreateQuery<TElement>(Expression expression)
         {
             if (typeof(TElement) == s_cell_type)
             {
-                return (IQueryable<TElement>)new RDFTriple_local_selector(this, expression);
+                return (IQueryable<TElement>)new Graph_local_selector(this, expression);
             }
             else
             {
-                return new RDFTriple_local_projector<TElement>(this, expression);
+                return new Graph_local_projector<TElement>(this, expression);
             }
         }
         public TResult Execute<TResult>(Expression expression)
         {
-            var  visitor              = new RewritableWhereCaluseVisitor<RDFTriple>(expression);
+            var  visitor              = new RewritableWhereCaluseVisitor<Graph>(expression);
             var  where_clauses        = visitor.RewritableWhereClauses;
-            var  queryable            = s_cell_enumerable.AsQueryable<RDFTriple>();
-            var  trimmed_expression   = visitor.InjectEnumerator(expression, queryable, typeof(RDFTriple_local_selector));
+            var  queryable            = s_cell_enumerable.AsQueryable<Graph>();
+            var  trimmed_expression   = visitor.InjectEnumerator(expression, queryable, typeof(Graph_local_selector));
             if (where_clauses.Count != 0)
             {
-                var subject_rewriter           = new PredicateSubjectRewriter<RDFTriple>();
+                var subject_rewriter           = new PredicateSubjectRewriter<Graph>();
                 Expression aggregated_predicate = subject_rewriter.Visit(where_clauses.First().Body);
                 foreach (var where_clause in where_clauses.Skip(1))
                 {
                     Expression predicate = where_clause.Body;
                     aggregated_predicate = Expression.AndAlso(aggregated_predicate, subject_rewriter.Visit(predicate));
                 }
-                IndexQueryTreeGenerator<RDFTriple> query_tree_gen       = new IndexQueryTreeGenerator<RDFTriple>("RDFTriple", Index.s_CellSubstringIndexAccessMethod, is_cell: true);
+                IndexQueryTreeGenerator<Graph> query_tree_gen       = new IndexQueryTreeGenerator<Graph>("Graph", Index.s_CellSubstringIndexAccessMethod, is_cell: true);
                 aggregated_predicate                                      = query_tree_gen.Visit(aggregated_predicate);
                 var query_tree                                            = query_tree_gen.QueryTree;
                 if (query_tree != null)
@@ -426,28 +426,28 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
     #endregion
     #region Public
     /// <summary>
-    /// Implements System.Linq.IQueryable{RDFTriple_Accessor} and accepts LINQ
+    /// Implements System.Linq.IQueryable{Graph_Accessor} and accepts LINQ
     /// queries on <see cref="Trinity.Global.LocalStorage"/>.
     /// </summary>
-    public class RDFTriple_Accessor_local_selector : IQueryable<RDFTriple_Accessor>
+    public class Graph_Accessor_local_selector : IQueryable<Graph_Accessor>
     {
         private         Expression                                   query_expression;
-        private         RDFTriple_Accessor_local_query_provider    query_provider;
-        private RDFTriple_Accessor_local_selector() { /* nobody should reach this method */ }
-        internal RDFTriple_Accessor_local_selector(Trinity.Storage.LocalMemoryStorage storage, LocalTransactionContext tx)
+        private         Graph_Accessor_local_query_provider    query_provider;
+        private Graph_Accessor_local_selector() { /* nobody should reach this method */ }
+        internal Graph_Accessor_local_selector(Trinity.Storage.LocalMemoryStorage storage, LocalTransactionContext tx)
         {
             this.query_expression              = Expression.Constant(this);
-            this.query_provider                = new RDFTriple_Accessor_local_query_provider(storage, tx);
+            this.query_provider                = new Graph_Accessor_local_query_provider(storage, tx);
         }
-        internal unsafe RDFTriple_Accessor_local_selector(RDFTriple_Accessor_local_query_provider query_provider, Expression query_expression)
+        internal unsafe Graph_Accessor_local_selector(Graph_Accessor_local_query_provider query_provider, Expression query_expression)
         {
             this.query_expression              = query_expression;
             this.query_provider                = query_provider;
         }
         #region IQueryable<CellAccessor> interfaces
-        public IEnumerator<RDFTriple_Accessor> GetEnumerator()
+        public IEnumerator<Graph_Accessor> GetEnumerator()
         {
-            return Provider.Execute<IEnumerator<RDFTriple_Accessor>>(query_expression);
+            return Provider.Execute<IEnumerator<Graph_Accessor>>(query_expression);
         }
         IEnumerator IEnumerable.GetEnumerator()
         {
@@ -455,7 +455,7 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         }
         public Type ElementType
         {
-            get { return typeof(RDFTriple_Accessor); }
+            get { return typeof(Graph_Accessor); }
         }
         public Expression Expression
         {
@@ -467,43 +467,43 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         }
         #endregion
         #region PLINQ Wrapper
-        public PLINQWrapper<RDFTriple_Accessor> AsParallel()
+        public PLINQWrapper<Graph_Accessor> AsParallel()
         {
-            return new PLINQWrapper<RDFTriple_Accessor>(this);
+            return new PLINQWrapper<Graph_Accessor>(this);
         }
         #endregion
     }
     /// <summary>
-    /// Implements System.Linq.IQueryable{RDFTriple} and accepts LINQ
+    /// Implements System.Linq.IQueryable{Graph} and accepts LINQ
     /// queries on <see cref="Trinity.Global.LocalStorage"/>.
     /// </summary>
-    public class RDFTriple_local_selector : IQueryable<RDFTriple>, IOrderedQueryable<RDFTriple>
+    public class Graph_local_selector : IQueryable<Graph>, IOrderedQueryable<Graph>
     {
         private         Expression                                   query_expression;
-        private         RDFTriple_local_query_provider             query_provider;
-        private RDFTriple_local_selector() { /* nobody should reach this method */ }
-        internal RDFTriple_local_selector(Trinity.Storage.LocalMemoryStorage storage, LocalTransactionContext tx)
+        private         Graph_local_query_provider             query_provider;
+        private Graph_local_selector() { /* nobody should reach this method */ }
+        internal Graph_local_selector(Trinity.Storage.LocalMemoryStorage storage, LocalTransactionContext tx)
         {
             this.query_expression              = Expression.Constant(this);
-            this.query_provider                = new RDFTriple_local_query_provider(storage, tx);
+            this.query_provider                = new Graph_local_query_provider(storage, tx);
         }
-        internal unsafe RDFTriple_local_selector(RDFTriple_local_query_provider query_provider, Expression query_expression)
+        internal unsafe Graph_local_selector(Graph_local_query_provider query_provider, Expression query_expression)
         {
             this.query_expression              = query_expression;
             this.query_provider                = query_provider;
         }
         #region IQueryable<Cell> interfaces
-        public IEnumerator<RDFTriple> GetEnumerator()
+        public IEnumerator<Graph> GetEnumerator()
         {
-            return Provider.Execute<IEnumerator<RDFTriple>>(query_expression);
+            return Provider.Execute<IEnumerator<Graph>>(query_expression);
         }
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return (IEnumerator<RDFTriple>)this.GetEnumerator();
+            return (IEnumerator<Graph>)this.GetEnumerator();
         }
         public Type ElementType
         {
-            get { return typeof(RDFTriple); }
+            get { return typeof(Graph); }
         }
         public Expression Expression
         {
@@ -521,40 +521,40 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
     {
         
         /// <summary>
-        /// Enumerates all the RDFTriple within the local memory storage.
+        /// Enumerates all the Graph within the local memory storage.
         /// </summary>
         /// <param name="storage">A <see cref="Trinity.Storage.LocalMemoryStorage"/> object.</param>
-        /// <returns>All the RDFTriple within the local memory storage.</returns>
-        public static RDFTriple_local_selector RDFTriple_Selector(this LocalMemoryStorage storage)
+        /// <returns>All the Graph within the local memory storage.</returns>
+        public static Graph_local_selector Graph_Selector(this LocalMemoryStorage storage)
         {
-            return new RDFTriple_local_selector(storage, null);
+            return new Graph_local_selector(storage, null);
         }
         /// <summary>
-        /// Enumerates all the RDFTriple_Accessor within the local memory storage.
+        /// Enumerates all the Graph_Accessor within the local memory storage.
         /// </summary>
         /// <param name="storage">A <see cref="Trinity.Storage.LocalMemoryStorage"/> object.</param>
-        /// <returns>All the RDFTriple_Accessor within the local memory storage.</returns>
-        public static RDFTriple_Accessor_local_selector RDFTriple_Accessor_Selector(this LocalMemoryStorage storage)
+        /// <returns>All the Graph_Accessor within the local memory storage.</returns>
+        public static Graph_Accessor_local_selector Graph_Accessor_Selector(this LocalMemoryStorage storage)
         {
-            return new RDFTriple_Accessor_local_selector(storage, null);
+            return new Graph_Accessor_local_selector(storage, null);
         }
         /// <summary>
-        /// Enumerates all the RDFTriple within the local memory storage.
+        /// Enumerates all the Graph within the local memory storage.
         /// </summary>
         /// <param name="storage">A <see cref="Trinity.Storage.LocalMemoryStorage"/> object.</param>
-        /// <returns>All the RDFTriple within the local memory storage.</returns>
-        public static RDFTriple_local_selector RDFTriple_Selector(this LocalMemoryStorage storage, LocalTransactionContext tx)
+        /// <returns>All the Graph within the local memory storage.</returns>
+        public static Graph_local_selector Graph_Selector(this LocalMemoryStorage storage, LocalTransactionContext tx)
         {
-            return new RDFTriple_local_selector(storage, tx);
+            return new Graph_local_selector(storage, tx);
         }
         /// <summary>
-        /// Enumerates all the RDFTriple_Accessor within the local memory storage.
+        /// Enumerates all the Graph_Accessor within the local memory storage.
         /// </summary>
         /// <param name="storage">A <see cref="Trinity.Storage.LocalMemoryStorage"/> object.</param>
-        /// <returns>All the RDFTriple_Accessor within the local memory storage.</returns>
-        public static RDFTriple_Accessor_local_selector RDFTriple_Accessor_Selector(this LocalMemoryStorage storage, LocalTransactionContext tx)
+        /// <returns>All the Graph_Accessor within the local memory storage.</returns>
+        public static Graph_Accessor_local_selector Graph_Accessor_Selector(this LocalMemoryStorage storage, LocalTransactionContext tx)
         {
-            return new RDFTriple_Accessor_local_selector(storage, tx);
+            return new Graph_Accessor_local_selector(storage, tx);
         }
         
     }

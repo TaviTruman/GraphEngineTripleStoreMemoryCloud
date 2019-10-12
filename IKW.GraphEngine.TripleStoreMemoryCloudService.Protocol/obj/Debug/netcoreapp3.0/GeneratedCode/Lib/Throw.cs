@@ -15,40 +15,13 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
     class Throw
     {
         
-        internal static void parse_byte(string value)
+        internal static void parse_long(string value)
         {
-            throw new ArgumentException("Cannot parse \""+value+"\" into byte.");
+            throw new ArgumentException("Cannot parse \""+value+"\" into long.");
         }
-        internal static void incompatible_with_byte()
+        internal static void incompatible_with_long()
         {
-            throw new DataTypeIncompatibleException("Data type 'byte' not compatible with the target field.");
-        }
-        
-        internal static void parse_bool(string value)
-        {
-            throw new ArgumentException("Cannot parse \""+value+"\" into bool.");
-        }
-        internal static void incompatible_with_bool()
-        {
-            throw new DataTypeIncompatibleException("Data type 'bool' not compatible with the target field.");
-        }
-        
-        internal static void parse_decimal(string value)
-        {
-            throw new ArgumentException("Cannot parse \""+value+"\" into decimal.");
-        }
-        internal static void incompatible_with_decimal()
-        {
-            throw new DataTypeIncompatibleException("Data type 'decimal' not compatible with the target field.");
-        }
-        
-        internal static void parse_DateTime(string value)
-        {
-            throw new ArgumentException("Cannot parse \""+value+"\" into DateTime.");
-        }
-        internal static void incompatible_with_DateTime()
-        {
-            throw new DataTypeIncompatibleException("Data type 'DateTime' not compatible with the target field.");
+            throw new DataTypeIncompatibleException("Data type 'long' not compatible with the target field.");
         }
         
         internal static void parse_Guid(string value)
@@ -78,22 +51,40 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             throw new DataTypeIncompatibleException("Data type 'List<string>' not compatible with the target field.");
         }
         
-        internal static void parse_Node(string value)
+        internal static void parse_List_INode(string value)
         {
-            throw new ArgumentException("Cannot parse \""+value+"\" into Node.");
+            throw new ArgumentException("Cannot parse \""+value+"\" into List<INode>.");
         }
-        internal static void incompatible_with_Node()
+        internal static void incompatible_with_List_INode()
         {
-            throw new DataTypeIncompatibleException("Data type 'Node' not compatible with the target field.");
+            throw new DataTypeIncompatibleException("Data type 'List<INode>' not compatible with the target field.");
         }
         
-        internal static void parse_StringNode(string value)
+        internal static void parse_List_Triple(string value)
         {
-            throw new ArgumentException("Cannot parse \""+value+"\" into StringNode.");
+            throw new ArgumentException("Cannot parse \""+value+"\" into List<Triple>.");
         }
-        internal static void incompatible_with_StringNode()
+        internal static void incompatible_with_List_Triple()
         {
-            throw new DataTypeIncompatibleException("Data type 'StringNode' not compatible with the target field.");
+            throw new DataTypeIncompatibleException("Data type 'List<Triple>' not compatible with the target field.");
+        }
+        
+        internal static void parse_INode(string value)
+        {
+            throw new ArgumentException("Cannot parse \""+value+"\" into INode.");
+        }
+        internal static void incompatible_with_INode()
+        {
+            throw new DataTypeIncompatibleException("Data type 'INode' not compatible with the target field.");
+        }
+        
+        internal static void parse_Triple(string value)
+        {
+            throw new ArgumentException("Cannot parse \""+value+"\" into Triple.");
+        }
+        internal static void incompatible_with_Triple()
+        {
+            throw new DataTypeIncompatibleException("Data type 'Triple' not compatible with the target field.");
         }
         
         internal static void parse_TripleStatement(string value)
@@ -103,6 +94,15 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         internal static void incompatible_with_TripleStatement()
         {
             throw new DataTypeIncompatibleException("Data type 'TripleStatement' not compatible with the target field.");
+        }
+        
+        internal static void parse_NodeType(string value)
+        {
+            throw new ArgumentException("Cannot parse \""+value+"\" into NodeType.");
+        }
+        internal static void incompatible_with_NodeType()
+        {
+            throw new DataTypeIncompatibleException("Data type 'NodeType' not compatible with the target field.");
         }
         
         internal static void data_type_incompatible_with_list(string type)
