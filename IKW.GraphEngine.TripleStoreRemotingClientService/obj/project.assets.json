@@ -2,10 +2,10 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.0": {
-      "GraphEngine.Client/2.0.10057": {
+      "GraphEngine.Client/2.0.10059": {
         "type": "package",
         "dependencies": {
-          "GraphEngine.Core": "2.0.10057",
+          "GraphEngine.Core": "2.0.10059",
           "System.ValueTuple": "4.5.0"
         },
         "compile": {
@@ -15,7 +15,7 @@
           "lib/netstandard2.0/Trinity.Client.dll": {}
         }
       },
-      "GraphEngine.Core/2.0.10057": {
+      "GraphEngine.Core/2.0.10059": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.ObjectPool": "2.0.0",
@@ -41,11 +41,11 @@
           }
         }
       },
-      "GraphEngine.DynamicCluster/2.0.10057": {
+      "GraphEngine.DynamicCluster/2.0.10059": {
         "type": "package",
         "dependencies": {
-          "GraphEngine.Client": "2.0.10057",
-          "GraphEngine.Core": "2.0.10057",
+          "GraphEngine.Client": "2.0.10059",
+          "GraphEngine.Core": "2.0.10059",
           "Nito.AsyncEx.Coordination": "1.0.2",
           "Nito.AsyncEx.Tasks": "1.1.0",
           "System.Collections.Immutable": "1.4.0"
@@ -57,10 +57,10 @@
           "lib/netstandard2.0/Trinity.DynamicCluster.dll": {}
         }
       },
-      "GraphEngine.LIKQ/2.0.10057": {
+      "GraphEngine.LIKQ/2.0.10059": {
         "type": "package",
         "dependencies": {
-          "GraphEngine.Core": "2.0.10057",
+          "GraphEngine.Core": "2.0.10059",
           "Microsoft.CodeAnalysis.CSharp": "2.6.1",
           "Microsoft.CodeAnalysis.CSharp.Scripting": "2.6.1",
           "Microsoft.Extensions.Caching.Memory": "2.0.0",
@@ -75,7 +75,7 @@
           "lib/netstandard2.0/GraphEngine.LIKQ.dll": {}
         }
       },
-      "GraphEngine.ServiceFabric.Remoting/2.0.10057": {
+      "GraphEngine.ServiceFabric.Remoting/2.0.10059": {
         "type": "package",
         "compile": {
           "lib/net461/Trinity.ServiceFabric.Remoting.dll": {}
@@ -1821,10 +1821,10 @@
       }
     },
     ".NETCoreApp,Version=v3.0/win7-x64": {
-      "GraphEngine.Client/2.0.10057": {
+      "GraphEngine.Client/2.0.10059": {
         "type": "package",
         "dependencies": {
-          "GraphEngine.Core": "2.0.10057",
+          "GraphEngine.Core": "2.0.10059",
           "System.ValueTuple": "4.5.0"
         },
         "compile": {
@@ -1834,7 +1834,7 @@
           "lib/netstandard2.0/Trinity.Client.dll": {}
         }
       },
-      "GraphEngine.Core/2.0.10057": {
+      "GraphEngine.Core/2.0.10059": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.ObjectPool": "2.0.0",
@@ -1853,11 +1853,11 @@
           "build/_._": {}
         }
       },
-      "GraphEngine.DynamicCluster/2.0.10057": {
+      "GraphEngine.DynamicCluster/2.0.10059": {
         "type": "package",
         "dependencies": {
-          "GraphEngine.Client": "2.0.10057",
-          "GraphEngine.Core": "2.0.10057",
+          "GraphEngine.Client": "2.0.10059",
+          "GraphEngine.Core": "2.0.10059",
           "Nito.AsyncEx.Coordination": "1.0.2",
           "Nito.AsyncEx.Tasks": "1.1.0",
           "System.Collections.Immutable": "1.4.0"
@@ -1869,10 +1869,10 @@
           "lib/netstandard2.0/Trinity.DynamicCluster.dll": {}
         }
       },
-      "GraphEngine.LIKQ/2.0.10057": {
+      "GraphEngine.LIKQ/2.0.10059": {
         "type": "package",
         "dependencies": {
-          "GraphEngine.Core": "2.0.10057",
+          "GraphEngine.Core": "2.0.10059",
           "Microsoft.CodeAnalysis.CSharp": "2.6.1",
           "Microsoft.CodeAnalysis.CSharp.Scripting": "2.6.1",
           "Microsoft.Extensions.Caching.Memory": "2.0.0",
@@ -1887,7 +1887,7 @@
           "lib/netstandard2.0/GraphEngine.LIKQ.dll": {}
         }
       },
-      "GraphEngine.ServiceFabric.Remoting/2.0.10057": {
+      "GraphEngine.ServiceFabric.Remoting/2.0.10059": {
         "type": "package",
         "compile": {
           "lib/net461/Trinity.ServiceFabric.Remoting.dll": {}
@@ -3667,29 +3667,29 @@
     }
   },
   "libraries": {
-    "GraphEngine.Client/2.0.10057": {
-      "sha512": "x/52EYLnEQzXZch3Md7YSBDjzRYeJG4DVfTlKuHUpyh09gAD43C2KgWiFBrDYctdlD463klWQmymaF+Sy0PiUA==",
+    "GraphEngine.Client/2.0.10059": {
+      "sha512": "dNhecwX/B8+RadryrVP2WqTeBcsrH3sW//SJU3oGtjXQ24ZLYOWYZnTBNBwHoDwQ/OGhjgIhXDxO9M0fqaigsw==",
       "type": "package",
-      "path": "graphengine.client/2.0.10057",
+      "path": "graphengine.client/2.0.10059",
       "files": [
         ".nupkg.metadata",
-        "graphengine.client.2.0.10057.nupkg.sha512",
+        "graphengine.client.2.0.10059.nupkg.sha512",
         "graphengine.client.nuspec",
         "lib/net461/Trinity.Client.dll",
         "lib/netstandard2.0/Trinity.Client.dll"
       ]
     },
-    "GraphEngine.Core/2.0.10057": {
-      "sha512": "sOkIXxE9w9QNpko+bN4qOSqMXInV1AWCHXm+XuwjimQAXb6tu6ktQzWkAP9oM2wOBURwVG0YP2uCrVQpFua8ow==",
+    "GraphEngine.Core/2.0.10059": {
+      "sha512": "cDdsw6psrHqg4JmtrC+1/r8TyFt2RnX2eLbO5fiC/rP6pVLqvq/mNhIhL75LjU9y1bMy2aVZqbe05z81g8/RAA==",
       "type": "package",
-      "path": "graphengine.core/2.0.10057",
+      "path": "graphengine.core/2.0.10059",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         "build/GraphEngine.Core.props",
         "build/GraphEngine.Core.targets",
         "content/TrinityConfig.Schema.xsd",
-        "graphengine.core.2.0.10057.nupkg.sha512",
+        "graphengine.core.2.0.10059.nupkg.sha512",
         "graphengine.core.nuspec",
         "lib/net451/Trinity.Core.dll",
         "lib/net461/Trinity.Core.dll",
@@ -3700,35 +3700,35 @@
         "tools/Trinity.TSL.CodeGen.exe"
       ]
     },
-    "GraphEngine.DynamicCluster/2.0.10057": {
-      "sha512": "fQjwBobB9SrasupurDuSPUANl2cuoWa6TffiL5OwuVJZ5K5ljPct02zjPwELOBdBdDqYVsZU2VVuGPaJhdcU3A==",
+    "GraphEngine.DynamicCluster/2.0.10059": {
+      "sha512": "ZChmFaVv7crk8hqCPZwhPDn1WH435ekUkGLcz+VcNHMtYrsesL8VqiTUzbTSj2V0haIuE7AVlz1bj6UA6r5r7g==",
       "type": "package",
-      "path": "graphengine.dynamiccluster/2.0.10057",
+      "path": "graphengine.dynamiccluster/2.0.10059",
       "files": [
         ".nupkg.metadata",
-        "graphengine.dynamiccluster.2.0.10057.nupkg.sha512",
+        "graphengine.dynamiccluster.2.0.10059.nupkg.sha512",
         "graphengine.dynamiccluster.nuspec",
         "lib/netstandard2.0/Trinity.DynamicCluster.dll"
       ]
     },
-    "GraphEngine.LIKQ/2.0.10057": {
-      "sha512": "DqEqjs2DEwGAJaZJvpKgmPwhKnA7qLWZ8csI1CNyigJsl0apugV+hBBL1GCuUxeiaxhpAiZOSmNWG+AZEjzYig==",
+    "GraphEngine.LIKQ/2.0.10059": {
+      "sha512": "/XzF87swvUnS3JhRMHJYO5M/T5MIlklw9KrhQlmV8GCrwtr2n4bKBEQCmzvEKujE/u9fscz3fwOk33QR0nsAKw==",
       "type": "package",
-      "path": "graphengine.likq/2.0.10057",
+      "path": "graphengine.likq/2.0.10059",
       "files": [
         ".nupkg.metadata",
-        "graphengine.likq.2.0.10057.nupkg.sha512",
+        "graphengine.likq.2.0.10059.nupkg.sha512",
         "graphengine.likq.nuspec",
         "lib/netstandard2.0/GraphEngine.LIKQ.dll"
       ]
     },
-    "GraphEngine.ServiceFabric.Remoting/2.0.10057": {
-      "sha512": "y82R3q/tx1zgTq4SsADYVArisRAO7L+TDsNCyGLRPUB9x2msmB8n6RJlZLTsZT4PTQ1iIkaaWeBRTcoI5X42sg==",
+    "GraphEngine.ServiceFabric.Remoting/2.0.10059": {
+      "sha512": "MKaI98wkdOFuW3IAa+oT8a3r1NPRgMu+wLlK8jDIJOKd3bBE+kl52jDcTifG0Sd/HX0wquZOr44UePFaDfG+DQ==",
       "type": "package",
-      "path": "graphengine.servicefabric.remoting/2.0.10057",
+      "path": "graphengine.servicefabric.remoting/2.0.10059",
       "files": [
         ".nupkg.metadata",
-        "graphengine.servicefabric.remoting.2.0.10057.nupkg.sha512",
+        "graphengine.servicefabric.remoting.2.0.10059.nupkg.sha512",
         "graphengine.servicefabric.remoting.nuspec",
         "lib/net461/Trinity.ServiceFabric.Remoting.dll"
       ]
@@ -8413,11 +8413,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreRemotingClientService\\IKW.GraphEngine.TripleStoreRemotingClientService.csproj",
+      "projectUniqueName": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreRemotingClientService\\IKW.GraphEngine.TripleStoreRemotingClientService.csproj",
       "projectName": "IKW.GraphEngine.TripleStoreRemotingClientService",
-      "projectPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreRemotingClientService\\IKW.GraphEngine.TripleStoreRemotingClientService.csproj",
+      "projectPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreRemotingClientService\\IKW.GraphEngine.TripleStoreRemotingClientService.csproj",
       "packagesPath": "C:\\Users\\Tavi\\.nuget\\packages\\",
-      "outputPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreRemotingClientService\\obj\\",
+      "outputPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreRemotingClientService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "E:\\Microsoft\\Xamarin\\NuGet\\",
@@ -8435,7 +8435,7 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
-        "I:\\Trinity-GraphEngine\\GraphEngine\\build": {},
+        "I:\\Trinity-GraphEngine\\build": {},
         "Q:\\RUB Nuget Package Share": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://rocketurbizdev.pkgs.visualstudio.com/_packaging/RUB-SemanticEnhancement-NugetFeed/nuget/v3/index.json": {}
@@ -8443,8 +8443,8 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj": {
-              "projectPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj"
+            "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj": {
+              "projectPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj"
             }
           }
         }
@@ -8507,10 +8507,54 @@
   },
   "logs": [
     {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol depends on GraphEngine.Core (>= 2.0.10057) but GraphEngine.Core 2.0.10057 was not found. An approximate best match of GraphEngine.Core 2.0.10059 was resolved.",
+      "libraryId": "GraphEngine.Core",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.0",
+        ".NETCoreApp,Version=v3.0/win7-x64"
+      ]
+    },
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol depends on GraphEngine.DynamicCluster (>= 2.0.10057) but GraphEngine.DynamicCluster 2.0.10057 was not found. An approximate best match of GraphEngine.DynamicCluster 2.0.10059 was resolved.",
+      "libraryId": "GraphEngine.DynamicCluster",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.0",
+        ".NETCoreApp,Version=v3.0/win7-x64"
+      ]
+    },
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol depends on GraphEngine.LIKQ (>= 2.0.10057) but GraphEngine.LIKQ 2.0.10057 was not found. An approximate best match of GraphEngine.LIKQ 2.0.10059 was resolved.",
+      "libraryId": "GraphEngine.LIKQ",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.0",
+        ".NETCoreApp,Version=v3.0/win7-x64"
+      ]
+    },
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "IKW.GraphEngine.TripleStoreRemotingClientService depends on GraphEngine.ServiceFabric.Remoting (>= 2.0.10057) but GraphEngine.ServiceFabric.Remoting 2.0.10057 was not found. An approximate best match of GraphEngine.ServiceFabric.Remoting 2.0.10059 was resolved.",
+      "libraryId": "GraphEngine.ServiceFabric.Remoting",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.0",
+        ".NETCoreApp,Version=v3.0/win7-x64"
+      ]
+    },
+    {
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'GraphEngine.ServiceFabric.Remoting 2.0.10057' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.0'. This package may not be fully compatible with your project.",
+      "message": "Package 'GraphEngine.ServiceFabric.Remoting 2.0.10059' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.0'. This package may not be fully compatible with your project.",
       "libraryId": "GraphEngine.ServiceFabric.Remoting",
       "targetGraphs": [
         ".NETCoreApp,Version=v3.0"
