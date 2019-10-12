@@ -14,11 +14,10 @@
   <ItemGroup>
 	  <!--Required to store working data-->
       <!-- Include Trinity Graph Engine Runtime Core -->
-	  <PackageReference Include="GraphEngine.Core" Version="2.0.10057" />
+	  <PackageReference Include="GraphEngine.Core" Version="2.0.10059" />
+	  <PackageReference Include="GraphEngine.DynamicCluster" Version="2.0.10059" />
 	  <!--Gain Access to Graph Engine (Cluster) Memory Cloud-->
-	  <PackageReference Include="GraphEngine.DynamicCluster" Version="2.0.10057" />
-	  <!--Use Language Integrated Knowledge Query--> 
-	  <PackageReference Include="GraphEngine.LIKQ" Version="2.0.10057" />
+	  <!--Use Language Integrated Knowledge Query-->
 	  <!--Dynamic HyperEdge (Property) and HyperGraph nodes-->
 	  <PackageReference Include="Microsoft.DependencyValidation.Analyzers" Version="0.10.0" />
 	  <!--TSL Code Generationo Directives-->
