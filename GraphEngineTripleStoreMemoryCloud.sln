@@ -15,7 +15,7 @@ Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "GraphEngineTripleStoreMemor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IKW.GraphEngine.TripleStore.MemoryCloudService", "IKW.GraphEngine.TripleStore.MemoryCloudService\IKW.GraphEngine.TripleStore.MemoryCloudService.csproj", "{0BDA2B31-7008-4A69-98AF-D6A4D36CDC0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKW.GraphEngine.TripleStoreRemotingClientService", "IKW.GraphEngine.TripleStoreRemotingClientService\IKW.GraphEngine.TripleStoreRemotingClientService.csproj", "{7E350F90-84F8-4FF1-AAE8-0C367EBB89C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IKW.GraphEngine.TripleStoreRemotingClientService", "IKW.GraphEngine.TripleStoreRemotingClientService\IKW.GraphEngine.TripleStoreRemotingClientService.csproj", "{7E350F90-84F8-4FF1-AAE8-0C367EBB89C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

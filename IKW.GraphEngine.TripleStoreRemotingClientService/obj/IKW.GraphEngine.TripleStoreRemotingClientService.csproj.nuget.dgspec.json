@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreRemotingClientService\\IKW.GraphEngine.TripleStoreRemotingClientService.csproj": {}
+    "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreRemotingClientService\\IKW.GraphEngine.TripleStoreRemotingClientService.csproj": {}
   },
   "projects": {
-    "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj": {
+    "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj",
+        "projectUniqueName": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj",
         "projectName": "IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol",
-        "projectPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj",
+        "projectPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj",
         "packagesPath": "C:\\Users\\Tavi\\.nuget\\packages\\",
-        "outputPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\obj\\",
+        "outputPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "E:\\Microsoft\\Xamarin\\NuGet\\",
@@ -55,10 +55,6 @@
             "GraphEngine.DynamicCluster": {
               "target": "Package",
               "version": "[2.0.10059, )"
-            },
-            "Microsoft.DependencyValidation.Analyzers": {
-              "target": "Package",
-              "version": "[0.10.0, )"
             }
           },
           "imports": [
@@ -80,14 +76,14 @@
         }
       }
     },
-    "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreRemotingClientService\\IKW.GraphEngine.TripleStoreRemotingClientService.csproj": {
+    "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreRemotingClientService\\IKW.GraphEngine.TripleStoreRemotingClientService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreRemotingClientService\\IKW.GraphEngine.TripleStoreRemotingClientService.csproj",
+        "projectUniqueName": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreRemotingClientService\\IKW.GraphEngine.TripleStoreRemotingClientService.csproj",
         "projectName": "IKW.GraphEngine.TripleStoreRemotingClientService",
-        "projectPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreRemotingClientService\\IKW.GraphEngine.TripleStoreRemotingClientService.csproj",
+        "projectPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreRemotingClientService\\IKW.GraphEngine.TripleStoreRemotingClientService.csproj",
         "packagesPath": "C:\\Users\\Tavi\\.nuget\\packages\\",
-        "outputPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreRemotingClientService\\obj\\",
+        "outputPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreRemotingClientService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "E:\\Microsoft\\Xamarin\\NuGet\\",
@@ -113,8 +109,8 @@
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj": {
-                "projectPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj"
+              "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj": {
+                "projectPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj"
               }
             }
           }

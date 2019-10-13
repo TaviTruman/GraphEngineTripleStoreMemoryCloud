@@ -9,8 +9,7 @@
       "IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol/1.0.0": {
         "dependencies": {
           "GraphEngine.Core": "2.0.10059",
-          "GraphEngine.DynamicCluster": "2.0.10059",
-          "Microsoft.DependencyValidation.Analyzers": "0.10.0"
+          "GraphEngine.DynamicCluster": "2.0.10059"
         },
         "runtime": {
           "IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.dll": {}
@@ -87,7 +86,6 @@
           "System.Threading": "4.0.11"
         }
       },
-      "Microsoft.DependencyValidation.Analyzers/0.10.0": {},
       "Microsoft.Extensions.ObjectPool/2.0.0": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.dll": {
@@ -509,13 +507,6 @@
       "sha512": "sha512-17h8b5mXa87XYKrrVqdgZ38JefSUqLChUQpXgSnpzsM0nDOhE40FTeNWOJ/YmySGV6tG6T8+hjz6vxbknHJr6A==",
       "path": "microsoft.csharp/4.0.1",
       "hashPath": "microsoft.csharp.4.0.1.nupkg.sha512"
-    },
-    "Microsoft.DependencyValidation.Analyzers/0.10.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-VXi/pc6FFBhDIhm+WylrAKxN4/CtYVo9fNnD1Hq+XwzqN6KF1gvC3G2bDqETbTLsML/u60c658+0veyQK5M1IQ==",
-      "path": "microsoft.dependencyvalidation.analyzers/0.10.0",
-      "hashPath": "microsoft.dependencyvalidation.analyzers.0.10.0.nupkg.sha512"
     },
     "Microsoft.Extensions.ObjectPool/2.0.0": {
       "type": "package",

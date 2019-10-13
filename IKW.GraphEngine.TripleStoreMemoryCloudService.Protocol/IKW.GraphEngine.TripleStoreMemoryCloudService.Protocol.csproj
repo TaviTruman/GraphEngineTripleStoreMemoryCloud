@@ -19,7 +19,6 @@
 	  <!--Gain Access to Graph Engine (Cluster) Memory Cloud-->
 	  <!--Use Language Integrated Knowledge Query-->
 	  <!--Dynamic HyperEdge (Property) and HyperGraph nodes-->
-	  <PackageReference Include="Microsoft.DependencyValidation.Analyzers" Version="0.10.0" />
 	  <!--TSL Code Generationo Directives-->
 	  <TslCodegen Include="Communications.Messaging\TripleStoreMemoryCloudServiceAPI.tsl" />
 	  <TslCodegen Include="Graph.DataModelSchema\TripleStoreMemoryCloudGraph.tsl" />

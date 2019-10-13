@@ -5,9 +5,11 @@ using System.Threading;
 using IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol;
 using InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL;
 using Trinity;
+using Trinity.Azure.Storage;
 using Trinity.Diagnostics;
 using Trinity.DynamicCluster.Storage;
 using Trinity.ServiceFabric;
+using Trinity.ServiceFabric.Remoting;
 
 namespace IKW.GraphEngine.TripleStore.MemoryCloudService
 {
@@ -20,6 +22,9 @@ namespace IKW.GraphEngine.TripleStore.MemoryCloudService
         /// <summary>
         /// This is the entry point of the service host process.
         /// </summary>
+        [UseExtension(typeof(BlobStoragePersistentStorage))]
+        [UseExtension(typeof(ITrinityOverRemotingService))]
+        //[UseExtension(typeof(FanoutSearchModule))]
         [UseExtension(typeof(TripleStoreMemoryCloudServiceImpl))]
         private static void Main()
         {
@@ -38,8 +43,9 @@ namespace IKW.GraphEngine.TripleStore.MemoryCloudService
 
                 GraphEngineService.StartServiceAsync(TripleStoreMemoryCloudServiceTypeString).GetAwaiter().GetResult();
 
-                Log.WriteLine("Hello world from GE-SF integration!");
+                ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(GraphEngineService).Name);
 
+                Log.WriteLine("Hello world from GE-SF integration!");
 
                 var dynamicMemoryCloud = Global.CloudStorage as DynamicMemoryCloud;
 
@@ -71,11 +77,9 @@ namespace IKW.GraphEngine.TripleStore.MemoryCloudService
                     TripleCollection = tripleCollection
                 };
 
-                dynamicMemoryCloud?.SaveGraph(myGraph);
+                //dynamicMemoryCloud?.SaveGraph(myGraph);
 
                 // Trinity-GraphEngine Azure Service Fabric initialization Step 2: I'm not sure this is right?!!! TT @ 01/10/2019
-
-                ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(GraphEngineService).Name);
 
                 // Also, pay attention that, only *master replicas of the partitions* reach here.
                 // When the cluster is shutting down, it is possible that the secondary replicas

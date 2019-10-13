@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Fabric;
+using System.Fabric.Query;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,8 +9,8 @@ using IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol;
 using InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL;
 using InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL.TripleStoreMemoryCloudServiceModule;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
-using Microsoft.ServiceFabric.Services.Runtime;
 using Trinity.Client;
+using StatelessService = Microsoft.ServiceFabric.Services.Runtime.StatelessService;
 
 namespace IKW.GraphEngine.TripleStoreRemotingClientService
 {
@@ -55,19 +56,17 @@ namespace IKW.GraphEngine.TripleStoreRemotingClientService
             {
                 cancellationToken.ThrowIfCancellationRequested();
 
-                var rdfTriple = new RDFTriple()
-                {
-                    Object    = new Node(),
-                    Predicate = new Node(),
-                    Subject   = new Node()
-                };
-
                 var storeTripleRequest =
-                    new StoreTripleRequestWriter(new TripleStatement());
+                    new StoreTripleRequestWriter()
+                    {
+                        Subject = @"GraphEngine",
+                        Predicate = @"IsA",
+                        Object = @"GraphDataManagementSystem"
+                    };
                 
                 ServiceEventSource.Current.ServiceMessage(this.Context, "Working-{0}", ++iterations);
 
-                var tripleResponse = m_TripleStoreMemoryCloudClient.StoreTriple(storeTripleRequest);
+                //var tripleResponse = m_TripleStoreMemoryCloudClient.StoreTriple(storeTripleRequest);
 
                 await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken).ConfigureAwait(false);
             }
