@@ -11,6 +11,10 @@ namespace IKW.GraphEngine.TripleStore.MemoryCloudService
 {
     internal static class Program
     {
+
+        private const string TripleStoreMemoryCloudServiceTypeString =
+            @"IKW.GraphEngine.TripleStore.MemoryCloudServiceType";
+
         /// <summary>
         /// This is the entry point of the service host process.
         /// </summary>
@@ -30,7 +34,7 @@ namespace IKW.GraphEngine.TripleStore.MemoryCloudService
 
                 // Trinity-GraphEngine Azure Service Fabric initialization Step 1: 
 
-                GraphEngineService.StartServiceAsync("IKW.GraphEngine.TripleStore.MemoryCloudServiceType").GetAwaiter().GetResult();
+                GraphEngineService.StartServiceAsync(TripleStoreMemoryCloudServiceTypeString).GetAwaiter().GetResult();
 
                 Log.WriteLine("Hello world from GE-SF integration!");
 

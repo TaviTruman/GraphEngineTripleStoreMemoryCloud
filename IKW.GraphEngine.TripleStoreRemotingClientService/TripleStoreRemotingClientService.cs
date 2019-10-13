@@ -18,13 +18,17 @@ namespace IKW.GraphEngine.TripleStoreRemotingClientService
     /// </summary>
     internal sealed class TripleStoreRemotingClientService : StatelessService
     {
-        private TrinityClient m_trinity;
+        private const string TripleStoreMemoryCloudServiceString =
+            @"fabric:/GraphEngineTripleStoreMemoryCloudSFApp/IKW.GraphEngine.TripleStore.MemoryCloudService";
+
+        private TrinityClient m_TripleStoreMemoryCloudClient = null;
+
         public TripleStoreRemotingClientService(StatelessServiceContext context)
             : base(context)
         {
-            m_trinity = new TrinityClient("fabric:/GraphEngineTripleStoreMemoryCloudSFApp/IKW.GraphEngine.TripleStoreRemotingClientService");
-            m_trinity.RegisterCommunicationModule<TripleStoreMemoryCloudServiceImpl>();
-            m_trinity.Start();
+            m_TripleStoreMemoryCloudClient = new TrinityClient(TripleStoreMemoryCloudServiceString);
+            m_TripleStoreMemoryCloudClient.RegisterCommunicationModule<TripleStoreMemoryCloudServiceImpl>();
+            m_TripleStoreMemoryCloudClient.Start();
         }
 
         /// <summary>
@@ -63,7 +67,7 @@ namespace IKW.GraphEngine.TripleStoreRemotingClientService
                 
                 ServiceEventSource.Current.ServiceMessage(this.Context, "Working-{0}", ++iterations);
 
-                var tripleResponse = m_trinity.StoreTriple(storeTripleRequest);
+                var tripleResponse = m_TripleStoreMemoryCloudClient.StoreTriple(storeTripleRequest);
 
                 await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken).ConfigureAwait(false);
             }
