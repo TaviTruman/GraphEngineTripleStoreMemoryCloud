@@ -93,3 +93,4 @@ I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.Trip
 I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\obj\Debug\netcoreapp3.0\GeneratedCode\Structs\Triple.cs
 I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\obj\Debug\netcoreapp3.0\GeneratedCode\Structs\HelloMessageReponse.cs
 I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\obj\Debug\netcoreapp3.0\GeneratedCode\Structs\HelloNessageRequest.cs
+I:\IKW-AzureServiceFabric\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\obj\Debug\netcoreapp3.0\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csprojAssemblyReference.cache

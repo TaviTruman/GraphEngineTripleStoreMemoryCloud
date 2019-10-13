@@ -47,35 +47,35 @@ namespace IKW.GraphEngine.TripleStore.MemoryCloudService
 
                 Log.WriteLine("Hello world from GE-SF integration!");
 
-                var dynamicMemoryCloud = Global.CloudStorage as DynamicMemoryCloud;
+                //var dynamicMemoryCloud = Global.CloudStorage as DynamicMemoryCloud;
 
-                var localMemoryCloud = Global.LocalStorage;
+                //var localMemoryCloud = Global.LocalStorage;
 
-                var myTriple =
-                    new Triple()
-                    {
-                        GraphInstance = 0,
-                        HashCode = 1,
-                        Nodes = new System.Collections.Generic.List<INode>()
-                        {
-                            new INode()
-                            {
-                                GraphParent = 0,
-                                GraphUri    = "http://www.inknowworks.semanticweb.ontology/persongraph",
-                                HashCode    = 0,
-                                TypeOfNode  = NodeType.GraphLiteral
-                            }
-                        }
-                    };
+                //var myTriple =
+                //    new Triple()
+                //    {
+                //        GraphInstance = 0,
+                //        HashCode = 1,
+                //        Nodes = new System.Collections.Generic.List<INode>()
+                //        {
+                //            new INode()
+                //            {
+                //                GraphParent = 0,
+                //                GraphUri    = "http://www.inknowworks.semanticweb.ontology/persongraph",
+                //                HashCode    = 0,
+                //                TypeOfNode  = NodeType.GraphLiteral
+                //            }
+                //        }
+                //    };
 
-                var tripleCollection = new List<Triple> { myTriple };
+                //var tripleCollection = new List<Triple> { myTriple };
 
-                Graph myGraph = new Graph()
-                {
-                    BaseUri = "http://www.inknowworks.semanticweb.ontology/",
-                    CellId = 0,
-                    TripleCollection = tripleCollection
-                };
+                //Graph myGraph = new Graph()
+                //{
+                //    BaseUri = "http://www.inknowworks.semanticweb.ontology/",
+                //    CellId = 0,
+                //    TripleCollection = tripleCollection
+                //};
 
                 //dynamicMemoryCloud?.SaveGraph(myGraph);
 
