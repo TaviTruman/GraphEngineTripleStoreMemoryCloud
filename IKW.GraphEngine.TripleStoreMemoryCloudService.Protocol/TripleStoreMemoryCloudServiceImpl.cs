@@ -11,6 +11,11 @@ namespace IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol
     {
         public override string GetModuleName() => "TripleStoreMemoryCloudServiceImpl";
 
+        public override void PingHandler()
+        {
+            Log.WriteLine("Ping received!");
+        }
+
         public override void StoreTripleHandler(StoreTripleRequestReader request, StoreTripleResponseWriter response)
         {
             Log.WriteLine("Hello world from GE-SF integration!");
@@ -47,6 +52,13 @@ namespace IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol
 
             dynamicMemoryCloud?.SaveGraph(myGraph);
 
+        }
+
+        public override void HelloMessageHandler(HelloNessageRequestReader request, HelloMessageReponseWriter response)
+        {
+            response = new HelloMessageReponseWriter(@"Hello from Graph Engine/Service Fabric Hello Message Service");
+
+            Log.WriteLine($"Hello Message Handler Reached. Hello Message {request}, Message Response: {response}");
         }
     }
 }

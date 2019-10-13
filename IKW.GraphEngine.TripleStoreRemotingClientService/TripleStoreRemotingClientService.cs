@@ -10,6 +10,7 @@ using InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL;
 using InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL.TripleStoreMemoryCloudServiceModule;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Trinity.Client;
+using Trinity.Diagnostics;
 using StatelessService = Microsoft.ServiceFabric.Services.Runtime.StatelessService;
 
 namespace IKW.GraphEngine.TripleStoreRemotingClientService
@@ -28,7 +29,7 @@ namespace IKW.GraphEngine.TripleStoreRemotingClientService
             : base(context)
         {
             m_TripleStoreMemoryCloudClient = new TrinityClient(TripleStoreMemoryCloudServiceString);
-            m_TripleStoreMemoryCloudClient.RegisterCommunicationModule<TripleStoreMemoryCloudServiceImpl>();
+            //m_TripleStoreMemoryCloudClient.RegisterCommunicationModule<TripleStoreMemoryCloudServiceImpl>();
             m_TripleStoreMemoryCloudClient.Start();
         }
 
@@ -55,6 +56,12 @@ namespace IKW.GraphEngine.TripleStoreRemotingClientService
             while (true)
             {
                 cancellationToken.ThrowIfCancellationRequested();
+
+                m_TripleStoreMemoryCloudClient.Ping();
+
+                var messageResponse = m_TripleStoreMemoryCloudClient.HelloMessage(new HelloNessageRequestWriter($"Hello from GE/SF Remoting Client"));
+
+                Log.WriteLine($"Working");
 
                 var storeTripleRequest =
                     new StoreTripleRequestWriter()
