@@ -87,15 +87,6 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             throw new DataTypeIncompatibleException("Data type 'Triple' not compatible with the target field.");
         }
         
-        internal static void parse_TripleStatement(string value)
-        {
-            throw new ArgumentException("Cannot parse \""+value+"\" into TripleStatement.");
-        }
-        internal static void incompatible_with_TripleStatement()
-        {
-            throw new DataTypeIncompatibleException("Data type 'TripleStatement' not compatible with the target field.");
-        }
-        
         internal static void parse_NodeType(string value)
         {
             throw new ArgumentException("Cannot parse \""+value+"\" into NodeType.");

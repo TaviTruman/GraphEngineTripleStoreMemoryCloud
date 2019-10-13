@@ -430,10 +430,64 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                             first_field = false;
                         else
                             str_builder.Append(',');
-                        str_builder.Append("\"RDFTriple\":");
+                        str_builder.Append("\"RefId\":");
                         
-                        ToString_impl(value.RDFTriple, str_builder, in_json: true);
+                        ToString_impl(value.RefId, str_builder, in_json: true);
                         
+                }
+                
+                {
+                    
+                    if (value.Subject != null)
+                    
+                    {
+                        
+                        if(first_field)
+                            first_field = false;
+                        else
+                            str_builder.Append(',');
+                        str_builder.Append("\"Subject\":");
+                        
+                        ToString_impl(value.Subject, str_builder, in_json: true);
+                        
+                    }
+                    
+                }
+                
+                {
+                    
+                    if (value.Predicate != null)
+                    
+                    {
+                        
+                        if(first_field)
+                            first_field = false;
+                        else
+                            str_builder.Append(',');
+                        str_builder.Append("\"Predicate\":");
+                        
+                        ToString_impl(value.Predicate, str_builder, in_json: true);
+                        
+                    }
+                    
+                }
+                
+                {
+                    
+                    if (value.Object != null)
+                    
+                    {
+                        
+                        if(first_field)
+                            first_field = false;
+                        else
+                            str_builder.Append(',');
+                        str_builder.Append("\"Object\":");
+                        
+                        ToString_impl(value.Object, str_builder, in_json: true);
+                        
+                    }
+                    
                 }
                 
                 str_builder.Append('}');
@@ -456,10 +510,64 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                             first_field = false;
                         else
                             str_builder.Append(',');
-                        str_builder.Append("\"RDDFTriple\":");
+                        str_builder.Append("\"RefId\":");
                         
-                        ToString_impl(value.RDDFTriple, str_builder, in_json: true);
+                        ToString_impl(value.RefId, str_builder, in_json: true);
                         
+                }
+                
+                {
+                    
+                    if (value.Subject != null)
+                    
+                    {
+                        
+                        if(first_field)
+                            first_field = false;
+                        else
+                            str_builder.Append(',');
+                        str_builder.Append("\"Subject\":");
+                        
+                        ToString_impl(value.Subject, str_builder, in_json: true);
+                        
+                    }
+                    
+                }
+                
+                {
+                    
+                    if (value.Predicate != null)
+                    
+                    {
+                        
+                        if(first_field)
+                            first_field = false;
+                        else
+                            str_builder.Append(',');
+                        str_builder.Append("\"Predicate\":");
+                        
+                        ToString_impl(value.Predicate, str_builder, in_json: true);
+                        
+                    }
+                    
+                }
+                
+                {
+                    
+                    if (value.Object != null)
+                    
+                    {
+                        
+                        if(first_field)
+                            first_field = false;
+                        else
+                            str_builder.Append(',');
+                        str_builder.Append("\"Object\":");
+                        
+                        ToString_impl(value.Object, str_builder, in_json: true);
+                        
+                    }
+                    
                 }
                 
                 str_builder.Append('}');

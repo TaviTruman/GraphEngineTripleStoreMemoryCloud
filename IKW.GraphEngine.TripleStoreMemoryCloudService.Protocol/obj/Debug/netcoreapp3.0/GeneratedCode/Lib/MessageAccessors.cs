@@ -13,16 +13,16 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
 {
     
     /// <summary>
-    /// Represents a read-only accessor on the message of type StoreTripleRequest defined in the TSL protocols.
+    /// Represents a read-only accessor on the message of type StoreTripleResponse defined in the TSL protocols.
     /// The message readers will be instantiated by the system and passed to user's logic.
     /// After finished accessing the message. It is the user's responsibility to call Dispose()
     /// on the reader object. Recommend wrapping the reader with a <c>using Statement block</c>.
     /// <seealso ref="https://msdn.microsoft.com/en-us/library/yh598w02.aspx"/>
     /// </summary>
-    public unsafe sealed class StoreTripleRequestReader : StoreTripleRequest_Accessor, IDisposable
+    public unsafe sealed class StoreTripleResponseReader : StoreTripleResponse_Accessor, IDisposable
     {
         byte * buffer;
-        internal StoreTripleRequestReader(byte* buf, int offset)
+        internal StoreTripleResponseReader(byte* buf, int offset)
             : base(buf + offset
                   
                   , ReaderResizeFunc
@@ -32,13 +32,13 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         }
         
         /** 
-         * StoreTripleRequestReader is not resizable because it may be attached
+         * StoreTripleResponseReader is not resizable because it may be attached
          * to a buffer passed in from the network layer and we don't know how
          * to resize it.
          */
         static byte* ReaderResizeFunc(byte* ptr, int offset, int delta)
         {
-            throw new InvalidOperationException("StoreTripleRequestReader is not resizable");
+            throw new InvalidOperationException("StoreTripleResponseReader is not resizable");
         }
         
         /// <summary>
@@ -52,19 +52,19 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         }
     }
     /// <summary>
-    /// Represents a writer accessor on the message of type StoreTripleRequest defined in the TSL protocols.
+    /// Represents a writer accessor on the message of type StoreTripleResponse defined in the TSL protocols.
     /// The message writers should be instantiated by the user's logic and passed to the system to send it out.
     /// After finished accessing the message. It is the user's responsibility to call Dispose()
     /// on the writer object. Recommend wrapping the reader with a <c>using Statement block</c>.
     /// </summary>
     /// <seealso ref="https://msdn.microsoft.com/en-us/library/yh598w02.aspx"/>
     /// <remarks>Calling <c>Dispose()</c> does not send the message out.</remarks>
-    public unsafe sealed class StoreTripleRequestWriter : StoreTripleRequest_Accessor, IDisposable
+    public unsafe sealed class StoreTripleResponseWriter : StoreTripleResponse_Accessor, IDisposable
     {
         internal byte* buffer = null;
         internal int BufferLength;
         internal int Length; 
-        public unsafe StoreTripleRequestWriter( TripleStatement RDFTriple = default(TripleStatement) )
+        public unsafe StoreTripleResponseWriter( Guid RefId = default(Guid) , string Subject = default(string) , string Predicate = default(string) , string Object = default(string) )
             : base(null
                   
                   , null
@@ -77,37 +77,34 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             targetPtr = (byte*)preservedHeaderLength;
             
             {
-
-            {
 targetPtr += 16;
-        if(RDFTriple.Subject!= null)
+        if(Subject!= null)
         {
-            int strlen_3 = RDFTriple.Subject.Length * 2;
-            targetPtr += strlen_3+sizeof(int);
+            int strlen_2 = Subject.Length * 2;
+            targetPtr += strlen_2+sizeof(int);
         }else
         {
             targetPtr += sizeof(int);
         }
 
-        if(RDFTriple.Predicate!= null)
+        if(Predicate!= null)
         {
-            int strlen_3 = RDFTriple.Predicate.Length * 2;
-            targetPtr += strlen_3+sizeof(int);
+            int strlen_2 = Predicate.Length * 2;
+            targetPtr += strlen_2+sizeof(int);
         }else
         {
             targetPtr += sizeof(int);
         }
 
-        if(RDFTriple.Object!= null)
+        if(Object!= null)
         {
-            int strlen_3 = RDFTriple.Object.Length * 2;
-            targetPtr += strlen_3+sizeof(int);
+            int strlen_2 = Object.Length * 2;
+            targetPtr += strlen_2+sizeof(int);
         }else
         {
             targetPtr += sizeof(int);
         }
 
-            }
             }
             byte* tmpcellptr = (byte*)Memory.malloc((ulong)targetPtr);
             {
@@ -119,10 +116,8 @@ targetPtr += 16;
                 
             {
 
-            {
-
         {
-            byte[] tmpGuid = RDFTriple.RefId.ToByteArray();
+            byte[] tmpGuid = RefId.ToByteArray();
             fixed(byte* tmpGuidPtr = tmpGuid)
             {
                 Memory.Copy(tmpGuidPtr, targetPtr, 16);
@@ -130,15 +125,15 @@ targetPtr += 16;
             targetPtr += 16;
         }
 
-        if(RDFTriple.Subject!= null)
+        if(Subject!= null)
         {
-            int strlen_3 = RDFTriple.Subject.Length * 2;
-            *(int*)targetPtr = strlen_3;
+            int strlen_2 = Subject.Length * 2;
+            *(int*)targetPtr = strlen_2;
             targetPtr += sizeof(int);
-            fixed(char* pstr_3 = RDFTriple.Subject)
+            fixed(char* pstr_2 = Subject)
             {
-                Memory.Copy(pstr_3, targetPtr, strlen_3);
-                targetPtr += strlen_3;
+                Memory.Copy(pstr_2, targetPtr, strlen_2);
+                targetPtr += strlen_2;
             }
         }else
         {
@@ -146,15 +141,15 @@ targetPtr += 16;
             targetPtr += sizeof(int);
         }
 
-        if(RDFTriple.Predicate!= null)
+        if(Predicate!= null)
         {
-            int strlen_3 = RDFTriple.Predicate.Length * 2;
-            *(int*)targetPtr = strlen_3;
+            int strlen_2 = Predicate.Length * 2;
+            *(int*)targetPtr = strlen_2;
             targetPtr += sizeof(int);
-            fixed(char* pstr_3 = RDFTriple.Predicate)
+            fixed(char* pstr_2 = Predicate)
             {
-                Memory.Copy(pstr_3, targetPtr, strlen_3);
-                targetPtr += strlen_3;
+                Memory.Copy(pstr_2, targetPtr, strlen_2);
+                targetPtr += strlen_2;
             }
         }else
         {
@@ -162,15 +157,15 @@ targetPtr += 16;
             targetPtr += sizeof(int);
         }
 
-        if(RDFTriple.Object!= null)
+        if(Object!= null)
         {
-            int strlen_3 = RDFTriple.Object.Length * 2;
-            *(int*)targetPtr = strlen_3;
+            int strlen_2 = Object.Length * 2;
+            *(int*)targetPtr = strlen_2;
             targetPtr += sizeof(int);
-            fixed(char* pstr_3 = RDFTriple.Object)
+            fixed(char* pstr_2 = Object)
             {
-                Memory.Copy(pstr_3, targetPtr, strlen_3);
-                targetPtr += strlen_3;
+                Memory.Copy(pstr_2, targetPtr, strlen_2);
+                targetPtr += strlen_2;
             }
         }else
         {
@@ -178,7 +173,6 @@ targetPtr += 16;
             targetPtr += sizeof(int);
         }
 
-            }
             }
             }
             
@@ -189,7 +183,7 @@ targetPtr += 16;
             this.ResizeFunction = WriterResizeFunction;
             
         }
-        internal unsafe StoreTripleRequestWriter(int asyncRspHeaderLength,  TripleStatement RDFTriple = default(TripleStatement) )
+        internal unsafe StoreTripleResponseWriter(int asyncRspHeaderLength,  Guid RefId = default(Guid) , string Subject = default(string) , string Predicate = default(string) , string Object = default(string) )
             : base(null
                   
                   , null
@@ -202,37 +196,34 @@ targetPtr += 16;
             targetPtr = (byte*)preservedHeaderLength;
             
             {
-
-            {
 targetPtr += 16;
-        if(RDFTriple.Subject!= null)
+        if(Subject!= null)
         {
-            int strlen_3 = RDFTriple.Subject.Length * 2;
-            targetPtr += strlen_3+sizeof(int);
+            int strlen_2 = Subject.Length * 2;
+            targetPtr += strlen_2+sizeof(int);
         }else
         {
             targetPtr += sizeof(int);
         }
 
-        if(RDFTriple.Predicate!= null)
+        if(Predicate!= null)
         {
-            int strlen_3 = RDFTriple.Predicate.Length * 2;
-            targetPtr += strlen_3+sizeof(int);
+            int strlen_2 = Predicate.Length * 2;
+            targetPtr += strlen_2+sizeof(int);
         }else
         {
             targetPtr += sizeof(int);
         }
 
-        if(RDFTriple.Object!= null)
+        if(Object!= null)
         {
-            int strlen_3 = RDFTriple.Object.Length * 2;
-            targetPtr += strlen_3+sizeof(int);
+            int strlen_2 = Object.Length * 2;
+            targetPtr += strlen_2+sizeof(int);
         }else
         {
             targetPtr += sizeof(int);
         }
 
-            }
             }
             byte* tmpcellptr = (byte*)Memory.malloc((ulong)targetPtr);
             {
@@ -244,10 +235,8 @@ targetPtr += 16;
                 
             {
 
-            {
-
         {
-            byte[] tmpGuid = RDFTriple.RefId.ToByteArray();
+            byte[] tmpGuid = RefId.ToByteArray();
             fixed(byte* tmpGuidPtr = tmpGuid)
             {
                 Memory.Copy(tmpGuidPtr, targetPtr, 16);
@@ -255,15 +244,15 @@ targetPtr += 16;
             targetPtr += 16;
         }
 
-        if(RDFTriple.Subject!= null)
+        if(Subject!= null)
         {
-            int strlen_3 = RDFTriple.Subject.Length * 2;
-            *(int*)targetPtr = strlen_3;
+            int strlen_2 = Subject.Length * 2;
+            *(int*)targetPtr = strlen_2;
             targetPtr += sizeof(int);
-            fixed(char* pstr_3 = RDFTriple.Subject)
+            fixed(char* pstr_2 = Subject)
             {
-                Memory.Copy(pstr_3, targetPtr, strlen_3);
-                targetPtr += strlen_3;
+                Memory.Copy(pstr_2, targetPtr, strlen_2);
+                targetPtr += strlen_2;
             }
         }else
         {
@@ -271,15 +260,15 @@ targetPtr += 16;
             targetPtr += sizeof(int);
         }
 
-        if(RDFTriple.Predicate!= null)
+        if(Predicate!= null)
         {
-            int strlen_3 = RDFTriple.Predicate.Length * 2;
-            *(int*)targetPtr = strlen_3;
+            int strlen_2 = Predicate.Length * 2;
+            *(int*)targetPtr = strlen_2;
             targetPtr += sizeof(int);
-            fixed(char* pstr_3 = RDFTriple.Predicate)
+            fixed(char* pstr_2 = Predicate)
             {
-                Memory.Copy(pstr_3, targetPtr, strlen_3);
-                targetPtr += strlen_3;
+                Memory.Copy(pstr_2, targetPtr, strlen_2);
+                targetPtr += strlen_2;
             }
         }else
         {
@@ -287,15 +276,15 @@ targetPtr += 16;
             targetPtr += sizeof(int);
         }
 
-        if(RDFTriple.Object!= null)
+        if(Object!= null)
         {
-            int strlen_3 = RDFTriple.Object.Length * 2;
-            *(int*)targetPtr = strlen_3;
+            int strlen_2 = Object.Length * 2;
+            *(int*)targetPtr = strlen_2;
             targetPtr += sizeof(int);
-            fixed(char* pstr_3 = RDFTriple.Object)
+            fixed(char* pstr_2 = Object)
             {
-                Memory.Copy(pstr_3, targetPtr, strlen_3);
-                targetPtr += strlen_3;
+                Memory.Copy(pstr_2, targetPtr, strlen_2);
+                targetPtr += strlen_2;
             }
         }else
         {
@@ -303,7 +292,6 @@ targetPtr += 16;
             targetPtr += sizeof(int);
         }
 
-            }
             }
             }
             
@@ -382,16 +370,16 @@ targetPtr += 16;
     }
     
     /// <summary>
-    /// Represents a read-only accessor on the message of type StoreTripleResponse defined in the TSL protocols.
+    /// Represents a read-only accessor on the message of type StoreTripleRequest defined in the TSL protocols.
     /// The message readers will be instantiated by the system and passed to user's logic.
     /// After finished accessing the message. It is the user's responsibility to call Dispose()
     /// on the reader object. Recommend wrapping the reader with a <c>using Statement block</c>.
     /// <seealso ref="https://msdn.microsoft.com/en-us/library/yh598w02.aspx"/>
     /// </summary>
-    public unsafe sealed class StoreTripleResponseReader : StoreTripleResponse_Accessor, IDisposable
+    public unsafe sealed class StoreTripleRequestReader : StoreTripleRequest_Accessor, IDisposable
     {
         byte * buffer;
-        internal StoreTripleResponseReader(byte* buf, int offset)
+        internal StoreTripleRequestReader(byte* buf, int offset)
             : base(buf + offset
                   
                   , ReaderResizeFunc
@@ -401,13 +389,13 @@ targetPtr += 16;
         }
         
         /** 
-         * StoreTripleResponseReader is not resizable because it may be attached
+         * StoreTripleRequestReader is not resizable because it may be attached
          * to a buffer passed in from the network layer and we don't know how
          * to resize it.
          */
         static byte* ReaderResizeFunc(byte* ptr, int offset, int delta)
         {
-            throw new InvalidOperationException("StoreTripleResponseReader is not resizable");
+            throw new InvalidOperationException("StoreTripleRequestReader is not resizable");
         }
         
         /// <summary>
@@ -421,19 +409,19 @@ targetPtr += 16;
         }
     }
     /// <summary>
-    /// Represents a writer accessor on the message of type StoreTripleResponse defined in the TSL protocols.
+    /// Represents a writer accessor on the message of type StoreTripleRequest defined in the TSL protocols.
     /// The message writers should be instantiated by the user's logic and passed to the system to send it out.
     /// After finished accessing the message. It is the user's responsibility to call Dispose()
     /// on the writer object. Recommend wrapping the reader with a <c>using Statement block</c>.
     /// </summary>
     /// <seealso ref="https://msdn.microsoft.com/en-us/library/yh598w02.aspx"/>
     /// <remarks>Calling <c>Dispose()</c> does not send the message out.</remarks>
-    public unsafe sealed class StoreTripleResponseWriter : StoreTripleResponse_Accessor, IDisposable
+    public unsafe sealed class StoreTripleRequestWriter : StoreTripleRequest_Accessor, IDisposable
     {
         internal byte* buffer = null;
         internal int BufferLength;
         internal int Length; 
-        public unsafe StoreTripleResponseWriter( TripleStatement RDDFTriple = default(TripleStatement) )
+        public unsafe StoreTripleRequestWriter( Guid RefId = default(Guid) , string Subject = default(string) , string Predicate = default(string) , string Object = default(string) )
             : base(null
                   
                   , null
@@ -446,37 +434,34 @@ targetPtr += 16;
             targetPtr = (byte*)preservedHeaderLength;
             
             {
-
-            {
 targetPtr += 16;
-        if(RDDFTriple.Subject!= null)
+        if(Subject!= null)
         {
-            int strlen_3 = RDDFTriple.Subject.Length * 2;
-            targetPtr += strlen_3+sizeof(int);
+            int strlen_2 = Subject.Length * 2;
+            targetPtr += strlen_2+sizeof(int);
         }else
         {
             targetPtr += sizeof(int);
         }
 
-        if(RDDFTriple.Predicate!= null)
+        if(Predicate!= null)
         {
-            int strlen_3 = RDDFTriple.Predicate.Length * 2;
-            targetPtr += strlen_3+sizeof(int);
+            int strlen_2 = Predicate.Length * 2;
+            targetPtr += strlen_2+sizeof(int);
         }else
         {
             targetPtr += sizeof(int);
         }
 
-        if(RDDFTriple.Object!= null)
+        if(Object!= null)
         {
-            int strlen_3 = RDDFTriple.Object.Length * 2;
-            targetPtr += strlen_3+sizeof(int);
+            int strlen_2 = Object.Length * 2;
+            targetPtr += strlen_2+sizeof(int);
         }else
         {
             targetPtr += sizeof(int);
         }
 
-            }
             }
             byte* tmpcellptr = (byte*)Memory.malloc((ulong)targetPtr);
             {
@@ -488,10 +473,8 @@ targetPtr += 16;
                 
             {
 
-            {
-
         {
-            byte[] tmpGuid = RDDFTriple.RefId.ToByteArray();
+            byte[] tmpGuid = RefId.ToByteArray();
             fixed(byte* tmpGuidPtr = tmpGuid)
             {
                 Memory.Copy(tmpGuidPtr, targetPtr, 16);
@@ -499,15 +482,15 @@ targetPtr += 16;
             targetPtr += 16;
         }
 
-        if(RDDFTriple.Subject!= null)
+        if(Subject!= null)
         {
-            int strlen_3 = RDDFTriple.Subject.Length * 2;
-            *(int*)targetPtr = strlen_3;
+            int strlen_2 = Subject.Length * 2;
+            *(int*)targetPtr = strlen_2;
             targetPtr += sizeof(int);
-            fixed(char* pstr_3 = RDDFTriple.Subject)
+            fixed(char* pstr_2 = Subject)
             {
-                Memory.Copy(pstr_3, targetPtr, strlen_3);
-                targetPtr += strlen_3;
+                Memory.Copy(pstr_2, targetPtr, strlen_2);
+                targetPtr += strlen_2;
             }
         }else
         {
@@ -515,15 +498,15 @@ targetPtr += 16;
             targetPtr += sizeof(int);
         }
 
-        if(RDDFTriple.Predicate!= null)
+        if(Predicate!= null)
         {
-            int strlen_3 = RDDFTriple.Predicate.Length * 2;
-            *(int*)targetPtr = strlen_3;
+            int strlen_2 = Predicate.Length * 2;
+            *(int*)targetPtr = strlen_2;
             targetPtr += sizeof(int);
-            fixed(char* pstr_3 = RDDFTriple.Predicate)
+            fixed(char* pstr_2 = Predicate)
             {
-                Memory.Copy(pstr_3, targetPtr, strlen_3);
-                targetPtr += strlen_3;
+                Memory.Copy(pstr_2, targetPtr, strlen_2);
+                targetPtr += strlen_2;
             }
         }else
         {
@@ -531,15 +514,15 @@ targetPtr += 16;
             targetPtr += sizeof(int);
         }
 
-        if(RDDFTriple.Object!= null)
+        if(Object!= null)
         {
-            int strlen_3 = RDDFTriple.Object.Length * 2;
-            *(int*)targetPtr = strlen_3;
+            int strlen_2 = Object.Length * 2;
+            *(int*)targetPtr = strlen_2;
             targetPtr += sizeof(int);
-            fixed(char* pstr_3 = RDDFTriple.Object)
+            fixed(char* pstr_2 = Object)
             {
-                Memory.Copy(pstr_3, targetPtr, strlen_3);
-                targetPtr += strlen_3;
+                Memory.Copy(pstr_2, targetPtr, strlen_2);
+                targetPtr += strlen_2;
             }
         }else
         {
@@ -547,7 +530,6 @@ targetPtr += 16;
             targetPtr += sizeof(int);
         }
 
-            }
             }
             }
             
@@ -558,7 +540,7 @@ targetPtr += 16;
             this.ResizeFunction = WriterResizeFunction;
             
         }
-        internal unsafe StoreTripleResponseWriter(int asyncRspHeaderLength,  TripleStatement RDDFTriple = default(TripleStatement) )
+        internal unsafe StoreTripleRequestWriter(int asyncRspHeaderLength,  Guid RefId = default(Guid) , string Subject = default(string) , string Predicate = default(string) , string Object = default(string) )
             : base(null
                   
                   , null
@@ -571,37 +553,34 @@ targetPtr += 16;
             targetPtr = (byte*)preservedHeaderLength;
             
             {
-
-            {
 targetPtr += 16;
-        if(RDDFTriple.Subject!= null)
+        if(Subject!= null)
         {
-            int strlen_3 = RDDFTriple.Subject.Length * 2;
-            targetPtr += strlen_3+sizeof(int);
+            int strlen_2 = Subject.Length * 2;
+            targetPtr += strlen_2+sizeof(int);
         }else
         {
             targetPtr += sizeof(int);
         }
 
-        if(RDDFTriple.Predicate!= null)
+        if(Predicate!= null)
         {
-            int strlen_3 = RDDFTriple.Predicate.Length * 2;
-            targetPtr += strlen_3+sizeof(int);
+            int strlen_2 = Predicate.Length * 2;
+            targetPtr += strlen_2+sizeof(int);
         }else
         {
             targetPtr += sizeof(int);
         }
 
-        if(RDDFTriple.Object!= null)
+        if(Object!= null)
         {
-            int strlen_3 = RDDFTriple.Object.Length * 2;
-            targetPtr += strlen_3+sizeof(int);
+            int strlen_2 = Object.Length * 2;
+            targetPtr += strlen_2+sizeof(int);
         }else
         {
             targetPtr += sizeof(int);
         }
 
-            }
             }
             byte* tmpcellptr = (byte*)Memory.malloc((ulong)targetPtr);
             {
@@ -613,10 +592,8 @@ targetPtr += 16;
                 
             {
 
-            {
-
         {
-            byte[] tmpGuid = RDDFTriple.RefId.ToByteArray();
+            byte[] tmpGuid = RefId.ToByteArray();
             fixed(byte* tmpGuidPtr = tmpGuid)
             {
                 Memory.Copy(tmpGuidPtr, targetPtr, 16);
@@ -624,15 +601,15 @@ targetPtr += 16;
             targetPtr += 16;
         }
 
-        if(RDDFTriple.Subject!= null)
+        if(Subject!= null)
         {
-            int strlen_3 = RDDFTriple.Subject.Length * 2;
-            *(int*)targetPtr = strlen_3;
+            int strlen_2 = Subject.Length * 2;
+            *(int*)targetPtr = strlen_2;
             targetPtr += sizeof(int);
-            fixed(char* pstr_3 = RDDFTriple.Subject)
+            fixed(char* pstr_2 = Subject)
             {
-                Memory.Copy(pstr_3, targetPtr, strlen_3);
-                targetPtr += strlen_3;
+                Memory.Copy(pstr_2, targetPtr, strlen_2);
+                targetPtr += strlen_2;
             }
         }else
         {
@@ -640,15 +617,15 @@ targetPtr += 16;
             targetPtr += sizeof(int);
         }
 
-        if(RDDFTriple.Predicate!= null)
+        if(Predicate!= null)
         {
-            int strlen_3 = RDDFTriple.Predicate.Length * 2;
-            *(int*)targetPtr = strlen_3;
+            int strlen_2 = Predicate.Length * 2;
+            *(int*)targetPtr = strlen_2;
             targetPtr += sizeof(int);
-            fixed(char* pstr_3 = RDDFTriple.Predicate)
+            fixed(char* pstr_2 = Predicate)
             {
-                Memory.Copy(pstr_3, targetPtr, strlen_3);
-                targetPtr += strlen_3;
+                Memory.Copy(pstr_2, targetPtr, strlen_2);
+                targetPtr += strlen_2;
             }
         }else
         {
@@ -656,15 +633,15 @@ targetPtr += 16;
             targetPtr += sizeof(int);
         }
 
-        if(RDDFTriple.Object!= null)
+        if(Object!= null)
         {
-            int strlen_3 = RDDFTriple.Object.Length * 2;
-            *(int*)targetPtr = strlen_3;
+            int strlen_2 = Object.Length * 2;
+            *(int*)targetPtr = strlen_2;
             targetPtr += sizeof(int);
-            fixed(char* pstr_3 = RDDFTriple.Object)
+            fixed(char* pstr_2 = Object)
             {
-                Memory.Copy(pstr_3, targetPtr, strlen_3);
-                targetPtr += strlen_3;
+                Memory.Copy(pstr_2, targetPtr, strlen_2);
+                targetPtr += strlen_2;
             }
         }else
         {
@@ -672,7 +649,6 @@ targetPtr += 16;
             targetPtr += sizeof(int);
         }
 
-            }
             }
             }
             

@@ -382,14 +382,6 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 
                 break;
                 
-                case 9:
-                
-                if (StorageSchema.Graph_descriptor.check_attribute(StorageSchema.Graph_descriptor.BaseUri, attributeKey, attributeValue))
-                    
-                        yield return new KeyValuePair<string, T>("BaseUri", TypeConverter<T>.ConvertFrom_string(this.BaseUri));
-                
-                break;
-                
                 default:
                 Throw.incompatible_with_cell();
                 break;
@@ -469,14 +461,6 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                     break;
                 
                 case 8:
-                    {
-                        
-                        yield return TypeConverter<T>.ConvertFrom_string(this.BaseUri);
-                        
-                    }
-                    break;
-                
-                case 9:
                     {
                         
                         yield return TypeConverter<T>.ConvertFrom_string(this.BaseUri);
@@ -1984,14 +1968,6 @@ byte *storedPtr_4 = targetPtr;
                 
                 break;
                 
-                case 9:
-                
-                if (StorageSchema.Graph_descriptor.check_attribute(StorageSchema.Graph_descriptor.BaseUri, attributeKey, attributeValue))
-                    
-                        yield return new KeyValuePair<string, T>("BaseUri", TypeConverter<T>.ConvertFrom_string(this.BaseUri));
-                
-                break;
-                
                 default:
                 Throw.incompatible_with_cell();
                 break;
@@ -2071,14 +2047,6 @@ byte *storedPtr_4 = targetPtr;
                     break;
                 
                 case 8:
-                    {
-                        
-                        yield return TypeConverter<T>.ConvertFrom_string(this.BaseUri);
-                        
-                    }
-                    break;
-                
-                case 9:
                     {
                         
                         yield return TypeConverter<T>.ConvertFrom_string(this.BaseUri);

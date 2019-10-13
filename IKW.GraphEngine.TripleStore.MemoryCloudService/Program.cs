@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol;
+using InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL;
 using Trinity;
 using Trinity.Diagnostics;
 using Trinity.DynamicCluster.Storage;
@@ -34,6 +36,37 @@ namespace IKW.GraphEngine.TripleStore.MemoryCloudService
 
                 Log.WriteLine("Hello world from GE-SF integration!");
 
+
+                var memcloud = Global.CloudStorage as DynamicMemoryCloud;
+
+                var myTriple =
+                    new Triple()
+                    {
+                        GraphInstance = 0,
+                        HashCode = 1,
+                        Nodes = new System.Collections.Generic.List<INode>()
+                        {
+                            new INode()
+                            {
+                                GraphParent = 0,
+                                GraphUri    = "http://www.inknowworks.semanticweb.ontology/persongraph",
+                                HashCode    = 0,
+                                TypeOfNode  = NodeType.GraphLiteral
+                            }
+                        }
+                    };
+
+                var tripleCollection = new List<Triple> { myTriple };
+
+                Graph myGraph = new Graph()
+                {
+                    BaseUri = "http://www.inknowworks.semanticweb.ontology/",
+                    CellId = 0,
+                    TripleCollection = tripleCollection
+                };
+
+                memcloud.SaveGraph(myGraph);
+
                 // Trinity-GraphEngine Azure Service Fabric initialization Step 2: I'm not sure this is right?!!! TT @ 01/10/2019
 
                 ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(GraphEngineService).Name);
@@ -43,7 +76,6 @@ namespace IKW.GraphEngine.TripleStore.MemoryCloudService
                 // become the master. However, these "transient" masters will be blocked, and
                 // do not reach this point.
 
-                var memcloud = Global.CloudStorage as DynamicMemoryCloud;
 
                 // This is the stock-original text-book API Azure.SDK for .NET call 
 

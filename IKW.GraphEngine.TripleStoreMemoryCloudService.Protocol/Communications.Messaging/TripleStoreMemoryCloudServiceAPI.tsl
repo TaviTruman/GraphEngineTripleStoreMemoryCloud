@@ -13,12 +13,18 @@ struct TripleStatement
 
 struct StoreTripleRequest
 {
-	TripleStatement RDFTriple;
+	Guid RefId;
+	string Subject;
+	string Predicate;
+	string Object;
 }
 
 struct StoreTripleResponse
 {
-	TripleStatement RDDFTriple;
+	Guid RefId;
+	string Subject;
+	string Predicate;
+	string Object;
 }
 
 // API - MakeTriple

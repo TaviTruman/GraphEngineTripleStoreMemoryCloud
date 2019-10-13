@@ -63,14 +63,26 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         static Dictionary<string, uint> FieldLookupTable_StoreTripleRequest = new Dictionary<string, uint>()
         {
             
-            {"RDFTriple" , 0}
+            {"RefId" , 0}
+            ,
+            {"Subject" , 1}
+            ,
+            {"Predicate" , 2}
+            ,
+            {"Object" , 3}
             
         };
         
         static Dictionary<string, uint> FieldLookupTable_StoreTripleResponse = new Dictionary<string, uint>()
         {
             
-            {"RDDFTriple" , 0}
+            {"RefId" , 0}
+            ,
+            {"Subject" , 1}
+            ,
+            {"Predicate" , 2}
+            ,
+            {"Object" , 3}
             
         };
         
@@ -496,10 +508,6 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 switch (member_id)
                 {
                     
-                    case 0:
-                        GenericFieldAccessor.SetField(accessor.RDFTriple, fieldName, field_divider_idx + 1, value);
-                        break;
-                    
                     default:
                         Throw.member_access_on_non_struct__field(member_name_string);
                         break;
@@ -514,10 +522,43 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 
                 case 0:
                     {
-                        TripleStatement conversion_result = TypeConverter<T>.ConvertTo_TripleStatement(value);
+                        Guid conversion_result = TypeConverter<T>.ConvertTo_Guid(value);
                         
             {
-                accessor.RDFTriple = conversion_result;
+                accessor.RefId = conversion_result;
+            }
+            
+                        break;
+                    }
+                
+                case 1:
+                    {
+                        string conversion_result = TypeConverter<T>.ConvertTo_string(value);
+                        
+            {
+                accessor.Subject = conversion_result;
+            }
+            
+                        break;
+                    }
+                
+                case 2:
+                    {
+                        string conversion_result = TypeConverter<T>.ConvertTo_string(value);
+                        
+            {
+                accessor.Predicate = conversion_result;
+            }
+            
+                        break;
+                    }
+                
+                case 3:
+                    {
+                        string conversion_result = TypeConverter<T>.ConvertTo_string(value);
+                        
+            {
+                accessor.Object = conversion_result;
             }
             
                         break;
@@ -537,9 +578,6 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 switch (member_id)
                 {
                     
-                    case 0:
-                        return GenericFieldAccessor.GetField<T>(accessor.RDFTriple, fieldName, field_divider_idx + 1);
-                    
                     default:
                         Throw.member_access_on_non_struct__field(member_name_string);
                         break;
@@ -552,7 +590,19 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             {
                 
                 case 0:
-                    return TypeConverter<T>.ConvertFrom_TripleStatement(accessor.RDFTriple);
+                    return TypeConverter<T>.ConvertFrom_Guid(accessor.RefId);
+                    break;
+                
+                case 1:
+                    return TypeConverter<T>.ConvertFrom_string(accessor.Subject);
+                    break;
+                
+                case 2:
+                    return TypeConverter<T>.ConvertFrom_string(accessor.Predicate);
+                    break;
+                
+                case 3:
+                    return TypeConverter<T>.ConvertFrom_string(accessor.Object);
                     break;
                 
             }
@@ -572,10 +622,6 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 switch (member_id)
                 {
                     
-                    case 0:
-                        GenericFieldAccessor.SetField(accessor.RDDFTriple, fieldName, field_divider_idx + 1, value);
-                        break;
-                    
                     default:
                         Throw.member_access_on_non_struct__field(member_name_string);
                         break;
@@ -590,10 +636,43 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 
                 case 0:
                     {
-                        TripleStatement conversion_result = TypeConverter<T>.ConvertTo_TripleStatement(value);
+                        Guid conversion_result = TypeConverter<T>.ConvertTo_Guid(value);
                         
             {
-                accessor.RDDFTriple = conversion_result;
+                accessor.RefId = conversion_result;
+            }
+            
+                        break;
+                    }
+                
+                case 1:
+                    {
+                        string conversion_result = TypeConverter<T>.ConvertTo_string(value);
+                        
+            {
+                accessor.Subject = conversion_result;
+            }
+            
+                        break;
+                    }
+                
+                case 2:
+                    {
+                        string conversion_result = TypeConverter<T>.ConvertTo_string(value);
+                        
+            {
+                accessor.Predicate = conversion_result;
+            }
+            
+                        break;
+                    }
+                
+                case 3:
+                    {
+                        string conversion_result = TypeConverter<T>.ConvertTo_string(value);
+                        
+            {
+                accessor.Object = conversion_result;
             }
             
                         break;
@@ -613,9 +692,6 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 switch (member_id)
                 {
                     
-                    case 0:
-                        return GenericFieldAccessor.GetField<T>(accessor.RDDFTriple, fieldName, field_divider_idx + 1);
-                    
                     default:
                         Throw.member_access_on_non_struct__field(member_name_string);
                         break;
@@ -628,7 +704,19 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             {
                 
                 case 0:
-                    return TypeConverter<T>.ConvertFrom_TripleStatement(accessor.RDDFTriple);
+                    return TypeConverter<T>.ConvertFrom_Guid(accessor.RefId);
+                    break;
+                
+                case 1:
+                    return TypeConverter<T>.ConvertFrom_string(accessor.Subject);
+                    break;
+                
+                case 2:
+                    return TypeConverter<T>.ConvertFrom_string(accessor.Predicate);
+                    break;
+                
+                case 3:
+                    return TypeConverter<T>.ConvertFrom_string(accessor.Object);
                     break;
                 
             }

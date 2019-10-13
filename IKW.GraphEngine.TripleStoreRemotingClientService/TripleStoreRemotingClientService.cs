@@ -55,7 +55,13 @@ namespace IKW.GraphEngine.TripleStoreRemotingClientService
                 var rdtTripleStatement = new TripleStatement(Guid.NewGuid(), "GraphEngine", "Powers", "Me");
 
                 var storeTripleRequest =
-                    new StoreTripleRequestWriter(rdtTripleStatement);
+                    new StoreTripleRequestWriter()
+                    {
+                        Subject = "GraphEngine",
+                        Predicate = "Works",
+                        Object = "Wonders",
+                        RefId = Guid.NewGuid()
+                    };
 
                 ServiceEventSource.Current.ServiceMessage(this.Context, "Working-{0}", ++iterations);
 
