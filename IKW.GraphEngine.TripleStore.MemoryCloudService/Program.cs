@@ -41,7 +41,9 @@ namespace IKW.GraphEngine.TripleStore.MemoryCloudService
                 Log.WriteLine("Hello world from GE-SF integration!");
 
 
-                var memcloud = Global.CloudStorage as DynamicMemoryCloud;
+                var dynamicMemoryCloud = Global.CloudStorage as DynamicMemoryCloud;
+
+                var localMemoryCloud = Global.LocalStorage;
 
                 var myTriple =
                     new Triple()
@@ -69,7 +71,7 @@ namespace IKW.GraphEngine.TripleStore.MemoryCloudService
                     TripleCollection = tripleCollection
                 };
 
-                memcloud.SaveGraph(myGraph);
+                dynamicMemoryCloud?.SaveGraph(myGraph);
 
                 // Trinity-GraphEngine Azure Service Fabric initialization Step 2: I'm not sure this is right?!!! TT @ 01/10/2019
 
