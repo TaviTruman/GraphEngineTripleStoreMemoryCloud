@@ -66,9 +66,9 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                 
                 {
                     
-                    request_sig = "{{Guid|string|string|string}}";
+                    request_sig = "{Guid|string|string|string}";
                     
-                    response_sig = "{{Guid|string|string|string}}";
+                    response_sig = "{Guid|string|string|string}";
                     yield return new ProtocolDescriptor()
                     {
                         Name = "StoreTriple",

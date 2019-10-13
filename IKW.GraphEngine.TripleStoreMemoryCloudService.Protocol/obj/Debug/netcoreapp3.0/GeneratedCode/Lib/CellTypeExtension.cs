@@ -7,17 +7,17 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
     {
         
         /// <summary>
-        /// Tells whether the cell with the given id is a RDFTriple.
+        /// Tells whether the cell with the given id is a Graph.
         /// </summary>
         /// <param name="storage"/>A <see cref="Trinity.Storage.LocalMemoryStorage"/> instance.</param>
         /// <param name="cellId">The id of the cell.</param>
         /// <returns>True if the cell is found and is of the correct type. Otherwise false.</returns>
-        public unsafe static bool IsRDFTriple(this Trinity.Storage.LocalMemoryStorage storage, long cellId)
+        public unsafe static bool IsGraph(this Trinity.Storage.LocalMemoryStorage storage, long cellId)
         {
             ushort cellType;
             if (storage.GetCellType(cellId, out cellType) == TrinityErrorCode.E_SUCCESS)
             {
-                return cellType == (ushort)CellType.RDFTriple;
+                return cellType == (ushort)CellType.Graph;
             }
             return false;
         }
