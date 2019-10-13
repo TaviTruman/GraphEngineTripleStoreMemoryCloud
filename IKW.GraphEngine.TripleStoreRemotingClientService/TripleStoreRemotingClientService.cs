@@ -10,6 +10,7 @@ using InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL;
 using InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL.TripleStoreMemoryCloudServiceModule;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Trinity.Client;
+using Trinity.Client.TrinityClientModule;
 using StatelessService = Microsoft.ServiceFabric.Services.Runtime.StatelessService;
 
 namespace IKW.GraphEngine.TripleStoreRemotingClientService
@@ -19,13 +20,17 @@ namespace IKW.GraphEngine.TripleStoreRemotingClientService
     /// </summary>
     internal sealed class TripleStoreRemotingClientService : StatelessService
     {
-        private TrinityClient m_trinity;
+        private TrinityClient m_tripleStoreRemotingClient;
         public TripleStoreRemotingClientService(StatelessServiceContext context)
             : base(context)
         {
-            m_trinity = new TrinityClient("fabric:/GraphEngineTripleStoreMemoryCloudSFApp/IKW.GraphEngine.TripleStoreRemotingClientService");
-            m_trinity.RegisterCommunicationModule<TripleStoreMemoryCloudServiceImpl>();
-            m_trinity.Start();
+            m_tripleStoreRemotingClient = new TrinityClient("fabric:/GraphEngineTripleStoreMemoryCloudSFApp/IKW.GraphEngine.TripleStoreRemotingClientService");
+            m_tripleStoreRemotingClient.RegisterCommunicationModule<TripleStoreMemoryCloudServiceImpl>();
+            m_tripleStoreRemotingClient.Start();
+
+            var clientModule = m_tripleStoreRemotingClient.GetCommunicationModule<TrinityClientModule>();
+
+            var clientModuleInstance = clientModule.Clients;
         }
 
         /// <summary>
@@ -65,7 +70,7 @@ namespace IKW.GraphEngine.TripleStoreRemotingClientService
 
                 ServiceEventSource.Current.ServiceMessage(this.Context, "Working-{0}", ++iterations);
 
-                var tripleResponse = m_trinity.StoreTriple(storeTripleRequest);
+                var tripleResponse = m_tripleStoreRemotingClient.StoreTriple(storeTripleRequest);
 
                 await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken).ConfigureAwait(false);
             }
