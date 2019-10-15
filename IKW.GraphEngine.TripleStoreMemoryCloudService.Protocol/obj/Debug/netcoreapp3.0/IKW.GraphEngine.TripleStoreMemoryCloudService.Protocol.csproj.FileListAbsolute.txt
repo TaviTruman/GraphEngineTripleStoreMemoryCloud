@@ -95,4 +95,3 @@ I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudServi
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\obj\Debug\netcoreapp3.0\GeneratedCode\Cells\Graph.cs
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\obj\Debug\netcoreapp3.0\GeneratedCode\Structs\INode.cs
 I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\obj\Debug\netcoreapp3.0\GeneratedCode\Structs\Triple.cs
-I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\obj\Debug\netcoreapp3.0\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csprojAssemblyReference.cache

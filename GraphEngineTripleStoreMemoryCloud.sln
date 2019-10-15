@@ -15,7 +15,7 @@ Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "GraphEngineTripleStoreMemor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IKW.GraphEngine.TripleStore.MemoryCloudService", "IKW.GraphEngine.TripleStore.MemoryCloudService\IKW.GraphEngine.TripleStore.MemoryCloudService.csproj", "{0BDA2B31-7008-4A69-98AF-D6A4D36CDC0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKW.GraphEngine.TripleStoreRemotingClientService", "IKW.GraphEngine.TripleStoreRemotingClientService\IKW.GraphEngine.TripleStoreRemotingClientService.csproj", "{7E350F90-84F8-4FF1-AAE8-0C367EBB89C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IKW.GraphEngine.TripleStoreRemotingClientService", "IKW.GraphEngine.TripleStoreRemotingClientService\IKW.GraphEngine.TripleStoreRemotingClientService.csproj", "{7E350F90-84F8-4FF1-AAE8-0C367EBB89C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,22 +41,18 @@ Global
 		{25C75989-6971-4A63-99F2-6E63BFDA98D5}.Release|x64.ActiveCfg = Release|x64
 		{25C75989-6971-4A63-99F2-6E63BFDA98D5}.Release|x64.Build.0 = Release|x64
 		{25C75989-6971-4A63-99F2-6E63BFDA98D5}.Release|x64.Deploy.0 = Release|x64
-		{0BDA2B31-7008-4A69-98AF-D6A4D36CDC0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0BDA2B31-7008-4A69-98AF-D6A4D36CDC0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0BDA2B31-7008-4A69-98AF-D6A4D36CDC0C}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{0BDA2B31-7008-4A69-98AF-D6A4D36CDC0C}.Debug|x64.Build.0 = Debug|Any CPU
-		{0BDA2B31-7008-4A69-98AF-D6A4D36CDC0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0BDA2B31-7008-4A69-98AF-D6A4D36CDC0C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0BDA2B31-7008-4A69-98AF-D6A4D36CDC0C}.Release|x64.ActiveCfg = Release|Any CPU
-		{0BDA2B31-7008-4A69-98AF-D6A4D36CDC0C}.Release|x64.Build.0 = Release|Any CPU
-		{7E350F90-84F8-4FF1-AAE8-0C367EBB89C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7E350F90-84F8-4FF1-AAE8-0C367EBB89C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7E350F90-84F8-4FF1-AAE8-0C367EBB89C5}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{7E350F90-84F8-4FF1-AAE8-0C367EBB89C5}.Debug|x64.Build.0 = Debug|Any CPU
-		{7E350F90-84F8-4FF1-AAE8-0C367EBB89C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7E350F90-84F8-4FF1-AAE8-0C367EBB89C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7E350F90-84F8-4FF1-AAE8-0C367EBB89C5}.Release|x64.ActiveCfg = Release|Any CPU
-		{7E350F90-84F8-4FF1-AAE8-0C367EBB89C5}.Release|x64.Build.0 = Release|Any CPU
+		{0BDA2B31-7008-4A69-98AF-D6A4D36CDC0C}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{0BDA2B31-7008-4A69-98AF-D6A4D36CDC0C}.Debug|x64.ActiveCfg = Debug|x64
+		{0BDA2B31-7008-4A69-98AF-D6A4D36CDC0C}.Debug|x64.Build.0 = Debug|x64
+		{0BDA2B31-7008-4A69-98AF-D6A4D36CDC0C}.Release|Any CPU.ActiveCfg = Release|x64
+		{0BDA2B31-7008-4A69-98AF-D6A4D36CDC0C}.Release|x64.ActiveCfg = Release|x64
+		{0BDA2B31-7008-4A69-98AF-D6A4D36CDC0C}.Release|x64.Build.0 = Release|x64
+		{7E350F90-84F8-4FF1-AAE8-0C367EBB89C5}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{7E350F90-84F8-4FF1-AAE8-0C367EBB89C5}.Debug|x64.ActiveCfg = Debug|x64
+		{7E350F90-84F8-4FF1-AAE8-0C367EBB89C5}.Debug|x64.Build.0 = Debug|x64
+		{7E350F90-84F8-4FF1-AAE8-0C367EBB89C5}.Release|Any CPU.ActiveCfg = Release|x64
+		{7E350F90-84F8-4FF1-AAE8-0C367EBB89C5}.Release|x64.ActiveCfg = Release|x64
+		{7E350F90-84F8-4FF1-AAE8-0C367EBB89C5}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

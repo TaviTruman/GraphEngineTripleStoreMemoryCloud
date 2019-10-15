@@ -3,7 +3,9 @@ using System.Diagnostics;
 using System.Fabric;
 using System.Threading;
 using System.Threading.Tasks;
+using IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol;
 using Microsoft.ServiceFabric.Services.Runtime;
+using Trinity.ServiceFabric.Remoting;
 
 namespace IKW.GraphEngine.TripleStoreRemotingClientService
 {
@@ -12,6 +14,8 @@ namespace IKW.GraphEngine.TripleStoreRemotingClientService
         /// <summary>
         /// This is the entry point of the service host process.
         /// </summary>
+        [UseExtension(typeof(ITrinityOverRemotingService))]
+        [UseExtension(typeof(TripleStoreMemoryCloudServiceImpl))]
         private static void Main()
         {
             try

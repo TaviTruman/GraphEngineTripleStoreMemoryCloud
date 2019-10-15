@@ -24,7 +24,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.0"
+          "net461"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -35,7 +35,7 @@
           "https://rocketurbizdev.pkgs.visualstudio.com/_packaging/RUB-SemanticEnhancement-NugetFeed/nuget/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.0": {
+          "net461": {
             "projectReferences": {
               "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj": {
                 "projectPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj"
@@ -50,13 +50,25 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.0": {
+        "net461": {
           "dependencies": {
+            "GraphEngine.Azure.BlobStorage": {
+              "target": "Package",
+              "version": "[2.0.10059, )"
+            },
             "GraphEngine.DynamicCluster": {
               "target": "Package",
               "version": "[2.0.10059, )"
             },
+            "GraphEngine.LIKQ": {
+              "target": "Package",
+              "version": "[2.0.10059, )"
+            },
             "GraphEngine.ServiceFabric.Infrastructure": {
+              "target": "Package",
+              "version": "[2.0.10059, )"
+            },
+            "GraphEngine.ServiceFabric.Remoting": {
               "target": "Package",
               "version": "[2.0.10059, )"
             },
@@ -65,40 +77,11 @@
               "version": "[3.4.664, )"
             }
           },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[3.0.0, 3.0.0]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[3.0.0, 3.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[3.0.0, 3.0.0]"
-            }
-          ],
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
-        "win7-x64": {
+        "win-x64": {
           "#import": []
         }
       }
@@ -123,7 +106,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.0"
+          "net461"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -134,7 +117,7 @@
           "https://rocketurbizdev.pkgs.visualstudio.com/_packaging/RUB-SemanticEnhancement-NugetFeed/nuget/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.0": {
+          "net461": {
             "projectReferences": {}
           }
         },
@@ -145,7 +128,7 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.0": {
+        "net461": {
           "dependencies": {
             "GraphEngine.Core": {
               "target": "Package",
@@ -154,25 +137,6 @@
             "GraphEngine.DynamicCluster": {
               "target": "Package",
               "version": "[2.0.10059, )"
-            },
-            "Microsoft.DependencyValidation.Analyzers": {
-              "target": "Package",
-              "version": "[0.10.0, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"

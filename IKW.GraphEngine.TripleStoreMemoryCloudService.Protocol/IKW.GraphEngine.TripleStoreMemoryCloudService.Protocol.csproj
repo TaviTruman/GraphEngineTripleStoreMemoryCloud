@@ -1,10 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
+  <!--<PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
 	  <TargetLatestRuntimePatch>False</TargetLatestRuntimePatch>
 	  <Company>InKnowWorks, Corp</Company>
 	  <Description>Property Graph, HyperGraph - Directed and Multi-Graph implementations</Description>
+  </PropertyGroup>-->
+    
+      <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -12,14 +18,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="GraphEngine.Core" Version="2.0.10059" />
+    <PackageReference Include="GraphEngine.DynamicCluster" Version="2.0.10059" />
+  </ItemGroup>
+
+  <ItemGroup>
 	  <!--Required to store working data-->
       <!-- Include Trinity Graph Engine Runtime Core -->
-	  <PackageReference Include="GraphEngine.Core" Version="2.0.10059" />
-	  <PackageReference Include="GraphEngine.DynamicCluster" Version="2.0.10059" />
 	  <!--Gain Access to Graph Engine (Cluster) Memory Cloud-->
 	  <!--Use Language Integrated Knowledge Query-->
 	  <!--Dynamic HyperEdge (Property) and HyperGraph nodes-->
-	  <PackageReference Include="Microsoft.DependencyValidation.Analyzers" Version="0.10.0" />
 	  <!--TSL Code Generationo Directives-->
 	  <TslCodegen Include="Communications.Messaging\TripleStoreMemoryCloudServiceAPI.tsl" />
 	  <TslCodegen Include="Graph.DataModelSchema\TripleStoreMemoryCloudGraph.tsl" />

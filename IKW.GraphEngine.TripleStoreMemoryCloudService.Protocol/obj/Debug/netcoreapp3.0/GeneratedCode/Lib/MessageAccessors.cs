@@ -13,16 +13,16 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
 {
     
     /// <summary>
-    /// Represents a read-only accessor on the message of type StoreTripleRequest defined in the TSL protocols.
+    /// Represents a read-only accessor on the message of type StoreTripleResponse defined in the TSL protocols.
     /// The message readers will be instantiated by the system and passed to user's logic.
     /// After finished accessing the message. It is the user's responsibility to call Dispose()
     /// on the reader object. Recommend wrapping the reader with a <c>using Statement block</c>.
     /// <seealso ref="https://msdn.microsoft.com/en-us/library/yh598w02.aspx"/>
     /// </summary>
-    public unsafe sealed class StoreTripleRequestReader : StoreTripleRequest_Accessor, IDisposable
+    public unsafe sealed class StoreTripleResponseReader : StoreTripleResponse_Accessor, IDisposable
     {
         byte * buffer;
-        internal StoreTripleRequestReader(byte* buf, int offset)
+        internal StoreTripleResponseReader(byte* buf, int offset)
             : base(buf + offset
                   
                   , ReaderResizeFunc
@@ -32,13 +32,13 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         }
         
         /** 
-         * StoreTripleRequestReader is not resizable because it may be attached
+         * StoreTripleResponseReader is not resizable because it may be attached
          * to a buffer passed in from the network layer and we don't know how
          * to resize it.
          */
         static byte* ReaderResizeFunc(byte* ptr, int offset, int delta)
         {
-            throw new InvalidOperationException("StoreTripleRequestReader is not resizable");
+            throw new InvalidOperationException("StoreTripleResponseReader is not resizable");
         }
         
         /// <summary>
@@ -52,19 +52,19 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         }
     }
     /// <summary>
-    /// Represents a writer accessor on the message of type StoreTripleRequest defined in the TSL protocols.
+    /// Represents a writer accessor on the message of type StoreTripleResponse defined in the TSL protocols.
     /// The message writers should be instantiated by the user's logic and passed to the system to send it out.
     /// After finished accessing the message. It is the user's responsibility to call Dispose()
     /// on the writer object. Recommend wrapping the reader with a <c>using Statement block</c>.
     /// </summary>
     /// <seealso ref="https://msdn.microsoft.com/en-us/library/yh598w02.aspx"/>
     /// <remarks>Calling <c>Dispose()</c> does not send the message out.</remarks>
-    public unsafe sealed class StoreTripleRequestWriter : StoreTripleRequest_Accessor, IDisposable
+    public unsafe sealed class StoreTripleResponseWriter : StoreTripleResponse_Accessor, IDisposable
     {
         internal byte* buffer = null;
         internal int BufferLength;
         internal int Length; 
-        public unsafe StoreTripleRequestWriter( Guid RefId = default(Guid) , string Subject = default(string) , string Predicate = default(string) , string Object = default(string) )
+        public unsafe StoreTripleResponseWriter( Guid RefId = default(Guid) , string Subject = default(string) , string Predicate = default(string) , string Object = default(string) )
             : base(null
                   
                   , null
@@ -183,7 +183,7 @@ targetPtr += 16;
             this.ResizeFunction = WriterResizeFunction;
             
         }
-        internal unsafe StoreTripleRequestWriter(int asyncRspHeaderLength,  Guid RefId = default(Guid) , string Subject = default(string) , string Predicate = default(string) , string Object = default(string) )
+        internal unsafe StoreTripleResponseWriter(int asyncRspHeaderLength,  Guid RefId = default(Guid) , string Subject = default(string) , string Predicate = default(string) , string Object = default(string) )
             : base(null
                   
                   , null
@@ -370,16 +370,16 @@ targetPtr += 16;
     }
     
     /// <summary>
-    /// Represents a read-only accessor on the message of type StoreTripleResponse defined in the TSL protocols.
+    /// Represents a read-only accessor on the message of type StoreTripleRequest defined in the TSL protocols.
     /// The message readers will be instantiated by the system and passed to user's logic.
     /// After finished accessing the message. It is the user's responsibility to call Dispose()
     /// on the reader object. Recommend wrapping the reader with a <c>using Statement block</c>.
     /// <seealso ref="https://msdn.microsoft.com/en-us/library/yh598w02.aspx"/>
     /// </summary>
-    public unsafe sealed class StoreTripleResponseReader : StoreTripleResponse_Accessor, IDisposable
+    public unsafe sealed class StoreTripleRequestReader : StoreTripleRequest_Accessor, IDisposable
     {
         byte * buffer;
-        internal StoreTripleResponseReader(byte* buf, int offset)
+        internal StoreTripleRequestReader(byte* buf, int offset)
             : base(buf + offset
                   
                   , ReaderResizeFunc
@@ -389,13 +389,13 @@ targetPtr += 16;
         }
         
         /** 
-         * StoreTripleResponseReader is not resizable because it may be attached
+         * StoreTripleRequestReader is not resizable because it may be attached
          * to a buffer passed in from the network layer and we don't know how
          * to resize it.
          */
         static byte* ReaderResizeFunc(byte* ptr, int offset, int delta)
         {
-            throw new InvalidOperationException("StoreTripleResponseReader is not resizable");
+            throw new InvalidOperationException("StoreTripleRequestReader is not resizable");
         }
         
         /// <summary>
@@ -409,19 +409,19 @@ targetPtr += 16;
         }
     }
     /// <summary>
-    /// Represents a writer accessor on the message of type StoreTripleResponse defined in the TSL protocols.
+    /// Represents a writer accessor on the message of type StoreTripleRequest defined in the TSL protocols.
     /// The message writers should be instantiated by the user's logic and passed to the system to send it out.
     /// After finished accessing the message. It is the user's responsibility to call Dispose()
     /// on the writer object. Recommend wrapping the reader with a <c>using Statement block</c>.
     /// </summary>
     /// <seealso ref="https://msdn.microsoft.com/en-us/library/yh598w02.aspx"/>
     /// <remarks>Calling <c>Dispose()</c> does not send the message out.</remarks>
-    public unsafe sealed class StoreTripleResponseWriter : StoreTripleResponse_Accessor, IDisposable
+    public unsafe sealed class StoreTripleRequestWriter : StoreTripleRequest_Accessor, IDisposable
     {
         internal byte* buffer = null;
         internal int BufferLength;
         internal int Length; 
-        public unsafe StoreTripleResponseWriter( Guid RefId = default(Guid) , string Subject = default(string) , string Predicate = default(string) , string Object = default(string) )
+        public unsafe StoreTripleRequestWriter( Guid RefId = default(Guid) , string Subject = default(string) , string Predicate = default(string) , string Object = default(string) )
             : base(null
                   
                   , null
@@ -540,7 +540,7 @@ targetPtr += 16;
             this.ResizeFunction = WriterResizeFunction;
             
         }
-        internal unsafe StoreTripleResponseWriter(int asyncRspHeaderLength,  Guid RefId = default(Guid) , string Subject = default(string) , string Predicate = default(string) , string Object = default(string) )
+        internal unsafe StoreTripleRequestWriter(int asyncRspHeaderLength,  Guid RefId = default(Guid) , string Subject = default(string) , string Predicate = default(string) , string Object = default(string) )
             : base(null
                   
                   , null

@@ -2,12 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
+using FanoutSearch;
 using IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol;
 using InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL;
 using Trinity;
+using Trinity.Azure.Storage;
 using Trinity.Diagnostics;
 using Trinity.DynamicCluster.Storage;
 using Trinity.ServiceFabric;
+using Trinity.ServiceFabric.Remoting;
+using static Trinity.Core.Lib.CellIdFactory;
 
 namespace IKW.GraphEngine.TripleStore.MemoryCloudService
 {
@@ -16,6 +20,11 @@ namespace IKW.GraphEngine.TripleStore.MemoryCloudService
         /// <summary>
         /// This is the entry point of the service host process.
         /// </summary>
+        // Workaround: extension assembly will be removed by the
+        // compiler if it is not explicitly used in the code.
+        [UseExtension(typeof(BlobStoragePersistentStorage))]
+        [UseExtension(typeof(ITrinityOverRemotingService))]
+        [UseExtension(typeof(FanoutSearchModule))]
         [UseExtension(typeof(TripleStoreMemoryCloudServiceImpl))]
         private static void Main()
         {
@@ -34,23 +43,25 @@ namespace IKW.GraphEngine.TripleStore.MemoryCloudService
 
                 GraphEngineService.StartServiceAsync("IKW.GraphEngine.TripleStore.MemoryCloudServiceType").GetAwaiter().GetResult();
 
+                ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(GraphEngineService).Name);
+
                 Log.WriteLine("Hello world from GE-SF integration!");
 
 
-                var memcloud = Global.CloudStorage as DynamicMemoryCloud;
+                var dynamicMemoryCloud = Global.CloudStorage as DynamicMemoryCloud;
 
                 var myTriple =
                     new Triple()
                     {
-                        GraphInstance = 0,
-                        HashCode = 1,
+                        GraphInstance = NewCellId(),
+                        HashCode = Trinity.Core.Lib.HashHelper.HashString2Int64($"IKW.GraphEngine.TripleStore.MemoryCloudServiceType"),
                         Nodes = new System.Collections.Generic.List<INode>()
                         {
                             new INode()
                             {
                                 GraphParent = 0,
                                 GraphUri    = "http://www.inknowworks.semanticweb.ontology/persongraph",
-                                HashCode    = 0,
+                                HashCode    = Trinity.Core.Lib.HashHelper.HashString2Int64($"IKW.GraphEngine.TripleStore.MemoryCloudServiceType"),
                                 TypeOfNode  = NodeType.GraphLiteral
                             }
                         }
@@ -61,15 +72,15 @@ namespace IKW.GraphEngine.TripleStore.MemoryCloudService
                 Graph myGraph = new Graph()
                 {
                     BaseUri = "http://www.inknowworks.semanticweb.ontology/",
-                    CellId = 0,
+                    CellId  = NewCellId(),
                     TripleCollection = tripleCollection
                 };
 
-                memcloud.SaveGraph(myGraph);
+                //dynamicMemoryCloud?.SaveGraph(myGraph);
 
                 // Trinity-GraphEngine Azure Service Fabric initialization Step 2: I'm not sure this is right?!!! TT @ 01/10/2019
 
-                ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(GraphEngineService).Name);
+
 
                 // Also, pay attention that, only *master replicas of the partitions* reach here.
                 // When the cluster is shutting down, it is possible that the secondary replicas
