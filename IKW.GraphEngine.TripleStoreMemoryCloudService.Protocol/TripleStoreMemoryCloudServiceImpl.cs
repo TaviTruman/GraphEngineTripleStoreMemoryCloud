@@ -51,12 +51,14 @@ namespace IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol
             };
 
             dynamicMemoryCloud?.SaveGraph(myGraph);
-
         }
 
         public override void HelloMessageHandler(HelloNessageRequestReader request, HelloMessageReponseWriter response)
         {
-            response = new HelloMessageReponseWriter(@"Hello from Graph Engine/Service Fabric Hello Message Service");
+
+            using var hellomsg = new HelloMessageReponseWriter("Test");
+
+            response = hellomsg;
 
             Log.WriteLine($"Hello Message Handler Reached. Hello Message {request}, Message Response: {response}");
         }

@@ -4,6 +4,7 @@
         <TargetFramework>net461</TargetFramework>
         <IsPackable>false</IsPackable>
         <Configurations>Debug;Release</Configurations>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <!--<PropertyGroup>

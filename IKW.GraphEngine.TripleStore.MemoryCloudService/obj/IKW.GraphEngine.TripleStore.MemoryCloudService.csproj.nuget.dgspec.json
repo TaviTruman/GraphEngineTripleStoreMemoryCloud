@@ -62,6 +62,10 @@
               "target": "Package",
               "version": "[2.0.10135, )"
             },
+            "GraphEngine.LIKQ": {
+              "target": "Package",
+              "version": "[2.0.10135, )"
+            },
             "GraphEngine.ServiceFabric.Infrastructure": {
               "target": "Package",
               "version": "[2.0.10135, )"

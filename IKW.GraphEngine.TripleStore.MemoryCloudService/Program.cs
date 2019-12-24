@@ -13,6 +13,8 @@ using Trinity.ServiceFabric.Remoting;
 
 namespace IKW.GraphEngine.TripleStore.MemoryCloudService
 {
+    using FanoutSearch;
+
     internal static class Program
     {
 
@@ -24,7 +26,7 @@ namespace IKW.GraphEngine.TripleStore.MemoryCloudService
         /// </summary>
         [UseExtension(typeof(BlobStoragePersistentStorage))]
         [UseExtension(typeof(ITrinityOverRemotingService))]
-        //[UseExtension(typeof(FanoutSearchModule))]
+        [UseExtension(typeof(FanoutSearchModule))]
         [UseExtension(typeof(TripleStoreMemoryCloudServiceImpl))]
         private static void Main()
         {
