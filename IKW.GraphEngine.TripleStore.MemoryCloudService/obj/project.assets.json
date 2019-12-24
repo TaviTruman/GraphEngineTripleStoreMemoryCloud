@@ -2,13 +2,13 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.6.1": {
-      "GraphEngine.Azure.BlobStorage/2.0.10059": {
+      "GraphEngine.Azure.BlobStorage/2.0.10135": {
         "type": "package",
         "dependencies": {
-          "GraphEngine.Core": "2.0.10059",
-          "GraphEngine.DynamicCluster": "2.0.10059",
-          "System.Threading.Tasks.Dataflow": "4.8.0",
-          "WindowsAzure.Storage": "8.6.0"
+          "GraphEngine.Core": "2.0.10135",
+          "GraphEngine.DynamicCluster": "2.0.10135",
+          "System.Threading.Tasks.Dataflow": "4.10.0",
+          "WindowsAzure.Storage": "9.3.3"
         },
         "compile": {
           "lib/net461/Trinity.Azure.Storage.dll": {}
@@ -17,10 +17,10 @@
           "lib/net461/Trinity.Azure.Storage.dll": {}
         }
       },
-      "GraphEngine.Client/2.0.10059": {
+      "GraphEngine.Client/2.0.10135": {
         "type": "package",
         "dependencies": {
-          "GraphEngine.Core": "2.0.10059",
+          "GraphEngine.Core": "2.0.10135",
           "System.ValueTuple": "4.5.0"
         },
         "compile": {
@@ -30,7 +30,7 @@
           "lib/net461/Trinity.Client.dll": {}
         }
       },
-      "GraphEngine.Core/2.0.10059": {
+      "GraphEngine.Core/2.0.10135": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.ObjectPool": "2.0.0",
@@ -56,11 +56,11 @@
           }
         }
       },
-      "GraphEngine.DynamicCluster/2.0.10059": {
+      "GraphEngine.DynamicCluster/2.0.10135": {
         "type": "package",
         "dependencies": {
-          "GraphEngine.Client": "2.0.10059",
-          "GraphEngine.Core": "2.0.10059",
+          "GraphEngine.Client": "2.0.10135",
+          "GraphEngine.Core": "2.0.10135",
           "Nito.AsyncEx.Coordination": "1.0.2",
           "Nito.AsyncEx.Tasks": "1.1.0",
           "System.Collections.Immutable": "1.4.0"
@@ -72,18 +72,18 @@
           "lib/netstandard2.0/Trinity.DynamicCluster.dll": {}
         }
       },
-      "GraphEngine.ServiceFabric.Infrastructure/2.0.10059": {
+      "GraphEngine.ServiceFabric.Infrastructure/2.0.10135": {
         "type": "package",
         "dependencies": {
-          "GraphEngine.Core": "2.0.10059",
-          "GraphEngine.DynamicCluster": "2.0.10059",
-          "Microsoft.ServiceFabric": "6.5.664",
-          "Microsoft.ServiceFabric.Data": "3.4.664",
-          "Microsoft.ServiceFabric.Diagnostics.Internal": "3.4.664",
-          "Microsoft.ServiceFabric.Services": "3.4.664",
+          "GraphEngine.Core": "2.0.10135",
+          "GraphEngine.DynamicCluster": "2.0.10135",
+          "Microsoft.ServiceFabric": "7.0.457",
+          "Microsoft.ServiceFabric.Data": "4.0.457",
+          "Microsoft.ServiceFabric.Diagnostics.Internal": "4.0.457",
+          "Microsoft.ServiceFabric.Services": "4.0.457",
           "Nito.AsyncEx.Tasks": "5.0.0",
           "Nito.Disposables": "2.0.1",
-          "System.Collections.Immutable": "1.6.0",
+          "System.Collections.Immutable": "1.7.0",
           "System.IO.Compression.ZipFile": "4.3.0",
           "System.Runtime.Numerics": "4.3.0",
           "System.ValueTuple": "4.5.0"
@@ -95,12 +95,12 @@
           "lib/net461/Trinity.ServiceFabric.Infrastructure.dll": {}
         }
       },
-      "GraphEngine.ServiceFabric.Remoting/2.0.10059": {
+      "GraphEngine.ServiceFabric.Remoting/2.0.10135": {
         "type": "package",
         "dependencies": {
-          "GraphEngine.Core": "2.0.10059",
-          "GraphEngine.ServiceFabric.Infrastructure": "2.0.10059",
-          "Microsoft.ServiceFabric.Services.Remoting": "3.4.664"
+          "GraphEngine.Core": "2.0.10135",
+          "GraphEngine.ServiceFabric.Infrastructure": "2.0.10135",
+          "Microsoft.ServiceFabric.Services.Remoting": "4.0.457"
         },
         "compile": {
           "lib/net461/Trinity.ServiceFabric.Remoting.dll": {}
@@ -118,131 +118,6 @@
           "lib/net40/Microsoft.Azure.KeyVault.Core.dll": {}
         }
       },
-      "Microsoft.Data.Edm/5.8.2": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Microsoft.Data.Edm.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Microsoft.Data.Edm.dll": {}
-        },
-        "resource": {
-          "lib/net40/de/Microsoft.Data.Edm.resources.dll": {
-            "locale": "de"
-          },
-          "lib/net40/es/Microsoft.Data.Edm.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net40/fr/Microsoft.Data.Edm.resources.dll": {
-            "locale": "fr"
-          },
-          "lib/net40/it/Microsoft.Data.Edm.resources.dll": {
-            "locale": "it"
-          },
-          "lib/net40/ja/Microsoft.Data.Edm.resources.dll": {
-            "locale": "ja"
-          },
-          "lib/net40/ko/Microsoft.Data.Edm.resources.dll": {
-            "locale": "ko"
-          },
-          "lib/net40/ru/Microsoft.Data.Edm.resources.dll": {
-            "locale": "ru"
-          },
-          "lib/net40/zh-Hans/Microsoft.Data.Edm.resources.dll": {
-            "locale": "zh-Hans"
-          },
-          "lib/net40/zh-Hant/Microsoft.Data.Edm.resources.dll": {
-            "locale": "zh-Hant"
-          }
-        }
-      },
-      "Microsoft.Data.OData/5.8.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Data.Edm": "[5.8.2]",
-          "System.Spatial": "[5.8.2]"
-        },
-        "compile": {
-          "lib/net40/Microsoft.Data.OData.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Microsoft.Data.OData.dll": {}
-        },
-        "resource": {
-          "lib/net40/de/Microsoft.Data.OData.resources.dll": {
-            "locale": "de"
-          },
-          "lib/net40/es/Microsoft.Data.OData.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net40/fr/Microsoft.Data.OData.resources.dll": {
-            "locale": "fr"
-          },
-          "lib/net40/it/Microsoft.Data.OData.resources.dll": {
-            "locale": "it"
-          },
-          "lib/net40/ja/Microsoft.Data.OData.resources.dll": {
-            "locale": "ja"
-          },
-          "lib/net40/ko/Microsoft.Data.OData.resources.dll": {
-            "locale": "ko"
-          },
-          "lib/net40/ru/Microsoft.Data.OData.resources.dll": {
-            "locale": "ru"
-          },
-          "lib/net40/zh-Hans/Microsoft.Data.OData.resources.dll": {
-            "locale": "zh-Hans"
-          },
-          "lib/net40/zh-Hant/Microsoft.Data.OData.resources.dll": {
-            "locale": "zh-Hant"
-          }
-        }
-      },
-      "Microsoft.Data.Services.Client/5.8.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Data.OData": "[5.8.2]",
-          "System.ComponentModel.EventBasedAsync": "4.0.11",
-          "System.Dynamic.Runtime": "4.0.0",
-          "System.Linq.Queryable": "4.0.0",
-          "System.Net.Requests": "4.0.11"
-        },
-        "compile": {
-          "lib/net40/Microsoft.Data.Services.Client.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Microsoft.Data.Services.Client.dll": {}
-        },
-        "resource": {
-          "lib/net40/de/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "de"
-          },
-          "lib/net40/es/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net40/fr/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "fr"
-          },
-          "lib/net40/it/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "it"
-          },
-          "lib/net40/ja/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "ja"
-          },
-          "lib/net40/ko/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "ko"
-          },
-          "lib/net40/ru/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "ru"
-          },
-          "lib/net40/zh-Hans/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "zh-Hans"
-          },
-          "lib/net40/zh-Hant/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "zh-Hant"
-          }
-        }
-      },
       "Microsoft.Extensions.ObjectPool/2.0.0": {
         "type": "package",
         "compile": {
@@ -252,7 +127,7 @@
           "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.dll": {}
         }
       },
-      "Microsoft.ServiceFabric/6.5.664": {
+      "Microsoft.ServiceFabric/7.0.457": {
         "type": "package",
         "compile": {
           "lib/net461/Microsoft.ServiceFabric.Internal.Strings.dll": {},
@@ -341,12 +216,12 @@
           }
         }
       },
-      "Microsoft.ServiceFabric.Data/3.4.664": {
+      "Microsoft.ServiceFabric.Data/4.0.457": {
         "type": "package",
         "dependencies": {
-          "Microsoft.ServiceFabric": "[6.5.664]",
-          "Microsoft.ServiceFabric.Data.Extensions": "[3.4.664]",
-          "Microsoft.ServiceFabric.Data.Interfaces": "[3.4.664]"
+          "Microsoft.ServiceFabric": "[7.0.457]",
+          "Microsoft.ServiceFabric.Data.Extensions": "[4.0.457]",
+          "Microsoft.ServiceFabric.Data.Interfaces": "[4.0.457]"
         },
         "frameworkAssemblies": [
           "System.Runtime.Serialization"
@@ -368,11 +243,11 @@
           }
         }
       },
-      "Microsoft.ServiceFabric.Data.Extensions/3.4.664": {
+      "Microsoft.ServiceFabric.Data.Extensions/4.0.457": {
         "type": "package",
         "dependencies": {
-          "Microsoft.ServiceFabric": "6.5.664",
-          "Microsoft.ServiceFabric.Data.Interfaces": "[3.4.664]"
+          "Microsoft.ServiceFabric": "7.0.457",
+          "Microsoft.ServiceFabric.Data.Interfaces": "[4.0.457]"
         },
         "compile": {
           "lib/net461/Microsoft.ServiceFabric.Data.Extensions.dll": {},
@@ -401,10 +276,10 @@
           }
         }
       },
-      "Microsoft.ServiceFabric.Data.Interfaces/3.4.664": {
+      "Microsoft.ServiceFabric.Data.Interfaces/4.0.457": {
         "type": "package",
         "dependencies": {
-          "Microsoft.ServiceFabric": "[6.5.664]"
+          "Microsoft.ServiceFabric": "[7.0.457]"
         },
         "compile": {
           "lib/net461/Microsoft.ServiceFabric.Data.Interfaces.dll": {}
@@ -423,10 +298,10 @@
           }
         }
       },
-      "Microsoft.ServiceFabric.Diagnostics.Internal/3.4.664": {
+      "Microsoft.ServiceFabric.Diagnostics.Internal/4.0.457": {
         "type": "package",
         "dependencies": {
-          "Microsoft.ServiceFabric": "[6.5.664]"
+          "Microsoft.ServiceFabric": "[7.0.457]"
         },
         "frameworkAssemblies": [
           "System.Runtime.Serialization",
@@ -449,10 +324,10 @@
           }
         }
       },
-      "Microsoft.ServiceFabric.FabricTransport.Internal/3.4.664": {
+      "Microsoft.ServiceFabric.FabricTransport.Internal/4.0.457": {
         "type": "package",
         "dependencies": {
-          "Microsoft.ServiceFabric": "[6.5.664]"
+          "Microsoft.ServiceFabric": "[7.0.457]"
         },
         "frameworkAssemblies": [
           "System.Runtime.Serialization",
@@ -501,11 +376,11 @@
           }
         }
       },
-      "Microsoft.ServiceFabric.Services/3.4.664": {
+      "Microsoft.ServiceFabric.Services/4.0.457": {
         "type": "package",
         "dependencies": {
-          "Microsoft.ServiceFabric.Data": "[3.4.664]",
-          "Microsoft.ServiceFabric.Diagnostics.Internal": "[3.4.664]"
+          "Microsoft.ServiceFabric.Data": "[4.0.457]",
+          "Microsoft.ServiceFabric.Diagnostics.Internal": "[4.0.457]"
         },
         "compile": {
           "lib/net461/Microsoft.ServiceFabric.Services.dll": {}
@@ -520,12 +395,12 @@
           }
         }
       },
-      "Microsoft.ServiceFabric.Services.Remoting/3.4.664": {
+      "Microsoft.ServiceFabric.Services.Remoting/4.0.457": {
         "type": "package",
         "dependencies": {
-          "Microsoft.ServiceFabric.Diagnostics.Internal": "[3.4.664]",
-          "Microsoft.ServiceFabric.FabricTransport.Internal": "[3.4.664]",
-          "Microsoft.ServiceFabric.Services": "[3.4.664]"
+          "Microsoft.ServiceFabric.Diagnostics.Internal": "[4.0.457]",
+          "Microsoft.ServiceFabric.FabricTransport.Internal": "[4.0.457]",
+          "Microsoft.ServiceFabric.Services": "[4.0.457]"
         },
         "compile": {
           "lib/net461/Microsoft.ServiceFabric.Services.Remoting.dll": {}
@@ -540,7 +415,7 @@
           }
         }
       },
-      "Newtonsoft.Json/9.0.1": {
+      "Newtonsoft.Json/10.0.2": {
         "type": "package",
         "compile": {
           "lib/net45/Newtonsoft.Json.dll": {}
@@ -604,7 +479,7 @@
           "lib/netstandard2.0/System.Buffers.dll": {}
         }
       },
-      "System.Collections.Immutable/1.6.0": {
+      "System.Collections.Immutable/1.7.0": {
         "type": "package",
         "dependencies": {
           "System.Memory": "4.5.3"
@@ -614,27 +489,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/System.Collections.Immutable.dll": {}
-        }
-      },
-      "System.ComponentModel.EventBasedAsync/4.0.11": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System"
-        ],
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
-        }
-      },
-      "System.Dynamic.Runtime/4.0.0": {
-        "type": "package",
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
         }
       },
       "System.IO.Compression.ZipFile/4.3.0": {
@@ -650,15 +504,6 @@
           "lib/net46/System.IO.Compression.ZipFile.dll": {}
         }
       },
-      "System.Linq.Queryable/4.0.0": {
-        "type": "package",
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
-        }
-      },
       "System.Memory/4.5.3": {
         "type": "package",
         "dependencies": {
@@ -671,28 +516,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/System.Memory.dll": {}
-        }
-      },
-      "System.Net.Requests/4.0.11": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System"
-        ],
-        "compile": {
-          "ref/net46/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
-        },
-        "runtimeTargets": {
-          "runtimes/unix/lib/netstandard1.3/System.Net.Requests.dll": {
-            "assetType": "runtime",
-            "rid": "unix"
-          },
-          "runtimes/win/lib/net46/_._": {
-            "assetType": "runtime",
-            "rid": "win"
-          }
         }
       },
       "System.Numerics.Vectors/4.4.0": {
@@ -729,45 +552,7 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Spatial/5.8.2": {
-        "type": "package",
-        "compile": {
-          "lib/net40/System.Spatial.dll": {}
-        },
-        "runtime": {
-          "lib/net40/System.Spatial.dll": {}
-        },
-        "resource": {
-          "lib/net40/de/System.Spatial.resources.dll": {
-            "locale": "de"
-          },
-          "lib/net40/es/System.Spatial.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net40/fr/System.Spatial.resources.dll": {
-            "locale": "fr"
-          },
-          "lib/net40/it/System.Spatial.resources.dll": {
-            "locale": "it"
-          },
-          "lib/net40/ja/System.Spatial.resources.dll": {
-            "locale": "ja"
-          },
-          "lib/net40/ko/System.Spatial.resources.dll": {
-            "locale": "ko"
-          },
-          "lib/net40/ru/System.Spatial.resources.dll": {
-            "locale": "ru"
-          },
-          "lib/net40/zh-Hans/System.Spatial.resources.dll": {
-            "locale": "zh-Hans"
-          },
-          "lib/net40/zh-Hant/System.Spatial.resources.dll": {
-            "locale": "zh-Hant"
-          }
-        }
-      },
-      "System.Threading.Tasks.Dataflow/4.8.0": {
+      "System.Threading.Tasks.Dataflow/4.10.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/System.Threading.Tasks.Dataflow.dll": {}
@@ -789,13 +574,11 @@
           "lib/net461/System.ValueTuple.dll": {}
         }
       },
-      "WindowsAzure.Storage/8.6.0": {
+      "WindowsAzure.Storage/9.3.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.Azure.KeyVault.Core": "1.0.0",
-          "Microsoft.Data.OData": "5.8.2",
-          "Microsoft.Data.Services.Client": "5.8.2",
-          "Newtonsoft.Json": "6.0.8"
+          "Newtonsoft.Json": "10.0.2"
         },
         "frameworkAssemblies": [
           "System.Data"
@@ -811,8 +594,8 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.6.1",
         "dependencies": {
-          "GraphEngine.Core": "2.0.10059",
-          "GraphEngine.DynamicCluster": "2.0.10059"
+          "GraphEngine.Core": "2.0.10135",
+          "GraphEngine.DynamicCluster": "2.0.10135"
         },
         "compile": {
           "bin/placeholder/IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.dll": {}
@@ -823,13 +606,13 @@
       }
     },
     ".NETFramework,Version=v4.6.1/win-x64": {
-      "GraphEngine.Azure.BlobStorage/2.0.10059": {
+      "GraphEngine.Azure.BlobStorage/2.0.10135": {
         "type": "package",
         "dependencies": {
-          "GraphEngine.Core": "2.0.10059",
-          "GraphEngine.DynamicCluster": "2.0.10059",
-          "System.Threading.Tasks.Dataflow": "4.8.0",
-          "WindowsAzure.Storage": "8.6.0"
+          "GraphEngine.Core": "2.0.10135",
+          "GraphEngine.DynamicCluster": "2.0.10135",
+          "System.Threading.Tasks.Dataflow": "4.10.0",
+          "WindowsAzure.Storage": "9.3.3"
         },
         "compile": {
           "lib/net461/Trinity.Azure.Storage.dll": {}
@@ -838,10 +621,10 @@
           "lib/net461/Trinity.Azure.Storage.dll": {}
         }
       },
-      "GraphEngine.Client/2.0.10059": {
+      "GraphEngine.Client/2.0.10135": {
         "type": "package",
         "dependencies": {
-          "GraphEngine.Core": "2.0.10059",
+          "GraphEngine.Core": "2.0.10135",
           "System.ValueTuple": "4.5.0"
         },
         "compile": {
@@ -851,7 +634,7 @@
           "lib/net461/Trinity.Client.dll": {}
         }
       },
-      "GraphEngine.Core/2.0.10059": {
+      "GraphEngine.Core/2.0.10135": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.ObjectPool": "2.0.0",
@@ -870,11 +653,11 @@
           "build/_._": {}
         }
       },
-      "GraphEngine.DynamicCluster/2.0.10059": {
+      "GraphEngine.DynamicCluster/2.0.10135": {
         "type": "package",
         "dependencies": {
-          "GraphEngine.Client": "2.0.10059",
-          "GraphEngine.Core": "2.0.10059",
+          "GraphEngine.Client": "2.0.10135",
+          "GraphEngine.Core": "2.0.10135",
           "Nito.AsyncEx.Coordination": "1.0.2",
           "Nito.AsyncEx.Tasks": "1.1.0",
           "System.Collections.Immutable": "1.4.0"
@@ -886,18 +669,18 @@
           "lib/netstandard2.0/Trinity.DynamicCluster.dll": {}
         }
       },
-      "GraphEngine.ServiceFabric.Infrastructure/2.0.10059": {
+      "GraphEngine.ServiceFabric.Infrastructure/2.0.10135": {
         "type": "package",
         "dependencies": {
-          "GraphEngine.Core": "2.0.10059",
-          "GraphEngine.DynamicCluster": "2.0.10059",
-          "Microsoft.ServiceFabric": "6.5.664",
-          "Microsoft.ServiceFabric.Data": "3.4.664",
-          "Microsoft.ServiceFabric.Diagnostics.Internal": "3.4.664",
-          "Microsoft.ServiceFabric.Services": "3.4.664",
+          "GraphEngine.Core": "2.0.10135",
+          "GraphEngine.DynamicCluster": "2.0.10135",
+          "Microsoft.ServiceFabric": "7.0.457",
+          "Microsoft.ServiceFabric.Data": "4.0.457",
+          "Microsoft.ServiceFabric.Diagnostics.Internal": "4.0.457",
+          "Microsoft.ServiceFabric.Services": "4.0.457",
           "Nito.AsyncEx.Tasks": "5.0.0",
           "Nito.Disposables": "2.0.1",
-          "System.Collections.Immutable": "1.6.0",
+          "System.Collections.Immutable": "1.7.0",
           "System.IO.Compression.ZipFile": "4.3.0",
           "System.Runtime.Numerics": "4.3.0",
           "System.ValueTuple": "4.5.0"
@@ -909,12 +692,12 @@
           "lib/net461/Trinity.ServiceFabric.Infrastructure.dll": {}
         }
       },
-      "GraphEngine.ServiceFabric.Remoting/2.0.10059": {
+      "GraphEngine.ServiceFabric.Remoting/2.0.10135": {
         "type": "package",
         "dependencies": {
-          "GraphEngine.Core": "2.0.10059",
-          "GraphEngine.ServiceFabric.Infrastructure": "2.0.10059",
-          "Microsoft.ServiceFabric.Services.Remoting": "3.4.664"
+          "GraphEngine.Core": "2.0.10135",
+          "GraphEngine.ServiceFabric.Infrastructure": "2.0.10135",
+          "Microsoft.ServiceFabric.Services.Remoting": "4.0.457"
         },
         "compile": {
           "lib/net461/Trinity.ServiceFabric.Remoting.dll": {}
@@ -932,131 +715,6 @@
           "lib/net40/Microsoft.Azure.KeyVault.Core.dll": {}
         }
       },
-      "Microsoft.Data.Edm/5.8.2": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Microsoft.Data.Edm.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Microsoft.Data.Edm.dll": {}
-        },
-        "resource": {
-          "lib/net40/de/Microsoft.Data.Edm.resources.dll": {
-            "locale": "de"
-          },
-          "lib/net40/es/Microsoft.Data.Edm.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net40/fr/Microsoft.Data.Edm.resources.dll": {
-            "locale": "fr"
-          },
-          "lib/net40/it/Microsoft.Data.Edm.resources.dll": {
-            "locale": "it"
-          },
-          "lib/net40/ja/Microsoft.Data.Edm.resources.dll": {
-            "locale": "ja"
-          },
-          "lib/net40/ko/Microsoft.Data.Edm.resources.dll": {
-            "locale": "ko"
-          },
-          "lib/net40/ru/Microsoft.Data.Edm.resources.dll": {
-            "locale": "ru"
-          },
-          "lib/net40/zh-Hans/Microsoft.Data.Edm.resources.dll": {
-            "locale": "zh-Hans"
-          },
-          "lib/net40/zh-Hant/Microsoft.Data.Edm.resources.dll": {
-            "locale": "zh-Hant"
-          }
-        }
-      },
-      "Microsoft.Data.OData/5.8.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Data.Edm": "[5.8.2]",
-          "System.Spatial": "[5.8.2]"
-        },
-        "compile": {
-          "lib/net40/Microsoft.Data.OData.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Microsoft.Data.OData.dll": {}
-        },
-        "resource": {
-          "lib/net40/de/Microsoft.Data.OData.resources.dll": {
-            "locale": "de"
-          },
-          "lib/net40/es/Microsoft.Data.OData.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net40/fr/Microsoft.Data.OData.resources.dll": {
-            "locale": "fr"
-          },
-          "lib/net40/it/Microsoft.Data.OData.resources.dll": {
-            "locale": "it"
-          },
-          "lib/net40/ja/Microsoft.Data.OData.resources.dll": {
-            "locale": "ja"
-          },
-          "lib/net40/ko/Microsoft.Data.OData.resources.dll": {
-            "locale": "ko"
-          },
-          "lib/net40/ru/Microsoft.Data.OData.resources.dll": {
-            "locale": "ru"
-          },
-          "lib/net40/zh-Hans/Microsoft.Data.OData.resources.dll": {
-            "locale": "zh-Hans"
-          },
-          "lib/net40/zh-Hant/Microsoft.Data.OData.resources.dll": {
-            "locale": "zh-Hant"
-          }
-        }
-      },
-      "Microsoft.Data.Services.Client/5.8.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Data.OData": "[5.8.2]",
-          "System.ComponentModel.EventBasedAsync": "4.0.11",
-          "System.Dynamic.Runtime": "4.0.0",
-          "System.Linq.Queryable": "4.0.0",
-          "System.Net.Requests": "4.0.11"
-        },
-        "compile": {
-          "lib/net40/Microsoft.Data.Services.Client.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Microsoft.Data.Services.Client.dll": {}
-        },
-        "resource": {
-          "lib/net40/de/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "de"
-          },
-          "lib/net40/es/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net40/fr/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "fr"
-          },
-          "lib/net40/it/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "it"
-          },
-          "lib/net40/ja/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "ja"
-          },
-          "lib/net40/ko/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "ko"
-          },
-          "lib/net40/ru/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "ru"
-          },
-          "lib/net40/zh-Hans/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "zh-Hans"
-          },
-          "lib/net40/zh-Hant/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "zh-Hant"
-          }
-        }
-      },
       "Microsoft.Extensions.ObjectPool/2.0.0": {
         "type": "package",
         "compile": {
@@ -1066,7 +724,7 @@
           "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.dll": {}
         }
       },
-      "Microsoft.ServiceFabric/6.5.664": {
+      "Microsoft.ServiceFabric/7.0.457": {
         "type": "package",
         "compile": {
           "lib/net461/Microsoft.ServiceFabric.Internal.Strings.dll": {},
@@ -1086,12 +744,12 @@
           "runtimes/win/lib/net461/System.Fabric.dll": {}
         }
       },
-      "Microsoft.ServiceFabric.Data/3.4.664": {
+      "Microsoft.ServiceFabric.Data/4.0.457": {
         "type": "package",
         "dependencies": {
-          "Microsoft.ServiceFabric": "[6.5.664]",
-          "Microsoft.ServiceFabric.Data.Extensions": "[3.4.664]",
-          "Microsoft.ServiceFabric.Data.Interfaces": "[3.4.664]"
+          "Microsoft.ServiceFabric": "[7.0.457]",
+          "Microsoft.ServiceFabric.Data.Extensions": "[4.0.457]",
+          "Microsoft.ServiceFabric.Data.Interfaces": "[4.0.457]"
         },
         "frameworkAssemblies": [
           "System.Runtime.Serialization"
@@ -1103,11 +761,11 @@
           "runtimes/win/lib/net461/Microsoft.ServiceFabric.Data.dll": {}
         }
       },
-      "Microsoft.ServiceFabric.Data.Extensions/3.4.664": {
+      "Microsoft.ServiceFabric.Data.Extensions/4.0.457": {
         "type": "package",
         "dependencies": {
-          "Microsoft.ServiceFabric": "6.5.664",
-          "Microsoft.ServiceFabric.Data.Interfaces": "[3.4.664]"
+          "Microsoft.ServiceFabric": "7.0.457",
+          "Microsoft.ServiceFabric.Data.Interfaces": "[4.0.457]"
         },
         "compile": {
           "lib/net461/Microsoft.ServiceFabric.Data.Extensions.dll": {},
@@ -1118,10 +776,10 @@
           "runtimes/win/lib/net461/Microsoft.ServiceFabric.ReliableCollection.Interop.dll": {}
         }
       },
-      "Microsoft.ServiceFabric.Data.Interfaces/3.4.664": {
+      "Microsoft.ServiceFabric.Data.Interfaces/4.0.457": {
         "type": "package",
         "dependencies": {
-          "Microsoft.ServiceFabric": "[6.5.664]"
+          "Microsoft.ServiceFabric": "[7.0.457]"
         },
         "compile": {
           "lib/net461/Microsoft.ServiceFabric.Data.Interfaces.dll": {}
@@ -1130,10 +788,10 @@
           "runtimes/win/lib/net461/Microsoft.ServiceFabric.Data.Interfaces.dll": {}
         }
       },
-      "Microsoft.ServiceFabric.Diagnostics.Internal/3.4.664": {
+      "Microsoft.ServiceFabric.Diagnostics.Internal/4.0.457": {
         "type": "package",
         "dependencies": {
-          "Microsoft.ServiceFabric": "[6.5.664]"
+          "Microsoft.ServiceFabric": "[7.0.457]"
         },
         "frameworkAssemblies": [
           "System.Runtime.Serialization",
@@ -1146,10 +804,10 @@
           "runtimes/win/lib/net461/Microsoft.ServiceFabric.Diagnostics.dll": {}
         }
       },
-      "Microsoft.ServiceFabric.FabricTransport.Internal/3.4.664": {
+      "Microsoft.ServiceFabric.FabricTransport.Internal/4.0.457": {
         "type": "package",
         "dependencies": {
-          "Microsoft.ServiceFabric": "[6.5.664]"
+          "Microsoft.ServiceFabric": "[7.0.457]"
         },
         "frameworkAssemblies": [
           "System.Runtime.Serialization",
@@ -1164,11 +822,11 @@
           "runtimes/win/lib/net461/Microsoft.ServiceFabric.FabricTransport.dll": {}
         }
       },
-      "Microsoft.ServiceFabric.Services/3.4.664": {
+      "Microsoft.ServiceFabric.Services/4.0.457": {
         "type": "package",
         "dependencies": {
-          "Microsoft.ServiceFabric.Data": "[3.4.664]",
-          "Microsoft.ServiceFabric.Diagnostics.Internal": "[3.4.664]"
+          "Microsoft.ServiceFabric.Data": "[4.0.457]",
+          "Microsoft.ServiceFabric.Diagnostics.Internal": "[4.0.457]"
         },
         "compile": {
           "lib/net461/Microsoft.ServiceFabric.Services.dll": {}
@@ -1177,12 +835,12 @@
           "runtimes/win/lib/net461/Microsoft.ServiceFabric.Services.dll": {}
         }
       },
-      "Microsoft.ServiceFabric.Services.Remoting/3.4.664": {
+      "Microsoft.ServiceFabric.Services.Remoting/4.0.457": {
         "type": "package",
         "dependencies": {
-          "Microsoft.ServiceFabric.Diagnostics.Internal": "[3.4.664]",
-          "Microsoft.ServiceFabric.FabricTransport.Internal": "[3.4.664]",
-          "Microsoft.ServiceFabric.Services": "[3.4.664]"
+          "Microsoft.ServiceFabric.Diagnostics.Internal": "[4.0.457]",
+          "Microsoft.ServiceFabric.FabricTransport.Internal": "[4.0.457]",
+          "Microsoft.ServiceFabric.Services": "[4.0.457]"
         },
         "compile": {
           "lib/net461/Microsoft.ServiceFabric.Services.Remoting.dll": {}
@@ -1191,7 +849,7 @@
           "runtimes/win/lib/net461/Microsoft.ServiceFabric.Services.Remoting.dll": {}
         }
       },
-      "Newtonsoft.Json/9.0.1": {
+      "Newtonsoft.Json/10.0.2": {
         "type": "package",
         "compile": {
           "lib/net45/Newtonsoft.Json.dll": {}
@@ -1255,7 +913,7 @@
           "lib/netstandard2.0/System.Buffers.dll": {}
         }
       },
-      "System.Collections.Immutable/1.6.0": {
+      "System.Collections.Immutable/1.7.0": {
         "type": "package",
         "dependencies": {
           "System.Memory": "4.5.3"
@@ -1265,27 +923,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/System.Collections.Immutable.dll": {}
-        }
-      },
-      "System.ComponentModel.EventBasedAsync/4.0.11": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System"
-        ],
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
-        }
-      },
-      "System.Dynamic.Runtime/4.0.0": {
-        "type": "package",
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
         }
       },
       "System.IO.Compression.ZipFile/4.3.0": {
@@ -1301,15 +938,6 @@
           "lib/net46/System.IO.Compression.ZipFile.dll": {}
         }
       },
-      "System.Linq.Queryable/4.0.0": {
-        "type": "package",
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
-        }
-      },
       "System.Memory/4.5.3": {
         "type": "package",
         "dependencies": {
@@ -1322,18 +950,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/System.Memory.dll": {}
-        }
-      },
-      "System.Net.Requests/4.0.11": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System"
-        ],
-        "compile": {
-          "ref/net46/_._": {}
-        },
-        "runtime": {
-          "runtimes/win/lib/net46/_._": {}
         }
       },
       "System.Numerics.Vectors/4.4.0": {
@@ -1370,45 +986,7 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Spatial/5.8.2": {
-        "type": "package",
-        "compile": {
-          "lib/net40/System.Spatial.dll": {}
-        },
-        "runtime": {
-          "lib/net40/System.Spatial.dll": {}
-        },
-        "resource": {
-          "lib/net40/de/System.Spatial.resources.dll": {
-            "locale": "de"
-          },
-          "lib/net40/es/System.Spatial.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net40/fr/System.Spatial.resources.dll": {
-            "locale": "fr"
-          },
-          "lib/net40/it/System.Spatial.resources.dll": {
-            "locale": "it"
-          },
-          "lib/net40/ja/System.Spatial.resources.dll": {
-            "locale": "ja"
-          },
-          "lib/net40/ko/System.Spatial.resources.dll": {
-            "locale": "ko"
-          },
-          "lib/net40/ru/System.Spatial.resources.dll": {
-            "locale": "ru"
-          },
-          "lib/net40/zh-Hans/System.Spatial.resources.dll": {
-            "locale": "zh-Hans"
-          },
-          "lib/net40/zh-Hant/System.Spatial.resources.dll": {
-            "locale": "zh-Hant"
-          }
-        }
-      },
-      "System.Threading.Tasks.Dataflow/4.8.0": {
+      "System.Threading.Tasks.Dataflow/4.10.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/System.Threading.Tasks.Dataflow.dll": {}
@@ -1430,13 +1008,11 @@
           "lib/net461/System.ValueTuple.dll": {}
         }
       },
-      "WindowsAzure.Storage/8.6.0": {
+      "WindowsAzure.Storage/9.3.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.Azure.KeyVault.Core": "1.0.0",
-          "Microsoft.Data.OData": "5.8.2",
-          "Microsoft.Data.Services.Client": "5.8.2",
-          "Newtonsoft.Json": "6.0.8"
+          "Newtonsoft.Json": "10.0.2"
         },
         "frameworkAssemblies": [
           "System.Data"
@@ -1452,8 +1028,8 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.6.1",
         "dependencies": {
-          "GraphEngine.Core": "2.0.10059",
-          "GraphEngine.DynamicCluster": "2.0.10059"
+          "GraphEngine.Core": "2.0.10135",
+          "GraphEngine.DynamicCluster": "2.0.10135"
         },
         "compile": {
           "bin/placeholder/IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.dll": {}
@@ -1465,41 +1041,41 @@
     }
   },
   "libraries": {
-    "GraphEngine.Azure.BlobStorage/2.0.10059": {
-      "sha512": "+r19ZNiWbbYjjR//dLrw9AEexZ7zscI3J1+SSB0H6s1CIHSeBL5jTL8YeTvULGSGMr7WT6Cy/6T7WY9QL6AUnw==",
+    "GraphEngine.Azure.BlobStorage/2.0.10135": {
+      "sha512": "U8pytWATEnFmc1X+J1uwM7hq1LILwIUzgfgCCHm62vNjyS0j3EHZ+7B2i426CCKtYdL6m+60vp8zLhmSUgbQUg==",
       "type": "package",
-      "path": "graphengine.azure.blobstorage/2.0.10059",
+      "path": "graphengine.azure.blobstorage/2.0.10135",
       "files": [
         ".nupkg.metadata",
-        "graphengine.azure.blobstorage.2.0.10059.nupkg.sha512",
+        "graphengine.azure.blobstorage.2.0.10135.nupkg.sha512",
         "graphengine.azure.blobstorage.nuspec",
         "lib/net461/Trinity.Azure.Storage.dll",
         "lib/netstandard2.0/Trinity.Azure.Storage.dll"
       ]
     },
-    "GraphEngine.Client/2.0.10059": {
-      "sha512": "dNhecwX/B8+RadryrVP2WqTeBcsrH3sW//SJU3oGtjXQ24ZLYOWYZnTBNBwHoDwQ/OGhjgIhXDxO9M0fqaigsw==",
+    "GraphEngine.Client/2.0.10135": {
+      "sha512": "pU8JttdJxTEK0qndsUizKPH5HigVejZJ3h6EEQg6B8WNcIWqOMtHmmNrlnNC0apQJkbgXEsxxBj63kt2mAXmjw==",
       "type": "package",
-      "path": "graphengine.client/2.0.10059",
+      "path": "graphengine.client/2.0.10135",
       "files": [
         ".nupkg.metadata",
-        "graphengine.client.2.0.10059.nupkg.sha512",
+        "graphengine.client.2.0.10135.nupkg.sha512",
         "graphengine.client.nuspec",
         "lib/net461/Trinity.Client.dll",
         "lib/netstandard2.0/Trinity.Client.dll"
       ]
     },
-    "GraphEngine.Core/2.0.10059": {
-      "sha512": "cDdsw6psrHqg4JmtrC+1/r8TyFt2RnX2eLbO5fiC/rP6pVLqvq/mNhIhL75LjU9y1bMy2aVZqbe05z81g8/RAA==",
+    "GraphEngine.Core/2.0.10135": {
+      "sha512": "/J1S1XmMRke44DPYjhbKA5+udvhgOf8pnDhG/cWC6QcBFOBcAIExHiyj/8Fo78YddzZy5/xB84dX+fXF/T/fxg==",
       "type": "package",
-      "path": "graphengine.core/2.0.10059",
+      "path": "graphengine.core/2.0.10135",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         "build/GraphEngine.Core.props",
         "build/GraphEngine.Core.targets",
         "content/TrinityConfig.Schema.xsd",
-        "graphengine.core.2.0.10059.nupkg.sha512",
+        "graphengine.core.2.0.10135.nupkg.sha512",
         "graphengine.core.nuspec",
         "lib/net451/Trinity.Core.dll",
         "lib/net461/Trinity.Core.dll",
@@ -1510,35 +1086,35 @@
         "tools/Trinity.TSL.CodeGen.exe"
       ]
     },
-    "GraphEngine.DynamicCluster/2.0.10059": {
-      "sha512": "ZChmFaVv7crk8hqCPZwhPDn1WH435ekUkGLcz+VcNHMtYrsesL8VqiTUzbTSj2V0haIuE7AVlz1bj6UA6r5r7g==",
+    "GraphEngine.DynamicCluster/2.0.10135": {
+      "sha512": "vYhiCEoUzYhONC66FxCefpnuuL8vQ5I6r2zIx3/WPp8EUWMepqCK3QUf9JNyGvHET3b1tzZz+v2HTtdeQFFkWQ==",
       "type": "package",
-      "path": "graphengine.dynamiccluster/2.0.10059",
+      "path": "graphengine.dynamiccluster/2.0.10135",
       "files": [
         ".nupkg.metadata",
-        "graphengine.dynamiccluster.2.0.10059.nupkg.sha512",
+        "graphengine.dynamiccluster.2.0.10135.nupkg.sha512",
         "graphengine.dynamiccluster.nuspec",
         "lib/netstandard2.0/Trinity.DynamicCluster.dll"
       ]
     },
-    "GraphEngine.ServiceFabric.Infrastructure/2.0.10059": {
-      "sha512": "ZQkW7W43FavNNa0x38rzrFrLS8419FvmLa+i+iVsUPqzY4SvdzGijwWf2UYX9JEBwsSBcqtCIwC3N765VayKgQ==",
+    "GraphEngine.ServiceFabric.Infrastructure/2.0.10135": {
+      "sha512": "OZ53Mji+tstgWRoiBINHq2db+WAo7PVDYeUTkpAP3mJ8Espe29fy32fjj+OfmES1gPClCd5N90INx2YeByT/3g==",
       "type": "package",
-      "path": "graphengine.servicefabric.infrastructure/2.0.10059",
+      "path": "graphengine.servicefabric.infrastructure/2.0.10135",
       "files": [
         ".nupkg.metadata",
-        "graphengine.servicefabric.infrastructure.2.0.10059.nupkg.sha512",
+        "graphengine.servicefabric.infrastructure.2.0.10135.nupkg.sha512",
         "graphengine.servicefabric.infrastructure.nuspec",
         "lib/net461/Trinity.ServiceFabric.Infrastructure.dll"
       ]
     },
-    "GraphEngine.ServiceFabric.Remoting/2.0.10059": {
-      "sha512": "MKaI98wkdOFuW3IAa+oT8a3r1NPRgMu+wLlK8jDIJOKd3bBE+kl52jDcTifG0Sd/HX0wquZOr44UePFaDfG+DQ==",
+    "GraphEngine.ServiceFabric.Remoting/2.0.10135": {
+      "sha512": "nRKr3N7oHQnjcDCBOyhgKfUo/ZRxdBowbzYsno1J1grmYkdDsWNGWqcPqoFpCZlRSaRBHhnXKWKms1OnI1lVCQ==",
       "type": "package",
-      "path": "graphengine.servicefabric.remoting/2.0.10059",
+      "path": "graphengine.servicefabric.remoting/2.0.10135",
       "files": [
         ".nupkg.metadata",
-        "graphengine.servicefabric.remoting.2.0.10059.nupkg.sha512",
+        "graphengine.servicefabric.remoting.2.0.10135.nupkg.sha512",
         "graphengine.servicefabric.remoting.nuspec",
         "lib/net461/Trinity.ServiceFabric.Remoting.dll"
       ]
@@ -1558,193 +1134,6 @@
         "microsoft.azure.keyvault.core.nuspec"
       ]
     },
-    "Microsoft.Data.Edm/5.8.2": {
-      "sha512": "P/d8DxA6MFHroBEn/jW0LMQSIKnsRRibrZtRCLfov2boQfrQ1R1BVgkJ5oIhcQsOm0l4POv+I2ny6RBsclNbOw==",
-      "type": "package",
-      "path": "microsoft.data.edm/5.8.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/Microsoft.Data.Edm.dll",
-        "lib/net40/Microsoft.Data.Edm.xml",
-        "lib/net40/de/Microsoft.Data.Edm.resources.dll",
-        "lib/net40/es/Microsoft.Data.Edm.resources.dll",
-        "lib/net40/fr/Microsoft.Data.Edm.resources.dll",
-        "lib/net40/it/Microsoft.Data.Edm.resources.dll",
-        "lib/net40/ja/Microsoft.Data.Edm.resources.dll",
-        "lib/net40/ko/Microsoft.Data.Edm.resources.dll",
-        "lib/net40/ru/Microsoft.Data.Edm.resources.dll",
-        "lib/net40/zh-Hans/Microsoft.Data.Edm.resources.dll",
-        "lib/net40/zh-Hant/Microsoft.Data.Edm.resources.dll",
-        "lib/netstandard1.1/Microsoft.Data.Edm.dll",
-        "lib/netstandard1.1/Microsoft.Data.Edm.xml",
-        "lib/netstandard1.1/de/Microsoft.Data.Edm.resources.dll",
-        "lib/netstandard1.1/es/Microsoft.Data.Edm.resources.dll",
-        "lib/netstandard1.1/fr/Microsoft.Data.Edm.resources.dll",
-        "lib/netstandard1.1/it/Microsoft.Data.Edm.resources.dll",
-        "lib/netstandard1.1/ja/Microsoft.Data.Edm.resources.dll",
-        "lib/netstandard1.1/ko/Microsoft.Data.Edm.resources.dll",
-        "lib/netstandard1.1/ru/Microsoft.Data.Edm.resources.dll",
-        "lib/netstandard1.1/zh-Hans/Microsoft.Data.Edm.resources.dll",
-        "lib/netstandard1.1/zh-Hant/Microsoft.Data.Edm.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/Microsoft.Data.Edm.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/Microsoft.Data.Edm.xml",
-        "lib/portable-net40+sl5+wp8+win8+wpa/de/Microsoft.Data.Edm.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/es/Microsoft.Data.Edm.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/fr/Microsoft.Data.Edm.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/it/Microsoft.Data.Edm.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/ja/Microsoft.Data.Edm.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/ko/Microsoft.Data.Edm.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/ru/Microsoft.Data.Edm.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/zh-Hans/Microsoft.Data.Edm.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/zh-Hant/Microsoft.Data.Edm.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/Microsoft.Data.Edm.dll",
-        "lib/portable-net45+wp8+win8+wpa/Microsoft.Data.Edm.xml",
-        "lib/portable-net45+wp8+win8+wpa/de/Microsoft.Data.Edm.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/es/Microsoft.Data.Edm.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/fr/Microsoft.Data.Edm.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/it/Microsoft.Data.Edm.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/ja/Microsoft.Data.Edm.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/ko/Microsoft.Data.Edm.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/ru/Microsoft.Data.Edm.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/zh-Hans/Microsoft.Data.Edm.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/zh-Hant/Microsoft.Data.Edm.resources.dll",
-        "lib/sl4/Microsoft.Data.Edm.dll",
-        "lib/sl4/Microsoft.Data.Edm.xml",
-        "lib/sl4/de/Microsoft.Data.Edm.resources.dll",
-        "lib/sl4/es/Microsoft.Data.Edm.resources.dll",
-        "lib/sl4/fr/Microsoft.Data.Edm.resources.dll",
-        "lib/sl4/it/Microsoft.Data.Edm.resources.dll",
-        "lib/sl4/ja/Microsoft.Data.Edm.resources.dll",
-        "lib/sl4/ko/Microsoft.Data.Edm.resources.dll",
-        "lib/sl4/ru/Microsoft.Data.Edm.resources.dll",
-        "lib/sl4/zh-Hans/Microsoft.Data.Edm.resources.dll",
-        "lib/sl4/zh-Hant/Microsoft.Data.Edm.resources.dll",
-        "microsoft.data.edm.5.8.2.nupkg.sha512",
-        "microsoft.data.edm.nuspec"
-      ]
-    },
-    "Microsoft.Data.OData/5.8.2": {
-      "sha512": "oEIUtXcRiKogF0yZxA+QdgxoBJ34989qL/5xOSrTfxAhzNJV5Hw6DRdWgUCpeXFMoJUQx7ptbHCN+My/LCQfsg==",
-      "type": "package",
-      "path": "microsoft.data.odata/5.8.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/Microsoft.Data.OData.dll",
-        "lib/net40/Microsoft.Data.OData.xml",
-        "lib/net40/de/Microsoft.Data.OData.resources.dll",
-        "lib/net40/es/Microsoft.Data.OData.resources.dll",
-        "lib/net40/fr/Microsoft.Data.OData.resources.dll",
-        "lib/net40/it/Microsoft.Data.OData.resources.dll",
-        "lib/net40/ja/Microsoft.Data.OData.resources.dll",
-        "lib/net40/ko/Microsoft.Data.OData.resources.dll",
-        "lib/net40/ru/Microsoft.Data.OData.resources.dll",
-        "lib/net40/zh-Hans/Microsoft.Data.OData.resources.dll",
-        "lib/net40/zh-Hant/Microsoft.Data.OData.resources.dll",
-        "lib/netstandard1.1/Microsoft.Data.OData.dll",
-        "lib/netstandard1.1/Microsoft.Data.OData.xml",
-        "lib/netstandard1.1/de/Microsoft.Data.OData.resources.dll",
-        "lib/netstandard1.1/es/Microsoft.Data.OData.resources.dll",
-        "lib/netstandard1.1/fr/Microsoft.Data.OData.resources.dll",
-        "lib/netstandard1.1/it/Microsoft.Data.OData.resources.dll",
-        "lib/netstandard1.1/ja/Microsoft.Data.OData.resources.dll",
-        "lib/netstandard1.1/ko/Microsoft.Data.OData.resources.dll",
-        "lib/netstandard1.1/ru/Microsoft.Data.OData.resources.dll",
-        "lib/netstandard1.1/zh-Hans/Microsoft.Data.OData.resources.dll",
-        "lib/netstandard1.1/zh-Hant/Microsoft.Data.OData.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/Microsoft.Data.OData.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/Microsoft.Data.OData.xml",
-        "lib/portable-net40+sl5+wp8+win8+wpa/de/Microsoft.Data.OData.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/es/Microsoft.Data.OData.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/fr/Microsoft.Data.OData.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/it/Microsoft.Data.OData.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/ja/Microsoft.Data.OData.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/ko/Microsoft.Data.OData.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/ru/Microsoft.Data.OData.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/zh-Hans/Microsoft.Data.OData.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/zh-Hant/Microsoft.Data.OData.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/Microsoft.Data.OData.dll",
-        "lib/portable-net45+wp8+win8+wpa/Microsoft.Data.OData.xml",
-        "lib/portable-net45+wp8+win8+wpa/de/Microsoft.Data.OData.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/es/Microsoft.Data.OData.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/fr/Microsoft.Data.OData.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/it/Microsoft.Data.OData.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/ja/Microsoft.Data.OData.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/ko/Microsoft.Data.OData.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/ru/Microsoft.Data.OData.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/zh-Hans/Microsoft.Data.OData.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/zh-Hant/Microsoft.Data.OData.resources.dll",
-        "lib/sl4/Microsoft.Data.OData.dll",
-        "lib/sl4/Microsoft.Data.OData.xml",
-        "lib/sl4/de/Microsoft.Data.OData.resources.dll",
-        "lib/sl4/es/Microsoft.Data.OData.resources.dll",
-        "lib/sl4/fr/Microsoft.Data.OData.resources.dll",
-        "lib/sl4/it/Microsoft.Data.OData.resources.dll",
-        "lib/sl4/ja/Microsoft.Data.OData.resources.dll",
-        "lib/sl4/ko/Microsoft.Data.OData.resources.dll",
-        "lib/sl4/ru/Microsoft.Data.OData.resources.dll",
-        "lib/sl4/zh-Hans/Microsoft.Data.OData.resources.dll",
-        "lib/sl4/zh-Hant/Microsoft.Data.OData.resources.dll",
-        "microsoft.data.odata.5.8.2.nupkg.sha512",
-        "microsoft.data.odata.nuspec"
-      ]
-    },
-    "Microsoft.Data.Services.Client/5.8.2": {
-      "sha512": "RtTMj1EOQa9nzJGZEb13Z7hW3gjqLsPoeHHD/8PEZ/b+8Wb+UHMxvS7llg0TUki1nwiwcaBfGeQE3zN5IQNYPA==",
-      "type": "package",
-      "path": "microsoft.data.services.client/5.8.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/Microsoft.Data.Services.Client.dll",
-        "lib/net40/Microsoft.Data.Services.Client.xml",
-        "lib/net40/de/Microsoft.Data.Services.Client.resources.dll",
-        "lib/net40/es/Microsoft.Data.Services.Client.resources.dll",
-        "lib/net40/fr/Microsoft.Data.Services.Client.resources.dll",
-        "lib/net40/it/Microsoft.Data.Services.Client.resources.dll",
-        "lib/net40/ja/Microsoft.Data.Services.Client.resources.dll",
-        "lib/net40/ko/Microsoft.Data.Services.Client.resources.dll",
-        "lib/net40/ru/Microsoft.Data.Services.Client.resources.dll",
-        "lib/net40/zh-Hans/Microsoft.Data.Services.Client.resources.dll",
-        "lib/net40/zh-Hant/Microsoft.Data.Services.Client.resources.dll",
-        "lib/netstandard1.1/Microsoft.Data.Services.Client.dll",
-        "lib/netstandard1.1/Microsoft.Data.Services.Client.xml",
-        "lib/netstandard1.1/de/Microsoft.Data.Services.Client.resources.dll",
-        "lib/netstandard1.1/es/Microsoft.Data.Services.Client.resources.dll",
-        "lib/netstandard1.1/fr/Microsoft.Data.Services.Client.resources.dll",
-        "lib/netstandard1.1/it/Microsoft.Data.Services.Client.resources.dll",
-        "lib/netstandard1.1/ja/Microsoft.Data.Services.Client.resources.dll",
-        "lib/netstandard1.1/ko/Microsoft.Data.Services.Client.resources.dll",
-        "lib/netstandard1.1/ru/Microsoft.Data.Services.Client.resources.dll",
-        "lib/netstandard1.1/zh-Hans/Microsoft.Data.Services.Client.resources.dll",
-        "lib/netstandard1.1/zh-Hant/Microsoft.Data.Services.Client.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/Microsoft.Data.Services.Client.dll",
-        "lib/portable-net45+wp8+win8+wpa/Microsoft.Data.Services.Client.xml",
-        "lib/portable-net45+wp8+win8+wpa/de/Microsoft.Data.Services.Client.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/es/Microsoft.Data.Services.Client.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/fr/Microsoft.Data.Services.Client.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/it/Microsoft.Data.Services.Client.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/ja/Microsoft.Data.Services.Client.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/ko/Microsoft.Data.Services.Client.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/ru/Microsoft.Data.Services.Client.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/zh-Hans/Microsoft.Data.Services.Client.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/zh-Hant/Microsoft.Data.Services.Client.resources.dll",
-        "lib/sl4/Microsoft.Data.Services.Client.dll",
-        "lib/sl4/Microsoft.Data.Services.Client.xml",
-        "lib/sl4/de/Microsoft.Data.Services.Client.resources.dll",
-        "lib/sl4/es/Microsoft.Data.Services.Client.resources.dll",
-        "lib/sl4/fr/Microsoft.Data.Services.Client.resources.dll",
-        "lib/sl4/it/Microsoft.Data.Services.Client.resources.dll",
-        "lib/sl4/ja/Microsoft.Data.Services.Client.resources.dll",
-        "lib/sl4/ko/Microsoft.Data.Services.Client.resources.dll",
-        "lib/sl4/ru/Microsoft.Data.Services.Client.resources.dll",
-        "lib/sl4/zh-Hans/Microsoft.Data.Services.Client.resources.dll",
-        "lib/sl4/zh-Hant/Microsoft.Data.Services.Client.resources.dll",
-        "microsoft.data.services.client.5.8.2.nupkg.sha512",
-        "microsoft.data.services.client.nuspec"
-      ]
-    },
     "Microsoft.Extensions.ObjectPool/2.0.0": {
       "sha512": "drOmgNZCJiNEqFM/TvyqwtogS8wqoWGQCW5KB/CVGKL6VXHw8OOMdaHyspp8HPstP9UDnrnuq+8eaCaAcQg6tA==",
       "type": "package",
@@ -1758,10 +1147,10 @@
         "microsoft.extensions.objectpool.nuspec"
       ]
     },
-    "Microsoft.ServiceFabric/6.5.664": {
-      "sha512": "YtoYNP5mh11ioP9d8XsnnJJ1DozbBW8wNnAIcgdMycJ6qE8gupq5SovJ9pSNeeLnxUb8PCY3R9XrbBNYZ13nZA==",
+    "Microsoft.ServiceFabric/7.0.457": {
+      "sha512": "bu+CIKYo271feTLu8pNiU7Lq/LlEiybnLZS+YV54khr0J6TxmUYoghk9+BVcLDUCu+GbIujFHhfi7IiBD3Mh4A==",
       "type": "package",
-      "path": "microsoft.servicefabric/6.5.664",
+      "path": "microsoft.servicefabric/7.0.457",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1844,7 +1233,7 @@
         "lib/netstandard2.0/System.Fabric.Management.ServiceModel.dll",
         "lib/netstandard2.0/System.Fabric.Strings.dll",
         "lib/netstandard2.0/System.Fabric.dll",
-        "microsoft.servicefabric.6.5.664.nupkg.sha512",
+        "microsoft.servicefabric.7.0.457.nupkg.sha512",
         "microsoft.servicefabric.nuspec",
         "runtimes/linux/lib/netstandard2.0/Microsoft.ServiceFabric.Internal.McgInterop.dll",
         "runtimes/linux/lib/netstandard2.0/Microsoft.ServiceFabric.Internal.Strings.dll",
@@ -1899,10 +1288,10 @@
         "runtimes/win/lib/netstandard2.0/System.Fabric.dll"
       ]
     },
-    "Microsoft.ServiceFabric.Data/3.4.664": {
-      "sha512": "z4bY90dTE53hQUgfNXJ4XuXXhxEOCVgTNemD+IW65wOR4mYiGrVc/3f8W3aemPvJRrLf7yvONnB1zk2aYAVnYQ==",
+    "Microsoft.ServiceFabric.Data/4.0.457": {
+      "sha512": "oRgaTDAggMZpI7oyvC2TfTJKxbysphBLXLaM3Rgx9ATSD30ljxJYWs1eQrI7hAnaz9zdJWwgrRgkw0p0DW5Aww==",
       "type": "package",
-      "path": "microsoft.servicefabric.data/3.4.664",
+      "path": "microsoft.servicefabric.data/4.0.457",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1925,7 +1314,7 @@
         "lib/net472/Microsoft.ServiceFabric.Data.dll",
         "lib/net472/Microsoft.ServiceFabric.Data.xml",
         "lib/netstandard2.0/Microsoft.ServiceFabric.Data.dll",
-        "microsoft.servicefabric.data.3.4.664.nupkg.sha512",
+        "microsoft.servicefabric.data.4.0.457.nupkg.sha512",
         "microsoft.servicefabric.data.nuspec",
         "runtimes/linux/lib/netstandard2.0/Microsoft.ServiceFabric.Data.dll",
         "runtimes/win/lib/net461/Microsoft.ServiceFabric.Data.dll",
@@ -1936,10 +1325,10 @@
         "runtimes/win/lib/netstandard2.0/Microsoft.ServiceFabric.Data.dll"
       ]
     },
-    "Microsoft.ServiceFabric.Data.Extensions/3.4.664": {
-      "sha512": "EW3GFdyUDYVTKqq5INc3Yl47DzhAYxjrPyriNo2hd+ITcEuyx40TsoTxlScv9luUgZ65znWAM7WqNNyXzSlI+w==",
+    "Microsoft.ServiceFabric.Data.Extensions/4.0.457": {
+      "sha512": "3ntX7nfJJa4a5zaXHtmDPmnj31okrJ5BtRr+LsYyHH+JLeJlPbmCqOFQXZS9CQsQk3usIZ7MVyj4apdNeiE4Hw==",
       "type": "package",
-      "path": "microsoft.servicefabric.data.extensions/3.4.664",
+      "path": "microsoft.servicefabric.data.extensions/4.0.457",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1963,7 +1352,7 @@
         "lib/net472/Microsoft.ServiceFabric.ReliableCollection.Interop.dll",
         "lib/netstandard2.0/Microsoft.ServiceFabric.Data.Extensions.dll",
         "lib/netstandard2.0/Microsoft.ServiceFabric.ReliableCollection.Interop.dll",
-        "microsoft.servicefabric.data.extensions.3.4.664.nupkg.sha512",
+        "microsoft.servicefabric.data.extensions.4.0.457.nupkg.sha512",
         "microsoft.servicefabric.data.extensions.nuspec",
         "runtimes/linux/lib/netstandard2.0/Microsoft.ServiceFabric.Data.Extensions.dll",
         "runtimes/linux/lib/netstandard2.0/Microsoft.ServiceFabric.ReliableCollection.Interop.dll",
@@ -1981,10 +1370,10 @@
         "runtimes/win/lib/netstandard2.0/Microsoft.ServiceFabric.ReliableCollection.Interop.dll"
       ]
     },
-    "Microsoft.ServiceFabric.Data.Interfaces/3.4.664": {
-      "sha512": "LRUcowMoQBfAJZHdvaoQWJgUw51RU2ACXvR0t+pTTHIvu2L8dtDmniif9CKr6VmByKc7M/wOETRdV1LfukI9/w==",
+    "Microsoft.ServiceFabric.Data.Interfaces/4.0.457": {
+      "sha512": "CWFWjK16Yem9FblSonR63SBJnvDGpXLWwI04Q/Rai8bp5sP9PvifE6xwd/87DeYH0UvzwwY3iOvQjcTd4TDHXQ==",
       "type": "package",
-      "path": "microsoft.servicefabric.data.interfaces/3.4.664",
+      "path": "microsoft.servicefabric.data.interfaces/4.0.457",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2007,7 +1396,7 @@
         "lib/net472/Microsoft.ServiceFabric.Data.Interfaces.dll",
         "lib/net472/Microsoft.ServiceFabric.Data.Interfaces.xml",
         "lib/netstandard2.0/Microsoft.ServiceFabric.Data.Interfaces.dll",
-        "microsoft.servicefabric.data.interfaces.3.4.664.nupkg.sha512",
+        "microsoft.servicefabric.data.interfaces.4.0.457.nupkg.sha512",
         "microsoft.servicefabric.data.interfaces.nuspec",
         "runtimes/linux/lib/netstandard2.0/Microsoft.ServiceFabric.Data.Interfaces.dll",
         "runtimes/win/lib/net461/Microsoft.ServiceFabric.Data.Interfaces.dll",
@@ -2018,10 +1407,10 @@
         "runtimes/win/lib/netstandard2.0/Microsoft.ServiceFabric.Data.Interfaces.dll"
       ]
     },
-    "Microsoft.ServiceFabric.Diagnostics.Internal/3.4.664": {
-      "sha512": "zT0dWT5cZhBYEaHcBfiu5nWB5XopowCcZAXiKrMQ8yAW6WIrZImcBG+QpPKqTyMKV6owOKYnICFYxwEJSThREQ==",
+    "Microsoft.ServiceFabric.Diagnostics.Internal/4.0.457": {
+      "sha512": "gbnAap4CGc8zrLnaqXjw/x08UcxE74DTp8q88yRfyzZs6XBKQp6EKD7PQSh3dkDbYLmbGEgyktkAeH/DnZY9gw==",
       "type": "package",
-      "path": "microsoft.servicefabric.diagnostics.internal/3.4.664",
+      "path": "microsoft.servicefabric.diagnostics.internal/4.0.457",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2044,7 +1433,7 @@
         "lib/net472/Microsoft.ServiceFabric.Diagnostics.dll",
         "lib/net472/Microsoft.ServiceFabric.Diagnostics.xml",
         "lib/netstandard2.0/Microsoft.ServiceFabric.Diagnostics.dll",
-        "microsoft.servicefabric.diagnostics.internal.3.4.664.nupkg.sha512",
+        "microsoft.servicefabric.diagnostics.internal.4.0.457.nupkg.sha512",
         "microsoft.servicefabric.diagnostics.internal.nuspec",
         "runtimes/linux/lib/netstandard2.0/Microsoft.ServiceFabric.Diagnostics.dll",
         "runtimes/win/lib/net461/Microsoft.ServiceFabric.Diagnostics.dll",
@@ -2055,10 +1444,10 @@
         "runtimes/win/lib/netstandard2.0/Microsoft.ServiceFabric.Diagnostics.dll"
       ]
     },
-    "Microsoft.ServiceFabric.FabricTransport.Internal/3.4.664": {
-      "sha512": "VliFYFfAmhc5pdYAMJXVpEVaAZp9L0tQtbDI6/D6HXv8wcgwA/3MdbEs2ztpYL2vk5TgSHVQr/wW9i9miB7ZBQ==",
+    "Microsoft.ServiceFabric.FabricTransport.Internal/4.0.457": {
+      "sha512": "io3PUQ+N6mFk9AhKQprarBXpWbEJifZmTJFEbAGT6XBTmAbBHj6o+4fXRt72EffccKPTrb8CyKMf5d1yJvpiRA==",
       "type": "package",
-      "path": "microsoft.servicefabric.fabrictransport.internal/3.4.664",
+      "path": "microsoft.servicefabric.fabrictransport.internal/4.0.457",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2100,7 +1489,7 @@
         "lib/net472/Microsoft.ServiceFabric.FabricTransport.xml",
         "lib/netstandard2.0/Microsoft.ServiceFabric.FabricTransport.V2.dll",
         "lib/netstandard2.0/Microsoft.ServiceFabric.FabricTransport.dll",
-        "microsoft.servicefabric.fabrictransport.internal.3.4.664.nupkg.sha512",
+        "microsoft.servicefabric.fabrictransport.internal.4.0.457.nupkg.sha512",
         "microsoft.servicefabric.fabrictransport.internal.nuspec",
         "runtimes/linux/lib/netstandard2.0/Microsoft.ServiceFabric.FabricTransport.McgInterop.dll",
         "runtimes/linux/lib/netstandard2.0/Microsoft.ServiceFabric.FabricTransport.V2.McgInterop.dll",
@@ -2122,10 +1511,10 @@
         "runtimes/win/lib/netstandard2.0/Microsoft.ServiceFabric.FabricTransport.dll"
       ]
     },
-    "Microsoft.ServiceFabric.Services/3.4.664": {
-      "sha512": "JlgN+X8ACtUzu3NJgx96jivdxJdtHB0iMgYxn/C5MvUplC3P0zF84R4OJ2cNLgoQ2fMHRtUd1pGFOV5viaq4Qg==",
+    "Microsoft.ServiceFabric.Services/4.0.457": {
+      "sha512": "RHsqaAt0iANH5Cbe/awP21BYrQEhHKLyPfvTaHJbV8Ls679FgNyTF2yfpjAKj6C0zlwcJIcjD70dS/5orAHVhw==",
       "type": "package",
-      "path": "microsoft.servicefabric.services/3.4.664",
+      "path": "microsoft.servicefabric.services/4.0.457",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2149,7 +1538,7 @@
         "lib/net472/Microsoft.ServiceFabric.Services.xml",
         "lib/netstandard2.0/Microsoft.ServiceFabric.Services.dll",
         "lib/netstandard2.0/Microsoft.ServiceFabric.Services.xml",
-        "microsoft.servicefabric.services.3.4.664.nupkg.sha512",
+        "microsoft.servicefabric.services.4.0.457.nupkg.sha512",
         "microsoft.servicefabric.services.nuspec",
         "runtimes/win/lib/net461/Microsoft.ServiceFabric.Services.dll",
         "runtimes/win/lib/net462/Microsoft.ServiceFabric.Services.dll",
@@ -2158,10 +1547,10 @@
         "runtimes/win/lib/net472/Microsoft.ServiceFabric.Services.dll"
       ]
     },
-    "Microsoft.ServiceFabric.Services.Remoting/3.4.664": {
-      "sha512": "9NQQKIY1+nnQoR0WfcKEjyXyNpKbakFZyWfsR9yyUFjIeUCuv9vcyqh9b8tqu2vdQD6pJAmCchNFSvl5vqs5bw==",
+    "Microsoft.ServiceFabric.Services.Remoting/4.0.457": {
+      "sha512": "gK7OaIBVRCmfWLQxELkh7zZP4aQY1/OZOKyuE3bKcQ2Wn6vgtz08FwRDwgABFcezjsvMKtHva/p9uG7BSSTIGQ==",
       "type": "package",
-      "path": "microsoft.servicefabric.services.remoting/3.4.664",
+      "path": "microsoft.servicefabric.services.remoting/4.0.457",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2185,7 +1574,7 @@
         "lib/net472/Microsoft.ServiceFabric.Services.Remoting.xml",
         "lib/netstandard2.0/Microsoft.ServiceFabric.Services.Remoting.dll",
         "lib/netstandard2.0/Microsoft.ServiceFabric.Services.Remoting.xml",
-        "microsoft.servicefabric.services.remoting.3.4.664.nupkg.sha512",
+        "microsoft.servicefabric.services.remoting.4.0.457.nupkg.sha512",
         "microsoft.servicefabric.services.remoting.nuspec",
         "runtimes/win/lib/net461/Microsoft.ServiceFabric.Services.Remoting.dll",
         "runtimes/win/lib/net462/Microsoft.ServiceFabric.Services.Remoting.dll",
@@ -2194,14 +1583,15 @@
         "runtimes/win/lib/net472/Microsoft.ServiceFabric.Services.Remoting.dll"
       ]
     },
-    "Newtonsoft.Json/9.0.1": {
-      "sha512": "U82mHQSKaIk+lpSVCbWYKNavmNH1i5xrExDEquU1i6I5pV6UMOqRnJRSlKO3cMPfcpp0RgDY+8jUXHdQ4IfXvw==",
+    "Newtonsoft.Json/10.0.2": {
+      "sha512": "iwElSU2IXmwGvytJsezyDML2ZWDkG2JzTYzlU/BNlmzMdlmRvbnwITsGGY74gwVEpDli1UdOLkMT7/3jxWvXzA==",
       "type": "package",
-      "path": "newtonsoft.json/9.0.1",
+      "path": "newtonsoft.json/10.0.2",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
         "lib/net35/Newtonsoft.Json.dll",
@@ -2212,11 +1602,13 @@
         "lib/net45/Newtonsoft.Json.xml",
         "lib/netstandard1.0/Newtonsoft.Json.dll",
         "lib/netstandard1.0/Newtonsoft.Json.xml",
-        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml",
-        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.9.0.1.nupkg.sha512",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wpa81+wp8/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wpa81+wp8/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wpa81+wp8/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wpa81+wp8/Newtonsoft.Json.xml",
+        "newtonsoft.json.10.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "tools/install.ps1"
       ]
@@ -2308,10 +1700,10 @@
         "version.txt"
       ]
     },
-    "System.Collections.Immutable/1.6.0": {
-      "sha512": "+aL946rTSJyo4PqstwsVZ5RBfaxfkIx+nTMfpmaxzorqgifRJwndBZhXPWNWGJpys7cQ1/vCvilYN9ugM05JFA==",
+    "System.Collections.Immutable/1.7.0": {
+      "sha512": "RVSM6wZUo6L2y6P3vN6gjUtyJ2IF2RVtrepF3J7nrDKfFQd5u/SnSUFclchYQis8/k5scHy9E+fVeKVQLnnkzw==",
       "type": "package",
-      "path": "system.collections.immutable/1.6.0",
+      "path": "system.collections.immutable/1.7.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2325,129 +1717,10 @@
         "lib/netstandard2.0/System.Collections.Immutable.xml",
         "lib/portable-net45+win8+wp8+wpa81/System.Collections.Immutable.dll",
         "lib/portable-net45+win8+wp8+wpa81/System.Collections.Immutable.xml",
-        "system.collections.immutable.1.6.0.nupkg.sha512",
+        "system.collections.immutable.1.7.0.nupkg.sha512",
         "system.collections.immutable.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
-      ]
-    },
-    "System.ComponentModel.EventBasedAsync/4.0.11": {
-      "sha512": "Z7SO6vvQIR84daPE4uhaNdef9CjgjDMGYkas8epUhf0U3WGuaGgZ0Mm4QuNycMdbHUY8KEdZrtgxonkAiJaAlA==",
-      "type": "package",
-      "path": "system.componentmodel.eventbasedasync/4.0.11",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/netcore50/System.ComponentModel.EventBasedAsync.dll",
-        "lib/netstandard1.3/System.ComponentModel.EventBasedAsync.dll",
-        "lib/portable-net45+win8+wp8+wpa81/_._",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/netcore50/System.ComponentModel.EventBasedAsync.dll",
-        "ref/netcore50/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netcore50/de/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netcore50/es/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netcore50/fr/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netcore50/it/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netcore50/ja/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netcore50/ko/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netcore50/ru/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netcore50/zh-hans/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netcore50/zh-hant/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.0/System.ComponentModel.EventBasedAsync.dll",
-        "ref/netstandard1.0/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.0/de/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.0/es/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.0/fr/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.0/it/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.0/ja/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.0/ko/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.0/ru/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.0/zh-hans/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.0/zh-hant/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.3/System.ComponentModel.EventBasedAsync.dll",
-        "ref/netstandard1.3/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.3/de/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.3/es/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.3/fr/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.3/it/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.3/ja/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.3/ko/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.3/ru/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.3/zh-hans/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netstandard1.3/zh-hant/System.ComponentModel.EventBasedAsync.xml",
-        "ref/portable-net45+win8+wp8+wpa81/_._",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.componentmodel.eventbasedasync.4.0.11.nupkg.sha512",
-        "system.componentmodel.eventbasedasync.nuspec"
-      ]
-    },
-    "System.Dynamic.Runtime/4.0.0": {
-      "sha512": "33os71rQUCLjM5pbhQqCopq9/YcqBHPBQ8WylrzNk3oJmfAR0SFwzZIKJRN2JcrkBYdzC/NtWrYVU8oroyZieA==",
-      "type": "package",
-      "path": "system.dynamic.runtime/4.0.0",
-      "files": [
-        ".nupkg.metadata",
-        "License.rtf",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/dotnet/System.Dynamic.Runtime.dll",
-        "ref/dotnet/System.Dynamic.Runtime.xml",
-        "ref/dotnet/de/System.Dynamic.Runtime.xml",
-        "ref/dotnet/es/System.Dynamic.Runtime.xml",
-        "ref/dotnet/fr/System.Dynamic.Runtime.xml",
-        "ref/dotnet/it/System.Dynamic.Runtime.xml",
-        "ref/dotnet/ja/System.Dynamic.Runtime.xml",
-        "ref/dotnet/ko/System.Dynamic.Runtime.xml",
-        "ref/dotnet/ru/System.Dynamic.Runtime.xml",
-        "ref/dotnet/zh-hans/System.Dynamic.Runtime.xml",
-        "ref/dotnet/zh-hant/System.Dynamic.Runtime.xml",
-        "ref/net45/_._",
-        "ref/netcore50/System.Dynamic.Runtime.dll",
-        "ref/netcore50/System.Dynamic.Runtime.xml",
-        "ref/netcore50/de/System.Dynamic.Runtime.xml",
-        "ref/netcore50/es/System.Dynamic.Runtime.xml",
-        "ref/netcore50/fr/System.Dynamic.Runtime.xml",
-        "ref/netcore50/it/System.Dynamic.Runtime.xml",
-        "ref/netcore50/ja/System.Dynamic.Runtime.xml",
-        "ref/netcore50/ko/System.Dynamic.Runtime.xml",
-        "ref/netcore50/ru/System.Dynamic.Runtime.xml",
-        "ref/netcore50/zh-hans/System.Dynamic.Runtime.xml",
-        "ref/netcore50/zh-hant/System.Dynamic.Runtime.xml",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "system.dynamic.runtime.4.0.0.nupkg.sha512",
-        "system.dynamic.runtime.nuspec"
       ]
     },
     "System.IO.Compression.ZipFile/4.3.0": {
@@ -2489,39 +1762,6 @@
         "system.io.compression.zipfile.nuspec"
       ]
     },
-    "System.Linq.Queryable/4.0.0": {
-      "sha512": "DIlvCNn3ucFvwMMzXcag4aFnFJ1fdxkQ5NqwJe9Nh7y8ozzhDm07YakQL/yoF3P1dLzY1T2cTpuwbAmVSdXyBA==",
-      "type": "package",
-      "path": "system.linq.queryable/4.0.0",
-      "files": [
-        ".nupkg.metadata",
-        "lib/dotnet/System.Linq.Queryable.dll",
-        "lib/net45/_._",
-        "lib/netcore50/System.Linq.Queryable.dll",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "ref/dotnet/System.Linq.Queryable.dll",
-        "ref/dotnet/System.Linq.Queryable.xml",
-        "ref/dotnet/de/System.Linq.Queryable.xml",
-        "ref/dotnet/es/System.Linq.Queryable.xml",
-        "ref/dotnet/fr/System.Linq.Queryable.xml",
-        "ref/dotnet/it/System.Linq.Queryable.xml",
-        "ref/dotnet/ja/System.Linq.Queryable.xml",
-        "ref/dotnet/ko/System.Linq.Queryable.xml",
-        "ref/dotnet/ru/System.Linq.Queryable.xml",
-        "ref/dotnet/zh-hans/System.Linq.Queryable.xml",
-        "ref/dotnet/zh-hant/System.Linq.Queryable.xml",
-        "ref/net45/_._",
-        "ref/netcore50/System.Linq.Queryable.dll",
-        "ref/netcore50/System.Linq.Queryable.xml",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "system.linq.queryable.4.0.0.nupkg.sha512",
-        "system.linq.queryable.nuspec"
-      ]
-    },
     "System.Memory/4.5.3": {
       "sha512": "3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
       "type": "package",
@@ -2541,89 +1781,6 @@
         "system.memory.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
-      ]
-    },
-    "System.Net.Requests/4.0.11": {
-      "sha512": "vxGt7C0cZixN+VqoSW4Yakc1Y9WknmxauDqzxgpw/FnBdz4kQNN51l4wxdXX5VY1xjqy//+G+4CvJWp1+f+y6Q==",
-      "type": "package",
-      "path": "system.net.requests/4.0.11",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/portable-net45+win8+wp8+wpa81/_._",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/net46/_._",
-        "ref/netcore50/System.Net.Requests.dll",
-        "ref/netcore50/System.Net.Requests.xml",
-        "ref/netcore50/de/System.Net.Requests.xml",
-        "ref/netcore50/es/System.Net.Requests.xml",
-        "ref/netcore50/fr/System.Net.Requests.xml",
-        "ref/netcore50/it/System.Net.Requests.xml",
-        "ref/netcore50/ja/System.Net.Requests.xml",
-        "ref/netcore50/ko/System.Net.Requests.xml",
-        "ref/netcore50/ru/System.Net.Requests.xml",
-        "ref/netcore50/zh-hans/System.Net.Requests.xml",
-        "ref/netcore50/zh-hant/System.Net.Requests.xml",
-        "ref/netstandard1.0/System.Net.Requests.dll",
-        "ref/netstandard1.0/System.Net.Requests.xml",
-        "ref/netstandard1.0/de/System.Net.Requests.xml",
-        "ref/netstandard1.0/es/System.Net.Requests.xml",
-        "ref/netstandard1.0/fr/System.Net.Requests.xml",
-        "ref/netstandard1.0/it/System.Net.Requests.xml",
-        "ref/netstandard1.0/ja/System.Net.Requests.xml",
-        "ref/netstandard1.0/ko/System.Net.Requests.xml",
-        "ref/netstandard1.0/ru/System.Net.Requests.xml",
-        "ref/netstandard1.0/zh-hans/System.Net.Requests.xml",
-        "ref/netstandard1.0/zh-hant/System.Net.Requests.xml",
-        "ref/netstandard1.1/System.Net.Requests.dll",
-        "ref/netstandard1.1/System.Net.Requests.xml",
-        "ref/netstandard1.1/de/System.Net.Requests.xml",
-        "ref/netstandard1.1/es/System.Net.Requests.xml",
-        "ref/netstandard1.1/fr/System.Net.Requests.xml",
-        "ref/netstandard1.1/it/System.Net.Requests.xml",
-        "ref/netstandard1.1/ja/System.Net.Requests.xml",
-        "ref/netstandard1.1/ko/System.Net.Requests.xml",
-        "ref/netstandard1.1/ru/System.Net.Requests.xml",
-        "ref/netstandard1.1/zh-hans/System.Net.Requests.xml",
-        "ref/netstandard1.1/zh-hant/System.Net.Requests.xml",
-        "ref/netstandard1.3/System.Net.Requests.dll",
-        "ref/netstandard1.3/System.Net.Requests.xml",
-        "ref/netstandard1.3/de/System.Net.Requests.xml",
-        "ref/netstandard1.3/es/System.Net.Requests.xml",
-        "ref/netstandard1.3/fr/System.Net.Requests.xml",
-        "ref/netstandard1.3/it/System.Net.Requests.xml",
-        "ref/netstandard1.3/ja/System.Net.Requests.xml",
-        "ref/netstandard1.3/ko/System.Net.Requests.xml",
-        "ref/netstandard1.3/ru/System.Net.Requests.xml",
-        "ref/netstandard1.3/zh-hans/System.Net.Requests.xml",
-        "ref/netstandard1.3/zh-hant/System.Net.Requests.xml",
-        "ref/portable-net45+win8+wp8+wpa81/_._",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "runtimes/unix/lib/netstandard1.3/System.Net.Requests.dll",
-        "runtimes/win/lib/net46/_._",
-        "runtimes/win/lib/netstandard1.3/System.Net.Requests.dll",
-        "system.net.requests.4.0.11.nupkg.sha512",
-        "system.net.requests.nuspec"
       ]
     },
     "System.Numerics.Vectors/4.4.0": {
@@ -2751,82 +1908,15 @@
         "system.runtime.numerics.nuspec"
       ]
     },
-    "System.Spatial/5.8.2": {
-      "sha512": "0RfZZJ8RlrfjoBPAF6pczX4Nd2kyLM8EX1PCP5Rqs/jOhJBUPYhpXjIsVAYN7kocj9IJ9XoJWAxWgXIDtJY2Ag==",
+    "System.Threading.Tasks.Dataflow/4.10.0": {
+      "sha512": "WPI32A1Tf838Yal/XHWdfKrtY/gQxi3MZG2ERC5ljI6RI1YV7Ype1nxc043pv8A8rDLeXmzs4LxxWfEguJ2Dug==",
       "type": "package",
-      "path": "system.spatial/5.8.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/System.Spatial.dll",
-        "lib/net40/System.Spatial.xml",
-        "lib/net40/de/System.Spatial.resources.dll",
-        "lib/net40/es/System.Spatial.resources.dll",
-        "lib/net40/fr/System.Spatial.resources.dll",
-        "lib/net40/it/System.Spatial.resources.dll",
-        "lib/net40/ja/System.Spatial.resources.dll",
-        "lib/net40/ko/System.Spatial.resources.dll",
-        "lib/net40/ru/System.Spatial.resources.dll",
-        "lib/net40/zh-Hans/System.Spatial.resources.dll",
-        "lib/net40/zh-Hant/System.Spatial.resources.dll",
-        "lib/netstandard1.1/System.Spatial.dll",
-        "lib/netstandard1.1/System.Spatial.xml",
-        "lib/netstandard1.1/de/System.Spatial.resources.dll",
-        "lib/netstandard1.1/es/System.Spatial.resources.dll",
-        "lib/netstandard1.1/fr/System.Spatial.resources.dll",
-        "lib/netstandard1.1/it/System.Spatial.resources.dll",
-        "lib/netstandard1.1/ja/System.Spatial.resources.dll",
-        "lib/netstandard1.1/ko/System.Spatial.resources.dll",
-        "lib/netstandard1.1/ru/System.Spatial.resources.dll",
-        "lib/netstandard1.1/zh-Hans/System.Spatial.resources.dll",
-        "lib/netstandard1.1/zh-Hant/System.Spatial.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/System.Spatial.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/System.Spatial.xml",
-        "lib/portable-net40+sl5+wp8+win8+wpa/de/System.Spatial.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/es/System.Spatial.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/fr/System.Spatial.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/it/System.Spatial.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/ja/System.Spatial.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/ko/System.Spatial.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/ru/System.Spatial.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/zh-Hans/System.Spatial.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/zh-Hant/System.Spatial.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/System.Spatial.dll",
-        "lib/portable-net45+wp8+win8+wpa/System.Spatial.xml",
-        "lib/portable-net45+wp8+win8+wpa/de/System.Spatial.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/es/System.Spatial.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/fr/System.Spatial.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/it/System.Spatial.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/ja/System.Spatial.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/ko/System.Spatial.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/ru/System.Spatial.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/zh-Hans/System.Spatial.resources.dll",
-        "lib/portable-net45+wp8+win8+wpa/zh-Hant/System.Spatial.resources.dll",
-        "lib/sl4/System.Spatial.dll",
-        "lib/sl4/System.Spatial.xml",
-        "lib/sl4/de/System.Spatial.resources.dll",
-        "lib/sl4/es/System.Spatial.resources.dll",
-        "lib/sl4/fr/System.Spatial.resources.dll",
-        "lib/sl4/it/System.Spatial.resources.dll",
-        "lib/sl4/ja/System.Spatial.resources.dll",
-        "lib/sl4/ko/System.Spatial.resources.dll",
-        "lib/sl4/ru/System.Spatial.resources.dll",
-        "lib/sl4/zh-Hans/System.Spatial.resources.dll",
-        "lib/sl4/zh-Hant/System.Spatial.resources.dll",
-        "system.spatial.5.8.2.nupkg.sha512",
-        "system.spatial.nuspec"
-      ]
-    },
-    "System.Threading.Tasks.Dataflow/4.8.0": {
-      "sha512": "PSIdcgbyNv7FZvZ1I9Mqy6XZOwstYYMdZiXuHvIyc0gDyPjEhrrP9OvTGDHp+LAHp1RNSLjPYssyqox9+Kt9Ug==",
-      "type": "package",
-      "path": "system.threading.tasks.dataflow/4.8.0",
+      "path": "system.threading.tasks.dataflow/4.10.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "lib/netcoreapp2.0/_._",
         "lib/netstandard1.0/System.Threading.Tasks.Dataflow.dll",
         "lib/netstandard1.0/System.Threading.Tasks.Dataflow.xml",
         "lib/netstandard1.1/System.Threading.Tasks.Dataflow.dll",
@@ -2835,8 +1925,7 @@
         "lib/netstandard2.0/System.Threading.Tasks.Dataflow.xml",
         "lib/portable-net45+win8+wpa81/System.Threading.Tasks.Dataflow.dll",
         "lib/portable-net45+win8+wpa81/System.Threading.Tasks.Dataflow.xml",
-        "ref/netcoreapp2.0/_._",
-        "system.threading.tasks.dataflow.4.8.0.nupkg.sha512",
+        "system.threading.tasks.dataflow.4.10.0.nupkg.sha512",
         "system.threading.tasks.dataflow.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -2886,10 +1975,10 @@
         "version.txt"
       ]
     },
-    "WindowsAzure.Storage/8.6.0": {
-      "sha512": "uzcmNJwki+yMxEGU8QcnVTKJcM/L5E4oCqoZCQ9uhPfNvKT4CxcGe2qXho7jMRNuZmz69uvcbv7yGv0oMEAOxQ==",
+    "WindowsAzure.Storage/9.3.3": {
+      "sha512": "VUV8j6dzkU/7vDgk5k+ob5g7nnch2fNByr0p9aOxMGFGk+tAnTehrZ4qnClF04CVozP1GNN2zrnbsxCmr+iZBg==",
       "type": "package",
-      "path": "windowsazure.storage/8.6.0",
+      "path": "windowsazure.storage/9.3.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2906,7 +1995,7 @@
         "lib/wp8/Microsoft.WindowsAzure.Storage.pdb",
         "lib/wpa/Microsoft.WindowsAzure.Storage.dll",
         "lib/wpa/Microsoft.WindowsAzure.Storage.pdb",
-        "windowsazure.storage.8.6.0.nupkg.sha512",
+        "windowsazure.storage.9.3.3.nupkg.sha512",
         "windowsazure.storage.nuspec"
       ]
     },
@@ -2918,12 +2007,12 @@
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.6.1": [
-      "GraphEngine.Azure.BlobStorage >= 2.0.10059",
-      "GraphEngine.DynamicCluster >= 2.0.10059",
-      "GraphEngine.ServiceFabric.Infrastructure >= 2.0.10059",
-      "GraphEngine.ServiceFabric.Remoting >= 2.0.10059",
+      "GraphEngine.Azure.BlobStorage >= 2.0.10135",
+      "GraphEngine.DynamicCluster >= 2.0.10135",
+      "GraphEngine.ServiceFabric.Infrastructure >= 2.0.10135",
+      "GraphEngine.ServiceFabric.Remoting >= 2.0.10135",
       "IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol >= 1.0.0",
-      "Microsoft.ServiceFabric.Services >= 3.4.664"
+      "Microsoft.ServiceFabric.Services >= 4.0.457"
     ]
   },
   "packageFolders": {
@@ -2934,11 +2023,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStore.MemoryCloudService\\IKW.GraphEngine.TripleStore.MemoryCloudService.csproj",
+      "projectUniqueName": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStore.MemoryCloudService\\IKW.GraphEngine.TripleStore.MemoryCloudService.csproj",
       "projectName": "IKW.GraphEngine.TripleStore.MemoryCloudService",
-      "projectPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStore.MemoryCloudService\\IKW.GraphEngine.TripleStore.MemoryCloudService.csproj",
+      "projectPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStore.MemoryCloudService\\IKW.GraphEngine.TripleStore.MemoryCloudService.csproj",
       "packagesPath": "C:\\Users\\Tavi\\.nuget\\packages\\",
-      "outputPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStore.MemoryCloudService\\obj\\",
+      "outputPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStore.MemoryCloudService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "E:\\Microsoft\\Xamarin\\NuGet\\",
@@ -2956,16 +2045,18 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
-        "I:\\Trinity-GraphEngine\\build": {},
-        "Q:\\RUB Nuget Package Share": {},
+        "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
+        "I:\\IKW-GraphEngine\\build": {},
+        "K:\\RUB Nuget Package Share": {},
         "https://api.nuget.org/v3/index.json": {},
+        "https://pkgs.dev.azure.com/Quasar-Dev/20bae790-eac5-4dab-93fc-dfc863328316/_packaging/QuasarWindowsClientFeed/nuget/v3/index.json": {},
         "https://rocketurbizdev.pkgs.visualstudio.com/_packaging/RUB-SemanticEnhancement-NugetFeed/nuget/v3/index.json": {}
       },
       "frameworks": {
         "net461": {
           "projectReferences": {
-            "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj": {
-              "projectPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj"
+            "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj": {
+              "projectPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj"
             }
           }
         }
@@ -2981,26 +2072,26 @@
         "dependencies": {
           "GraphEngine.Azure.BlobStorage": {
             "target": "Package",
-            "version": "[2.0.10059, )"
+            "version": "[2.0.10135, )"
           },
           "GraphEngine.DynamicCluster": {
             "target": "Package",
-            "version": "[2.0.10059, )"
+            "version": "[2.0.10135, )"
           },
           "GraphEngine.ServiceFabric.Infrastructure": {
             "target": "Package",
-            "version": "[2.0.10059, )"
+            "version": "[2.0.10135, )"
           },
           "GraphEngine.ServiceFabric.Remoting": {
             "target": "Package",
-            "version": "[2.0.10059, )"
+            "version": "[2.0.10135, )"
           },
           "Microsoft.ServiceFabric.Services": {
             "target": "Package",
-            "version": "[3.4.664, )"
+            "version": "[4.0.457, )"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

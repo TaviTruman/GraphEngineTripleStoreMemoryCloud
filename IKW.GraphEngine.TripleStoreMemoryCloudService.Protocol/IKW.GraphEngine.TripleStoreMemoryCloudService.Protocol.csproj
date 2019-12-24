@@ -20,8 +20,8 @@
   <ItemGroup>
 	  <!--Required to store working data-->
       <!-- Include Trinity Graph Engine Runtime Core -->
-	  <PackageReference Include="GraphEngine.Core" Version="2.0.10059" />
-	  <PackageReference Include="GraphEngine.DynamicCluster" Version="2.0.10059" />
+	  <PackageReference Include="GraphEngine.Core" Version="2.0.10135" />
+	  <PackageReference Include="GraphEngine.DynamicCluster" Version="2.0.10135" />
 	  <!--Gain Access to Graph Engine (Cluster) Memory Cloud-->
 	  <!--Use Language Integrated Knowledge Query-->
 	  <!--Dynamic HyperEdge (Property) and HyperGraph nodes-->

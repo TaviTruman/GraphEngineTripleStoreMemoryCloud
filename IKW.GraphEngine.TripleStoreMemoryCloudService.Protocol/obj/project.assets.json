@@ -2,10 +2,10 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.6.1": {
-      "GraphEngine.Client/2.0.10059": {
+      "GraphEngine.Client/2.0.10135": {
         "type": "package",
         "dependencies": {
-          "GraphEngine.Core": "2.0.10059",
+          "GraphEngine.Core": "2.0.10135",
           "System.ValueTuple": "4.5.0"
         },
         "compile": {
@@ -15,7 +15,7 @@
           "lib/net461/Trinity.Client.dll": {}
         }
       },
-      "GraphEngine.Core/2.0.10059": {
+      "GraphEngine.Core/2.0.10135": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.ObjectPool": "2.0.0",
@@ -42,11 +42,11 @@
           }
         }
       },
-      "GraphEngine.DynamicCluster/2.0.10059": {
+      "GraphEngine.DynamicCluster/2.0.10135": {
         "type": "package",
         "dependencies": {
-          "GraphEngine.Client": "2.0.10059",
-          "GraphEngine.Core": "2.0.10059",
+          "GraphEngine.Client": "2.0.10135",
+          "GraphEngine.Core": "2.0.10135",
           "Nito.AsyncEx.Coordination": "1.0.2",
           "Nito.AsyncEx.Tasks": "1.1.0",
           "System.Collections.Immutable": "1.4.0"
@@ -144,29 +144,29 @@
     }
   },
   "libraries": {
-    "GraphEngine.Client/2.0.10059": {
-      "sha512": "dNhecwX/B8+RadryrVP2WqTeBcsrH3sW//SJU3oGtjXQ24ZLYOWYZnTBNBwHoDwQ/OGhjgIhXDxO9M0fqaigsw==",
+    "GraphEngine.Client/2.0.10135": {
+      "sha512": "pU8JttdJxTEK0qndsUizKPH5HigVejZJ3h6EEQg6B8WNcIWqOMtHmmNrlnNC0apQJkbgXEsxxBj63kt2mAXmjw==",
       "type": "package",
-      "path": "graphengine.client/2.0.10059",
+      "path": "graphengine.client/2.0.10135",
       "files": [
         ".nupkg.metadata",
-        "graphengine.client.2.0.10059.nupkg.sha512",
+        "graphengine.client.2.0.10135.nupkg.sha512",
         "graphengine.client.nuspec",
         "lib/net461/Trinity.Client.dll",
         "lib/netstandard2.0/Trinity.Client.dll"
       ]
     },
-    "GraphEngine.Core/2.0.10059": {
-      "sha512": "cDdsw6psrHqg4JmtrC+1/r8TyFt2RnX2eLbO5fiC/rP6pVLqvq/mNhIhL75LjU9y1bMy2aVZqbe05z81g8/RAA==",
+    "GraphEngine.Core/2.0.10135": {
+      "sha512": "/J1S1XmMRke44DPYjhbKA5+udvhgOf8pnDhG/cWC6QcBFOBcAIExHiyj/8Fo78YddzZy5/xB84dX+fXF/T/fxg==",
       "type": "package",
-      "path": "graphengine.core/2.0.10059",
+      "path": "graphengine.core/2.0.10135",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         "build/GraphEngine.Core.props",
         "build/GraphEngine.Core.targets",
         "content/TrinityConfig.Schema.xsd",
-        "graphengine.core.2.0.10059.nupkg.sha512",
+        "graphengine.core.2.0.10135.nupkg.sha512",
         "graphengine.core.nuspec",
         "lib/net451/Trinity.Core.dll",
         "lib/net461/Trinity.Core.dll",
@@ -177,13 +177,13 @@
         "tools/Trinity.TSL.CodeGen.exe"
       ]
     },
-    "GraphEngine.DynamicCluster/2.0.10059": {
-      "sha512": "ZChmFaVv7crk8hqCPZwhPDn1WH435ekUkGLcz+VcNHMtYrsesL8VqiTUzbTSj2V0haIuE7AVlz1bj6UA6r5r7g==",
+    "GraphEngine.DynamicCluster/2.0.10135": {
+      "sha512": "vYhiCEoUzYhONC66FxCefpnuuL8vQ5I6r2zIx3/WPp8EUWMepqCK3QUf9JNyGvHET3b1tzZz+v2HTtdeQFFkWQ==",
       "type": "package",
-      "path": "graphengine.dynamiccluster/2.0.10059",
+      "path": "graphengine.dynamiccluster/2.0.10135",
       "files": [
         ".nupkg.metadata",
-        "graphengine.dynamiccluster.2.0.10059.nupkg.sha512",
+        "graphengine.dynamiccluster.2.0.10135.nupkg.sha512",
         "graphengine.dynamiccluster.nuspec",
         "lib/netstandard2.0/Trinity.DynamicCluster.dll"
       ]
@@ -358,8 +358,8 @@
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.6.1": [
-      "GraphEngine.Core >= 2.0.10059",
-      "GraphEngine.DynamicCluster >= 2.0.10059"
+      "GraphEngine.Core >= 2.0.10135",
+      "GraphEngine.DynamicCluster >= 2.0.10135"
     ]
   },
   "packageFolders": {
@@ -370,11 +370,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj",
+      "projectUniqueName": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj",
       "projectName": "IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol",
-      "projectPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj",
+      "projectPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj",
       "packagesPath": "C:\\Users\\Tavi\\.nuget\\packages\\",
-      "outputPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\obj\\",
+      "outputPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "E:\\Microsoft\\Xamarin\\NuGet\\",
@@ -392,9 +392,11 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
-        "I:\\Trinity-GraphEngine\\build": {},
-        "Q:\\RUB Nuget Package Share": {},
+        "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
+        "I:\\IKW-GraphEngine\\build": {},
+        "K:\\RUB Nuget Package Share": {},
         "https://api.nuget.org/v3/index.json": {},
+        "https://pkgs.dev.azure.com/Quasar-Dev/20bae790-eac5-4dab-93fc-dfc863328316/_packaging/QuasarWindowsClientFeed/nuget/v3/index.json": {},
         "https://rocketurbizdev.pkgs.visualstudio.com/_packaging/RUB-SemanticEnhancement-NugetFeed/nuget/v3/index.json": {}
       },
       "frameworks": {
@@ -413,14 +415,14 @@
         "dependencies": {
           "GraphEngine.Core": {
             "target": "Package",
-            "version": "[2.0.10059, )"
+            "version": "[2.0.10135, )"
           },
           "GraphEngine.DynamicCluster": {
             "target": "Package",
-            "version": "[2.0.10059, )"
+            "version": "[2.0.10135, )"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

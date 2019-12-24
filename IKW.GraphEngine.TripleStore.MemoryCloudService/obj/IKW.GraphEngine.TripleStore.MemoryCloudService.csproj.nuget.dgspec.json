@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStore.MemoryCloudService\\IKW.GraphEngine.TripleStore.MemoryCloudService.csproj": {}
+    "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStore.MemoryCloudService\\IKW.GraphEngine.TripleStore.MemoryCloudService.csproj": {}
   },
   "projects": {
-    "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStore.MemoryCloudService\\IKW.GraphEngine.TripleStore.MemoryCloudService.csproj": {
+    "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStore.MemoryCloudService\\IKW.GraphEngine.TripleStore.MemoryCloudService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStore.MemoryCloudService\\IKW.GraphEngine.TripleStore.MemoryCloudService.csproj",
+        "projectUniqueName": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStore.MemoryCloudService\\IKW.GraphEngine.TripleStore.MemoryCloudService.csproj",
         "projectName": "IKW.GraphEngine.TripleStore.MemoryCloudService",
-        "projectPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStore.MemoryCloudService\\IKW.GraphEngine.TripleStore.MemoryCloudService.csproj",
+        "projectPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStore.MemoryCloudService\\IKW.GraphEngine.TripleStore.MemoryCloudService.csproj",
         "packagesPath": "C:\\Users\\Tavi\\.nuget\\packages\\",
-        "outputPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStore.MemoryCloudService\\obj\\",
+        "outputPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStore.MemoryCloudService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "E:\\Microsoft\\Xamarin\\NuGet\\",
@@ -29,16 +29,18 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
-          "I:\\Trinity-GraphEngine\\build": {},
-          "Q:\\RUB Nuget Package Share": {},
+          "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
+          "I:\\IKW-GraphEngine\\build": {},
+          "K:\\RUB Nuget Package Share": {},
           "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/Quasar-Dev/20bae790-eac5-4dab-93fc-dfc863328316/_packaging/QuasarWindowsClientFeed/nuget/v3/index.json": {},
           "https://rocketurbizdev.pkgs.visualstudio.com/_packaging/RUB-SemanticEnhancement-NugetFeed/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net461": {
             "projectReferences": {
-              "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj": {
-                "projectPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj"
+              "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj": {
+                "projectPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj"
               }
             }
           }
@@ -54,26 +56,26 @@
           "dependencies": {
             "GraphEngine.Azure.BlobStorage": {
               "target": "Package",
-              "version": "[2.0.10059, )"
+              "version": "[2.0.10135, )"
             },
             "GraphEngine.DynamicCluster": {
               "target": "Package",
-              "version": "[2.0.10059, )"
+              "version": "[2.0.10135, )"
             },
             "GraphEngine.ServiceFabric.Infrastructure": {
               "target": "Package",
-              "version": "[2.0.10059, )"
+              "version": "[2.0.10135, )"
             },
             "GraphEngine.ServiceFabric.Remoting": {
               "target": "Package",
-              "version": "[2.0.10059, )"
+              "version": "[2.0.10135, )"
             },
             "Microsoft.ServiceFabric.Services": {
               "target": "Package",
-              "version": "[3.4.664, )"
+              "version": "[4.0.457, )"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
@@ -82,14 +84,14 @@
         }
       }
     },
-    "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj": {
+    "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj",
+        "projectUniqueName": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj",
         "projectName": "IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol",
-        "projectPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj",
+        "projectPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.csproj",
         "packagesPath": "C:\\Users\\Tavi\\.nuget\\packages\\",
-        "outputPath": "I:\\IKW-AzureServiceFabric\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\obj\\",
+        "outputPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "E:\\Microsoft\\Xamarin\\NuGet\\",
@@ -107,9 +109,11 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
-          "I:\\Trinity-GraphEngine\\build": {},
-          "Q:\\RUB Nuget Package Share": {},
+          "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
+          "I:\\IKW-GraphEngine\\build": {},
+          "K:\\RUB Nuget Package Share": {},
           "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/Quasar-Dev/20bae790-eac5-4dab-93fc-dfc863328316/_packaging/QuasarWindowsClientFeed/nuget/v3/index.json": {},
           "https://rocketurbizdev.pkgs.visualstudio.com/_packaging/RUB-SemanticEnhancement-NugetFeed/nuget/v3/index.json": {}
         },
         "frameworks": {
@@ -128,14 +132,14 @@
           "dependencies": {
             "GraphEngine.Core": {
               "target": "Package",
-              "version": "[2.0.10059, )"
+              "version": "[2.0.10135, )"
             },
             "GraphEngine.DynamicCluster": {
               "target": "Package",
-              "version": "[2.0.10059, )"
+              "version": "[2.0.10135, )"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

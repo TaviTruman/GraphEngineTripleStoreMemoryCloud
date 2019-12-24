@@ -15,7 +15,7 @@ namespace IKW.GraphEngine.TripleStoreRemotingClientService
         /// This is the entry point of the service host process.
         /// </summary>
         [UseExtension(typeof(ITrinityOverRemotingService))]
-        [UseExtension(typeof(TripleStoreMemoryCloudServiceImpl))]
+        //[UseExtension(typeof(TripleStoreMemoryCloudServiceImpl))]
         private static void Main()
         {
             try
