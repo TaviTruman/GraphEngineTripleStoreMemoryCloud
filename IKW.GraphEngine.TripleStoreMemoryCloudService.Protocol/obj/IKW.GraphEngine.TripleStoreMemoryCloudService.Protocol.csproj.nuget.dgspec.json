@@ -13,6 +13,7 @@
         "packagesPath": "C:\\Users\\Tavi\\.nuget\\packages\\",
         "outputPath": "I:\\GraphEngineTripleStoreMemoryCloud\\IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol\\obj\\",
         "projectStyle": "PackageReference",
+        "crossTargeting": true,
         "fallbackFolders": [
           "E:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -29,9 +30,12 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
-          "I:\\Trinity-GraphEngine\\build": {},
-          "Q:\\RUB Nuget Package Share": {},
+          "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
+          "I:\\IKW-GraphEngine\\build": {},
+          "I:\\IKW-GraphEngine\\out\\build\\x64-Debug": {},
+          "K:\\RUB Nuget Package Share": {},
           "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/Quasar-Dev/20bae790-eac5-4dab-93fc-dfc863328316/_packaging/QuasarWindowsClientFeed/nuget/v3/index.json": {},
           "https://rocketurbizdev.pkgs.visualstudio.com/_packaging/RUB-SemanticEnhancement-NugetFeed/nuget/v3/index.json": {}
         },
         "frameworks": {
@@ -50,14 +54,14 @@
           "dependencies": {
             "GraphEngine.Core": {
               "target": "Package",
-              "version": "[2.0.10059, )"
+              "version": "[2.0.10135, )"
             },
             "GraphEngine.DynamicCluster": {
               "target": "Package",
-              "version": "[2.0.10059, )"
+              "version": "[2.0.10135, )"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

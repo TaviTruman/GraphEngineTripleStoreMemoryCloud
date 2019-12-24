@@ -1,0 +1,2 @@
+I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\obj\Debug\netcoreapp2.0\win7-x64\IKW.GraphEngine.TripleStoreRemotingClientService.AssemblyInfoInputs.cache
+I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStoreRemotingClientService\obj\Debug\netcoreapp2.0\win7-x64\IKW.GraphEngine.TripleStoreRemotingClientService.AssemblyInfo.cs

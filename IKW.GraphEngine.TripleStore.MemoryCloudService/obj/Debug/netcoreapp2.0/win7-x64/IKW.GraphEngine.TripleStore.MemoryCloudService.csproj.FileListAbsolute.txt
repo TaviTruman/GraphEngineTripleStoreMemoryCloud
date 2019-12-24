@@ -1,0 +1,2 @@
+I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStore.MemoryCloudService\obj\Debug\netcoreapp2.0\win7-x64\IKW.GraphEngine.TripleStore.MemoryCloudService.AssemblyInfoInputs.cache
+I:\GraphEngineTripleStoreMemoryCloud\IKW.GraphEngine.TripleStore.MemoryCloudService\obj\Debug\netcoreapp2.0\win7-x64\IKW.GraphEngine.TripleStore.MemoryCloudService.AssemblyInfo.cs

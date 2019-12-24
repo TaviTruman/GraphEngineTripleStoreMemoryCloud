@@ -1,34 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <!--<PropertyGroup>
+  <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFrameworks>net461</TargetFrameworks>
     <IsServiceFabricServiceProject>True</IsServiceFabricServiceProject>
     <ServerGarbageCollection>True</ServerGarbageCollection>
     <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
     <TargetLatestRuntimePatch>False</TargetLatestRuntimePatch>
-  </PropertyGroup>-->
-
-  <PropertyGroup>
-      <!--<OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>-->
-      <OutputType>Exe</OutputType>
-      <TargetFramework>net461</TargetFramework>
-      <Platforms>x64</Platforms>
-      <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-      <IsPackable>false</IsPackable>
-      <Configurations>Debug;Release</Configurations>
-      <IsServiceFabricServiceProject>True</IsServiceFabricServiceProject>
-      <ServerGarbageCollection>True</ServerGarbageCollection>
-      <!--<RuntimeIdentifier>win7-x64</RuntimeIdentifier>-->
-      <TargetLatestRuntimePatch>False</TargetLatestRuntimePatch>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GraphEngine.Client" Version="2.0.10059" />
-    <PackageReference Include="GraphEngine.Core" Version="2.0.10059" />
-    <PackageReference Include="GraphEngine.ServiceFabric.Remoting" Version="2.0.10059" />
-    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.4.664" />
+    <PackageReference Include="GraphEngine.ServiceFabric.Remoting" Version="2.0.10135" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="4.0.457" />
   </ItemGroup>
 
   <ItemGroup>

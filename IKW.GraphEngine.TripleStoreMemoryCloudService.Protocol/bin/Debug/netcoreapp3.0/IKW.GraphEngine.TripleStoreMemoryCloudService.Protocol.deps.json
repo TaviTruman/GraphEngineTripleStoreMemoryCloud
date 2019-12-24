@@ -8,35 +8,34 @@
     ".NETCoreApp,Version=v3.0": {
       "IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol/1.0.0": {
         "dependencies": {
-          "GraphEngine.Core": "2.0.10059",
-          "GraphEngine.DynamicCluster": "2.0.10059",
-          "Microsoft.DependencyValidation.Analyzers": "0.10.0"
+          "GraphEngine.Core": "2.0.10092",
+          "GraphEngine.DynamicCluster": "2.0.10092"
         },
         "runtime": {
           "IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol.dll": {}
         }
       },
-      "GraphEngine.Client/2.0.10059": {
+      "GraphEngine.Client/2.0.10092": {
         "dependencies": {
-          "GraphEngine.Core": "2.0.10059",
+          "GraphEngine.Core": "2.0.10092",
           "System.ValueTuple": "4.5.0"
         },
         "runtime": {
           "lib/netstandard2.0/Trinity.Client.dll": {
-            "assemblyVersion": "2.0.10059.0",
-            "fileVersion": "2.0.10059.0"
+            "assemblyVersion": "2.0.10092.0",
+            "fileVersion": "2.0.10092.0"
           }
         }
       },
-      "GraphEngine.Core/2.0.10059": {
+      "GraphEngine.Core/2.0.10092": {
         "dependencies": {
           "Microsoft.Extensions.ObjectPool": "2.0.0",
           "Newtonsoft.Json": "9.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/Trinity.Core.dll": {
-            "assemblyVersion": "2.0.10059.0",
-            "fileVersion": "2.0.10059.0"
+            "assemblyVersion": "2.0.10092.0",
+            "fileVersion": "2.0.10092.0"
           }
         },
         "runtimeTargets": {
@@ -52,18 +51,18 @@
           }
         }
       },
-      "GraphEngine.DynamicCluster/2.0.10059": {
+      "GraphEngine.DynamicCluster/2.0.10092": {
         "dependencies": {
-          "GraphEngine.Client": "2.0.10059",
-          "GraphEngine.Core": "2.0.10059",
+          "GraphEngine.Client": "2.0.10092",
+          "GraphEngine.Core": "2.0.10092",
           "Nito.AsyncEx.Coordination": "1.0.2",
           "Nito.AsyncEx.Tasks": "1.1.0",
           "System.Collections.Immutable": "1.4.0"
         },
         "runtime": {
           "lib/netstandard2.0/Trinity.DynamicCluster.dll": {
-            "assemblyVersion": "2.0.10059.0",
-            "fileVersion": "2.0.10059.0"
+            "assemblyVersion": "2.0.10092.0",
+            "fileVersion": "2.0.10092.0"
           }
         }
       },
@@ -87,7 +86,6 @@
           "System.Threading": "4.0.11"
         }
       },
-      "Microsoft.DependencyValidation.Analyzers/0.10.0": {},
       "Microsoft.Extensions.ObjectPool/2.0.0": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.dll": {
@@ -482,26 +480,26 @@
       "serviceable": false,
       "sha512": ""
     },
-    "GraphEngine.Client/2.0.10059": {
+    "GraphEngine.Client/2.0.10092": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-dNhecwX/B8+RadryrVP2WqTeBcsrH3sW//SJU3oGtjXQ24ZLYOWYZnTBNBwHoDwQ/OGhjgIhXDxO9M0fqaigsw==",
-      "path": "graphengine.client/2.0.10059",
-      "hashPath": "graphengine.client.2.0.10059.nupkg.sha512"
+      "sha512": "sha512-3JnPmakhwgJlo+ZE0zumhE5enh4ggIKrweNFI3ZXWfAMNk7MYr/GVG/g9ddETutTSlXTI3Cq/RttQamYmlhG8Q==",
+      "path": "graphengine.client/2.0.10092",
+      "hashPath": "graphengine.client.2.0.10092.nupkg.sha512"
     },
-    "GraphEngine.Core/2.0.10059": {
+    "GraphEngine.Core/2.0.10092": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-cDdsw6psrHqg4JmtrC+1/r8TyFt2RnX2eLbO5fiC/rP6pVLqvq/mNhIhL75LjU9y1bMy2aVZqbe05z81g8/RAA==",
-      "path": "graphengine.core/2.0.10059",
-      "hashPath": "graphengine.core.2.0.10059.nupkg.sha512"
+      "sha512": "sha512-MsJRTZ5P0OZCPtWwYTPMkISrQEVGaAiBhk+vv/RJX5o3dwg4vH09UbaEy5tvhLLDYBF3uXgMl6J1xI/5WB8hUw==",
+      "path": "graphengine.core/2.0.10092",
+      "hashPath": "graphengine.core.2.0.10092.nupkg.sha512"
     },
-    "GraphEngine.DynamicCluster/2.0.10059": {
+    "GraphEngine.DynamicCluster/2.0.10092": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ZChmFaVv7crk8hqCPZwhPDn1WH435ekUkGLcz+VcNHMtYrsesL8VqiTUzbTSj2V0haIuE7AVlz1bj6UA6r5r7g==",
-      "path": "graphengine.dynamiccluster/2.0.10059",
-      "hashPath": "graphengine.dynamiccluster.2.0.10059.nupkg.sha512"
+      "sha512": "sha512-oEl2tEKRAF8iTGk2q0fPwS6NmP62+ktWPTf/H5GdTCuG8Vz6DXZQF7fkhzH43hXmCO4pq0LwUjrcnaSxiv5/zg==",
+      "path": "graphengine.dynamiccluster/2.0.10092",
+      "hashPath": "graphengine.dynamiccluster.2.0.10092.nupkg.sha512"
     },
     "Microsoft.CSharp/4.0.1": {
       "type": "package",
@@ -509,13 +507,6 @@
       "sha512": "sha512-17h8b5mXa87XYKrrVqdgZ38JefSUqLChUQpXgSnpzsM0nDOhE40FTeNWOJ/YmySGV6tG6T8+hjz6vxbknHJr6A==",
       "path": "microsoft.csharp/4.0.1",
       "hashPath": "microsoft.csharp.4.0.1.nupkg.sha512"
-    },
-    "Microsoft.DependencyValidation.Analyzers/0.10.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-VXi/pc6FFBhDIhm+WylrAKxN4/CtYVo9fNnD1Hq+XwzqN6KF1gvC3G2bDqETbTLsML/u60c658+0veyQK5M1IQ==",
-      "path": "microsoft.dependencyvalidation.analyzers/0.10.0",
-      "hashPath": "microsoft.dependencyvalidation.analyzers.0.10.0.nupkg.sha512"
     },
     "Microsoft.Extensions.ObjectPool/2.0.0": {
       "type": "package",

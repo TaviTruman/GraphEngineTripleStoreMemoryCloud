@@ -23,6 +23,7 @@ namespace IKW.GraphEngine.TripleStoreRemotingClientService
     internal sealed class TripleStoreRemotingClientService : StatelessService
     {
         private TrinityClient m_tripleStoreRemotingClient;
+        private TripleStoreMemoryCloudServiceImpl m_trinityClient = null; 
         public TripleStoreRemotingClientService(StatelessServiceContext context)
             : base(context)
         {

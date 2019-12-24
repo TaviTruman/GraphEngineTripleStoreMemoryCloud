@@ -6,7 +6,6 @@ using FanoutSearch;
 using IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol;
 using InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL;
 using Trinity;
-using Trinity.Azure.Storage;
 using Trinity.Diagnostics;
 using Trinity.DynamicCluster.Storage;
 using Trinity.ServiceFabric;
@@ -22,7 +21,7 @@ namespace IKW.GraphEngine.TripleStore.MemoryCloudService
         /// </summary>
         // Workaround: extension assembly will be removed by the
         // compiler if it is not explicitly used in the code.
-        [UseExtension(typeof(BlobStoragePersistentStorage))]
+        //[UseExtension(typeof(BlobStoragePersistentStorage))]
         [UseExtension(typeof(ITrinityOverRemotingService))]
         [UseExtension(typeof(FanoutSearchModule))]
         [UseExtension(typeof(TripleStoreMemoryCloudServiceImpl))]
