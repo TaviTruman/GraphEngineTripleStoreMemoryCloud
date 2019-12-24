@@ -11,9 +11,8 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("InKnowWorks, Corp")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyDescriptionAttribute("Property Graph, HyperGraph - Directed and Multi-Graph implementations")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol")]

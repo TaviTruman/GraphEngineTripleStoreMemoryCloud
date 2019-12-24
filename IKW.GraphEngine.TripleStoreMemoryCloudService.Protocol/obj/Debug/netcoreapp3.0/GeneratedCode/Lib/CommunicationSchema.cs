@@ -55,6 +55,19 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
             {
                 string request_sig;
                 
+                {
+                    
+                    request_sig = "void";
+                    
+                    yield return new ProtocolDescriptor()
+                    {
+                        Name = "Ping",
+                        RequestSignature = request_sig,
+                        ResponseSignature = "void",
+                        Type = Trinity.Network.Messaging.TrinityMessageType.SYNC
+                    };
+                }
+                
                 yield break;
             }
         }
@@ -72,6 +85,20 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
                     yield return new ProtocolDescriptor()
                     {
                         Name = "StoreTriple",
+                        RequestSignature = request_sig,
+                        ResponseSignature = response_sig,
+                        Type = Trinity.Network.Messaging.TrinityMessageType.SYNC_WITH_RSP
+                    };
+                }
+                
+                {
+                    
+                    request_sig = "{string}";
+                    
+                    response_sig = "{string}";
+                    yield return new ProtocolDescriptor()
+                    {
+                        Name = "HelloMessage",
                         RequestSignature = request_sig,
                         ResponseSignature = response_sig,
                         Type = Trinity.Network.Messaging.TrinityMessageType.SYNC_WITH_RSP
@@ -122,6 +149,7 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         /// </summary>
         public enum SynReqMessageType : ushort
         {
+            Ping,
             
         }
         /// <summary>
@@ -130,6 +158,7 @@ namespace InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL
         public enum SynReqRspMessageType : ushort
         {
             StoreTriple,
+            HelloMessage,
             
         }
         /// <summary>

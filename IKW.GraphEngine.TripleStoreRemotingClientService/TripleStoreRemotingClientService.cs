@@ -9,9 +9,7 @@ using IKW.GraphEngine.TripleStoreMemoryCloudService.Protocol;
 using InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL;
 using InKnowWorks.TripleStoreMemoryCloud.Protocols.TSL.TripleStoreMemoryCloudServiceModule;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
-using Trinity;
 using Trinity.Client;
-using Trinity.Client.TrinityClientModule;
 using Trinity.Diagnostics;
 using StatelessService = Microsoft.ServiceFabric.Services.Runtime.StatelessService;
 
@@ -22,18 +20,17 @@ namespace IKW.GraphEngine.TripleStoreRemotingClientService
     /// </summary>
     internal sealed class TripleStoreRemotingClientService : StatelessService
     {
-        private TrinityClient m_tripleStoreRemotingClient;
-        private TripleStoreMemoryCloudServiceImpl m_trinityClient = null; 
+        private const string TripleStoreMemoryCloudServiceString =
+            @"fabric:/GraphEngineTripleStoreMemoryCloudSFApp/IKW.GraphEngine.TripleStore.MemoryCloudService";
+
+        private TrinityClient m_TripleStoreMemoryCloudClient = null;
+
         public TripleStoreRemotingClientService(StatelessServiceContext context)
             : base(context)
         {
-            m_tripleStoreRemotingClient = new TrinityClient("fabric:/GraphEngineTripleStoreMemoryCloudSFApp/IKW.GraphEngine.TripleStore.MemoryCloudService");
-            m_tripleStoreRemotingClient.RegisterCommunicationModule<TripleStoreMemoryCloudServiceImpl>();
-            m_tripleStoreRemotingClient.Start();
-
-            var clientModule = m_tripleStoreRemotingClient.GetCommunicationModule<TrinityClientModule>();
-
-            var clientModuleInstance = clientModule.Clients;
+            m_TripleStoreMemoryCloudClient = new TrinityClient(TripleStoreMemoryCloudServiceString);
+            //m_TripleStoreMemoryCloudClient.RegisterCommunicationModule<TripleStoreMemoryCloudServiceImpl>();
+            m_TripleStoreMemoryCloudClient.Start();
         }
 
         /// <summary>
@@ -56,49 +53,29 @@ namespace IKW.GraphEngine.TripleStoreRemotingClientService
 
             long iterations = 0;
 
-            var tripleStoreMemoryCloudServiceImpl = Global.CloudStorage.GetCommunicationModule<TripleStoreMemoryCloudServiceImpl>();
-
-            //tripleStoreMemoryCloudServiceImpl.ClientInitialize(RunningMode.Client);
-
-            var serverServiceEndpoint =
-                m_tripleStoreRemotingClient.GetCommunicationModule<TripleStoreMemoryCloudServiceImpl>();
-
-
             while (true)
             {
                 cancellationToken.ThrowIfCancellationRequested();
 
-                await Task.Delay(TimeSpan.FromSeconds(10), cancellationToken);
+                m_TripleStoreMemoryCloudClient.Ping();
 
-                var rdtTripleStatement = new TripleStatement(Guid.NewGuid(), "GraphEngine", "Powers", "Me");
+                var messageResponse = m_TripleStoreMemoryCloudClient.HelloMessage(new HelloNessageRequestWriter($"Hello from GE/SF Remoting Client"));
+
+                Log.WriteLine($"Working");
 
                 var storeTripleRequest =
                     new StoreTripleRequestWriter()
                     {
-                        Subject   = "GraphEngine",
-                        Predicate = "Works",
-                        Object    = "Wonders",
-                        RefId     = Guid.NewGuid()
+                        Subject = @"GraphEngine",
+                        Predicate = @"IsA",
+                        Object = @"GraphDataManagementSystem"
                     };
-
+                
                 ServiceEventSource.Current.ServiceMessage(this.Context, "Working-{0}", ++iterations);
 
-                try
-                {
-                    //m_tripleStoreRemotingClient.StoreTriple(storeTripleRequest);
+                //var tripleResponse = m_TripleStoreMemoryCloudClient.StoreTriple(storeTripleRequest);
 
-                    var resp = Global.LocalStorage.StoreTriple(storeTripleRequest);
-
-                    //var tripleResponse = tripleStoreMemoryCloudServiceImpl.StoreTriple(1,storeTripleRequest);
-
-                    //serverServiceEndpoint.StoreTriple(1, storeTripleRequest);
-                }
-                catch (Exception e)
-                {
-                    ServiceEventSource.Current.ServiceMessage(this.Context, $"An Unexpected Error has been detected: {e.Message}");
-                }
-
-                await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
+                await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken).ConfigureAwait(false);
             }
         }
     }

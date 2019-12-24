@@ -27,6 +27,30 @@ struct StoreTripleResponse
 	string Object;
 }
 
+protocol Ping
+{
+	Type: Syn;
+	Request: void;
+	Response: void;
+}
+
+struct HelloNessageRequest
+{
+	string HelloMessageContent;	
+}
+
+struct HelloMessageReponse
+{
+	string HelloMessageContent;	
+}
+
+protocol HelloMessage
+{
+	Type: Syn;
+	Request: HelloNessageRequest;
+	Response: HelloMessageReponse;
+}
+
 // API - MakeTriple
 protocol StoreTriple
 {
@@ -37,5 +61,7 @@ protocol StoreTriple
 
 module TripleStoreMemoryCloudServiceModule
 {
+	protocol Ping;	
 	protocol StoreTriple;
+	protocol HelloMessage;
 }
