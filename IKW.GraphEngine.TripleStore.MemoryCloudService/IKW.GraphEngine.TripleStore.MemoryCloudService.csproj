@@ -24,7 +24,7 @@
     <PackageReference Include="GraphEngine.LIKQ" Version="2.0.10135" />
     <PackageReference Include="GraphEngine.ServiceFabric.Infrastructure" Version="2.0.10135" />
     <PackageReference Include="GraphEngine.ServiceFabric.Remoting" Version="2.0.10135" />
-    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="4.0.457" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="4.1.409" />
   </ItemGroup>
 
   <ItemGroup>
