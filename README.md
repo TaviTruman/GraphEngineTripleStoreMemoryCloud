@@ -1,4 +1,4 @@
-# GraphEngineTripleStoreMemoryCloud
+# Graph Engine RDF TripleStore MemoryCloud
 Microsoft Trinity Graph Engine - Service Fabric Integration Example
 
 # New update to Graph Engine Service Support
