@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <!--<PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -24,7 +24,7 @@
     <PackageReference Include="GraphEngine.LIKQ" Version="2.0.10135" />
     <PackageReference Include="GraphEngine.ServiceFabric.Infrastructure" Version="2.0.10135" />
     <PackageReference Include="GraphEngine.ServiceFabric.Remoting" Version="2.0.10135" />
-    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="5.1.316" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="6.1.1799" />
   </ItemGroup>
 
   <ItemGroup>
